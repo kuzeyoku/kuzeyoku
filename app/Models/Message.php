@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Enums\StatusEnum;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Message extends Model
 {
@@ -12,4 +13,9 @@ class Message extends Model
     protected $fillable = [
         "name", "email", "phone", "subject", "content", "ip", "user_agent", "consent", "status"
     ];
+
+    public function scopeUnread($query)
+    {
+        return $query->where('status', StatusEnum::Unread);
+    }
 }

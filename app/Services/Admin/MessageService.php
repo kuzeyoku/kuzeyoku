@@ -23,13 +23,11 @@ class MessageService extends BaseService
         parent::update($data, $message);
     }
 
-    public function send(Model $message)
+    public function send(Request $request)
     {
-        $data = new Request([
-            "status" => StatusEnum::Answered->value
-        ]);
+        dd($request->all());
         try {
-            parent::update($data, $message);
+            dd(parent::update($request, $message));
         } catch (\Throwable $th) {
             dd($th->getMessage);
         }

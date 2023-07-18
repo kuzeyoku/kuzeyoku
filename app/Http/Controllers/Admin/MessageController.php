@@ -40,9 +40,9 @@ class MessageController extends Controller
         return view("admin.{$this->folder}.reply", compact("message"));
     }
 
-    public function send(Message $message)
+    public function send(SendMessageRequest $request, Message $message)
     {
-        return $this->service->send($message);
+        return $this->service->send($request, $message);
     }
 
     public function destroy(Message $message)
