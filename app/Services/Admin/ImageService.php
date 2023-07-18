@@ -2,8 +2,8 @@
 
 namespace App\Services\Admin;
 
+use abeautifulsite\SimpleImage;
 use App\Enums\ModuleEnum;
-use claviska\SimpleImage;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 

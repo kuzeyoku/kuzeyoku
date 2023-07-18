@@ -13,16 +13,17 @@ class ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
-        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
-        'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
+        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
+        'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         '3bd81c9b8fcc150b69d8b63b4d2ccf23' => __DIR__ . '/..' . '/spatie/flare-client-php/src/helpers.php',
         '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '09f6b20656683369174dd6fa83b7e5fb' => __DIR__ . '/..' . '/symfony/polyfill-uuid/bootstrap.php',
+        '29ffe97919493792170d47eb03a68da9' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
@@ -32,11 +33,13 @@ class ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369
         'c7a3c339e7e14b60e06a2d7fcce9476b' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         'c72349b1fe8d0deeedd3a52e8aa814d8' => __DIR__ . '/..' . '/mockery/mockery/library/helpers.php',
         'ce9671a430e4846b44e1c68c7611f9f5' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'a1cfe24d14977df6878b9bf804af2d1c' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Phpunit/Autoload.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
+        '8fde5feda9697fe0ee53a3938c839fb0' => __DIR__ . '/../..' . '/app/Helpers/Helper.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -164,16 +167,19 @@ class ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369
         'C' => 
         array (
             'Cron\\' => 5,
+            'Collective\\Html\\' => 16,
             'Carbon\\' => 7,
         ),
         'B' => 
         array (
             'Brick\\Math\\' => 11,
+            'BladeUI\\Icons\\' => 14,
             'Barryvdh\\Debugbar\\' => 18,
         ),
         'A' => 
         array (
             'App\\' => 4,
+            'AndreiIonita\\BladeRemixIcon\\' => 28,
         ),
     );
 
@@ -503,6 +509,10 @@ class ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
+        'Collective\\Html\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravelcollective/html/src',
+        ),
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
@@ -510,6 +520,10 @@ class ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369
         'Brick\\Math\\' => 
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
+        ),
+        'BladeUI\\Icons\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src',
         ),
         'Barryvdh\\Debugbar\\' => 
         array (
@@ -520,9 +534,24 @@ class ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369
             0 => __DIR__ . '/../..' . '/app',
             1 => __DIR__ . '/..' . '/laravel/pint/app',
         ),
+        'AndreiIonita\\BladeRemixIcon\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/andreiio/blade-remix-icon/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'a' => 
+        array (
+            'abeautifulsite' => 
+            array (
+                0 => __DIR__ . '/..' . '/claviska/simpleimage/src',
+            ),
+        ),
     );
 
     public static $classMap = array (
+        'AndreiIonita\\BladeRemixIcon\\BladeRemixIconServiceProvider' => __DIR__ . '/..' . '/andreiio/blade-remix-icon/src/BladeRemixIconServiceProvider.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Enums\\ModuleEnum' => __DIR__ . '/../..' . '/app/Enums/ModuleEnum.php',
         'App\\Enums\\SettingCategoryEnum' => __DIR__ . '/../..' . '/app/Enums/SettingCategoryEnum.php',
@@ -674,6 +703,18 @@ class ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369
         'Barryvdh\\Debugbar\\Twig\\Node\\StopwatchNode' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Twig/Node/StopwatchNode.php',
         'Barryvdh\\Debugbar\\Twig\\TokenParser\\StopwatchTokenParser' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Twig/TokenParser/StopwatchTokenParser.php',
         'Barryvdh\\Debugbar\\Twig\\TokenParser\\TokenParser' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Twig/TokenParser/TokenParser.php',
+        'BladeUI\\Icons\\BladeIconsServiceProvider' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/BladeIconsServiceProvider.php',
+        'BladeUI\\Icons\\Components\\Icon' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Components/Icon.php',
+        'BladeUI\\Icons\\Components\\Svg' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Components/Svg.php',
+        'BladeUI\\Icons\\Concerns\\RendersAttributes' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Concerns/RendersAttributes.php',
+        'BladeUI\\Icons\\Console\\CacheCommand' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Console/CacheCommand.php',
+        'BladeUI\\Icons\\Console\\ClearCommand' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Console/ClearCommand.php',
+        'BladeUI\\Icons\\Exceptions\\CannotRegisterIconSet' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Exceptions/CannotRegisterIconSet.php',
+        'BladeUI\\Icons\\Exceptions\\SvgNotFound' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Exceptions/SvgNotFound.php',
+        'BladeUI\\Icons\\Factory' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Factory.php',
+        'BladeUI\\Icons\\Generation\\IconGenerator' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Generation/IconGenerator.php',
+        'BladeUI\\Icons\\IconsManifest' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/IconsManifest.php',
+        'BladeUI\\Icons\\Svg' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/Svg.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
         'Brick\\Math\\BigNumber' => __DIR__ . '/..' . '/brick/math/src/BigNumber.php',
@@ -772,6 +813,13 @@ class ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
         'Carbon\\TranslatorImmutable' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/TranslatorImmutable.php',
         'Carbon\\TranslatorStrongTypeInterface' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/TranslatorStrongTypeInterface.php',
+        'Collective\\Html\\Componentable' => __DIR__ . '/..' . '/laravelcollective/html/src/Componentable.php',
+        'Collective\\Html\\Eloquent\\FormAccessible' => __DIR__ . '/..' . '/laravelcollective/html/src/Eloquent/FormAccessible.php',
+        'Collective\\Html\\FormBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/FormBuilder.php',
+        'Collective\\Html\\FormFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/FormFacade.php',
+        'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
+        'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
+        'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
@@ -6541,6 +6589,7 @@ class ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369
         'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+        'abeautifulsite\\SimpleImage' => __DIR__ . '/..' . '/claviska/simpleimage/src/abeautifulsite/SimpleImage.php',
         'voku\\helper\\ASCII' => __DIR__ . '/..' . '/voku/portable-ascii/src/voku/helper/ASCII.php',
     );
 
@@ -6549,6 +6598,7 @@ class ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369::$prefixesPsr0;
             $loader->classMap = ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369::$classMap;
 
         }, null, ClassLoader::class);
