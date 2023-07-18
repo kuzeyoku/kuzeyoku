@@ -11,18 +11,18 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Dreams Pos admin template</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset("assets/admin/img/favicon.png") }}">
 
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/bootstrap.min.css') }}">
 
-    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/animate.css') }}">
 
     <link rel="stylesheet" href="assets/css/dataTables.bootstrap4.min.css">
 
     <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
 
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}">
 </head>
 
 <body class="error-page">
@@ -40,15 +40,15 @@
     </div>
 
 
-    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset("assets/admin/js/jquery-3.6.0.min.js") }}"></script>
 
-    <script src="assets/js/feather.min.js"></script>
+    <script src="{{ asset("assets/admin/js/feather.min.js") }}"></script>
 
-    <script src="assets/js/jquery.slimscroll.min.js"></script>
+    <script src="{{ asset("assets/admin/js/jquery.slimscroll.min.js") }}"></script>
 
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset("assets/admin/js/bootstrap.bundle.min.js") }}"></script>
 
-    <script src="assets/js/script.js"></script>
+    <script src="{{ asset("assets/admin/js/script.js") }}"></script>
 </body>
 
 </html>
