@@ -25,11 +25,8 @@ class MessageService extends BaseService
 
     public function send(Request $request)
     {
-        dd($request->all());
-        try {
-            dd(parent::update($request, $message));
-        } catch (\Throwable $th) {
-            dd($th->getMessage);
-        }
+        $message = Message::find($request->id);
+        $message->status = StatusEnum::Answered->value;
+        return $message->save();
     }
 }

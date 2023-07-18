@@ -29,6 +29,7 @@ enum StatusEnum: string
             self::Pending => "lightyellow",
             self::Read => "lightgreen",
             self::Unread => "lightyellow",
+            self::Answered => "lightgrey",
         };
     }
 

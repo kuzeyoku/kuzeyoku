@@ -1,7 +1,7 @@
 @extends('admin.layout.main')
 @section('pageTitle', __("admin/{$folder}.reply"))
 @section('content')
-    {!! Form::open(['url' => route("admin.{$route}.send", $message), 'method' => 'post']) !!}
+    {!! Form::open(['url' => route("admin.{$route}.send"), 'method' => 'post']) !!}
     {!! Form::hidden('id', $message->id) !!}
     <div class="form-group">
         {!! Form::label('email', __("admin/{$folder}.form.customer")) !!}

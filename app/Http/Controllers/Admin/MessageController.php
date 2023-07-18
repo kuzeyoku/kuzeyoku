@@ -40,9 +40,16 @@ class MessageController extends Controller
         return view("admin.{$this->folder}.reply", compact("message"));
     }
 
-    public function send(SendMessageRequest $request, Message $message)
+    public function send(SendMessageRequest $request)
     {
-        return $this->service->send($request, $message);
+        if ($this->service->send($request)) {
+            return redirect()
+                ->route("admin.{$this->route}.index")
+                ->withSuccess(__("admin/{$this->folder}.send_success"));
+        } else {
+            return back()
+                ->withError(__("admin/{$this->folder}.send_error"));
+        }
     }
 
     public function destroy(Message $message)

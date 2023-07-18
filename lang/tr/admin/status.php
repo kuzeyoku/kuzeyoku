@@ -7,4 +7,5 @@ return [
     'deleted' => 'Silinmiş',
     'read' => "Okundu",
     'unread' => "Okunmadı",
+    'answered' => "Cevaplandı",
 ];
