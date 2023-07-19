@@ -68,7 +68,10 @@ return [
         "username" => "SMTP Kullanıcı Adı",
         "password" => "SMTP Şifresi",
         "encryption" => "SMTP Şifreleme Türü",
-        "encryption_helper" => "SSL veya TLS",
+        "from_address" => "Gönderen Adresi",
+        "from_name" => "Gönderen Adı",
+        "reply_address" => "Cevaplama Adresi",
+        "reply_address_info" => "Cevaplama Adresi Varsayılan Gönderen Adresi Olarak Kullanılır",
     ],
     "maintenance" => [
         "status" => "Bakım Modu Durumu",

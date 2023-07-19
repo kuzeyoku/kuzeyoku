@@ -28,5 +28,5 @@ return [
         "updated_at" => "Güncellendi",
         "no_data" => "Herhangi bir veri bulunamadı.",
     ],
-
+    "invalid_value" => "Geçersiz değer!"
 ];

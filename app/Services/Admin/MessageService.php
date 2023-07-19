@@ -2,10 +2,12 @@
 
 namespace App\Services\Admin;
 
-use App\Enums\StatusEnum;
 use App\Models\Message;
-use Illuminate\Database\Eloquent\Model;
+use App\Enums\StatusEnum;
 use Illuminate\Http\Request;
+use App\Mail\Admin\ReplyMessage;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Database\Eloquent\Model;
 
 class MessageService extends BaseService
 {
@@ -23,10 +25,18 @@ class MessageService extends BaseService
         parent::update($data, $message);
     }
 
-    public function send(Request $request)
+    public function sendReply(Request $request)
     {
-        $message = Message::find($request->id);
-        $message->status = StatusEnum::Answered->value;
-        return $message->save();
+        try {
+            $message = Message::findOrFail($request->message_id);
+            Mail::send(new ReplyMessage($request, $message->name));
+            $message->status = StatusEnum::Answered->value;
+            $message->save();
+            return true;
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return back()
+                ->withError($e->getMessage());
+        }
     }
 }

@@ -23,7 +23,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get("/", "index")->name("message.index");
             Route::get("/{message}/show", "show")->name("message.show");
             Route::get("/{message}/reply", "reply")->name("message.reply");
-            Route::post("/send", "send")->name("message.send");
+            Route::post("/sendReply", "sendReply")->name("message.sendReply");
             Route::delete("/{message}/destroy", "destroy")->name("message.destroy");
         });
 

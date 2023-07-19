@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Message\SendMessageRequest;
+use App\Http\Requests\Message\ReplyMessageRequest;
 use App\Models\Message;
 use App\Services\Admin\MessageService;
 
@@ -40,9 +40,9 @@ class MessageController extends Controller
         return view("admin.{$this->folder}.reply", compact("message"));
     }
 
-    public function send(SendMessageRequest $request)
+    public function sendReply(ReplyMessageRequest $request)
     {
-        if ($this->service->send($request)) {
+        if ($this->service->sendReply($request)) {
             return redirect()
                 ->route("admin.{$this->route}.index")
                 ->withSuccess(__("admin/{$this->folder}.send_success"));

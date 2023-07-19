@@ -3,7 +3,6 @@
 namespace App\Enums;
 
 use Exception;
-use Illuminate\Support\Facades\Cache;
 
 enum StatusEnum: string
 {
@@ -50,24 +49,21 @@ enum StatusEnum: string
 
     public static function getStatus($value)
     {
-        switch ($value) {
-            case 'active':
-                return StatusEnum::Active;
-            case 'passive':
-                return StatusEnum::Passive;
-            case 'draft':
-                return StatusEnum::Draft;
-            case 'pending':
-                return StatusEnum::Pending;
-            case 'read':
-                return StatusEnum::Read;
-            case 'unread':
-                return StatusEnum::Unread;
-            case 'answered':
-                return StatusEnum::Answered;
-            default:
-                throw new Exception("Geçersiz Değer");
+        $statusList = [
+            'active' => StatusEnum::Active,
+            'passive' => StatusEnum::Passive,
+            'draft' => StatusEnum::Draft,
+            'pending' => StatusEnum::Pending,
+            'read' => StatusEnum::Read,
+            'unread' => StatusEnum::Unread,
+            'answered' => StatusEnum::Answered,
+        ];
+
+        if (array_key_exists($value, $statusList)) {
+            return $statusList[$value];
         }
+
+        throw new Exception(__("admin/general.invalid_value"));
     }
 
     public static function toSelectArray()
