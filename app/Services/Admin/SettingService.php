@@ -28,4 +28,5 @@ class SettingService
     {
         return \App\Models\Page::toSelectArray();
     }
+
 }

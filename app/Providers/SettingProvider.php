@@ -38,15 +38,4 @@ class SettingProvider extends ServiceProvider
 
         config()->set("setting", $settingConfig);
     }
-
-    public static function getSmtpSettings(): object
-    {
-        return (object) [
-            'host' => config('setting.smtp_host', env('MAIL_HOST', 'smtp.mailgun.org')),
-            'port' => config('setting.smtp_port', env('MAIL_PORT', 587)),
-            'encryption' => config('setting.smtp_encryption', env('MAIL_ENCRYPTION', 'tls')),
-            'username' => config('setting.smtp_username', env('MAIL_USERNAME')),
-            'password' => config('setting.smtp_password', env('MAIL_PASSWORD')),
-        ];
-    }
 }
