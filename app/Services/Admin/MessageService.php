@@ -40,7 +40,7 @@ class MessageService extends BaseService
             ]);
             return true;
         } catch (\Exception $e) {
-            Log::error($e->getMessage());
+            Log::channel('custom_errors')->error($e->getMessage());
         }
     }
 

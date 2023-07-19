@@ -700,8 +700,6 @@ strong {
     font-weight: 700;
 }
 
-
-
 .css-equal-heights,
 .css-equal-content {
     display: flex;
@@ -4090,7 +4088,7 @@ hr {
     border: 0;
 }
 
-.dropdown-toggle svg{
+.dropdown-toggle svg {
     width: 20px;
     color: #000;
 }
@@ -8975,7 +8973,8 @@ span.select2-container.select2-container--default.select2-container--open {
     right: 10px;
 }
 
-.content .nav svg, [data-toggle="tooltip"] svg {
+.content .nav svg,
+[data-toggle="tooltip"] svg {
     width: 1rem;
     margin-right: 0.3rem;
 }
@@ -9062,7 +9061,7 @@ td label {
 
 .btn-show {
     padding: 5px;
-    background-color:  #092c4c;
+    background-color: #092c4c;
     color: #fff;
 }
 
@@ -9081,7 +9080,25 @@ td label {
     border-radius: 5px;
 }
 
-.btn svg{
+.btn svg {
     width: 20px;
+    color: #fff;
+}
+.error-log-list,
+.info-log-list {
+    max-height: 440px;
+}
+.error-log-list li,
+.info-log-list li {
+    margin: 0.5rem;
+    padding: 0.7rem;
+    border-radius: 5px;
+}
+.error-log-list li {
+    background-color: #ff9f43;
+    color: #fff;
+}
+.info-log-list li {
+    background-color: #0dcaf0;
     color: #fff;
 }

@@ -25,9 +25,9 @@ class Handler extends ExceptionHandler
     public function register(): void
     {
         $this->reportable(function (Throwable $e) {
-            if ($e instanceof \Exception) {
-                Log::error($e->getMessage(), ['exception' => $e]);
-            }
+            // if ($e instanceof \Exception) {
+            //     Log::error($e->getMessage(), ['exception' => $e]);
+            // }
         });
     }
 }

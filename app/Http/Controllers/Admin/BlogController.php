@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Admin\Controller;
 use App\Models\Blog;
+use App\Enums\ModuleEnum;
 use App\Services\Admin\BlogService;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\Controller;
 use App\Http\Requests\Blog\StoreBlogRequest;
 use App\Http\Requests\Blog\UpdateBlogRequest;
-use App\Enums\ModuleEnum;
 
 class BlogController extends Controller
 {
@@ -38,13 +40,16 @@ class BlogController extends Controller
 
     public function store(StoreBlogRequest $request)
     {
-        if ($this->service->create((object)$request->validated()))
+        if ($this->service->create((object)$request->validated())) :
+            LogController::logger("info", " Bir Blog Konusu Eklendi - " . $request->title[app()->getLocale()]);
             return redirect()
                 ->route("admin.{$this->route}.index")
                 ->withSuccess(__("admin/{$this->folder}.create_success"));
-        return back()
-            ->withInput()
-            ->withError(__("admin/{$this->folder}.create_error"));
+        else :
+            return back()
+                ->withInput()
+                ->withError(__("admin/{$this->folder}.create_error"));
+        endif;
     }
 
     public function edit(Blog $blog)

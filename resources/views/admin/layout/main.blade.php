@@ -43,7 +43,7 @@
                                 @yield('content')
                             </div>
                         </div>
-
+                        @yield('card')
                     </div>
                 </div>
             </div>

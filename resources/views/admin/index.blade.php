@@ -53,17 +53,41 @@
             </div>
         </div>
     </div>
-    <div class="border rounded p-3">
 
-        Hata Kayıtları
-        <hr>
-        <ul>
-            @foreach ($errors as $error)
-                <li>
-                    {{ $error }}
-                </li>
-            @endforeach
-        </ul>
-
-    </div>
 @endsection
+@section('card')
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">İşlem Kayıtları</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="overflow-auto info-log-list">
+                        @forelse ($infoLogs as $log)
+                            <li>{{ $log }}</li>
+                        @empty
+                            <li>Log Kaydı Bulunamadı</li>
+                        @endforelse
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Hata Kayıtları</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="overflow-auto error-log-list">
+                        @forelse ($errorLogs as $log)
+                            <li>{{ $log }}</li>
+                        @empty
+                            <li>Log Kaydı Bulunamadı</li>
+                        @endforelse
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+@endSection

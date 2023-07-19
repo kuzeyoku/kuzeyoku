@@ -58,6 +58,30 @@ return [
             'ignore_exceptions' => false,
         ],
 
+        "custom_errors" => [
+            "driver" => "single",
+            "path" => storage_path("logs/custom_errors.log"),
+            "days" => 1,
+            "level" => "error",
+            "formatter" => \Monolog\Formatter\LineFormatter::class,
+            "formatter_with" => [
+                "format" => "[%datetime%] %message%\n",
+                "dateFormat" => "Y-m-d H:i"
+            ]
+        ],
+
+        "custom_info" => [
+            "driver" => "single",
+            "path" => storage_path("logs/custom_info.log"),
+            "days" => 7,
+            "level" => "info",
+            "formatter" => \Monolog\Formatter\LineFormatter::class,
+            "formatter_with" => [
+                "format" => "[%datetime%] %message%\n",
+                "dateFormat" => "Y-m-d H:i"
+            ]
+        ],
+
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),
@@ -89,7 +113,7 @@ return [
             'handler_with' => [
                 'host' => env('PAPERTRAIL_URL'),
                 'port' => env('PAPERTRAIL_PORT'),
-                'connectionString' => 'tls://'.env('PAPERTRAIL_URL').':'.env('PAPERTRAIL_PORT'),
+                'connectionString' => 'tls://' . env('PAPERTRAIL_URL') . ':' . env('PAPERTRAIL_PORT'),
             ],
             'processors' => [PsrLogMessageProcessor::class],
         ],
