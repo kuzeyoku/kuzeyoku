@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Admin\Controller;
 use App\Http\Requests\PostEditorRequest;
 use App\Services\Admin\ImageService;
 

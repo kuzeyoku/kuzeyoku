@@ -4,6 +4,7 @@ namespace App\Enums;
 
 enum ModuleEnum: string
 {
+    case Message = "message";
     case Page = 'page';
     case Language = 'language';
     case Blog = "blog";
@@ -15,7 +16,6 @@ enum ModuleEnum: string
     case Slider = "slider";
     case Testimonial = "testimonial";
     case Popup = "popup";
-    case Message = "message";
 
     public function title(): string
     {
@@ -25,6 +25,7 @@ enum ModuleEnum: string
     public function icon(): string
     {
         return match ($this) {
+            self::Message => "ri-mail-send-line",
             self::Page => 'ri-pages-fill',
             self::Language => 'ri-translate',
             self::Blog => "ri-newspaper-fill",
@@ -36,13 +37,13 @@ enum ModuleEnum: string
             self::Slider => "ri-slideshow-3-fill",
             self::Testimonial => "ri-chat-3-fill",
             self::Popup => "ri-window-fill",
-            self::Message => "ri-mail-fill",
         };
     }
 
     public function route(): string
     {
         return match ($this) {
+            self::Message => "message",
             self::Page => 'page',
             self::Language => 'language',
             self::Blog => "blog",
@@ -54,13 +55,13 @@ enum ModuleEnum: string
             self::Slider => "slider",
             self::Testimonial => "testimonial",
             self::Popup => "popup",
-            self::Message => "message",
         };
     }
 
     public function controller(): string
     {
         return match ($this) {
+            self::Message => \App\Http\Controllers\Admin\MessageController::class,
             self::Page => \App\Http\Controllers\Admin\PageController::class,
             self::Language => \App\Http\Controllers\Admin\LanguageController::class,
             self::Blog => \App\Http\Controllers\Admin\BlogController::class,
@@ -72,7 +73,6 @@ enum ModuleEnum: string
             self::Slider => \App\Http\Controllers\Admin\SliderController::class,
             self::Testimonial => \App\Http\Controllers\Admin\TestimonialController::class,
             self::Popup => \App\Http\Controllers\Admin\PopupController::class,
-            self::Message => \App\Http\Controllers\Admin\MessageController::class,
         };
     }
 
@@ -80,6 +80,9 @@ enum ModuleEnum: string
     {
         return match ($this) {
 
+            self::Message => [
+                "index" => __("admin/$this->value.index"),
+            ],
             self::Page => [
                 "index" => __("admin/$this->value.index"),
                 "create" => __("admin/$this->value.create"),
@@ -135,9 +138,6 @@ enum ModuleEnum: string
                 "create" => __("admin/$this->value.create"),
                 "list" => __("admin/$this->value.list"),
             ],
-            self::Message => [
-                "index" => __("admin/$this->value.index"),
-            ],
         };
     }
 
@@ -153,6 +153,7 @@ enum ModuleEnum: string
     public function folder(): string
     {
         return match ($this) {
+            self::Message => "message",
             self::Page => 'page',
             self::Language => "language",
             self::Blog => "blog",
@@ -164,7 +165,6 @@ enum ModuleEnum: string
             self::Slider => "slider",
             self::Testimonial => "testimonial",
             self::Popup => "popup",
-            self::Message => "message",
         };
     }
 

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Message;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cache;
-use App\Http\Controllers\Admin\Controller;
 
 class HomeController extends Controller
 {

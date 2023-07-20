@@ -29,6 +29,11 @@ return [
         "currency" => "Para Birimi",
         "currency_placeholder" => "Para Birimi Giriniz [₺, $, €]",
     ],
+    //log
+    "create_log" => "Bir Ürün Oluşturuldu - :title",
+    "update_log" => "Bir Ürün Güncellendi - :title",
+    "delete_log" => "Bir Ürün Silindi - :title",
+    //image
     "image" => [
         "success" => "Resim Başarıyla Yüklendi",
         "error" => "Resim Yüklenirken Bir Hata Oluştu",

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Admin\Controller;
 use App\Models\Category;
 use App\Services\Admin\CategoryService;
 use App\Http\Requests\Category\StoreCategoryRequest;

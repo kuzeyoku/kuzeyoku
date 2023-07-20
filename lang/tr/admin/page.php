@@ -12,6 +12,10 @@ return [
     "update_error" => "Sabit Sayfa Güncellenemedi",
     "delete_success" => "Sabit Sayfa Başarıyla Silindi",
     "delete_error" => "Sabit Sayfa Silinemedi",
+    //Log
+    "create_log" => "Bir Sabit Sayfa Oluşturuldu - :title",
+    "update_log" => "Bir Sabit Sayfa Güncellendi - :title",
+    "delete_log" => "Bir Sabit Sayfa Silindi - :title",
     //Form
     "form" => [
         "title" => "Sayfa Başlığı",

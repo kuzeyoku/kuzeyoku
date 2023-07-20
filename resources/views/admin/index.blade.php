@@ -22,7 +22,7 @@
                         <h5>Okunmamış Mesajınız Var - <a class="text-white"
                                 href="{{ route('admin.message.index') }}">Mesajlara Git</a></h5>
                     @else
-                        <h4>Okunmamış Mesajınız Yok</h4>
+                        <h5>Okunmamış Mesajınız Yok</h5>
                     @endif
                 </div>
                 <div class="dash-imgs">

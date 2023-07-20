@@ -3,6 +3,7 @@
 namespace App\Services\Admin;
 
 use App\Models\Message;
+use App\Enums\ModuleEnum;
 use App\Enums\StatusEnum;
 use Illuminate\Http\Request;
 use App\Mail\Admin\ReplyMessage;
@@ -14,7 +15,7 @@ class MessageService extends BaseService
 {
     public function __construct(Message $message)
     {
-        parent::__construct($message);
+        parent::__construct($message, ModuleEnum::Message);
     }
 
     public function statusUpdate(Model $message)

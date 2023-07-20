@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\ModuleEnum;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Admin\Controller;
 use App\Services\Admin\SettingService;
-use Helpers;
 
 class SettingController extends Controller
 {
@@ -31,6 +30,8 @@ class SettingController extends Controller
     public function update(Request $request)
     {
         $this->service->update($request);
+
+        //dd(ModuleEnum::($request->category)->title());
         return back()->withSuccess(__("admin/{$this->folder}.update_success"));
     }
 }

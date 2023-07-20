@@ -12,6 +12,10 @@ return [
     "update_error" => "Yorum güncellenirken bir hata oluştu.",
     "delete_success" => "Yorum başarıyla silindi.",
     "delete_error" => "Yorum silinirken bir hata oluştu.",
+    //Log
+    "create_log" => "Bir Müşteri Yorumu Eklendi",
+    "update_log" => "Bir Müşteri Yorumu Güncellendi",
+    "delete_log" => "Bir Müşteri Yorumu Silindi",
     //form
     "form" => [
         "image" => "Resim",

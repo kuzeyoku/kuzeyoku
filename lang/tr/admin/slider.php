@@ -12,6 +12,10 @@ return [
     "update_error" => "Slider güncellenirken bir hata oluştu.",
     "delete_success" => "Slider başarıyla silindi.",
     "delete_error" => "Slider silinirken bir hata oluştu.",
+    //Log
+    "create_log" => "Bir Slider Eklendi - :title",
+    "update_log" => "Bir Slider Güncellendi - :title",
+    "delete_log" => "Bir Slider Silindi - :title",
     //form
     "form" => [
         "title" => "Slider Başlığı",

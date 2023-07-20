@@ -2,73 +2,76 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Admin\Controller;
 use App\Models\Page;
 use App\Services\Admin\PageService;
 use App\Http\Requests\Page\StorePageRequest;
 use App\Http\Requests\Page\UpdatePageRequest;
-use App\Enums\ModuleEnum;
 
 class PageController extends Controller
 {
     protected $service;
-    protected $route;
-    protected $folder;
 
     public function __construct(PageService $service)
     {
         $this->service = $service;
-        $this->route = ModuleEnum::Page->route();
-        $this->folder = ModuleEnum::Page->folder();
-        view()->share('route', $this->route);
-        view()->share('folder', $this->folder);
+        view()->share('route', $this->service->route());
+        view()->share('folder', $this->service->folder());
     }
 
     public function index()
     {
         $items = $this->service->all();
-        return view("admin.{$this->folder}.index", compact('items'));
+        return view("admin.{$this->service->folder()}.index", compact('items'));
     }
 
     public function create()
     {
-        return view("admin.{$this->folder}.create");
+        return view("admin.{$this->service->folder()}.create");
     }
 
     public function store(StorePageRequest $request)
     {
-        if ($this->service->create($request))
+        if ($this->service->create($request)) :
+            LogController::logger("info", __("admin/{$this->service->folder()}.create_log", ["title" => $request->title[app()->getLocale()]]));
             return redirect()
-                ->route("admin.{$this->route}.index")
-                ->withSuccess(__("admin/{$this->folder}.create_success"));
-        return back()
-            ->withInput()
-            ->withError(__("admin/{$this->folder}.create_error"));
+                ->route("admin.{$this->service->route()}.index")
+                ->withSuccess(__("admin/{$this->service->folder()}.create_success"));
+        else :
+            return back()
+                ->withInput()
+                ->withError(__("admin/{$this->service->folder()}.create_error"));
+        endif;
     }
 
     public function edit(Page $page)
     {
-        return view("admin.{$this->folder}.edit", compact("page"));
+        return view("admin.{$this->service->folder()}.edit", compact("page"));
     }
 
     public function update(UpdatePageRequest $request, Page $page)
     {
-        if ($this->service->update($request, $page))
+        if ($this->service->update($request, $page)) :
+            LogController::logger("info", __("admin/{$this->service->folder()}.update_log", ["title" => $request->title[app()->getLocale()]]));
             return redirect()
-                ->route("admin.{$this->route}.index")
-                ->withSuccess(__("admin/{$this->folder}.update_success"));
-        return back()
-            ->withInput()
-            ->withError(__("admin/{$this->folder}.update_error"));
+                ->route("admin.{$this->service->route()}.index")
+                ->withSuccess(__("admin/{$this->service->folder()}.update_success"));
+        else :
+            return back()
+                ->withInput()
+                ->withError(__("admin/{$this->service->folder()}.update_error"));
+        endif;
     }
 
     public function destroy(Page $page)
     {
-        if ($this->service->delete($page))
+        if ($this->service->delete($page)) :
+            LogController::logger("info", __("admin/{$this->service->folder()}.delete_log", ["title" => $page->title]));
             return redirect()
-                ->route("admin.{$this->route}.index")
-                ->withSuccess(__("admin/{$this->folder}.delete_success"));
-        return back()
-            ->withError(__("admin/{$this->folder}.delete_error"));
+                ->route("admin.{$this->service->route()}.index")
+                ->withSuccess(__("admin/{$this->service->folder()}.delete_success"));
+        else :
+            return back()
+                ->withError(__("admin/{$this->service->folder()}.delete_error"));
+        endif;
     }
 }

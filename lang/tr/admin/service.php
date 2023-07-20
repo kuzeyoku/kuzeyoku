@@ -12,6 +12,10 @@ return [
     "update_error" => "Hizmet güncellenirken bir hata oluştu.",
     "delete_success" => "Hizmet başarıyla silindi.",
     "delete_error" => "Hizmet silinirken bir hata oluştu.",
+    //Log
+    "create_log" => "Bir Hizmet Eklendi - :title",
+    "update_log" => "Bir Hizmet Güncellendi - :title",
+    "delete_log" => "Bir Hizmet Silindi - :title",
     //form
     "form" => [
         "title" => "Hizmet Başlığı",

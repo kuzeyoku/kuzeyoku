@@ -25,6 +25,11 @@ return [
         "time" => "Popup Süresi",
         "time_placeholder" => "Popup Açık Kalma Süresi (sn)"
     ],
+    //Log
+    "create_log" => "Bir Popup Eklendi - :title",
+    "update_log" => "Bir Popup Güncellendi - :title",
+    "delete_log" => "Bir Popup Silindi - :title",
+
     "type" => [
         "image" => "Resim",
         "video" => "Video",

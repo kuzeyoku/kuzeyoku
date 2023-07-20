@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Message\ReplyMessageRequest;
 use App\Models\Message;
 use App\Services\Admin\MessageService;
