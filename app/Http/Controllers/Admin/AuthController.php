@@ -39,6 +39,7 @@ class AuthController extends Controller
         $credentials = $request->only("email", "password");
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            LogController::logger("info", "Giriş Yapıldı.");
             $message = [
                 "title" => __("admin/{$this->folder}.login_success_title", ["name" => Auth::user()->name]),
                 "message" => __("admin/{$this->folder}.login_success_message")
@@ -47,7 +48,7 @@ class AuthController extends Controller
                 ->intended('admin')
                 ->withSuccess($message);
         }
-
+        LogController::logger("error", "Başarısız Giriş Denemesi - IP: " . $request->ip() . " - Email: " . $request->email);
         return back()
             ->withInput()
             ->withError(__("admin/{$this->folder}.login_error"));

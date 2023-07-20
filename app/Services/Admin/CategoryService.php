@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin;
 
+use App\Enums\ModuleEnum;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class CategoryService extends BaseService
 
     public function __construct(Category $category)
     {
-        parent::__construct($category);
+        parent::__construct($category, ModuleEnum::Category);
     }
 
     public function create(Object $request)

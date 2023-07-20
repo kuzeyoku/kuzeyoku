@@ -11,6 +11,10 @@ return [
     "update_error" => "Kategori Güncellenirken Hata Oluştu",
     "delete_success" => "Kategori Başarıyla Silindi",
     "delete_error" => "Kategori Silinirken Hata Oluştu",
+    //log
+    "create_log" => "Bir Kategori Oluşturuldu - :title",
+    "update_log" => "Bir Kategori Güncellendi - :title",
+    "delete_log" => "Bir Kategori Silindi - :title",
     //form
     "form" => [
         "title" => "Kategori Başlığı",

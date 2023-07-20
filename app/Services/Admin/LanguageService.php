@@ -2,8 +2,9 @@
 
 namespace App\Services\Admin;
 
-use App\Enums\StatusEnum;
 use App\Models\Language;
+use App\Enums\ModuleEnum;
+use App\Enums\StatusEnum;
 
 class LanguageService extends BaseService
 {
@@ -11,7 +12,7 @@ class LanguageService extends BaseService
 
     public function __construct(Language $language)
     {
-        parent::__construct($language);
+        parent::__construct($language, ModuleEnum::Language);
     }
 
     static function toArray()

@@ -15,6 +15,7 @@ enum ModuleEnum: string
     case Slider = "slider";
     case Testimonial = "testimonial";
     case Popup = "popup";
+    case Message = "message";
 
     public function title(): string
     {
@@ -35,6 +36,7 @@ enum ModuleEnum: string
             self::Slider => "ri-slideshow-3-fill",
             self::Testimonial => "ri-chat-3-fill",
             self::Popup => "ri-window-fill",
+            self::Message => "ri-mail-fill",
         };
     }
 
@@ -52,6 +54,7 @@ enum ModuleEnum: string
             self::Slider => "slider",
             self::Testimonial => "testimonial",
             self::Popup => "popup",
+            self::Message => "message",
         };
     }
 
@@ -69,6 +72,7 @@ enum ModuleEnum: string
             self::Slider => \App\Http\Controllers\Admin\SliderController::class,
             self::Testimonial => \App\Http\Controllers\Admin\TestimonialController::class,
             self::Popup => \App\Http\Controllers\Admin\PopupController::class,
+            self::Message => \App\Http\Controllers\Admin\MessageController::class,
         };
     }
 
@@ -131,6 +135,9 @@ enum ModuleEnum: string
                 "create" => __("admin/$this->value.create"),
                 "list" => __("admin/$this->value.list"),
             ],
+            self::Message => [
+                "index" => __("admin/$this->value.index"),
+            ],
         };
     }
 
@@ -157,6 +164,7 @@ enum ModuleEnum: string
             self::Slider => "slider",
             self::Testimonial => "testimonial",
             self::Popup => "popup",
+            self::Message => "message",
         };
     }
 

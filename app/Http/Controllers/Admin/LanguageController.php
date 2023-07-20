@@ -13,43 +13,42 @@ use Illuminate\Support\Facades\Storage;
 class LanguageController extends Controller
 {
     protected $service;
-    protected $route;
-    protected $folder;
 
     public function __construct(LanguageService $languageService)
     {
         $this->service = $languageService;
-        $this->route = ModuleEnum::Language->route();
-        $this->folder = ModuleEnum::Language->folder();
-        view()->share('route', $this->route);
-        view()->share('folder', $this->folder);
+        view()->share('route', $this->service->route());
+        view()->share('folder', $this->service->folder());
     }
 
     public function index()
     {
         $items = $this->service->all();
-        return view("admin.{$this->folder}.index", compact('items'));
+        return view("admin.{$this->service->folder()}.index", compact('items'));
     }
 
     public function create()
     {
-        return view("admin.{$this->folder}.create");
+        return view("admin.{$this->service->folder()}.create");
     }
 
     public function store(StoreLanguageRequest $request)
     {
-        if ($this->service->create($request))
+        if ($this->service->create($request)) :
+            LogController::logger('info', __("admin/{$this->service->folder()}.create_log", ["title" => $request->title]));
             return redirect()
-                ->route("admin.{$this->route}.index")
-                ->withSuccess(__("admin/{$this->folder}.create_success"));
-        return back()
-            ->withInput()
-            ->withError(__("admin/{$this->folder}.create_error"));
+                ->route("admin.{$this->service->route()}.index")
+                ->withSuccess(__("admin/{$this->service->folder()}.create_success"));
+        else :
+            return back()
+                ->withInput()
+                ->withError(__("admin/{$this->service->folder()}.create_error"));
+        endif;
     }
 
     public function edit(Language $language)
     {
-        return view("admin.{$this->folder}.edit", compact('language'));
+        return view("admin.{$this->service->folder()}.edit", compact('language'));
     }
 
     public function files(Language $language)
@@ -69,27 +68,33 @@ class LanguageController extends Controller
             $carry[$file] = ucfirst($fileName);
             return $carry;
         });
-        return view("admin.{$this->folder}.files", compact("files", "adminFiles"));
+        return view("admin.{$this->service->folder()}.files", compact("files", "adminFiles"));
     }
 
     public function update(UpdateLanguageRequest $request, Language $language)
     {
-        if ($this->service->update($request, $language))
+        if ($this->service->update($request, $language)) :
+            LogController::logger('info', __("admin/{$this->service->folder()}.update_log", ["title" => $language->title]));
             return redirect()
-                ->route("admin.{$this->route}.index")
-                ->withSuccess(__("admin/{$this->folder}.update_success"));
-        return back()
-            ->withInput()
-            ->withError(__("admin/{$this->folder}.update_error"));
+                ->route("admin.{$this->service->route()}.index")
+                ->withSuccess(__("admin/{$this->service->folder()}.update_success"));
+        else :
+            return back()
+                ->withInput()
+                ->withError(__("admin/{$this->service->folder()}.update_error"));
+        endif;
     }
 
     public function destroy(Language $language)
     {
-        if ($this->service->delete($language))
+        if ($this->service->delete($language)) :
+            LogController::logger('info', __("admin/{$this->service->folder()}.delete_log", ["title" => $language->title]));
             return redirect()
-                ->route("admin.{$this->route}.index")
-                ->withSuccess(__("admin/{$this->folder}.delete_success"));
-        return back()
-            ->withError(__("admin/{$this->folder}.delete_error"));
+                ->route("admin.{$this->service->route()}.index")
+                ->withSuccess(__("admin/{$this->service->folder()}.delete_success"));
+        else :
+            return back()
+                ->withError(__("admin/{$this->service->folder()}.delete_error"));
+        endif;
     }
 }

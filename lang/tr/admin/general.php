@@ -19,6 +19,7 @@ return [
     "no" => "Hayır",
     "select" => "Seçiniz",
     "cache_clear_success" => "Önbellek başarıyla temizlendi.",
+    "cache_clear_log" => "Önbellek Temizlendi.",
     "table" => [
         "id" => "ID",
         "title" => "Başlık",

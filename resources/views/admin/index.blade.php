@@ -64,7 +64,7 @@
                 </div>
                 <div class="card-body">
                     <ul class="overflow-auto info-log-list">
-                        @forelse ($infoLogs as $log)
+                        @forelse (array_reverse($infoLogs) as $log)
                             <li>{{ $log }}</li>
                         @empty
                             <li>Log Kaydı Bulunamadı</li>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="card-body">
                     <ul class="overflow-auto error-log-list">
-                        @forelse ($errorLogs as $log)
+                        @forelse (array_reverse($errorLogs) as $log)
                             <li>{{ $log }}</li>
                         @empty
                             <li>Log Kaydı Bulunamadı</li>

@@ -14,11 +14,25 @@ class BaseService
 {
     protected $model;
     protected $module;
+    protected $folder;
+    protected $route;
 
     public function __construct(Model $model, ModuleEnum $module = null)
     {
         $this->model = $model;
         $this->module = $module;
+        $this->folder = $module->folder();
+        $this->route = $module->route();
+    }
+
+    public function folder()
+    {
+        return $this->folder;
+    }
+
+    public function route()
+    {
+        return $this->route;
     }
 
     public function all()

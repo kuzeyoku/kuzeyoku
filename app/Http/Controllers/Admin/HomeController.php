@@ -34,6 +34,7 @@ class HomeController extends Controller
     public function cacheClear()
     {
         Cache::flush();
+        LogController::logger('info', __('admin/general.cache_clear_log'));
         return redirect()->back()->with('success', __('admin/general.cache_clear_success'));
     }
 }
