@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Throwable;
 use App\Models\Service;
 use App\Services\Admin\ServiceService;
 use App\Http\Requests\Service\StoreServiceRequest;
@@ -16,9 +16,11 @@ class ServiceController extends Controller
     public function __construct(ServiceService $service)
     {
         $this->service = $service;
-        view()->share("categories", $this->service->getCategories(ModuleEnum::Blog));
-        view()->share("route", $this->service->route());
-        view()->share("folder", $this->service->folder());
+        view()->share([
+            "category" => $this->service->getCategories(ModuleEnum::Service),
+            "route" => $this->service->route(),
+            "folder" => $this->service->folder()
+        ]);
     }
 
     public function index()
@@ -34,16 +36,18 @@ class ServiceController extends Controller
 
     public function store(StoreServiceRequest $request)
     {
-        if ($this->service->create((object)$request->validated())) :
+        try {
+            $this->service->create((object)$request->validated());
             LogController::logger("info", __("admin/{$this->service->folder()}.create_log", ["title" => $request->title[app()->getLocale()]]));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.create_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.create_error"));
-        endif;
+        }
     }
 
     public function edit(Service $service)
@@ -53,28 +57,32 @@ class ServiceController extends Controller
 
     public function update(UpdateServiceRequest $request, Service $service)
     {
-        if ($this->service->update((object)$request->validated(), $service)) :
+        try {
+            $this->service->update((object)$request->validated(), $service);
             LogController::logger("info", __("admin/{$this->service->folder()}.update_log", ["title" => $request->title[app()->getLocale()]]));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.update_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.update_error"));
-        endif;
+        }
     }
 
     public function destroy(Service $service)
     {
-        if ($this->service->delete($service)) :
+        try {
+            $this->service->delete($service);
             LogController::logger("info", __("admin/{$this->service->folder()}.delete_log", ["title" => $service->title[app()->getLocale()]]));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.delete_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withError(__("admin/{$this->service->folder()}.delete_error"));
-        endif;
+        }
     }
 }

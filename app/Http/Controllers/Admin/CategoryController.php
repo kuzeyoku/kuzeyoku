@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Throwable;
 use App\Models\Category;
+use App\Enums\ModuleEnum;
 use App\Services\Admin\CategoryService;
 use App\Http\Requests\Category\StoreCategoryRequest;
 use App\Http\Requests\Category\UpdateCategoryRequest;
-use App\Enums\ModuleEnum;
 
 class CategoryController extends Controller
 {
@@ -17,10 +18,12 @@ class CategoryController extends Controller
     {
         $this->service = $service;
         $this->modules = ModuleEnum::toSelectArray();
-        view()->share("categories", $this->service->getCategories());
-        view()->share("modules", $this->modules);
-        view()->share("route", $this->service->route());
-        view()->share("folder", $this->service->folder());
+        view()->share([
+            "categories" => $this->service->getCategories(),
+            "modules" => $this->modules,
+            "route" => $this->service->route(),
+            "folder" => $this->service->folder()
+        ]);
     }
 
     public function index()
@@ -36,16 +39,18 @@ class CategoryController extends Controller
 
     public function store(StoreCategoryRequest $request)
     {
-        if ($this->service->create((object)$request->validated())) :
+        try {
+            $this->service->create((object)$request->validated());
             LogController::logger("info", __("admin/{$this->service->folder()}.create_log", ["title" => $request->title[app()->getLocale()]]));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.create_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.create_error"));
-        endif;
+        }
     }
 
     public function edit(Category $category)
@@ -55,28 +60,32 @@ class CategoryController extends Controller
 
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        if ($this->service->update((object)$request->validated(), $category)) :
+        try {
+            $this->service->update((object)$request->validated(), $category);
             LogController::logger("info", __("admin/{$this->service->folder()}.update_log", ["title" => $request->title[app()->getLocale()]]));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.update_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.update_error"));
-        endif;
+        }
     }
 
     public function destroy(Category $category)
     {
-        if ($this->service->delete($category)) :
+        try {
+            $this->service->delete($category);
             LogController::logger("info", __("admin/{$this->service->folder()}.delete_log", ["title" => $category->title[app()->getLocale()]]));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.delete_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withError(__("admin/{$this->service->folder()}.delete_error"));
-        endif;
+        }
     }
 }

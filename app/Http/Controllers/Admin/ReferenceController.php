@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Throwable;
 use App\Models\Reference;
 use App\Http\Requests\Reference\StoreReferenceRequest;
 use App\Http\Requests\Reference\UpdateReferenceRequest;
@@ -14,8 +15,10 @@ class ReferenceController extends Controller
     public function __construct(ReferenceService $service)
     {
         $this->service = $service;
-        view()->share("route", $this->service->route());
-        view()->share("folder", $this->service->folder());
+        view()->share([
+            'route' => $this->service->route(),
+            'folder' => $this->service->folder()
+        ]);
     }
 
     public function index()
@@ -32,15 +35,18 @@ class ReferenceController extends Controller
 
     public function store(StoreReferenceRequest $request)
     {
-        if ($this->service->create((object)$request->validated())) :
+        try {
+            $this->service->create((object)$request->validated());
             LogController::logger("info", __("admin/{$this->service->folder()}.create_log"));
-            return redirect()->route("admin.{$this->service->route()}.index")
+            return redirect()
+                ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.create_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withInput()
-                ->withError(__("admin.{$this->service->folder()}.create_error"));
-        endif;
+                ->withError(__("admin/{$this->service->folder()}.create_error"));
+        }
     }
 
     public function edit(Reference $reference)
@@ -50,27 +56,32 @@ class ReferenceController extends Controller
 
     public function update(UpdateReferenceRequest $request, Reference $reference)
     {
-        if ($this->service->update((object)$request->validated(), $reference)) :
+        try {
+            $this->service->update((object)$request->validated(), $reference);
             LogController::logger("info", __("admin/{$this->service->folder()}.update_log"));
-            return redirect()->route("admin.{$this->service->route()}.index")
+            return redirect()
+                ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.update_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.update_error"));
-        endif;
+        }
     }
 
     public function destroy(Reference $reference)
     {
-        if ($this->service->delete($reference)) :
+        try {
+            $this->service->delete($reference);
             LogController::logger("info", __("admin/{$this->service->folder()}.delete_log"));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.delete_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withError(__("admin/{$this->service->folder()}.delete_error"));
-        endif;
+        }
     }
 }

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Testimonial\StoreTestimonialRequest;
-use App\Http\Requests\Testimonial\UpdateTestimonialRequest;
+use Throwable;
 use App\Models\Testimonial;
 use App\Services\Admin\TestimonialService;
+use App\Http\Requests\Testimonial\StoreTestimonialRequest;
+use App\Http\Requests\Testimonial\UpdateTestimonialRequest;
 
 class TestimonialController extends Controller
 {
@@ -14,8 +15,10 @@ class TestimonialController extends Controller
     public function __construct(TestimonialService $service)
     {
         $this->service = $service;
-        view()->share("folder", $this->service->folder());
-        view()->share("route", $this->service->route());
+        view()->share([
+            "route" => $this->service->route(),
+            "folder" => $this->service->folder()
+        ]);
     }
 
     public function index()
@@ -31,16 +34,18 @@ class TestimonialController extends Controller
 
     public function store(StoreTestimonialRequest $request)
     {
-        if ($this->service->create((object)$request->validated())) :
+        try {
+            $this->service->create((object)$request->validated());
             LogController::logger("info", __("admin/{$this->service->folder()}.create_log"));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.create_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.create_error"));
-        endif;
+        }
     }
 
     public function edit(Testimonial $testimonial)
@@ -50,28 +55,32 @@ class TestimonialController extends Controller
 
     public function update(UpdateTestimonialRequest $request, Testimonial $testimonial)
     {
-        if ($this->service->update((object)$request->validated(), $testimonial)) :
+        try {
+            $this->service->update((object)$request->validated(), $testimonial);
             LogController::logger("info", __("admin/{$this->service->folder()}.update_log"));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.update_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.update_error"));
-        endif;
+        }
     }
 
     public function destroy(Testimonial $testimonial)
     {
-        if ($this->service->delete($testimonial)) :
+        try {
+            $this->service->delete($testimonial);
             LogController::logger("info", __("admin/{$this->service->folder()}.delete_log"));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.delete_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withError(__("admin/{$this->service->folder()}.delete_error"));
-        endif;
+        }
     }
 }

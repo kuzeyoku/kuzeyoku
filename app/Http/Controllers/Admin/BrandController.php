@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Throwable;
 use App\Models\Brand;
+use App\Services\Admin\BrandService;
 use App\Http\Requests\Brand\StoreBrandRequest;
 use App\Http\Requests\Brand\UpdateBrandRequest;
-use App\Services\Admin\BrandService;
 
 class BrandController extends Controller
 {
@@ -14,8 +15,10 @@ class BrandController extends Controller
     public function __construct(BrandService $service)
     {
         $this->service = $service;
-        view()->share("route", $this->service->route());
-        view()->share("folder", $this->service->folder());
+        view()->share([
+            "route" => $this->service->route(),
+            "folder" => $this->service->folder()
+        ]);
     }
 
     public function index()
@@ -31,15 +34,18 @@ class BrandController extends Controller
 
     public function store(StoreBrandRequest $request)
     {
-        if ($this->service->create((object)$request->validated())) :
+        try {
+            $this->service->create((object)$request->validated());
             LogController::logger("info", __("admin/{$this->service->folder()}.create_log"));
-            return redirect()->route("admin.{$this->service->folder()}.index")
+            return redirect()
+                ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.create_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.create_error"));
-        endif;
+        }
     }
 
     public function edit(Brand $brand)
@@ -49,27 +55,32 @@ class BrandController extends Controller
 
     public function update(UpdateBrandRequest $request, Brand $brand)
     {
-        if ($this->service->update((object)$request->validated(), $brand)) :
+        try {
+            $this->service->update((object)$request->validated(), $brand);
             LogController::logger("info", __("admin/{$this->service->folder()}.update_log"));
-            return redirect()->route("admin.{$this->service->folder()}.index")
+            return redirect()
+                ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.update_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.update_error"));
-        endif;
+        }
     }
 
     public function destroy(Brand $brand)
     {
-        if ($this->service->delete($brand)) :
+        try {
+            $this->service->delete($brand);
             LogController::logger("info", __("admin/{$this->service->folder()}.delete_log"));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.delete_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withError(__("admin/{$this->service->folder()}.delete_error"));
-        endif;
+        }
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Throwable;
 use App\Models\Blog;
 use App\Enums\ModuleEnum;
 use App\Services\Admin\BlogService;
@@ -15,9 +16,11 @@ class BlogController extends Controller
     public function __construct(BlogService $service)
     {
         $this->service = $service;
-        view()->share("categories", $this->service->getCategories(ModuleEnum::Blog));
-        view()->share('route', $this->service->route());
-        view()->share("folder", $this->service->folder());
+        view()->share([
+            "categories" => $this->service->getCategories(ModuleEnum::Blog),
+            "route" => $this->service->route(),
+            "folder" => $this->service->folder()
+        ]);
     }
 
     public function index()
@@ -33,16 +36,18 @@ class BlogController extends Controller
 
     public function store(StoreBlogRequest $request)
     {
-        if ($this->service->create((object)$request->validated())) :
+        try {
+            $this->service->create((object)$request->validated());
             LogController::logger("info", __("admin/{$this->service->folder()}.create_log", ["title" => $request->title[app()->getLocale()]]));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.create_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.create_error"));
-        endif;
+        }
     }
 
     public function edit(Blog $blog)
@@ -52,28 +57,32 @@ class BlogController extends Controller
 
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
-        if ($this->service->update((object)$request->validated(), $blog)) :
+        try {
+            $this->service->update((object)$request->validated(), $blog);
             LogController::logger("info", __("admin/{$this->service->folder()}.update_log", ["title" => $request->title[app()->getLocale()]]));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.update_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.update_error"));
-        endif;
+        }
     }
 
     public function destroy(Blog $blog)
     {
-        if ($this->service->delete($blog)) :
+        try {
+            $this->service->delete($blog);
             LogController::logger("info", __("admin/{$this->service->folder()}.delete_log", ["title" => $blog->title[app()->getLocale()]]));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.delete_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withError(__("admin/{$this->service->folder()}.delete_error"));
-        endif;
+        }
     }
 }

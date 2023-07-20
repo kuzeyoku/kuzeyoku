@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Throwable;
 use App\Models\Product;
 use App\Enums\ModuleEnum;
 use App\Models\ProductImage;
@@ -17,9 +18,11 @@ class ProductController extends Controller
     public function __construct(ProductService $service)
     {
         $this->service = $service;
-        view()->share("categories", $this->service->getCategories(ModuleEnum::Product));
-        view()->share('route', $this->service->route());
-        view()->share("folder", $this->service->folder());
+        view()->share([
+            "categories" => $this->service->getCategories(ModuleEnum::Product),
+            "route" => $this->service->route(),
+            "folder" => $this->service->folder()
+        ]);
     }
 
     public function index()
@@ -40,16 +43,18 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-        if ($this->service->create((object)$request->validated())) :
+        try {
+            $this->service->create((object)$request->validated());
             LogController::logger("info", __("admin/{$this->service->folder()}.create_log", ["title" => $request->title[app()->getLocale()]]));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.create_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.create_error"));
-        endif;
+        }
     }
 
     public function edit(Product $product)
@@ -90,29 +95,32 @@ class ProductController extends Controller
 
     public function update(UpdateProductRequest $request, Product $product)
     {
-        if ($this->service->update((object)$request->validated(), $product)) :
+        try {
+            $this->service->update((object)$request->validated(), $product);
             LogController::logger("info", __("admin/{$this->service->folder()}.update_log", ["title" => $request->title[app()->getLocale()]]));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.update_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.update_error"));
-        endif;
+        }
     }
 
     public function destroy(Product $product)
     {
-        if ($this->service->delete($product)) :
+        try {
+            $this->service->delete($product);
             LogController::logger("info", __("admin/{$this->service->folder()}.delete_log", ["title" => $product->title[app()->getLocale()]]));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.delete_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
-                ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.delete_error"));
-        endif;
+        }
     }
 }

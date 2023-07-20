@@ -4,6 +4,7 @@ namespace App\Enums;
 
 enum ModuleEnum: string
 {
+    case Setting = "setting";
     case Message = "message";
     case Page = 'page';
     case Language = 'language';
@@ -25,6 +26,7 @@ enum ModuleEnum: string
     public function icon(): string
     {
         return match ($this) {
+            self::Setting => "ri-settings-4-fill",
             self::Message => "ri-mail-send-line",
             self::Page => 'ri-pages-fill',
             self::Language => 'ri-translate',
@@ -43,6 +45,7 @@ enum ModuleEnum: string
     public function route(): string
     {
         return match ($this) {
+            self::Setting => "setting",
             self::Message => "message",
             self::Page => 'page',
             self::Language => 'language',
@@ -61,6 +64,7 @@ enum ModuleEnum: string
     public function controller(): string
     {
         return match ($this) {
+            self::Setting => \App\Http\Controllers\Admin\SettingController::class,
             self::Message => \App\Http\Controllers\Admin\MessageController::class,
             self::Page => \App\Http\Controllers\Admin\PageController::class,
             self::Language => \App\Http\Controllers\Admin\LanguageController::class,
@@ -80,6 +84,9 @@ enum ModuleEnum: string
     {
         return match ($this) {
 
+            self::Setting => [
+                "index" => __("admin/$this->value.index"),
+            ],
             self::Message => [
                 "index" => __("admin/$this->value.index"),
             ],
@@ -153,6 +160,7 @@ enum ModuleEnum: string
     public function folder(): string
     {
         return match ($this) {
+            self::Setting => "setting",
             self::Message => "message",
             self::Page => 'page',
             self::Language => "language",

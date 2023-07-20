@@ -8,7 +8,6 @@ use App\Models\ProductImage;
 use App\Enums\ModuleEnum;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Services\Admin\ImageService;
 use Illuminate\Database\Eloquent\Model;
 
 class ProductService extends BaseService

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Throwable;
+use App\Models\Popup;
+use App\Services\Admin\PopupService;
 use App\Http\Requests\Popup\StorePopupRequest;
 use App\Http\Requests\Popup\UpdatePopupRequest;
-use App\Services\Admin\PopupService;
-use App\Models\Popup;
 
 class PopupController extends Controller
 {
@@ -14,8 +15,10 @@ class PopupController extends Controller
     public function __construct(PopupService $service)
     {
         $this->service = $service;
-        view()->share("route", $this->service->route());
-        view()->share("folder", $this->service->folder());
+        view()->share([
+            "route" => $this->service->route(),
+            "folder" => $this->service->folder()
+        ]);
     }
 
     public function index()
@@ -31,16 +34,18 @@ class PopupController extends Controller
 
     public function store(StorePopupRequest $request)
     {
-        if ($this->service->create((object)$request->validated())) :
+        try {
+            $this->service->create((object)$request->validated());
             LogController::logger("info", __("admin/{$this->service->folder()}.create_log", ["title" => $request->title[app()->getLocale()]]));
             return redirect()
-                ->route("admin.{$this->service->folder()}.index")
-                ->withSuccess(__("admin/{$this->service->folder()}.index"));
-        else :
+                ->route("admin.{$this->service->route()}.index")
+                ->withSuccess(__("admin/{$this->service->folder()}.create_success"));
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.create_error"));
-        endif;
+        }
     }
 
     public function edit(Popup $popup)
@@ -50,28 +55,32 @@ class PopupController extends Controller
 
     public function update(UpdatePopupRequest $request, Popup $popup)
     {
-        if ($this->service->update((object)$request->validated(), $popup)) :
+        try {
+            $this->service->update((object)$request->validated(), $popup);
             LogController::logger("info", __("admin/{$this->service->folder()}.update_log", ["title" => $request->title[app()->getLocale()]]));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.update_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.update_error"));
-        endif;
+        }
     }
 
     public function destroy(Popup $popup)
     {
-        if ($this->service->delete($popup)) :
+        try {
+            $this->service->delete($popup);
             LogController::logger("info", __("admin/{$this->service->folder()}.delete_log", ["title" => $popup->title[app()->getLocale()]]));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.delete_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withError(__("admin/{$this->service->folder()}.delete_error"));
-        endif;
+        }
     }
 }

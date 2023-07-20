@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Throwable;
 use App\Models\Language;
 use App\Services\Admin\LanguageService;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Language\StoreLanguageRequest;
 use App\Http\Requests\Language\UpdateLanguageRequest;
-use Illuminate\Support\Facades\Storage;
 
 class LanguageController extends Controller
 {
@@ -15,8 +16,10 @@ class LanguageController extends Controller
     public function __construct(LanguageService $languageService)
     {
         $this->service = $languageService;
-        view()->share('route', $this->service->route());
-        view()->share('folder', $this->service->folder());
+        view()->share([
+            'route' => $this->service->route(),
+            'folder' => $this->service->folder()
+        ]);
     }
 
     public function index()
@@ -32,16 +35,18 @@ class LanguageController extends Controller
 
     public function store(StoreLanguageRequest $request)
     {
-        if ($this->service->create($request)) :
-            LogController::logger('info', __("admin/{$this->service->folder()}.create_log", ["title" => $request->title]));
+        try {
+            $this->service->create((object)$request->validated());
+            LogController::logger("info", __("admin/{$this->service->folder()}.create_log", ["title" => $request->title]));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.create_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.create_error"));
-        endif;
+        }
     }
 
     public function edit(Language $language)
@@ -71,28 +76,32 @@ class LanguageController extends Controller
 
     public function update(UpdateLanguageRequest $request, Language $language)
     {
-        if ($this->service->update($request, $language)) :
-            LogController::logger('info', __("admin/{$this->service->folder()}.update_log", ["title" => $language->title]));
+        try {
+            $this->service->update((object)$request->validated(), $language);
+            LogController::logger("info", __("admin/{$this->service->folder()}.update_log", ["title" => $request->title]));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.update_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.update_error"));
-        endif;
+        }
     }
 
     public function destroy(Language $language)
     {
-        if ($this->service->delete($language)) :
-            LogController::logger('info', __("admin/{$this->service->folder()}.delete_log", ["title" => $language->title]));
+        try {
+            $this->service->delete($language);
+            LogController::logger("info", __("admin/{$this->service->folder()}.delete_log", ["title" => $language->title]));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.delete_success"));
-        else :
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
             return back()
                 ->withError(__("admin/{$this->service->folder()}.delete_error"));
-        endif;
+        }
     }
 }

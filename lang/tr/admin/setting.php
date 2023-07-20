@@ -2,6 +2,8 @@
 return [
     "title" => "Site Ayarları",
     "update_success" => "Ayarlar Başarıyla Güncellendi",
+    "update_error" => "Ayarlar Güncellenirken Bir Hata Oluştu",
+    "update_log" => ":category Güncellendi",
     "category" => [
         "general" => "Genel Ayarlar",
         "dashboard" => "Yönetim Paneli Ayarları",

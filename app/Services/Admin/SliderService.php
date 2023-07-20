@@ -6,7 +6,6 @@ use App\Models\Slider;
 use App\Models\SliderTranslate;
 use App\Enums\ModuleEnum;
 use Illuminate\Http\Request;
-use App\Services\Admin\ImageService;
 use Illuminate\Database\Eloquent\Model;
 
 class SliderService extends BaseService
@@ -52,7 +51,7 @@ class SliderService extends BaseService
             "description_size" => $request->description_size,
             "status" => $request->status,
         ]);
-        
+
         if (isset($request->imageDelete)) {
             parent::imgDelete($slider);
         }
