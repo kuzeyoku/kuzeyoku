@@ -3,7 +3,6 @@
 namespace App\Services\Admin;
 
 use App\Models\Setting;
-use App\Enums\ModuleEnum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -11,12 +10,12 @@ class SettingService
 {
     public function route(): string
     {
-        return ModuleEnum::Setting->folder();
+        return "setting";
     }
 
     public function folder(): string
     {
-        return ModuleEnum::Setting->folder();
+        return "setting";
     }
 
     public function update(Request $request)

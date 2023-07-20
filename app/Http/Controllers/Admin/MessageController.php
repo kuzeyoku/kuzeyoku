@@ -41,7 +41,7 @@ class MessageController extends Controller
     public function sendReply(ReplyMessageRequest $request)
     {
         try {
-            $this->service->sendReply($request);
+            $this->service->sendReply($request->validated());
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.send_success"));

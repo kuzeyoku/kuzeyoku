@@ -19,7 +19,7 @@ class PageService extends BaseService
         parent::__construct($page, ModuleEnum::Page);
     }
 
-    public function create(Request $request)
+    public function create(Object $request)
     {
         $data = new Request([
             "slug" => Str::slug($request->title[app()->getLocale()]),
@@ -35,7 +35,7 @@ class PageService extends BaseService
         return $query;
     }
 
-    public function update(Request $request, Model $page)
+    public function update(Object $request, Model $page)
     {
         $data = new Request([
             "slug" => Str::slug($request->title[app()->getLocale()]),

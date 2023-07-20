@@ -6,10 +6,10 @@
                     <a href="{{ route('admin.index') }}">@svg('ri-dashboard-fill')<span> Ana Sayfa</span>
                     </a>
                 </li>
-                {{-- <li>
+                <li>
                     <a href="{{ route('admin.setting') }}">@svg('ri-settings-4-fill')<span> Site Ayarları</span>
                     </a>
-                </li> --}}
+                </li>
                 {{-- <li>
                     <a href="{{ route('admin.message.index') }}">@svg('ri-mail-send-line')<span> Mesaj Yönetimi</span>
                     </a>
