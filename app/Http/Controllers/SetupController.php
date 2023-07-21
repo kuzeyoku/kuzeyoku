@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Jackiedo\DotenvEditor\Facades\DotenvEditor;
+use Illuminate\Http\Request;
 
 class SetupController extends Controller
 {
     public function index()
     {
-        $return = DotenvEditor::doSomething();
-
-        dd(env("DB_DATABASE"));
         return view('setup');
     }
 }
