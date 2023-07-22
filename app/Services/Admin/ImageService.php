@@ -3,7 +3,7 @@
 namespace App\Services\Admin;
 
 use App\Enums\ModuleEnum;
-use abeautifulsite\SimpleImage;
+use claviska\SimpleImage;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 

@@ -126,6 +126,7 @@ class ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369
             'League\\Flysystem\\' => 17,
             'League\\Config\\' => 14,
             'League\\CommonMark\\' => 18,
+            'League\\ColorExtractor\\' => 22,
             'Laravel\\Tinker\\' => 15,
             'Laravel\\SerializableClosure\\' => 28,
             'Laravel\\Sanctum\\' => 16,
@@ -413,6 +414,10 @@ class ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369
         array (
             0 => __DIR__ . '/..' . '/league/commonmark/src',
         ),
+        'League\\ColorExtractor\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/color-extractor/src',
+        ),
         'Laravel\\Tinker\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
@@ -541,9 +546,9 @@ class ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369
     );
 
     public static $prefixesPsr0 = array (
-        'a' => 
+        'c' => 
         array (
-            'abeautifulsite' => 
+            'claviska' => 
             array (
                 0 => __DIR__ . '/..' . '/claviska/simpleimage/src',
             ),
@@ -565,6 +570,7 @@ class ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369
         'App\\Http\\Controllers\\Admin\\EditorController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/EditorController.php',
         'App\\Http\\Controllers\\Admin\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/HomeController.php',
         'App\\Http\\Controllers\\Admin\\LanguageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/LanguageController.php',
+        'App\\Http\\Controllers\\Admin\\LogController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/LogController.php',
         'App\\Http\\Controllers\\Admin\\MessageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/MessageController.php',
         'App\\Http\\Controllers\\Admin\\PageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PageController.php',
         'App\\Http\\Controllers\\Admin\\PopupController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PopupController.php',
@@ -3002,6 +3008,9 @@ class ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
         'Laravel\\Tinker\\TinkerServiceProvider' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerServiceProvider.php',
+        'League\\ColorExtractor\\Color' => __DIR__ . '/..' . '/league/color-extractor/src/Color.php',
+        'League\\ColorExtractor\\ColorExtractor' => __DIR__ . '/..' . '/league/color-extractor/src/ColorExtractor.php',
+        'League\\ColorExtractor\\Palette' => __DIR__ . '/..' . '/league/color-extractor/src/Palette.php',
         'League\\CommonMark\\CommonMarkConverter' => __DIR__ . '/..' . '/league/commonmark/src/CommonMarkConverter.php',
         'League\\CommonMark\\ConverterInterface' => __DIR__ . '/..' . '/league/commonmark/src/ConverterInterface.php',
         'League\\CommonMark\\Delimiter\\Delimiter' => __DIR__ . '/..' . '/league/commonmark/src/Delimiter/Delimiter.php',
@@ -6590,7 +6599,7 @@ class ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369
         'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
-        'abeautifulsite\\SimpleImage' => __DIR__ . '/..' . '/claviska/simpleimage/src/abeautifulsite/SimpleImage.php',
+        'claviska\\SimpleImage' => __DIR__ . '/..' . '/claviska/simpleimage/src/claviska/SimpleImage.php',
         'voku\\helper\\ASCII' => __DIR__ . '/..' . '/voku/portable-ascii/src/voku/helper/ASCII.php',
     );
 

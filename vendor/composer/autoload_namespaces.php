@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'abeautifulsite' => array($vendorDir . '/claviska/simpleimage/src'),
+    'claviska' => array($vendorDir . '/claviska/simpleimage/src'),
 );
