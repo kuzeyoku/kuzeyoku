@@ -30,8 +30,9 @@ return [
         "pagination_placeholder" => "Varsayılan : 15"
     ],
     "information" => [
-        "privacy" => "Gizlilik Sözleşmesi",
-        "cache" => "Önbellek Bilgilendirme"
+        "cache_notification" => "Önbellek Bildirimi",
+        "privacy" => "Gizlilik Sözleşmesi Sayfası",
+        "cache" => "Önbellek Bilgilendirme Sayfası"
     ],
     "contact" => [
         "phone" => "İletişim Telefon Numarası",
@@ -78,6 +79,8 @@ return [
     "maintenance" => [
         "status" => "Bakım Modu Durumu",
         "message" => "Bakım Modu Mesajı",
+        "message_placeholder" => "Bakım Modu Mesajını Giriniz",
+        "end_date" => "Bakım Modu Bitiş Tarihi",
     ],
     "image" => [
         "folder" => "Yükleme Dizini",
