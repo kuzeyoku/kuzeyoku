@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('button_url')->nullable();
             $table->integer("title_size")->nullable();
             $table->integer("description_size")->nullable();
-            $table->string("status", 50)->default(StatusEnum::Active->value);
+            $table->enum("status", StatusEnum::getValues())->default(StatusEnum::Active->value);
             $table->timestamps();
         });
     }

@@ -11,7 +11,7 @@ class Popup extends Model
     use HasFactory;
 
     protected $fillable = [
-        "type", "image", "video", "url", "time", "status"
+        "type", "image", "video", "url", "time", "width", "closeOnEscape", "closeButton", "overlayClose", "pauseOnHover", "fullScreenButton", "color", "status"
     ];
 
     protected $with = ["translate"];

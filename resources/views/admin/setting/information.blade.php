@@ -1,16 +1,16 @@
 <div class="form-group">
-    {!! Form::label('cache_notification', __('admin/setting.information.cache_notification')) !!}
+    {!! Form::label('cookie_notification_status', __('admin/setting.information.cookie_notification_status')) !!}
     {!! Form::select(
-        'cache_notification',
+        'cookie_notification_status',
         App\Enums\StatusEnum::getOnOffSelectArray(),
-        config('setting.cache_notification'),
+        config('setting.cookie_notification_status'),
     ) !!}
 </div>
 <div class="form-group">
-    {!! Form::label('cache', __('admin/setting.information.cache')) !!}
-    {!! Form::select('cache', $pagelist, config('setting.cache')) !!}
+    {!! Form::label('cookie_page', __('admin/setting.information.cookie_page')) !!}
+    {!! Form::select('cookie_page', $pagelist, config('setting.cookie_page')) !!}
 </div>
 <div class="form-group">
-    {!! Form::label('privacy', __('admin/setting.information.privacy')) !!}
-    {!! Form::select('privacy', $pagelist, config('setting.privacy')) !!}
+    {!! Form::label('privacy_page', __('admin/setting.information.privacy_page')) !!}
+    {!! Form::select('privacy_page', $pagelist, config('setting.privacy_page')) !!}
 </div>

@@ -2,6 +2,7 @@
 return [
     "home" => "Anasayfa",
     "save" => "Kaydet",
+    "saveAndContinue" => "Kaydet ve Devam Et",
     "add" => "Ekle",
     "edit" => "Düzenle",
     "delete" => "Sil",
@@ -17,6 +18,7 @@ return [
     "off" => "Kapalı",
     "yes" => "Evet",
     "no" => "Hayır",
+    "preview" => "Önizleme",
     "select" => "Seçiniz",
     "cache_clear_success" => "Önbellek başarıyla temizlendi.",
     "cache_clear_log" => "Önbellek Temizlendi.",

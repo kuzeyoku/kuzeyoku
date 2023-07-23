@@ -2,6 +2,7 @@
 return [
     "title" => "Popup Yönetimi",
     "create" => "Popup Ekle",
+    "edit" => "Popup Düzenle",
     "list" => "Popup Listesi",
     //alert
     "create_success" => "Popup başarıyla eklendi.",
@@ -21,9 +22,18 @@ return [
         "video" => "Popup Video",
         "video_placeholder" => "Video Bağlantısı Ekleyiniz",
         "url" => "Popup Url",
-        "url_placeholder" => "Yönlendirme Bağlantısı Ekleyiniz",
+        "url_placeholder" => "Yönlendirme Bağlantısı Ekleyiniz - Sadece Resim Tipinde Geçerli",
         "time" => "Popup Süresi",
-        "time_placeholder" => "Popup Açık Kalma Süresi (sn)"
+        "time_placeholder" => "Popup Açık Kalma Süresi (sn)",
+        "width" => "Popup Genişliği",
+        "width_placeholder" => "Popup Genişliği (px) - Varsayılan 600px",
+        "closeOnEscape" => "Esc Tuşu İle Kapatılsın Mı?",
+        "closeButton" => "Kapatma Butonu Gösterilsin Mi?",
+        "overlayClose" => "Popup Dışına Tıklayarak Kapatılsın Mı?",
+        "pauseOnHover" => "Popup Üzerine Geldiğinde Durdurulsun Mu?",
+        "fullScreenButton" => "Tam Ekran Butonu Gösterilsin Mi?",
+        "color" => "Popup Rengi",
+        "color_placeholder" => "Popup Renk Kodu Giriniz - Varsayılan #88A0B9",
     ],
     //Log
     "create_log" => "Bir Popup Eklendi - :title",

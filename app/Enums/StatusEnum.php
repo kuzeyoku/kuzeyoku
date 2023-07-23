@@ -13,6 +13,8 @@ enum StatusEnum: string
     case Read = "read";
     case Unread = "unread";
     case Answered = "answered";
+    case Yes = "yes";
+    case No = "no";
 
     public function title(): string
     {
@@ -47,6 +49,16 @@ enum StatusEnum: string
         return sprintf('<span class="badges bg-%s">%s</span>', $this->color(), $this->title());
     }
 
+    public static function getValues()
+    {
+        return [
+            StatusEnum::Active->value,
+            StatusEnum::Passive->value,
+            StatusEnum::Draft->value,
+            StatusEnum::Pending->value,
+        ];
+    }
+
     public static function getStatus($value)
     {
         $statusList = [
@@ -79,8 +91,16 @@ enum StatusEnum: string
     public static function getOnOffSelectArray()
     {
         return [
-            StatusEnum::Active->value => StatusEnum::Active->title(),
             StatusEnum::Passive->value => StatusEnum::Passive->title(),
+            StatusEnum::Active->value => StatusEnum::Active->title(),
+        ];
+    }
+
+    public static function getYesNoSelectArray()
+    {
+        return [
+            StatusEnum::No->value => StatusEnum::No->title(),
+            StatusEnum::Yes->value => StatusEnum::Yes->title(),
         ];
     }
 }

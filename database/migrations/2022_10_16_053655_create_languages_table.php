@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 255);
             $table->string('code', 10)->unique();
-            $table->string('status', 50)->default(StatusEnum::Active->value);
+            $table->enum("status", StatusEnum::getValues())->default(StatusEnum::Active->value);
             $table->boolean('is_default')->default(false);
             $table->timestamps();
         });

@@ -58,6 +58,9 @@ class PopupController extends Controller
         try {
             $this->service->update((object)$request->validated(), $popup);
             LogController::logger("info", __("admin/{$this->service->folder()}.update_log", ["title" => $request->title[app()->getLocale()]]));
+            if ($request->has("saveAndContinue"))
+                return back()
+                    ->withSuccess(__("admin/{$this->service->folder()}.update_success"));
             return redirect()
                 ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.update_success"));

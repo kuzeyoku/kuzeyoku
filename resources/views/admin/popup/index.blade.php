@@ -25,7 +25,9 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="8" class="text-center">{{ __('admin/general.table.no_data') }}</td>
+                        <td colspan="8" class="text-center">
+                            {{ __('admin/general.table.no_data') }}
+                        </td>
                     </tr>
                 @endforelse
             </tbody>

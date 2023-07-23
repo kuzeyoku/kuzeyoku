@@ -36,8 +36,9 @@
                         @endif
 
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header d-flex flex-row justify-content-between">
                                 <h3 class="card-title">@yield('pageTitle')</h3>
+                                @yield('button')
                             </div>
                             <div class="card-body">
                                 @yield('content')

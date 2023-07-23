@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
             $table->string("slug", 255);
-            $table->string("status", 50)->default(StatusEnum::Active->value);
+            $table->enum("status", StatusEnum::getValues())->default(StatusEnum::Active->value);
             $table->timestamps();
         });
     }

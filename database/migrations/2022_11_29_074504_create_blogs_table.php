@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string("slug", 255);
             $table->string("image", 30)->nullable();
             $table->integer("category_id");
-            $table->string("status", 50)->default(StatusEnum::Active->value);
+            $table->enum("status", StatusEnum::getValues())->default(StatusEnum::Active->value);
             $table->integer("view_count")->default(0);
             $table->timestamps();
         });

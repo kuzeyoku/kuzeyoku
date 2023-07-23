@@ -24,7 +24,6 @@ class UpdatePopupRequest extends FormRequest
     {
         return [
             "type" => "required",
-            "time" => "numeric|nullable",
             "image" => "image|mimes:jpeg,png,jpg,gif|max:" . config("setting.image.max_size", 4096),
             "url" => "nullable|active_url",
             "video" => "nullable|active_url",
@@ -32,6 +31,14 @@ class UpdatePopupRequest extends FormRequest
             "message.*" => "nullable",
             "status" => "required",
             "imageDelete" => "",
+            "time" => "numeric|nullable",
+            "width" => "numeric|nullable",
+            "closeOnEscape" => "required",
+            "closeButton" => "required",
+            "overlayClose" => "required",
+            "pauseOnHover" => "required",
+            "fullScreenButton" => "required",
+            "color" => "nullable",
         ];
     }
 
@@ -45,6 +52,14 @@ class UpdatePopupRequest extends FormRequest
             "title.*" => __("admin/{$this->folder}.form.title"),
             "message.*" => __("admin/{$this->folder}.form.message"),
             "status" => __("admin.general.status"),
+            "time" => __("admin/{$this->folder}.form.time"),
+            "width" => __("admin/{$this->folder}.form.width"),
+            "closeOnEscape" => __("admin/{$this->folder}.form.closeOnEscape"),
+            "closeButton" => __("admin/{$this->folder}.form.closeButton"),
+            "overlayClose" => __("admin/{$this->folder}.form.overlayClose"),
+            "pauseOnHover" => __("admin/{$this->folder}.form.pauseOnHover"),
+            "fullScreenButton" => __("admin/{$this->folder}.form.fullScreenButton"),
+            "color" => __("admin/{$this->folder}.form.color"),
         ];
     }
 }

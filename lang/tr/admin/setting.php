@@ -7,7 +7,7 @@ return [
     "category" => [
         "general" => "Genel Ayarlar",
         "dashboard" => "Yönetim Paneli Ayarları",
-        "information" => "Bilgilendirme Sayfaları",
+        "information" => "Bilgilendirme Sayfa Ayarları",
         "social" => "Sosyal Medya Ayarları",
         "contact" => "İletişim Ayarları",
         "caching" => "Önbellek Ayarları",
@@ -30,9 +30,9 @@ return [
         "pagination_placeholder" => "Varsayılan : 15"
     ],
     "information" => [
-        "cache_notification" => "Önbellek Bildirimi",
-        "privacy" => "Gizlilik Sözleşmesi Sayfası",
-        "cache" => "Önbellek Bilgilendirme Sayfası"
+        "cookie_notification_status" => "Çerez Bildirimi",
+        "privacy_page" => "Gizlilik Sözleşmesi Sayfası",
+        "cookie_page" => "Çerez Bilgilendirme Sayfası"
     ],
     "contact" => [
         "phone" => "İletişim Telefon Numarası",

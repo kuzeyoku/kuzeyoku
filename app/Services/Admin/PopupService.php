@@ -27,6 +27,13 @@ class PopupService extends BaseService
             "url" => $request->url,
             "video" => $request->video,
             "status" => $request->status,
+            "width" => $request->width,
+            "closeOnEscape" => $request->closeOnEscape,
+            "closeButton" => $request->closeButton,
+            "overlayClose" => $request->overlayClose,
+            "pauseOnHover" => $request->pauseOnHover,
+            "fullScreenButton" => $request->fullScreenButton,
+            "color" => $request->color,
         ]);
 
         if (isset($request->image) && $request->image->isValid()) {
@@ -49,7 +56,13 @@ class PopupService extends BaseService
             "url" => $request->url,
             "video" => $request->video,
             "status" => $request->status,
-
+            "width" => $request->width,
+            "closeOnEscape" => $request->closeOnEscape,
+            "closeButton" => $request->closeButton,
+            "overlayClose" => $request->overlayClose,
+            "pauseOnHover" => $request->pauseOnHover,
+            "fullScreenButton" => $request->fullScreenButton,
+            "color" => $request->color,
         ]);
 
         if (isset($request->imageDelete)) {

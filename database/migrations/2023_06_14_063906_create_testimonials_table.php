@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('company')->nullable();
             $table->text('message')->nullable();
             $table->string('image', 30)->nullable();
-            $table->string("status", 50)->default(StatusEnum::Active->value);
+            $table->enum("status", StatusEnum::getValues())->default(StatusEnum::Active->value);
             $table->timestamps();
         });
     }

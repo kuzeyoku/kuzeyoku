@@ -8,4 +8,6 @@ return [
     'read' => "Okundu",
     'unread' => "Okunmadı",
     'answered' => "Cevaplandı",
+    'yes' => "Evet",
+    'no' => "Hayır",
 ];
