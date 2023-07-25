@@ -14,6 +14,7 @@ return [
         "smtp" => "SMTP Ayarları",
         "maintenance" => "Bakım Modu Ayarları",
         "image" => "Resim Ayarları",
+        "sitemap" => "Site Haritası Ayarları",
         "recaptcha" => "Google Recaptcha Ayarları"
     ],
     "general" => [
@@ -98,6 +99,12 @@ return [
         "thumbnail_size_placeholder" => "Varsayılan : 100x100",
         "header-logo" => "Header Logo",
         "footer-logo" => "Footer Logo",
+    ],
+    "sitemap" => [
+        "static_pages" => "Statik Sayfalar",
+        "blog" => "Blog",
+        "blog_category" => "Blog Kategorileri",
+        "blog_post" => "Blog Yazıları",
     ],
     "recaptcha" => [
         "status" => "Recaptcha Durumu",

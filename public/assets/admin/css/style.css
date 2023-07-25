@@ -9102,3 +9102,9 @@ td label {
     background-color: #0dcaf0;
     color: #fff;
 }
+
+.sitemap-changefreq {
+    height: 30px !important;
+    padding: 0 !important;
+    padding-left: 10px !important;
+}

@@ -13,6 +13,7 @@ enum SettingCategoryEnum: string
     case Smtp = "smtp";
     case Maintenance = "maintenance";
     case Image = "image";
+    case Sitemap = "sitemap";
     case Recaptcha = "recaptcha";
 
     public function title(): string
@@ -32,6 +33,7 @@ enum SettingCategoryEnum: string
             self::Smtp => "ri-mail-settings-fill",
             self::Maintenance => "ri-time-fill",
             self::Image => "ri-image-fill",
+            self::Sitemap => "ri-mind-map",
             self::Recaptcha => "ri-shield-star-fill"
         };
     }
