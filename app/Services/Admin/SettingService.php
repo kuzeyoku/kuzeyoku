@@ -5,6 +5,7 @@ namespace App\Services\Admin;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use App\Models\Page;
 
 class SettingService
 {
@@ -36,6 +37,39 @@ class SettingService
 
     public function pageList(): array
     {
-        return \App\Models\Page::toSelectArray();
+        return array_merge([__("admin/general.select")], Page::toSelectArray());
+    }
+
+    public static function getSitemapModuleList()
+    {
+        return [
+            "home",
+            "page",
+            "blog",
+            "blog_category",
+            "blog_post",
+            "service",
+            "service_category",
+            "service_detail",
+            "product",
+            "product_category",
+            "product_detail",
+            "project",
+            "project_category",
+            "project_detail",
+        ];
+    }
+
+    public static function getChangeFreqList(): array
+    {
+        return [
+            "always" => __("admin.setting.sitemap.always"),
+            "hourly" => __("admin.setting.sitemap.hourly"),
+            "daily" => __("admin.setting.sitemap.daily"),
+            "weekly" => __("admin.setting.sitemap.weekly"),
+            "monthly" => __("admin.setting.sitemap.monthly"),
+            "yearly" => __("admin.setting.sitemap.yearly"),
+            "never" => __("admin.setting.sitemap.never"),
+        ];
     }
 }

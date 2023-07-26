@@ -13,6 +13,7 @@ enum ModuleEnum: string
     case Brand = "brand";
     case Reference = "reference";
     case Product = "product";
+    case Project = "project";
     case Slider = "slider";
     case Testimonial = "testimonial";
     case Popup = "popup";
@@ -34,6 +35,7 @@ enum ModuleEnum: string
             self::Brand => "ri-shopping-bag-fill",
             self::Reference => "ri-refresh-fill",
             self::Product => "ri-shopping-cart-fill",
+            self::Project => "ri-pencil-ruler-2-fill",
             self::Slider => "ri-slideshow-3-fill",
             self::Testimonial => "ri-chat-3-fill",
             self::Popup => "ri-window-fill",
@@ -52,6 +54,7 @@ enum ModuleEnum: string
             self::Brand => "brand",
             self::Reference => "reference",
             self::Product => "product",
+            self::Project => "project",
             self::Slider => "slider",
             self::Testimonial => "testimonial",
             self::Popup => "popup",
@@ -70,6 +73,7 @@ enum ModuleEnum: string
             self::Brand => \App\Http\Controllers\Admin\BrandController::class,
             self::Reference => \App\Http\Controllers\Admin\ReferenceController::class,
             self::Product => \App\Http\Controllers\Admin\ProductController::class,
+            self::Project => \App\Http\Controllers\Admin\ProjectController::class,
             self::Slider => \App\Http\Controllers\Admin\SliderController::class,
             self::Testimonial => \App\Http\Controllers\Admin\TestimonialController::class,
             self::Popup => \App\Http\Controllers\Admin\PopupController::class,
@@ -122,6 +126,11 @@ enum ModuleEnum: string
                 "create" => __("admin/$this->value.create"),
                 "list" => __("admin/$this->value.list")
             ],
+            self::Project => [
+                "index" => __("admin/$this->value.index"),
+                "create" => __("admin/$this->value.create"),
+                "list" => __("admin/$this->value.list")
+            ],
             self::Slider => [
                 "index" => __("admin/$this->value.index"),
                 "create" => __("admin/$this->value.create"),
@@ -146,6 +155,7 @@ enum ModuleEnum: string
             self::Blog->value => self::Blog->title(),
             self::Service->value => self::Service->title(),
             self::Product->value => self::Product->title(),
+            self::Project->value => self::Project->title(),
         ];
     }
 
@@ -161,6 +171,7 @@ enum ModuleEnum: string
             self::Brand => "brand",
             self::Reference => "reference",
             self::Product => "product",
+            self::Project => "project",
             self::Slider => "slider",
             self::Testimonial => "testimonial",
             self::Popup => "popup",
@@ -175,6 +186,7 @@ enum ModuleEnum: string
             self::Brand => ["width" => 400, "height" => 250],
             self::Reference => ["width" => 400, "height" => 250],
             self::Product => ["width" => 800, "height" => 600],
+            self::Project => ["width" => 800, "height" => 600],
             self::Slider => ["width" => 1920, "height" => 1080],
             self::Testimonial => ["width" => 100, "height" => 100],
             self::Popup => ["width" => 800, "height" => 600],

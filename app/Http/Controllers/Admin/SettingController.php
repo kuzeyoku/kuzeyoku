@@ -15,14 +15,14 @@ class SettingController extends Controller
         $this->service = $service;
         view()->share([
             "route" => $this->service->route(),
-            "folder" => $this->service->folder()
+            "folder" => $this->service->folder(),
+            "service" => $service
         ]);
     }
 
     public function index()
     {
-        $pagelist = array_merge([__("admin/general.select")], $this->service->pageList());
-        return view("admin.{$this->service->folder()}.index", compact("pagelist"));
+        return view("admin.{$this->service->folder()}.index");
     }
 
     public function update(Request $request)
@@ -35,7 +35,7 @@ class SettingController extends Controller
         } catch (Throwable $e) {
             LogController::Logger("error", $e->getMessage());
             return back()
-                ->withErrors(__("admin/{$this->service->folder()}.update_error"));
+                ->withError(__("admin/{$this->service->folder()}.update_error"));
         }
     }
 }
