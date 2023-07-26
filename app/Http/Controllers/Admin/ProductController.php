@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use Throwable;
 use App\Models\Product;
-use App\Enums\ModuleEnum;
 use App\Models\ProductImage;
 use App\Services\Admin\ProductService;
 use App\Http\Requests\Product\ImageProductRequest;
@@ -19,7 +18,7 @@ class ProductController extends Controller
     {
         $this->service = $service;
         view()->share([
-            "categories" => $this->service->getCategories(ModuleEnum::Product),
+            "categories" => $this->service->getCategories(),
             "route" => $this->service->route(),
             "folder" => $this->service->folder()
         ]);

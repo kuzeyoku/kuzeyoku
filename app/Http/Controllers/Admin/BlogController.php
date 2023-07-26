@@ -17,7 +17,7 @@ class BlogController extends Controller
     {
         $this->service = $service;
         view()->share([
-            "categories" => $this->service->getCategories(ModuleEnum::Blog),
+            "categories" => $this->service->getCategories(),
             "route" => $this->service->route(),
             "folder" => $this->service->folder()
         ]);
