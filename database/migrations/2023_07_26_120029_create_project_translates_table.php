@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreign('lang')->references('code')->on('languages')->cascadeonDelete();
             $table->string("title", 255)->nullable();
             $table->text("description")->nullable();
-            $table->timestamps();
+            $table->text("features")->nullable();
         });
     }
 

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->integer("category_id");
             $table->date("start_date")->nullable();
             $table->date("end_date")->nullable();
+            $table->string("video", 255)->nullable();
+            $table->string("3d", 255)->nullable();
             $table->enum("status", StatusEnum::getValues())->default(StatusEnum::Active->value);
             $table->timestamps();
         });

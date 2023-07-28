@@ -23,15 +23,15 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             "title." . app()->getLocale() => "required",
-            "title.*" => "",
-            "content.*" => "",
-            "features.*" => "",
-            "price" => "",
-            "currency" => "",
+            "title.*" => "nullable",
+            "content.*" => "nullable",
+            "features.*" => "nullable",
+            "price" => "nullable",
+            "currency" => "nullable",
             "status" => "required",
-            "category_id" => "",
+            "category_id" => "nullable",
             "image" => "image|mimes:png,jpeg,jpg,gif|max:" . config("setting.image.max_size", 4096),
-            "imageDelete" => "",
+            "imageDelete" => "nullable",
             "video" => "nullable|active_url"
         ];
     }
@@ -40,6 +40,7 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             "title." . app()->getLocale() => __("admin/{$this->folder}.form.title"),
+            "title.*" => __("admin/{$this->folder}.form.title"),
             "content.*" => __("admin/{$this->folder}.form.content"),
             "features.*" => __("admin/{$this->folder}.form.features"),
             "price" => __("admin/{$this->folder}.form.price"),

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Admin\LogController;
 use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
 use Throwable;
@@ -47,9 +48,20 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProductRequest $request)
+    public function store(StoreProjectRequest $request)
     {
-        //
+        try {
+            $this->service->create((object)$request->validated());
+            LogController::logger("info", __("admin/{$this->service->folder()}.create_log", ["title" => $request->title[app()->getLocale()]]));
+            return redirect()
+                ->route("admin/{$this->service->route()}.index")
+                ->with("success", __("admin/{$this->service->folder()}.create_success"));
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
+            return back()
+                ->withInput()
+                ->withError(__("admin/{$this->service->folder()}.create_error"));
+        }
     }
 
     /**
@@ -63,24 +75,45 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        //
+        return view("admin/{$this->service->folder()}/edit", compact("project"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, string $id)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        try {
+            $this->service->update((object)$request->validated(), $project);
+            LogController::logger("info", __("admin/{$this->service->folder()}.update_log", ["title" => $request->title[app()->getLocale()]]));
+            return redirect()
+                ->route("admin/{$this->service->route()}.index")
+                ->with("success", __("admin/{$this->service->folder()}.update_success"));
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
+            return back()
+                ->withInput()
+                ->withError(__("admin/{$this->service->folder()}.update_error"));
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project)
     {
-        //
+        try {
+            $this->service->delete($project);
+            LogController::logger("info", __("admin/{$this->service->folder()}.delete_log", ["title" => $project->title[app()->getLocale()]]));
+            return redirect()
+                ->route("admin/{$this->service->route()}.index")
+                ->withSuccess(__("admin/{$this->service->folder()}.delete_success"));
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
+            return back()
+                ->withError(__("admin/{$this->service->folder()}.delete_error"));
+        }
     }
 }

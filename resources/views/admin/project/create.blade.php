@@ -17,7 +17,7 @@
                 </div>
                 <div class="form-group">
                     {{ Form::label('features', __("admin/{$folder}.form.features")) }}
-                    {{ Form::textarea("features[$lang->code]", null) }}
+                    {{ Form::textarea("features[$lang->code]", null, ['placeholder' => __("admin/{$folder}.form.features_placeholder")]) }}
                 </div>
             </div>
         @endforeach
@@ -36,9 +36,19 @@
             </div>
         </div>
     </div>
-    <div class="form-group">
-        {!! Form::label('video', __("admin/{$folder}.form.video")) !!}
-        {!! Form::text('video', null, ['placeholder' => __("admin/{$folder}.form.video_placeholder")]) !!}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                {!! Form::label('video', __("admin/{$folder}.form.video")) !!}
+                {!! Form::text('video', null, ['placeholder' => __("admin/{$folder}.form.video_placeholder")]) !!}
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                {!! Form::label('3d', __("admin/{$folder}.form.3d")) !!}
+                {!! Form::text('3d', null, ['placeholder' => __("admin/{$folder}.form.3d_placeholder")]) !!}
+            </div>
+        </div>
     </div>
     <div class="form-group">
         {!! Form::label('category', __("admin/{$folder}.form.category")) !!}

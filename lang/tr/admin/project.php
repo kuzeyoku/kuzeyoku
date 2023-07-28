@@ -20,15 +20,16 @@ return [
         "description" => "Açıklama",
         "description_placeholder" => "Açıklama Giriniz",
         "features" => "Proje Özellikleri",
+        "features_placeholder" => "Örnek: (Satır İle Ayırın)\n\nFirma : RhpSoft\nBütçe : 1.000.000 $",
         "category" => "Kategori",
         "status" => "Durum",
         "video" => "Video",
         "video_placeholder" => "Video Linki",
+        "3d" => "3D Model",
+        "3d_placeholder" => "3D Model Kodu",
         "image" => "Proje Resmi",
         "start_date" => "Başlangıç Tarihi",
         "end_date" => "Bitiş Tarihi",
-
-
     ],
     //log
     "create_log" => "Bir Proje Oluşturuldu - :title",

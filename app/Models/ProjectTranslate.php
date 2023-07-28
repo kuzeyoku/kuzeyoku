@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class ProjectTranslate extends Model
 {
     use HasFactory;
+
+    protected $fillabele = [
+        "project_id",
+        "lang",
+        "title",
+        "description",
+        "features",
+    ];
+
+    public $timestamps = false;
 }
