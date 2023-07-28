@@ -37,7 +37,6 @@ class ProjectService extends BaseService
         }
 
         $query = parent::create($data);
-
         if ($query->id) {
             $this->translations($query->id, $request);
         }
@@ -45,19 +44,19 @@ class ProjectService extends BaseService
         return $query;
     }
 
-    public function translations(int $productId, Object $request)
+    public function translations(int $projectId, Object $request)
     {
         $languages = languageList();
         foreach ($languages as $language) {
-            if (!empty($request->title[$language->code]) || !empty($request->content[$language->code])) {
+            if (!empty($request->title[$language->code]) || !empty($request->description[$language->code])) {
                 ProjectTranslate::updateOrCreate(
                     [
-                        "product_id" => $productId,
+                        "project_id" => $projectId,
                         "lang" => $language->code
                     ],
                     [
                         "title" => $request->title[$language->code] ?? null,
-                        "content" => $request->content[$language->code] ?? null,
+                        "description" => $request->description[$language->code] ?? null,
                         "features" => trim($request->features[$language->code]) ?? null
                     ]
                 );

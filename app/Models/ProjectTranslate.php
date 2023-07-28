@@ -9,7 +9,7 @@ class ProjectTranslate extends Model
 {
     use HasFactory;
 
-    protected $fillabele = [
+    protected $fillable = [
         "project_id",
         "lang",
         "title",
