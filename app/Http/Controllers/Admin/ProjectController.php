@@ -10,6 +10,7 @@ use App\Http\Requests\Project\ImageProjectRequest;
 use App\Http\Requests\Project\StoreProjectRequest;
 use App\Http\Requests\Project\UpdateProjectRequest;
 
+
 class ProjectController extends Controller
 {
     protected $service;
@@ -28,6 +29,56 @@ class ProjectController extends Controller
     {
         $items = $this->service->all();
         return view("admin.{$this->service->folder()}.index", compact("items"));
+    }
+
+    public function show(Project $project)
+    {
+        return view("admin/{$this->service->folder()}/show", compact("project"));
+    }
+
+    public function image(Project $project)
+    {
+        return view("admin/{$this->service->folder()}/image", compact("project"));
+    }
+
+    public function imageStore(ImageProjectRequest $request): object
+    {
+
+        if ($this->service->imageUpload((object)$request->validated())) {
+            return (object) [
+                "message" => __("admin/{$this->service->folder()}.image.success")
+            ];
+        } else {
+            return (object) [
+                "message" => __("admin/{$this->service->folder()}.image.error")
+            ];
+        }
+    }
+
+    public function imageDelete(ProjectImage $image)
+    {
+        try {
+            $this->service->imageDelete($image, true);
+            return back()
+                ->withSuccess(__("admin/{$this->service->folder()}.image.delete_success"));
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
+            return back()
+                ->withError(__("admin/{$this->service->folder()}.image.delete_error"));
+        }
+    }
+
+    public function imageAllDelete(Project $project)
+    {
+        try {
+            $this->service->imageAllDelete($project);
+            return back()
+                ->withSuccess(__("admin/{$this->service->folder()}.image.delete_all_success"));
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
+            return back()
+                ->withError(__("admin/{$this->service->folder()}.image.delete_error"));
+        }
     }
 
     public function create()
@@ -51,11 +102,6 @@ class ProjectController extends Controller
         }
     }
 
-    public function show(string $id)
-    {
-        //
-    }
-
     public function edit(Project $project)
     {
         return view("admin/{$this->service->folder()}/edit", compact("project"));
@@ -67,7 +113,7 @@ class ProjectController extends Controller
             $this->service->update((object)$request->validated(), $project);
             LogController::logger("info", __("admin/{$this->service->folder()}.update_log", ["title" => $request->title[app()->getLocale()]]));
             return redirect()
-                ->route("admin/{$this->service->route()}.index")
+                ->route("admin.{$this->service->route()}.index")
                 ->with("success", __("admin/{$this->service->folder()}.update_success"));
         } catch (Throwable $e) {
             LogController::logger("error", $e->getMessage());
@@ -83,7 +129,7 @@ class ProjectController extends Controller
             $this->service->delete($project);
             LogController::logger("info", __("admin/{$this->service->folder()}.delete_log", ["title" => $project->title[app()->getLocale()]]));
             return redirect()
-                ->route("admin/{$this->service->route()}.index")
+                ->route("admin.{$this->service->route()}.index")
                 ->withSuccess(__("admin/{$this->service->folder()}.delete_success"));
         } catch (Throwable $e) {
             LogController::logger("error", $e->getMessage());

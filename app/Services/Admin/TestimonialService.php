@@ -48,12 +48,12 @@ class TestimonialService extends BaseService
         ]);
 
         if (isset($request->imageDelete)) {
-            parent::imgDelete($testimonial);
+            parent::imageDelete($testimonial);
         }
         if (isset($request->image) && $request->image->isValid()) {
             $data->merge(["image" => $this->imageService->upload($request->image)]);
-            if ($data->image && $testimonial->image !== null)
-                parent::imgDelete($testimonial);
+            if ($data->image && !is_null($testimonial->image))
+                parent::imageDelete($testimonial);
         }
         return parent::update($data, $testimonial);
     }

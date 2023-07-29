@@ -450,7 +450,7 @@ $(document).ready(function () {
             }).then((result) => {
                 let form_id = this.getAttribute("data-id");
                 if (result.isConfirmed) {
-                    $("#form_" + form_id).submit();
+                    this.closest("form").submit();
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                     Swal.fire({
                         title: "İptal edildi",
@@ -467,41 +467,23 @@ $(document).ready(function () {
     if ($(".dropzone").length > 0) {
         new Dropzone(".dropzone", {
             success: function (file, response) {
+                location.reload();
                 showAlert("success", response.message);
             },
             error: function (file, response) {
                 showAlert("error", response.message);
+                this.removeFile(file);
             },
         });
     }
 
-    // function showAlert(icon, message) {
-    //     Swal.fire({
-    //         icon: icon,
-    //         title: message,
-    //         showConfirmButton: false,
-    //         timer: 3000,
-    //         position: "top-end",
-    //     });
-    // }
-
-    // myDropzone.on("success", function (file, response) {
-    //     Swal.fire({
-    //         icon: "success",
-    //         title: response.message,
-    //         showConfirmButton: false,
-    //         timer: 3000,
-    //         position: "top-end",
-    //     });
-    // });
-
-    // myDropzone.on("error", function (file, response) {
-    //     Swal.fire({
-    //         icon: "error",
-    //         title: response.message,
-    //         showConfirmButton: false,
-    //         timer: 4500,
-    //         position: "top-end",
-    //     });
-    // });
+    function showAlert(icon, message) {
+        Swal.fire({
+            icon: icon,
+            title: message,
+            showConfirmButton: false,
+            timer: 3000,
+            position: "top-end",
+        });
+    }
 });

@@ -39,12 +39,12 @@ class ReferenceService extends BaseService
         ]);
 
         if (isset($request->imageDelete)) {
-            parent::imgDelete($reference);
+            parent::imageDelete($reference);
         }
 
         if (isset($request->image) && $request->image->isValid()) {
             $data->merge(["image" => $this->imageService->upload($request->image)]);
-            if ($data->image && $reference->image !== null)
+            if ($data->image && !is_null($reference->image))
                 $this->imageService->delete($reference->image);
         }
         return parent::update($data, $reference);

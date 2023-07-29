@@ -38,10 +38,20 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('cache-clear')->uses("App\Http\Controllers\Admin\HomeController@cacheClear")->name('cache-clear');
         Route::get("language/{language}/files")->uses("App\Http\Controllers\Admin\LanguageController@files")->name("language.files");
 
-        // Product Routes
-        // Route::get("product/{id}")->uses("App\Http\Controllers\Admin\ProductController@show")->name("product.show");
-        Route::get("product/{id}/image")->uses("App\Http\Controllers\Admin\ProductController@image")->name("product.image");
-        Route::post("product/image/store")->uses("App\Http\Controllers\Admin\ProductController@imageStore")->name("product.image.store");
-        Route::delete("product/image/{id}/destroy")->uses("App\Http\Controllers\Admin\ProductController@imageDestroy")->name("product.image.destroy");
+
+        Route::controller(App\Http\Controllers\Admin\ProductController::class)->prefix("product")->group(function () {
+            // Route::get("/{project}", "show")->name("product.show");
+            Route::get("/{product}/image", "image")->name("product.image");
+            Route::post("/image/store", "imageStore")->name("product.image.store");
+            Route::delete("/{image}/imagedelete", "imageDelete")->name("product.image.delete");
+            Route::delete("/{product}/imagealldelete", "imageAllDelete")->name("product.image.alldelete");
+        });
+
+        Route::controller(App\Http\Controllers\Admin\ProjectController::class)->prefix("project")->group(function () {
+            Route::get("/{project}/image", "image")->name("project.image");
+            Route::post("/image/store", "imageStore")->name("project.image.store");
+            Route::delete("/{image}/imagedelete", "imageDelete")->name("project.image.delete");
+            Route::delete("/{project}/imagealldelete", "imageAllDelete")->name("project.image.alldelete");
+        });
     });
 });

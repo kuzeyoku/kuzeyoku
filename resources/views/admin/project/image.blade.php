@@ -1,8 +1,8 @@
 @extends('admin.layout.main')
-@section('pageTitle', __("admin/{$folder}.images") . ' - ' . $product->title[app()->getLocale()])
+@section('pageTitle', __("admin/{$folder}.images") . ' - ' . $project->title[app()->getLocale()])
 @section('button')
     {!! Form::open([
-        'url' => route("admin.{$route}.image.alldelete", $product),
+        'url' => route("admin.{$route}.image.alldelete", $project),
         'method' => 'delete',
         'class' => 'd-inline',
     ]) !!}
@@ -16,10 +16,10 @@
         'class' => 'dropzone mb-3',
         'file' => true,
     ]) !!}
-    {!! Form::hidden('product_id', $product->id) !!}
+    {!! Form::hidden('project_id', $project->id) !!}
     {!! Form::close() !!}
     <div class="row">
-        @foreach ($product->images as $image)
+        @foreach ($project->images as $image)
             <div class="col-md-2">
                 <div class="p-2 border rounded position-relative mb-4">
                     <img src="{{ uploadFolder($folder, $image->image) }}" class="img-fluid">

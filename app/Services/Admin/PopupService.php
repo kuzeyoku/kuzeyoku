@@ -66,12 +66,12 @@ class PopupService extends BaseService
         ]);
 
         if (isset($request->imageDelete)) {
-            parent::imgDelete($popup);
+            parent::imageDelete($popup);
         }
 
         if (isset($request->image) && $request->image->isValid()) {
             $data->merge(["image" => $this->imageService->upload($request->image)]);
-            if ($data->image && $popup->image !== null)
+            if ($data->image && !is_null($popup->image))
                 $this->imageService->delete($popup->image);
         }
 

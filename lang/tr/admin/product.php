@@ -38,6 +38,7 @@ return [
         "success" => "Resim Başarıyla Yüklendi",
         "error" => "Resim Yüklenirken Bir Hata Oluştu",
         "delete_success" => "Resim Başarıyla Silindi",
+        "delete_all_success" => "Tüm Resimler Başarıyla Silindi",
         "delete_error" => "Resim Silinirken Bir Hata Oluştu",
 
     ],

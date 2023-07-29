@@ -57,14 +57,13 @@ class ProductService extends BaseService
         ]);
 
         if (isset($request->imageDelete)) {
-            parent::imgDelete($product);
+            parent::imageDelete($product);
         }
 
         if (isset($request->image) && $request->image->isValid()) {
             $data->merge(["image" => $this->imageService->upload($request->image)]);
-            if ($data->image && $product->image !== null) {
+            if ($data->image && !is_null($product->image))
                 $this->imageService->delete($product->image);
-            }
         }
 
         $query = parent::update($data, $product);
@@ -106,13 +105,17 @@ class ProductService extends BaseService
         return ProductImage::create($data->all());
     }
 
-    public function delete(Model $product)
+    public function imageAllDelete(Model $product)
     {
         if (!$product->images->isEmpty()) {
-            foreach ($product->images as $image) {
-                $this->imageService->delete($image->image);
-            }
+            $this->imageService->delete($product->images->pluck("image")->toArray());
         }
+        return ProductImage::where("product_id", $product->id)->delete();
+    }
+
+    public function delete(Model $product)
+    {
+        $this->imageAllDelete($product);
         return parent::delete($product);
     }
 }

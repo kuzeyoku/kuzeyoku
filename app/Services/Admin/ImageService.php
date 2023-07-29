@@ -32,13 +32,23 @@ class ImageService
         return Storage::putFileAs($path, $file, $fileName) ? $fileName : null;
     }
 
-    public function delete(string $fileName): bool
+    public function delete(string|array $file): bool
     {
-        $file = "public/" . config("setting.image.upload_folder", "image") . "/{$this->module->folder()}/{$fileName}";
-        if (Storage::fileExists($file)) {
-            return Storage::delete($file);
+        $dir = "public/" . config("setting.image.upload_folder", "image") . "/{$this->module->folder()}";
+        if (is_array($file)) {
+            array_map(function ($item) use ($dir) {
+                if (Storage::fileExists($dir . "/" . $item)) {
+                    Storage::delete($dir . "/" . $item);
+                }
+            }, $file);
+            return true;
         }
-        return true;
+
+        if (Storage::fileExists($dir . "/" . $file)) {
+            return Storage::delete($dir . "/" . $file);
+        }
+
+        return false;
     }
 
     public function editorUpload(UploadedFile $file)

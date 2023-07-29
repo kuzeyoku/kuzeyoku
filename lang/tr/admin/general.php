@@ -22,6 +22,7 @@ return [
     "select" => "Seçiniz",
     "cache_clear_success" => "Önbellek başarıyla temizlendi.",
     "cache_clear_log" => "Önbellek Temizlendi.",
+    "all_delete" => "Tümünü Sil",
     "table" => [
         "id" => "ID",
         "title" => "Başlık",

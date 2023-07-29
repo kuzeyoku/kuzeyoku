@@ -13,7 +13,7 @@ class Project extends Model
         "category_id",
         "image",
         "video",
-        "3d",
+        "model3D",
         "start_date",
         "end_date",
         "status"

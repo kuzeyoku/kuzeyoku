@@ -45,8 +45,8 @@
         </div>
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('3d', __("admin/{$folder}.form.3d")) !!}
-                {!! Form::text('3d', null, ['placeholder' => __("admin/{$folder}.form.3d_placeholder")]) !!}
+                {!! Form::label('model3D', __("admin/{$folder}.form.model3D")) !!}
+                {!! Form::text('model3D', null, ['placeholder' => __("admin/{$folder}.form.model3D_placeholder")]) !!}
             </div>
         </div>
     </div>

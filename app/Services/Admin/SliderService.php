@@ -53,13 +53,13 @@ class SliderService extends BaseService
         ]);
 
         if (isset($request->imageDelete)) {
-            parent::imgDelete($slider);
+            parent::imageDelete($slider);
         }
 
         if (isset($request->image) && $request->image->isValid()) {
             $data->merge(["image" => $this->imageService->upload($request->image)]);
-            if ($data->image && $slider->image !== null) {
-                parent::imgDelete($slider);
+            if ($data->image && !is_null($slider->image)) {
+                parent::imageDelete($slider);
             }
         }
 

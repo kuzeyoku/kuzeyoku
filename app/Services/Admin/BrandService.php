@@ -40,12 +40,12 @@ class BrandService extends BaseService
         ]);
 
         if (isset($request->imageDelete)) {
-            parent::imgDelete($brand);
+            parent::imageDelete($brand);
         }
 
         if (isset($request->image) && $request->image->isValid()) {
             $data->merge(["image" => $this->imageService->upload($request->image)]);
-            if ($data->image && $brand->image !== null)
+            if ($data->image && !is_null($brand->image))
                 $this->imageService->delete($brand->image);
         }
 

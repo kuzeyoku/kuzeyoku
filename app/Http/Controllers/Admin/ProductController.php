@@ -61,34 +61,48 @@ class ProductController extends Controller
         return view("admin.{$this->service->folder()}.edit", compact("product"));
     }
 
-    public function image(int $id)
+    public function image(Product $product)
     {
-        $product = Product::find($id);
         return view("admin.{$this->service->folder()}.image", compact("product"));
     }
 
     public function imageStore(ImageProductRequest $request): object
     {
-        $validatedData = (object) $request->validated();
 
-        if ($this->service->imageUpload($validatedData)) {
+        if ($this->service->imageUpload((object)$request->validated())) {
             return (object) [
-                "message" => __("admin/product.image.success")
+                "message" => __("admin/{$this->service->folder()}.image.success")
             ];
         } else {
             return (object) [
-                "message" => __("admin/product.image.error")
+                "message" => __("admin/{$this->service->folder()}.image.error")
             ];
         }
     }
 
-    public function imageDestroy(int $id)
+    public function imageDelete(ProductImage $image)
     {
-        $image = ProductImage::find($id);
-        if ($this->service->imgDelete($image, true)) {
-            return back()->withSuccess(__("admin/{$this->service->folder()}.image.delete_success"));
-        } else {
-            return back()->withError(__("admin/{$this->service->folder()}.image.delete_error"));
+        try {
+            $this->service->imageDelete($image, true);
+            return back()
+                ->withSuccess(__("admin/{$this->service->folder()}.image.delete_success"));
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
+            return back()
+                ->withError(__("admin/{$this->service->folder()}.image.delete_error"));
+        }
+    }
+
+    public function imageAllDelete(Product $product)
+    {
+        try {
+            $this->service->imageAllDelete($product);
+            return back()
+                ->withSuccess(__("admin/{$this->service->folder()}.image.delete_all_success"));
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
+            return back()
+                ->withError(__("admin/{$this->service->folder()}.image.delete_error"));
         }
     }
 

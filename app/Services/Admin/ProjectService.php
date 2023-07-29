@@ -28,6 +28,7 @@ class ProjectService extends BaseService
             "status" => $request->status,
             "category_id" => $request->category_id,
             "video" => $request->video,
+            "model3D" => $request->model3D,
             "start_date" => $request->start_date,
             "end_date" => $request->end_date,
         ]);
@@ -39,6 +40,37 @@ class ProjectService extends BaseService
         $query = parent::create($data);
         if ($query->id) {
             $this->translations($query->id, $request);
+        }
+
+        return $query;
+    }
+
+    public function update(Object $request, Model $project)
+    {
+        $data = new Request([
+            "slug" => Str::slug($request->title[app()->getLocale()]),
+            "status" => $request->status,
+            "category_id" => $request->category_id,
+            "video" => $request->video,
+            "model3D" => $request->model3D,
+            "start_date" => $request->start_date,
+            "end_date" => $request->end_date,
+        ]);
+
+        if (isset($request->imageDelete)) {
+            parent::imageDelete($request);
+        }
+
+        if (isset($request->image) && $request->image->isValid()) {
+            $data->merge(["image" => $this->imageService->upload($request->image)]);
+            if ($data->image && !is_null($project->image))
+                $this->imageService->delete($project->image);
+        }
+
+        $query = parent::update($data, $project);
+
+        if ($query) {
+            $this->translations($project->id, $request);
         }
 
         return $query;
@@ -74,13 +106,17 @@ class ProjectService extends BaseService
         return ProjectImage::create($data->all());
     }
 
-    public function delete(Model $project)
+    public function imageAllDelete(Model $project)
     {
         if (!$project->images->isEmpty()) {
-            foreach ($project->images as $image) {
-                $this->imageService->delete($image->image);
-            }
+            $this->imageService->delete($project->images->pluck("image")->toArray());
         }
+        return ProjectImage::where("project_id", $project->id)->delete();
+    }
+
+    public function delete(Model $project)
+    {
+        $this->imageAllDelete($project);
         return parent::delete($project);
     }
 }

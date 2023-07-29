@@ -65,12 +65,12 @@ class BaseService
         return $item->delete();
     }
 
-    public function imgDelete(Model $item, $destroy = false)
+    public function imageDelete(Model $item, $delete = false)
     {
-        if (isset($item->image) && $item->image !== null) {
+        if (!empty($item->image)) {
             $imageService = new ImageService($this->module);
             if ($imageService->delete($item->image)) {
-                if ($destroy === true)
+                if ($delete === true)
                     return $item->delete();
                 $item->image = null;
                 return $item->save();
