@@ -101,10 +101,29 @@ return [
         "footer-logo" => "Footer Logo",
     ],
     "sitemap" => [
+        "home" => "Ana Sayfa",
         "static_pages" => "Statik Sayfalar",
         "blog" => "Blog",
-        "blog_category" => "Blog Kategorileri",
+        "blog_category" => "Blog Kategori Sayfaları",
         "blog_post" => "Blog Yazıları",
+        "service" => "Hizmetler",
+        "service_category" => "Hizmetler Kategori Sayfaları",
+        "service_detail" => "Hizmet Detay",
+        "product" => "Ürünler",
+        "product_category" => "Ürünler Kategori Sayfaları",
+        "product_detail" => "Ürün Detay",
+        "project" => "Projeler",
+        "project_category" => "Projeler Kategori Sayfaları",
+        "project_detail" => "Proje Detay",
+        "changefreq" => [
+            "always" => "Her Zaman",
+            "hourly" => "Saatte Bir",
+            "daily" => "Günde Bir",
+            "weekly" => "Haftada Bir",
+            "monthly" => "Ayda Bir",
+            "yearly" => "Yılda Bir",
+            "never" => "Asla"
+        ]
     ],
     "recaptcha" => [
         "status" => "Recaptcha Durumu",

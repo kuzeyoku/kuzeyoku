@@ -9,7 +9,6 @@ use App\Models\ProjectImage;
 use Illuminate\Http\Request;
 use App\Models\ProjectTranslate;
 use Illuminate\Database\Eloquent\Model;
-
 class ProjectService extends BaseService
 {
     protected $imageService;
@@ -58,7 +57,7 @@ class ProjectService extends BaseService
         ]);
 
         if (isset($request->imageDelete)) {
-            parent::imageDelete($request);
+            parent::imageDelete($project);
         }
 
         if (isset($request->image) && $request->image->isValid()) {

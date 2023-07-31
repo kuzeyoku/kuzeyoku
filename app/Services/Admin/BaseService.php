@@ -14,32 +14,28 @@ class BaseService
 {
     protected $model;
     protected $module;
-    protected $folder;
-    protected $route;
 
     public function __construct(Model $model, ModuleEnum $module = null)
     {
         $this->model = $model;
         $this->module = $module;
-        $this->folder = $module->folder();
-        $this->route = $module->route();
     }
 
     public function folder()
     {
-        return $this->folder;
+        return $this->module->folder();
     }
 
     public function route()
     {
-        return $this->route;
+        return $this->module->route();
     }
 
     public function all()
     {
         $currentpage = Paginator::resolveCurrentPage() ?: 1;
-        return Cache::remember($this->model->getTable() . '_' . $currentpage, 3600, function () {
-            return $this->model->orderByDesc("id")->paginate(config("setting.pagination", 15));
+        return Cache::remember($this->model->getTable() . '_' . $currentpage, config("setting.cache.time", 3600), function () {
+            return $this->model->orderByDesc("id")->paginate(config("setting.dashboard.pagination", 15));
         });
     }
 
@@ -82,7 +78,7 @@ class BaseService
 
     public function getCategories()
     {
-        return Cache::remember(($this->module ? $this->module->value . "_" : "all_") . "categories", 3600, function () {
+        return Cache::remember(($this->module ? $this->module->value . "_" : "all_") . "categories", config("setting.cache.time", 3600), function () {
             $categories = Category::where("status", StatusEnum::Active)
                 ->when($this->module !== null, function ($query) {
                     return $query->where("module", $this->module);

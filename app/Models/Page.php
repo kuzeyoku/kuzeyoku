@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use App\Enums\StatusEnum;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\PageTranslate;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Page extends Model
 {
@@ -39,8 +40,10 @@ class Page extends Model
 
     public static function toSelectArray()
     {
-        return self::where("status", StatusEnum::Active->value)->get()->mapWithKeys(function ($item) {
-            return [$item->id => $item->title[app()->getLocale()]];
-        })->toArray();
+        return Cache::remember('page_list', config("setting.cache.time", 3600), function () {
+            return self::where("status", StatusEnum::Active->value)->get()->mapWithKeys(function ($item) {
+                return [$item->id => $item->title[app()->getLocale()]];
+            })->toArray();
+        });
     }
 }

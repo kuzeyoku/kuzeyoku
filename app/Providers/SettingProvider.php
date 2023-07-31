@@ -32,10 +32,20 @@ class SettingProvider extends ServiceProvider
         //     }));
         // }
 
-        $settingConfig = Cache::remember('setting', 3600, function () {
-            return Schema::hasTable('settings') ? Setting::pluck("value", "key") : [];
-        });
+        // $settingConfig = Cache::remember('setting', 3600, function () {
+        //     return Schema::hasTable('settings') ? Setting::pluck("value", "key") : [];
+        // });
 
-        config()->set("setting", $settingConfig);
+        // config()->set("setting", $settingConfig);
+
+        $settingsConfig = Cache::rememberForever('setting', function () {
+            $settings = Schema::hasTable('settings') ? Setting::all() : collect([]);
+            $config = [];
+            $settings->each(function ($setting) use (&$config) {
+                $config["setting.{$setting->category}.{$setting->key}"] = $setting->value;
+            });
+            return $config;
+        });
+        config($settingsConfig);
     }
 }

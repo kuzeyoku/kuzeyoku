@@ -9,8 +9,6 @@ use App\Services\Admin\ProjectService;
 use App\Http\Requests\Project\ImageProjectRequest;
 use App\Http\Requests\Project\StoreProjectRequest;
 use App\Http\Requests\Project\UpdateProjectRequest;
-
-
 class ProjectController extends Controller
 {
     protected $service;
@@ -43,7 +41,6 @@ class ProjectController extends Controller
 
     public function imageStore(ImageProjectRequest $request): object
     {
-
         if ($this->service->imageUpload((object)$request->validated())) {
             return (object) [
                 "message" => __("admin/{$this->service->folder()}.image.success")

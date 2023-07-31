@@ -2,7 +2,7 @@
     <div class="col-lg-6">
         <div class="form-group">
             {!! Form::label(__('admin/setting.image.folder')) !!}
-            {!! Form::text('upload_folder', null, [
+            {!! Form::text('upload_folder', config('setting.image.upload_folder'), [
                 'placeholder' => __('admin/setting.image.folder_placeholder'),
             ]) !!}
         </div>
@@ -10,15 +10,15 @@
     <div class="col-lg-6">
         <div class="form-group">
             {!! Form::label(__('admin/setting.image.max_size')) !!}
-            {!! Form::number('max_size', null, [
+            {!! Form::number('max_size', config('setting.image.max_size'), [
                 'placeholder' => __('admin/setting.image.max_size_placeholder'),
             ]) !!}
         </div>
     </div>
     <div class="col-lg-6">
         <div class="form-group">
-            {!! Form::label(__('admin/setting.image.image_quality')) !!}
-            {!! Form::number('image_quality', null, [
+            {!! Form::label(__('admin/setting.image.quality')) !!}
+            {!! Form::number('quality', config('setting.image.quality'), [
                 'placeholder' => __('admin/setting.image.image_quality_placeholder'),
             ]) !!}
         </div>

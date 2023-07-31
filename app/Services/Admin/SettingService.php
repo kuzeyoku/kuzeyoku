@@ -44,7 +44,7 @@ class SettingService
     {
         return [
             "home",
-            "page",
+            "static_pages",
             "blog",
             "blog_category",
             "blog_post",
@@ -63,13 +63,13 @@ class SettingService
     public static function getChangeFreqList(): array
     {
         return [
-            "always" => __("admin.setting.sitemap.always"),
-            "hourly" => __("admin.setting.sitemap.hourly"),
-            "daily" => __("admin.setting.sitemap.daily"),
-            "weekly" => __("admin.setting.sitemap.weekly"),
-            "monthly" => __("admin.setting.sitemap.monthly"),
-            "yearly" => __("admin.setting.sitemap.yearly"),
-            "never" => __("admin.setting.sitemap.never"),
+            "always" => __("admin/setting.sitemap.changefreq.always"),
+            "hourly" => __("admin/setting.sitemap.changefreq.hourly"),
+            "daily" => __("admin/setting.sitemap.changefreq.daily"),
+            "weekly" => __("admin/setting.sitemap.changefreq.weekly"),
+            "monthly" => __("admin/setting.sitemap.changefreq.monthly"),
+            "yearly" => __("admin/setting.sitemap.changefreq.yearly"),
+            "never" => __("admin/setting.sitemap.changefreq.never"),
         ];
     }
 }
