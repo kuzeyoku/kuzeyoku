@@ -123,7 +123,8 @@ return [
             "monthly" => "Ayda Bir",
             "yearly" => "Yılda Bir",
             "never" => "Asla"
-        ]
+        ],
+        "view" => "Sitemap Görüntüle : "
     ],
     "recaptcha" => [
         "status" => "Recaptcha Durumu",
