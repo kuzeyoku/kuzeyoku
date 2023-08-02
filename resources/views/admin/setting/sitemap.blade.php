@@ -1,3 +1,5 @@
+{{ __('admin/setting.sitemap.view') }}<a href="{{ url(route('sitemap.index')) }}">{{ url(route('sitemap.index')) }}</a>
+<hr>
 @foreach ($service->getSitemapModuleList() as $module)
     <div class="form-group">
         {!! Form::label(__("admin/{$folder}.sitemap.{$module}")) !!}
