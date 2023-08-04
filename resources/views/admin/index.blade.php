@@ -59,8 +59,12 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex flex-row justify-content-between">
                     <h3 class="card-title">İşlem Kayıtları</h3>
+                    {!! Form::open(['url' => route('admin.logclean')], ['method' => 'post']) !!}
+                    {!! Form::hidden('file', 'info') !!}
+                    <button type="button" class="btn btn-danger btn-sm logclean">Temizle</button>
+                    {!! Form::close() !!}
                 </div>
                 <div class="card-body">
                     <ul class="overflow-auto info-log-list">
@@ -75,8 +79,12 @@
         </div>
         <div class="col-lg-6">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex flex-row justify-content-between">
                     <h3 class="card-title">Hata Kayıtları</h3>
+                    {!! Form::open(['url' => route('admin.logclean')], ['method' => 'post']) !!}
+                    {!! Form::hidden('file', 'errors') !!}
+                    <button type="button" class="btn btn-danger btn-sm logclean">Temizle</button>
+                    {!! Form::close() !!}
                 </div>
                 <div class="card-body">
                     <ul class="overflow-auto error-log-list">

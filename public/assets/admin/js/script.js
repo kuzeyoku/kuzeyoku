@@ -486,4 +486,30 @@ $(document).ready(function () {
             position: "top-end",
         });
     }
+
+    if ($(".logclean").length > 0) {
+        $(".logclean").on("click", function () {
+            Swal.fire({
+                title: "Emin misiniz?",
+                text: "Bu işlem geri alınamaz!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Evet, sil!",
+                cancelButtonText: "Hayır, iptal et!",
+                reverseButtons: true,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.closest("form").submit();
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire({
+                        title: "İptal edildi",
+                        text: "Silme işlemi iptal edildi",
+                        icon: "error",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                }
+            });
+        });
+    }
 });
