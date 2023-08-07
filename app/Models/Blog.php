@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\StatusEnum;
 use App\Models\BlogTranslate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer("category_id");
             $table->enum("status", StatusEnum::getValues())->default(StatusEnum::Active->value);
             $table->integer("view_count")->default(0);
+            $table->foreignId("user_id")->constrained("users")->nullable();
             $table->timestamps();
         });
     }

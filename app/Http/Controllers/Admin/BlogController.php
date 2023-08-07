@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use Throwable;
 use App\Models\Blog;
-use App\Enums\ModuleEnum;
 use App\Services\Admin\BlogService;
 use App\Http\Requests\Blog\StoreBlogRequest;
 use App\Http\Requests\Blog\UpdateBlogRequest;
@@ -15,6 +14,7 @@ class BlogController extends Controller
 
     public function __construct(BlogService $service)
     {
+        $this->authorizeResource(Blog::class, "blog");
         $this->service = $service;
         view()->share([
             "categories" => $this->service->getCategories(),

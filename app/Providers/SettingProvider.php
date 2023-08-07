@@ -26,18 +26,6 @@ class SettingProvider extends ServiceProvider
      */
     public function boot()
     {
-        // if (Schema::hasTable('settings')) {
-        //     config()->set("setting", Cache::remember('setting', 3600, function () {
-        //         return Setting::pluck("value", "key");
-        //     }));
-        // }
-
-        // $settingConfig = Cache::remember('setting', 3600, function () {
-        //     return Schema::hasTable('settings') ? Setting::pluck("value", "key") : [];
-        // });
-
-        // config()->set("setting", $settingConfig);
-
         $settingsConfig = Cache::rememberForever('setting', function () {
             $settings = Schema::hasTable('settings') ? Setting::all() : collect([]);
             $config = [];
