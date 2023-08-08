@@ -15,7 +15,7 @@ class BasePolicy
         return null;
     }
 
-    public function index(User $user): bool
+    public function viewAny(User $user): bool
     {
         $allowedRoles = [UserRole::DEMO, UserRole::EDITOR];
         return in_array($user->getRole(), $allowedRoles, true);
