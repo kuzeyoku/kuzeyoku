@@ -14,7 +14,6 @@ class BlogController extends Controller
 
     public function __construct(BlogService $service)
     {
-        $this->authorizeResource(Blog::class, "blog");
         $this->service = $service;
         view()->share([
             "categories" => $this->service->getCategories(),
@@ -25,17 +24,20 @@ class BlogController extends Controller
 
     public function index()
     {
+        $this->authorize("index", Blog::class);
         $items = $this->service->all();
         return view("admin.{$this->service->folder()}.index", compact("items"));
     }
 
     public function create()
     {
+        $this->authorize("create", Blog::class);
         return view("admin.{$this->service->folder()}.create");
     }
 
     public function store(StoreBlogRequest $request)
     {
+        $this->authorize("store", Blog::class);
         try {
             $this->service->create((object)$request->validated());
             LogController::logger("info", __("admin/{$this->service->folder()}.create_log", ["title" => $request->title[app()->getLocale()]]));
@@ -52,11 +54,13 @@ class BlogController extends Controller
 
     public function edit(Blog $blog)
     {
+        $this->authorize("edit", $blog);
         return view("admin.{$this->service->folder()}.edit", compact("blog"));
     }
 
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
+        $this->authorize("update", $blog);
         try {
             $this->service->update((object)$request->validated(), $blog);
             LogController::logger("info", __("admin/{$this->service->folder()}.update_log", ["title" => $request->title[app()->getLocale()]]));
@@ -73,6 +77,7 @@ class BlogController extends Controller
 
     public function destroy(Blog $blog)
     {
+        $this->authorize("destroy", $blog);
         try {
             $this->service->delete($blog);
             LogController::logger("info", __("admin/{$this->service->folder()}.delete_log", ["title" => $blog->title[app()->getLocale()]]));

@@ -14,6 +14,7 @@ class Blog extends Model
         'slug',
         'status',
         'category_id',
+        'user_id',
         "image"
     ];
 
@@ -22,6 +23,11 @@ class Blog extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function translate()
@@ -50,4 +56,6 @@ class Blog extends Model
             return $category ? $category->title[app()->getLocale()] : null;
         }
     }
+
+
 }

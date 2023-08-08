@@ -26,6 +26,7 @@ class BlogService extends BaseService
             "slug" => Str::slug($request->title[app()->getLocale()]),
             "status" => $request->status,
             "category_id" => $request->category_id,
+            "user_id" => auth()->user()->id
         ]);
 
         if (isset($request->image) && $request->image->isValid()) {
