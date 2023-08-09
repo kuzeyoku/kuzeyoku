@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use Throwable;
 use App\Models\Language;
+use Illuminate\Support\Facades\Lang;
 use App\Services\Admin\LanguageService;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Language\StoreLanguageRequest;
 use App\Http\Requests\Language\UpdateLanguageRequest;
+use Illuminate\Http\RedirectResponse;
 
 class LanguageController extends Controller
 {
@@ -56,22 +58,28 @@ class LanguageController extends Controller
 
     public function files(Language $language)
     {
+        $fileContent = null;
+        if (request()->method() == "POST") {
+            $folder = request()->folder == "admin" ? "admin/" : null;
+            Lang::setLocale($language->code);
+            $fileContent = Lang::get($folder . request()->file);
+        }
         $lang = Storage::disk("lang");
         $files = array_reduce($lang->files($language->code), function ($carry, $file) {
             $files = explode("/", $file);
             $file = end($files);
             $fileName = basename($file, ".php");
-            $carry[$file] = ucfirst($fileName);
+            $carry[$fileName] = ucfirst($fileName);
             return $carry;
         });
         $adminFiles = array_reduce($lang->files($language->code . "/admin"), function ($carry, $file) {
             $files = explode("/", $file);
             $file = end($files);
             $fileName = basename($file, ".php");
-            $carry[$file] = ucfirst($fileName);
+            $carry[$fileName] = ucfirst($fileName);
             return $carry;
         });
-        return view("admin.{$this->service->folder()}.files", compact("files", "adminFiles"));
+        return view("admin.{$this->service->folder()}.files", compact("files", "adminFiles", "language", "fileContent"));
     }
 
     public function update(UpdateLanguageRequest $request, Language $language)

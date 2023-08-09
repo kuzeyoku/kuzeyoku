@@ -17,14 +17,9 @@ return [
     "update_log" => "Bir Sabit Sayfa Güncellendi - :title",
     "delete_log" => "Bir Sabit Sayfa Silindi - :title",
     //Form
-    "form" => [
-        "title" => "Sayfa Başlığı",
-        "title_placeholder" => "Sayfa Başlığı Giriniz",
-        "content" => "Sayfa İçeriği",
-    ],
+    "form.title" => "Sayfa Başlığı",
+    "form.title_placeholder" => "Sayfa Başlığı Giriniz",
+    "form.content" => "Sayfa İçeriği",
     //Table
-    "table" => [
-        "title" => "Sayfa Başlığı",
-    ],
-
+    "table.title" => "Sayfa Başlığı",
 ];

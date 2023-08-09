@@ -17,17 +17,12 @@ return [
     "update_log" => "Bir Blog Konusu Güncellendi - :title",
     "delete_log" => "Bir Blog Konusu Silindi - :title",
     //form
-    "form" => [
-        "title" => "İçerik Başlığı",
-        "title_placeholder" => "İçerik Başlığı Giriniz",
-        "content" => "Açıklama",
-        "category" => "Kategori",
-        "status" => "Durum",
-    ],
+    "form.title" => "İçerik Başlığı",
+    "form.title_placeholder" => "İçerik Başlığı Giriniz",
+    "form.content" => "Açıklama",
+    "form.category" => "Kategori",
+    "form.status" => "Durum",
     //table
-    "table" => [
-        "title" => "İçerik Başlığı",
-        "category" => "Kategori",
-    ],
-
+    "table.title" => "İçerik Başlığı",
+    "table.category" => "Kategori",
 ];

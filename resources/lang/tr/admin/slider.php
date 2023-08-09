@@ -17,22 +17,18 @@ return [
     "update_log" => "Bir Slider Güncellendi - :title",
     "delete_log" => "Bir Slider Silindi - :title",
     //form
-    "form" => [
-        "title" => "Slider Başlığı",
-        "title_placeholder" => "Slider Başlığı Giriniz",
-        "description" => "Açıklama",
-        "description_placeholder" => "Slider Açıklaması Giriniz",
-        "title_size" => "Başlık Boyutu",
-        "title_size_placeholder" => "Başlık Boyutu Giriniz",
-        "description_size" => "Açıklama Boyutu",
-        "description_size_placeholder" => "Açıklama Boyutu Giriniz",
-        "button_url" => "Buton Linki",
-        "button_url_placeholder" => "Buton Linki Giriniz",
-        "status" => "Durum",
-    ],
+    "form.title" => "Slider Başlığı",
+    "form.title_placeholder" => "Slider Başlığı Giriniz",
+    "form.description" => "Açıklama",
+    "form.description_placeholder" => "Slider Açıklaması Giriniz",
+    "form.title_size" => "Başlık Boyutu",
+    "form.title_size_placeholder" => "Başlık Boyutu Giriniz",
+    "form.description_size" => "Açıklama Boyutu",
+    "form.description_size_placeholder" => "Açıklama Boyutu Giriniz",
+    "form.button_url" => "Buton Linki",
+    "form.button_url_placeholder" => "Buton Linki Giriniz",
+    "form.status" => "Durum",
     //table
-    "table" => [
-        "image" => "Slider Resmi",
-        "title" => "Slider Başlığı"
-    ]
+    "table.image" => "Slider Resmi",
+    "table.title" => "Slider Başlığı"
 ];

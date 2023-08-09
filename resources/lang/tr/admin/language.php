@@ -17,16 +17,12 @@ return [
     "update_log" => "Bir Çeviri Güncellendi - :title",
     "delete_log" => "Bir Çeviri Silindi - :title",
     //form
-    "form" => [
-        "title" => "Dil Başlığı",
-        "title_placeholder" => "Dil Başlığı Giriniz",
-        "code" => "Dil Kodu",
-        "code_placeholder" => "Dil Kodu Giriniz",
-        "status" => "Durum",
-    ],
+    "form.title" => "Dil Başlığı",
+    "form.title_placeholder" => "Dil Başlığı Giriniz",
+    "form.code" => "Dil Kodu",
+    "form.code_placeholder" => "Dil Kodu Giriniz",
+    "form.status" => "Durum",
     //table
-    "table" => [
-        "title" => "Başlık",
-        "code" => "Kod",
-    ],
+    "table.title" => "Başlık",
+    "table.code" => "Kod",
 ];

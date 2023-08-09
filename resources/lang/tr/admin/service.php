@@ -17,17 +17,12 @@ return [
     "update_log" => "Bir Hizmet Güncellendi - :title",
     "delete_log" => "Bir Hizmet Silindi - :title",
     //form
-    "form" => [
-        "title" => "Hizmet Başlığı",
-        "title_placeholder" => "Hizmet Başlığı Giriniz",
-        "content" => "Açıklama",
-        "category" => "Kategori",
-        "status" => "Durum",
-    ],
+    "form.title" => "Hizmet Başlığı",
+    "form.title_placeholder" => "Hizmet Başlığı Giriniz",
+    "form.content" => "Açıklama",
+    "form.category" => "Kategori",
+    "form.status" => "Durum",
     //table
-    "table" => [
-        "title" => "Hizmet Başlığı",
-        "category" => "Kategori",
-    ],
-
+    "table.title" => "Hizmet Başlığı",
+    "table.category" => "Kategori",
 ];

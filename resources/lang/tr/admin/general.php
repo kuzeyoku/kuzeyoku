@@ -23,14 +23,12 @@ return [
     "cache_clear_success" => "Önbellek başarıyla temizlendi.",
     "cache_clear_log" => "Önbellek Temizlendi.",
     "all_delete" => "Tümünü Sil",
-    "table" => [
-        "id" => "ID",
-        "title" => "Başlık",
-        "status" => "Durum",
-        "action" => "İşlemler",
-        "created_at" => "Oluşturuldu",
-        "updated_at" => "Güncellendi",
-        "no_data" => "Herhangi bir veri bulunamadı.",
-    ],
+    "table.id" => "ID",
+    "table.title" => "Başlık",
+    "table.status" => "Durum",
+    "table.action" => "İşlemler",
+    "table.created_at" => "Oluşturuldu",
+    "table.updated_at" => "Güncellendi",
+    "table.no_data" => "Herhangi bir veri bulunamadı.",
     "invalid_value" => "Geçersiz değer!"
 ];

@@ -36,9 +36,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Other Routes
         Route::post('editor/upload')->uses("App\Http\Controllers\Admin\EditorController@upload")->name("editor.upload");
         Route::get('cache-clear')->uses("App\Http\Controllers\Admin\HomeController@cacheClear")->name('cache-clear');
-        Route::get("language/{language}/files")->uses("App\Http\Controllers\Admin\LanguageController@files")->name("language.files");
         Route::post("logclean")->uses("App\Http\Controllers\Admin\HomeController@logclean")->name("logclean");
 
+        Route::controller(App\Http\Controllers\Admin\LanguageController::class)->prefix("language")->group(function () {
+            Route::match(["get", "post"], "/{language}/files", "files")->name("language.files");
+            Route::post("/{language}/getFileContent", "getFileContent")->name("language.getFileContent");
+        });
 
         Route::controller(App\Http\Controllers\Admin\ProductController::class)->prefix("product")->group(function () {
             // Route::get("/{project}", "show")->name("product.show");

@@ -17,13 +17,9 @@ return [
     "update_log" => "Bir Marka Güncellendi.",
     "delete_log" => "Bir Marka Silindi.",
     //form
-    "form" => [
-        "url" => "Marka Bağlantısı",
-        "url_placeholder" => "Marka Bağlantısı Giriniz",
-        "image" => "Marka Görseli"
-    ],
+    "form.url" => "Marka Bağlantısı",
+    "form.url_placeholder" => "Marka Bağlantısı Giriniz",
+    "form.image" => "Marka Görseli",
     //table
-    "table" => [
-        "image" => "Resim",
-    ],
+    "table.image" => "Resim",
 ];
