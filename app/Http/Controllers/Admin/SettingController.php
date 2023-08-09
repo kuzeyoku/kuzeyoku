@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Setting;
 use Throwable;
 use Illuminate\Http\Request;
 use App\Services\Admin\SettingService;
@@ -22,11 +23,13 @@ class SettingController extends Controller
 
     public function index()
     {
+        $this->authorize("index", Setting::class);
         return view("admin.{$this->service->folder()}.index");
     }
 
     public function update(Request $request)
     {
+        $this->authorize("update", Setting::class);
         try {
             $this->service->update($request);
             LogController::Logger("info", __("admin/{$this->service->folder()}.update_log", ["category" => __("admin/setting.category." . $request->category)]));

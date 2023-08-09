@@ -15,7 +15,6 @@
     <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
 
 </head>
-
 <body>
     <div class="main-wrapper">
         @include('admin.layout.header')
