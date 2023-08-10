@@ -21,17 +21,6 @@ class BasePolicy
         return in_array($user->getRole(), $allowedRoles, true);
     }
 
-    public function create(User $user): bool
-    {
-        $allowedRoles = [UserRole::DEMO, UserRole::EDITOR];
-        return in_array($user->getRole(), $allowedRoles, true);
-    }
-
-    public function store(User $user): bool
-    {
-        return $user->getRole() === UserRole::EDITOR;
-    }
-
     public function destroy(User $user): bool
     {
         return $user->getRole() === UserRole::ADMIN;

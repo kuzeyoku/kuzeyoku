@@ -25,4 +25,6 @@ return [
     //table
     "table.title" => "Başlık",
     "table.code" => "Kod",
+    "files.title" => "Dil Dosyası İçeriği",
+    "files.table_empty" => "Henüz dosya seçmediniz. Lütfen düzenlemek istediğiniz dil dosyasını seçiniz."
 ];

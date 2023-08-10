@@ -41,6 +41,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::controller(App\Http\Controllers\Admin\LanguageController::class)->prefix("language")->group(function () {
             Route::match(["get", "post"], "/{language}/files", "files")->name("language.files");
             Route::post("/{language}/getFileContent", "getFileContent")->name("language.getFileContent");
+            Route::put("/{language}/updateFileContent", "updateFileContent")->name("language.updateFileContent");
         });
 
         Route::controller(App\Http\Controllers\Admin\ProductController::class)->prefix("product")->group(function () {
