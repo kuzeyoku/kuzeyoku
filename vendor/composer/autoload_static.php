@@ -659,6 +659,7 @@ class ComposerStaticInite54ffb9eb1d9c9c72bea1088fcb19369
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Policies\\BasePolicy' => __DIR__ . '/../..' . '/app/Policies/BasePolicy.php',
         'App\\Policies\\BlogPolicy' => __DIR__ . '/../..' . '/app/Policies/BlogPolicy.php',
+        'App\\Policies\\LanguagePolicy' => __DIR__ . '/../..' . '/app/Policies/LanguagePolicy.php',
         'App\\Policies\\SettingPolicy' => __DIR__ . '/../..' . '/app/Policies/SettingPolicy.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

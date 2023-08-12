@@ -103,6 +103,7 @@ return array(
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Policies\\BasePolicy' => $baseDir . '/app/Policies/BasePolicy.php',
     'App\\Policies\\BlogPolicy' => $baseDir . '/app/Policies/BlogPolicy.php',
+    'App\\Policies\\LanguagePolicy' => $baseDir . '/app/Policies/LanguagePolicy.php',
     'App\\Policies\\SettingPolicy' => $baseDir . '/app/Policies/SettingPolicy.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
