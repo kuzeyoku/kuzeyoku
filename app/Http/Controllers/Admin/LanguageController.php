@@ -16,6 +16,7 @@ class LanguageController extends Controller
 
     public function __construct(LanguageService $languageService)
     {
+        $this->authorizeResource(Language::class, "language");
         $this->service = $languageService;
         view()->share([
             'route' => $this->service->route(),
@@ -25,20 +26,17 @@ class LanguageController extends Controller
 
     public function index()
     {
-        $this->authorize("viewAny", Language::class);
         $items = $this->service->all();
         return view("admin.{$this->service->folder()}.index", compact('items'));
     }
 
     public function create()
     {
-        $this->authorize("viewAny", Language::class);
         return view("admin.{$this->service->folder()}.create");
     }
 
     public function store(StoreLanguageRequest $request)
     {
-        $this->authorize("store", Language::class);
         try {
             $this->service->create((object)$request->validated());
             LogController::logger("info", __("admin/{$this->service->folder()}.create_log", ["title" => $request->title]));
@@ -55,13 +53,11 @@ class LanguageController extends Controller
 
     public function edit(Language $language)
     {
-        $this->authorize("viewAny", Language::class);
         return view("admin.{$this->service->folder()}.edit", compact('language'));
     }
 
     public function files(Language $language)
     {
-        $this->authorize("fileProcess", Language::class);
         $fileContent = [];
         $_filename = null;
         $_folder = null;
@@ -91,7 +87,6 @@ class LanguageController extends Controller
 
     public function updateFileContent(Language $language)
     {
-        $this->authorize("fileProcess", Language::class);
         $folder = request()->_folder == "admin" ? "admin" : null;
         $filename = request()->_filename;
         $content = request()->except("_token", "_method", "_filename", "_folder");
@@ -107,7 +102,6 @@ class LanguageController extends Controller
 
     public function update(UpdateLanguageRequest $request, Language $language)
     {
-        $this->authorize("update", Language::class);
         try {
             $this->service->update((object)$request->validated(), $language);
             LogController::logger("info", __("admin/{$this->service->folder()}.update_log", ["title" => $request->title]));
@@ -124,7 +118,6 @@ class LanguageController extends Controller
 
     public function destroy(Language $language)
     {
-        $this->authorize("destroy", Language::class);
         try {
             $this->service->delete($language);
             LogController::logger("info", __("admin/{$this->service->folder()}.delete_log", ["title" => $language->title]));

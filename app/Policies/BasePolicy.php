@@ -15,10 +15,31 @@ class BasePolicy
         return null;
     }
 
-    public function viewAny(User $user): bool
+    public function index(User $user): bool
     {
         $allowedRoles = [UserRole::DEMO, UserRole::EDITOR];
         return in_array($user->getRole(), $allowedRoles, true);
+    }
+
+    public function show(User $user): bool
+    {
+        $allowedRoles = [UserRole::DEMO, UserRole::EDITOR];
+        return in_array($user->getRole(), $allowedRoles, true);
+    }
+
+    public function store(User $user): bool
+    {
+        return $user->getRole() === UserRole::ADMIN;
+    }
+
+    public function edit(User $user): bool
+    {
+        return $user->getRole() === UserRole::ADMIN;
+    }
+
+    public function update(User $user): bool
+    {
+        return $user->getRole() === UserRole::ADMIN;
     }
 
     public function destroy(User $user): bool
