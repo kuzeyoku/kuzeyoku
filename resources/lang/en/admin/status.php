@@ -1,8 +1,13 @@
-<?php 
+<?php
 return [
-    'active' => 'Active',
-    'passive' => 'Passive',
-    'draft' => 'Draft',
-    'pending' => 'Pending',
-    'deleted' => 'Deleted',
+    'active' => 'Aktif',
+    'passive' => 'Pasif',
+    'draft' => 'Taslak',
+    'pending' => 'Beklemede',
+    'deleted' => 'Silinmiş',
+    'read' => "Okundu",
+    'unread' => "Okunmadı",
+    'answered' => "Cevaplandı",
+    'yes' => "Evet",
+    'no' => "Hayır",
 ];

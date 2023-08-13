@@ -16,7 +16,6 @@ class LanguageController extends Controller
 
     public function __construct(LanguageService $languageService)
     {
-        $this->authorizeResource(Language::class, "language");
         $this->service = $languageService;
         view()->share([
             'route' => $this->service->route(),
@@ -26,17 +25,20 @@ class LanguageController extends Controller
 
     public function index()
     {
+        $this->authorize("viewAny", Language::class);
         $items = $this->service->all();
         return view("admin.{$this->service->folder()}.index", compact('items'));
     }
 
     public function create()
     {
+        $this->authorize("viewAny", Language::class);
         return view("admin.{$this->service->folder()}.create");
     }
 
     public function store(StoreLanguageRequest $request)
     {
+        $this->authorize("store", Language::class);
         try {
             $this->service->create((object)$request->validated());
             LogController::logger("info", __("admin/{$this->service->folder()}.create_log", ["title" => $request->title]));
@@ -53,40 +55,47 @@ class LanguageController extends Controller
 
     public function edit(Language $language)
     {
+        $this->authorize("viewAny", Language::class);
         return view("admin.{$this->service->folder()}.edit", compact('language'));
     }
 
     public function files(Language $language)
     {
+        $this->authorize("fileProcess", Language::class);
+
+        $languageCode = $language->code;
+        $_folder = request()->_folder === "admin" ? "admin" : null;
+        $_filename = request()->_filename;
+
         $fileContent = [];
-        $_filename = null;
-        $_folder = null;
-        if (request()->method() == "POST") {
-            $_folder = request()->_folder == "admin" ? "admin" : null;
-            $_filename = request()->_filename;
-            Lang::setLocale($language->code);
-            $fileContent = Lang::get($_folder . "/" . $_filename);
+        if (request()->isMethod("POST")) {
+            Lang::setLocale($languageCode);
+            $fileContent = Lang::get("{$_folder}/{$_filename}");
         }
-        $lang = Storage::disk("lang");
-        $files = array_reduce($lang->files($language->code), function ($carry, $file) {
-            $files = explode("/", $file);
-            $file = end($files);
+
+        $langDisk = Storage::disk("lang");
+
+        $extractFileData = function ($file) {
             $fileName = basename($file, ".php");
-            $carry[$fileName] = ucfirst($fileName);
-            return $carry;
-        });
-        $adminFiles = array_reduce($lang->files($language->code . "/admin"), function ($carry, $file) {
-            $files = explode("/", $file);
-            $file = end($files);
-            $fileName = basename($file, ".php");
-            $carry[$fileName] = ucfirst($fileName);
-            return $carry;
-        });
+            return [strtolower($fileName) => ucfirst($fileName)];
+        };
+
+        $initialOption = ['select' => 'Seçiniz'];
+
+        $files = array_reduce($langDisk->files($languageCode), function ($carry, $file) use ($extractFileData, $initialOption) {
+            return array_merge($initialOption, $carry, $extractFileData($file));
+        }, []);
+
+        $adminFiles = array_reduce($langDisk->files("{$languageCode}/admin"), function ($carry, $file) use ($extractFileData, $initialOption) {
+            return array_merge($initialOption, $carry, $extractFileData($file));
+        }, []);
+
         return view("admin.{$this->service->folder()}.files", compact("files", "adminFiles", "language", "fileContent", "_filename", "_folder"));
     }
 
     public function updateFileContent(Language $language)
     {
+        $this->authorize("fileProcess", Language::class);
         $folder = request()->_folder == "admin" ? "admin" : null;
         $filename = request()->_filename;
         $content = request()->except("_token", "_method", "_filename", "_folder");
@@ -102,6 +111,7 @@ class LanguageController extends Controller
 
     public function update(UpdateLanguageRequest $request, Language $language)
     {
+        $this->authorize("update", Language::class);
         try {
             $this->service->update((object)$request->validated(), $language);
             LogController::logger("info", __("admin/{$this->service->folder()}.update_log", ["title" => $request->title]));
@@ -118,6 +128,7 @@ class LanguageController extends Controller
 
     public function destroy(Language $language)
     {
+        $this->authorize("destroy", Language::class);
         try {
             $this->service->delete($language);
             LogController::logger("info", __("admin/{$this->service->folder()}.delete_log", ["title" => $language->title]));
