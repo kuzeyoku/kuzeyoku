@@ -12,10 +12,13 @@ return [
     "update_error" => "Çeviri Güncellenemedi",
     "delete_success" => "Çeviri Başarıyla Silindi",
     "delete_error" => "Çeviri Silinemedi",
+    "update_file_content_success" => "Çeviri Dosyası Başarıyla Güncellendi",
+    "update_file_content_error" => "Çeviri Dosyası Güncellenemedi",
     //log
     "create_log" => "Bir Çeviri Oluşturuldu - :title",
     "update_log" => "Bir Çeviri Güncellendi - :title",
     "delete_log" => "Bir Çeviri Silindi - :title",
+    "update_file_content_log" => "Bir Çeviri Dosyası Güncellendi - :title",
     //form
     "form.title" => "Dil Başlığı",
     "form.title_placeholder" => "Dil Başlığı Giriniz",
