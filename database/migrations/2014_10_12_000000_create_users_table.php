@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->enum('role', UserRole::getValues());
+            $table->json("permissions")->nullable();
             $table->timestamps();
         });
     }

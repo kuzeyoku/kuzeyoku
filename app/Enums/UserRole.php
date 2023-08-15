@@ -12,41 +12,23 @@ enum UserRole: string
     {
         return match ($this) {
             self::DEMO => [
-                "admin.dashboard.index",
-                "admin.page.index",
-                "admin.page.create",
-                "admin.page.edit",
-                "admin.service.index",
-                "admin.service.create",
-                "admin.service.edit",
-                "admin.setting.index",
-                "admin.product.index",
-                "admin.product.create",
-                "admin.product.edit",
-                "admin.project.index",
-                "admin.project.create",
-                "admin.project.edit",
-                "admin.popup.index",
-                "admin.popup.create",
-                "admin.popup.edit",
-                "admin.reference.index",
-                "admin.reference.create",
-                "admin.reference.edit",
+                "index",
+                "create"
             ],
             self::EDITOR => [
-                "page.view",
-                "page.create",
-                "page.update",
-
-            ],
-            self::ADMIN => [
-                "page.view",
-                "page.create",
-                "page.update",
-                "page.delete",
+                "index",
+                "create",
+                "edit",
+                "update"
             ]
         };
     }
+
+    public static function getPermissions($role)
+    {
+        return UserRole::from($role->value)->permissions();
+    }
+
 
     public function title(): string
     {

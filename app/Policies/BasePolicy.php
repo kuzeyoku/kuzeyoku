@@ -4,46 +4,65 @@ namespace App\Policies;
 
 use App\Models\User;
 use App\Enums\UserRole;
+use Illuminate\Database\Eloquent\Model;
 
 class BasePolicy
 {
-    public function before(User $user): ?bool
+    protected $userRole;
+    protected $rolePermissions;
+
+    public function __construct()
     {
-        if ($user->getRole() === UserRole::ADMIN) {
+        $this->userRole = auth()->user()->role;
+        $this->rolePermissions = UserRole::getPermissions($this->userRole);
+    }
+
+    public function before(): ?bool
+    {
+        if ($this->userRole === UserRole::ADMIN) {
             return true;
         }
         return null;
     }
 
-    public function index(User $user): bool
+    public function index(): bool
     {
-        $allowedRoles = [UserRole::DEMO, UserRole::EDITOR];
-        return in_array($user->getRole(), $allowedRoles, true);
+        return in_array("index", $this->rolePermissions, true);
     }
 
-    public function show(User $user): bool
+    public function show(): bool
     {
-        $allowedRoles = [UserRole::DEMO, UserRole::EDITOR];
-        return in_array($user->getRole(), $allowedRoles, true);
+        return in_array("show", $this->rolePermissions, true);
     }
 
-    public function store(User $user): bool
+    public function create(): bool
     {
-        return $user->getRole() === UserRole::ADMIN;
+        return in_array("create", $this->rolePermissions, true);
     }
 
-    public function edit(User $user): bool
+    public function store(): bool
     {
-        return $user->getRole() === UserRole::ADMIN;
+        return in_array("store", $this->rolePermissions, true);
     }
 
-    public function update(User $user): bool
+    public function edit(User $user, Model $item): bool
     {
-        return $user->getRole() === UserRole::ADMIN;
+        if (isset($item->user_id))
+            return in_array("edit", $this->rolePermissions, true) && $user->id === $item->user_id;
+        else
+            return in_array("edit", $this->rolePermissions, true);
     }
 
-    public function destroy(User $user): bool
+    public function update(User $user, Model $item): bool
     {
-        return $user->getRole() === UserRole::ADMIN;
+        if (isset($item->user_id))
+            return in_array("edit", $this->rolePermissions, true) && $user->id === $item->user_id;
+        else
+            return in_array("edit", $this->rolePermissions, true);
+    }
+
+    public function destroy(): bool
+    {
+        return in_array("destroy", $this->rolePermissions, true);
     }
 }

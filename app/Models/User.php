@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->role;
     }
+
+    public function getPermissions(): array
+    {
+        return json_decode($this->permissions, true);
+    }
 }
