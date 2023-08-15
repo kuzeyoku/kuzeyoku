@@ -17,6 +17,7 @@ class AuthServiceProvider extends ServiceProvider
         Blog::class => BlogPolicy::class,
         Setting::class => SettingPolicy::class,
         Language::class => LanguagePolicy::class,
+        Brand::class => BrandPolicy::class,
     ];
 
     /**

@@ -14,6 +14,7 @@ class BrandController extends Controller
 
     public function __construct(BrandService $service)
     {
+        $this->authorizeResource(Brand::class, "brand");
         $this->service = $service;
         view()->share([
             "route" => $this->service->route(),

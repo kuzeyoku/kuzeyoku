@@ -14,7 +14,8 @@ class BasePolicy
     public function __construct()
     {
         $this->userRole = auth()->user()->role;
-        $this->rolePermissions = UserRole::getPermissions($this->userRole);
+        if ($this->userRole !== UserRole::ADMIN)
+            $this->rolePermissions = auth()->user()->role->permissions;
     }
 
     public function before(): ?bool
