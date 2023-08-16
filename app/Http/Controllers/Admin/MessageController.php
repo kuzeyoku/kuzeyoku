@@ -23,6 +23,7 @@ class MessageController extends Controller
 
     public function index()
     {
+        $this->authorize("index", Message::class);
         $items = $this->service->all();
         return view("admin.{$this->service->folder()}.index", compact("items"));
     }

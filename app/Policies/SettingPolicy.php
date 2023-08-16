@@ -3,19 +3,12 @@
 namespace App\Policies;
 
 use App\Enums\UserRole;
-use App\Models\Setting;
-use App\Models\User;
-use Illuminate\Auth\Access\Response;
+use Illuminate\Database\Eloquent\Model;
 
-class SettingPolicy
+class SettingPolicy extends BasePolicy
 {
-    public function index(User $user)
+    public function update(Model $model): bool
     {
-        return $user->getRole() === UserRole::ADMIN;
-    }
-
-    public function update(User $user)
-    {
-        return $user->getRole() === UserRole::ADMIN;
+        return auth()->user()->role === UserRole::ADMIN;
     }
 }

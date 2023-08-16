@@ -23,7 +23,6 @@ class SettingController extends Controller
 
     public function index()
     {
-        $this->authorize("index", Setting::class);
         return view("admin.{$this->service->folder()}.index");
     }
 
