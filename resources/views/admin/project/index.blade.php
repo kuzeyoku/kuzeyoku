@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('pageTitle', __("admin/{$folder}.title"))
+@section('pageTitle', __("admin/{$folder}.list"))
 @section('content')
     <div class="table-responsive">
         <table class="table table-nowrap table-bordered table-center mb-0">

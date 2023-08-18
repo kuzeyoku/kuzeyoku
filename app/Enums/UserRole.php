@@ -48,4 +48,13 @@ enum UserRole: string
     {
         return $this->value === $role;
     }
+
+    public static function getSelectArray(): array
+    {
+        return [
+            self::DEMO->value => self::DEMO->title(),
+            self::EDITOR->value => self::EDITOR->title(),
+            self::ADMIN->value => self::ADMIN->title(),
+        ];
+    }
 }

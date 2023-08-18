@@ -4,6 +4,7 @@ namespace App\Enums;
 
 enum ModuleEnum: string
 {
+    case User = "user";
     case Message = "message";
     case Page = 'page';
     case Language = 'language';
@@ -26,6 +27,7 @@ enum ModuleEnum: string
     public function icon(): string
     {
         return match ($this) {
+            self::User => "ri-user-3-fill",
             self::Message => "ri-mail-send-line",
             self::Page => 'ri-pages-fill',
             self::Language => 'ri-translate',
@@ -45,6 +47,7 @@ enum ModuleEnum: string
     public function route(): string
     {
         return match ($this) {
+            self::User => "user",
             self::Message => "message",
             self::Page => 'page',
             self::Language => 'language',
@@ -64,6 +67,7 @@ enum ModuleEnum: string
     public function controller(): string
     {
         return match ($this) {
+            self::User => \App\Http\Controllers\Admin\UserController::class,
             self::Message => \App\Http\Controllers\Admin\MessageController::class,
             self::Page => \App\Http\Controllers\Admin\PageController::class,
             self::Language => \App\Http\Controllers\Admin\LanguageController::class,
@@ -83,6 +87,11 @@ enum ModuleEnum: string
     public function menu(): array
     {
         return match ($this) {
+            self::User => [
+                "index" => __("admin/$this->value.index"),
+                "create" => __("admin/$this->value.create"),
+                "list" => __("admin/$this->value.list"),
+            ],
             self::Message => [
                 "index" => __("admin/$this->value.index"),
             ],
@@ -162,6 +171,7 @@ enum ModuleEnum: string
     public function folder(): string
     {
         return match ($this) {
+            self::User => "user",
             self::Message => "message",
             self::Page => 'page',
             self::Language => "language",

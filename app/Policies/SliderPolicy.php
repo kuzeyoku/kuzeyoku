@@ -2,7 +2,6 @@
 
 namespace App\Policies;
 
-class SliderPolicy
+class SliderPolicy extends BasePolicy
 {
-
 }

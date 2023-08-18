@@ -6,10 +6,10 @@
             <thead>
                 <tr>
                     <th>#ID</th>
-                    <th>{{ __("admin/{$folder}.table.type") }}</th>
+                    <th>{{ __("admin/{$folder}.table.name") }}</th>
+                    <th>{{ __('admin/general.table.role') }}</th>
                     <th>{{ __('admin/general.table.created_at') }}</th>
                     <th>{{ __('admin/general.table.updated_at') }}</th>
-                    <th>{{ __('admin/general.table.status') }}</th>
                     <th>{{ __('admin/general.table.action') }}</th>
                 </tr>
             </thead>
@@ -17,17 +17,15 @@
                 @forelse ($items as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ __("admin/{$folder}.type.{$item->type}") }}</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->role->title() }}</td>
                         <td>{{ $item->created_at->diffForHumans() }}</td>
                         <td>{{ $item->updated_at->diffForHumans() }}</td>
-                        <td>{{ statusView($item->status) }}</td>
                         <td>@include('admin.layout.action')</td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="8" class="text-center">
-                            {{ __('admin/general.table.no_data') }}
-                        </td>
+                        <td colspan="6" class="text-center">{{ __('admin/general.table.no_data') }}</td>
                     </tr>
                 @endforelse
             </tbody>
