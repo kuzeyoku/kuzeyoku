@@ -14,7 +14,7 @@ class LanguageController extends Controller
 
     public function __construct(LanguageService $languageService)
     {
-        $this->authorizeResource(Language::class, "language");
+        $this->authorizeResource(Language::class);
         $this->service = $languageService;
         view()->share([
             'route' => $this->service->route(),

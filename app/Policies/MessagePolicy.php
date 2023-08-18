@@ -4,35 +4,35 @@ namespace App\Policies;
 
 use App\Enums\UserRole;
 
-class MessagePolicy
+class MessagePolicy extends BasePolicy
 {
-    public function before()
+    public function __construct()
     {
-        return auth()->user()->role === UserRole::ADMIN;
+        parent::__construct();
     }
 
-    public function index()
+    public function index(): bool
     {
-        return $this->before();
+        return in_array("messageIndex", $this->permissions, true);
     }
 
-    public function show()
+    public function show(): bool
     {
-        return $this->before();
+        return in_array("messageShow", $this->permissions, true);
     }
 
-    public function reply()
+    public function reply(): bool
     {
-        return $this->before();
+        return in_array("messageReply", $this->permissions, true);
     }
 
-    public function sendReply()
+    public function sendReply(): bool
     {
-        return $this->before();
+        return in_array("messageReply", $this->permissions, true);
     }
 
-    public function destroy()
+    public function destroy(): bool
     {
-        return $this->before();
+        return in_array("messageDestroy", $this->permissions, true);
     }
 }

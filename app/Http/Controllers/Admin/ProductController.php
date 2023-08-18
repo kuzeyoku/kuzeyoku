@@ -16,7 +16,7 @@ class ProductController extends Controller
 
     public function __construct(ProductService $service)
     {
-        $this->authorizeResource(Product::class, "product");
+        $this->authorizeResource(Product::class);
         $this->service = $service;
         view()->share([
             "categories" => $this->service->getCategories(),

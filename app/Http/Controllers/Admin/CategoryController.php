@@ -16,7 +16,7 @@ class CategoryController extends Controller
 
     public function __construct(CategoryService $service)
     {
-        $this->authorizeResource(Category::class, "category");
+        $this->authorizeResource(Category::class);
         $this->service = $service;
         $this->modules = ModuleEnum::toSelectArray();
         view()->share([

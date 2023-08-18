@@ -14,6 +14,7 @@ class MessageController extends Controller
 
     public function __construct(MessageService $messageService)
     {
+        $this->authorizeResource(Message::class);
         $this->service = $messageService;
         view()->share([
             "route" => $this->service->route(),
@@ -23,27 +24,25 @@ class MessageController extends Controller
 
     public function index()
     {
-        $this->authorize("index", Message::class);
         $items = $this->service->all();
         return view("admin.{$this->service->folder()}.index", compact("items"));
     }
 
     public function show(Message $message)
     {
-        $this->authorize("show", $message);
         $this->service->statusUpdate($message);
         return view("admin.{$this->service->folder()}.show", compact("message"));
     }
 
     public function reply(Message $message)
     {
-        $this->authorize("reply", $message);
+        $this->authorize(Message::class, "reply");
         return view("admin.{$this->service->folder()}.reply", compact("message"));
     }
 
     public function sendReply(ReplyMessageRequest $request)
     {
-        $this->authorize("sendReply", Message::class);
+        $this->authorize(Message::class, "reply");
         try {
             $this->service->sendReply($request->validated());
             return redirect()
@@ -58,7 +57,6 @@ class MessageController extends Controller
 
     public function destroy(Message $message)
     {
-        $this->authorize("destroy", $message);
         try {
             $this->service->delete($message);
             return redirect()

@@ -14,7 +14,7 @@ class ReferenceController extends Controller
     protected $service;
     public function __construct(ReferenceService $service)
     {
-        $this->authorizeResource(Reference::class, 'reference');
+        $this->authorizeResource(Reference::class);
         $this->service = $service;
         view()->share([
             'route' => $this->service->route(),

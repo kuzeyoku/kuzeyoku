@@ -15,7 +15,7 @@ class ServiceController extends Controller
 
     public function __construct(ServiceService $service)
     {
-        $this->authorizeResource(Service::class, 'service');
+        $this->authorizeResource(Service::class);
         $this->service = $service;
         view()->share([
             "category" => $this->service->getCategories(ModuleEnum::Service),

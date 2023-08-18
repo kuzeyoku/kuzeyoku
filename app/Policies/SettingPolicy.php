@@ -11,20 +11,12 @@ class SettingPolicy extends BasePolicy
         parent::__construct();
     }
 
-    public function before(): ?bool
-    {
-        if ($this->userRole === UserRole::ADMIN) {
-            return true;
-        }
-        return null;
-    }
-
     public function index(): bool
     {
         return in_array("settingIndex", $this->permissions, true);
     }
 
-    public function settingUpdate(): bool
+    public function update(): bool
     {
         return in_array("settingUpdate", $this->permissions, true);
     }
