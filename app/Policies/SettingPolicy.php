@@ -3,12 +3,29 @@
 namespace App\Policies;
 
 use App\Enums\UserRole;
-use Illuminate\Database\Eloquent\Model;
 
 class SettingPolicy extends BasePolicy
 {
-    public function update(Model $model): bool
+    public function __construct()
     {
-        return auth()->user()->role === UserRole::ADMIN;
+        parent::__construct();
+    }
+
+    public function before(): ?bool
+    {
+        if ($this->userRole === UserRole::ADMIN) {
+            return true;
+        }
+        return null;
+    }
+
+    public function index(): bool
+    {
+        return in_array("settingIndex", $this->permissions, true);
+    }
+
+    public function settingUpdate(): bool
+    {
+        return in_array("settingUpdate", $this->permissions, true);
     }
 }

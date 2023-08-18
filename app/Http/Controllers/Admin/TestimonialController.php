@@ -14,6 +14,7 @@ class TestimonialController extends Controller
 
     public function __construct(TestimonialService $service)
     {
+        $this->authorizeResource(Testimonial::class, "testimonial");
         $this->service = $service;
         view()->share([
             "route" => $this->service->route(),

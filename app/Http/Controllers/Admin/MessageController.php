@@ -30,17 +30,20 @@ class MessageController extends Controller
 
     public function show(Message $message)
     {
+        $this->authorize("show", $message);
         $this->service->statusUpdate($message);
         return view("admin.{$this->service->folder()}.show", compact("message"));
     }
 
     public function reply(Message $message)
     {
+        $this->authorize("reply", $message);
         return view("admin.{$this->service->folder()}.reply", compact("message"));
     }
 
     public function sendReply(ReplyMessageRequest $request)
     {
+        $this->authorize("sendReply", Message::class);
         try {
             $this->service->sendReply($request->validated());
             return redirect()
@@ -55,6 +58,7 @@ class MessageController extends Controller
 
     public function destroy(Message $message)
     {
+        $this->authorize("destroy", $message);
         try {
             $this->service->delete($message);
             return redirect()

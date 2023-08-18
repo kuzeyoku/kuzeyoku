@@ -14,6 +14,7 @@ class PopupController extends Controller
 
     public function __construct(PopupService $service)
     {
+        $this->authorizeResource(Popup::class, "popup");
         $this->service = $service;
         view()->share([
             "route" => $this->service->route(),

@@ -14,6 +14,7 @@ class PageController extends Controller
 
     public function __construct(PageService $service)
     {
+        $this->authorizeResource(Page::class, "page");
         $this->service = $service;
         view()->share([
             'route' => $this->service->route(),

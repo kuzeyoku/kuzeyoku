@@ -16,6 +16,7 @@ class ProductController extends Controller
 
     public function __construct(ProductService $service)
     {
+        $this->authorizeResource(Product::class, "product");
         $this->service = $service;
         view()->share([
             "categories" => $this->service->getCategories(),
@@ -68,7 +69,6 @@ class ProductController extends Controller
 
     public function imageStore(ImageProductRequest $request): object
     {
-
         if ($this->service->imageUpload((object)$request->validated())) {
             return (object) [
                 "message" => __("admin/{$this->service->folder()}.image.success")

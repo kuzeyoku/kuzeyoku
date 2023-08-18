@@ -14,6 +14,7 @@ class SliderController extends Controller
 
     public function __construct(SliderService $service)
     {
+        $this->authorizeResource(Slider::class, "slider");
         $this->service = $service;
         view()->share([
             "route" => $this->service->route(),

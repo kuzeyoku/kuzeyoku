@@ -8,13 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class BasePolicy
 {
     protected $userRole;
-    protected $rolePermissions;
+    protected $permissions;
 
     public function __construct()
     {
         $this->userRole = auth()->user()->role;
-        if ($this->userRole !== UserRole::ADMIN->value)
-            $this->rolePermissions = json_decode(auth()->user()->permissions);
+        $this->permissions = json_decode(auth()->user()->permissions);
     }
 
     public function before(): ?bool
@@ -27,42 +26,56 @@ class BasePolicy
 
     public function index(): bool
     {
-        return in_array("index", $this->rolePermissions, true);
+        return in_array("index", $this->permissions, true);
     }
 
     public function show(): bool
     {
-        return in_array("show", $this->rolePermissions, true);
+        return in_array("show", $this->permissions, true);
     }
 
     public function create(): bool
     {
-        return in_array("create", $this->rolePermissions, true);
+        return in_array("create", $this->permissions, true);
     }
 
     public function store(): bool
     {
-        return in_array("store", $this->rolePermissions, true);
+        return in_array("store", $this->permissions, true);
     }
 
-    public function edit(Model $item): bool
+    public function edit(): bool
     {
-        if (isset($item->user_id))
-            return in_array("edit", $this->rolePermissions, true) && auth()->user()->id === $item->user_id;
-        else
-            return in_array("edit", $this->rolePermissions, true);
+        return in_array("edit", $this->permissions, true);
     }
 
-    public function update(Model $item): bool
+    public function update(): bool
     {
-        if (isset($item->user_id))
-            return in_array("update", $this->rolePermissions, true) && auth()->user()->id === $item->user_id;
-        else
-            return in_array("update", $this->rolePermissions, true);
+        return in_array("update", $this->permissions, true);
     }
 
     public function destroy(): bool
     {
-        return in_array("destroy", $this->rolePermissions, true);
+        return in_array("destroy", $this->permissions, true);
+    }
+
+    public function image(): bool
+    {
+        return in_array("image", $this->permissions, true);
+    }
+
+    public function imageStore(): bool
+    {
+        return in_array("imageStore", $this->permissions, true);
+    }
+
+    public function imageDelete(): bool
+    {
+        return in_array("imageDelete", $this->permissions, true);
+    }
+
+    public function imageAllDelete()
+    {
+        return in_array("imageAllDelete", $this->permissions, true);
     }
 }
