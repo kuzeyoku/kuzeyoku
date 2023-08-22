@@ -2,8 +2,6 @@
 
 namespace App\Policies;
 
-use App\Enums\UserRole;
-
 class SettingPolicy extends BasePolicy
 {
     public function __construct()

@@ -13,7 +13,6 @@ class SettingController extends Controller
 
     public function __construct(SettingService $service)
     {
-        $this->authorizeResource(Setting::class);
         $this->service = $service;
         view()->share([
             "route" => $this->service->route(),
@@ -24,13 +23,13 @@ class SettingController extends Controller
 
     public function index()
     {
-        // $this->authorize(Setting::class, "settingIndex");
+        $this->authorize("index", Setting::class);
         return view("admin.{$this->service->folder()}.index");
     }
 
     public function update(Request $request)
     {
-        //$this->authorize(Setting::class, "settingUpdate");
+        $this->authorize("update", Setting::class);
         try {
             $this->service->update($request);
             LogController::Logger("info", __("admin/{$this->service->folder()}.update_log", ["category" => __("admin/setting.category." . $request->category)]));

@@ -3,7 +3,6 @@
 namespace App\Policies;
 
 use App\Enums\UserRole;
-use Illuminate\Database\Eloquent\Model;
 
 class BasePolicy
 {

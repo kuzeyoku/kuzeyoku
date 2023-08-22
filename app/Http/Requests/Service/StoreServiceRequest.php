@@ -26,6 +26,7 @@ class StoreServiceRequest extends FormRequest
             "title.*" => "",
             "content.*" => "",
             "status" => "required",
+            "order" => "required|numeric|min:0",
             "category_id" => "",
             "image" => "image|mimes:jpeg,png,jpg,gif|max:" . config("setting.image.max_size", 4096)
         ];
@@ -38,7 +39,8 @@ class StoreServiceRequest extends FormRequest
             "content.*" => __("admin/{$this->folder}.form.content"),
             "category_id" => __("admin/{$this->folder}.form.category"),
             "image" => __("admin/{$this->folder}.form.image"),
-            "status" => __("admin/general.status")
+            "status" => __("admin/general.status"),
+            "order" => __("admin/general.order"),
         ];
     }
 }

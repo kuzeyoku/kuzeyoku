@@ -24,11 +24,11 @@ class UpdateSliderRequest extends FormRequest
         return [
             "title.*" => "",
             "description.*" => "",
+            "order" => "required|numeric|min:0",
             "status" => "",
             "image" => "image|mimes:jpeg,png,jpg,gif|max:" . config("setting.image.max_size", 4096),
-            "button_url" => "",
-            "title_size" => "",
-            "description_size" => "",
+            "button" => "",
+            "video" => "",
             "imageDelete" => "",
         ];
     }
@@ -39,10 +39,10 @@ class UpdateSliderRequest extends FormRequest
             "title.*" => __("admin/{$this->folder}.form.title"),
             "description.*" => __("admin/{$this->folder}.form.description"),
             "image" => __("admin/{$this->folder}.form.image"),
-            "button_url" => __("admin/{$this->folder}.form.button_url"),
-            "title_size" => __("admin/{$this->folder}.form.title_size"),
-            "description_size" => __("admin/{$this->folder}.form.description_size"),
-            "status" => __("admin/general.status")
+            "button" => __("admin/{$this->folder}.form.button"),
+            "video" => __("admin/{$this->folder}.form.video"),
+            "status" => __("admin/general.status"),
+            "order" => __("admin/general.order"),
         ];
     }
 }

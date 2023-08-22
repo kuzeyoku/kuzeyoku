@@ -2,7 +2,7 @@
     <div class="col-lg-6">
         <div class="form-group">
             {!! Form::label(__('admin/setting.image.folder')) !!}
-            {!! Form::text('upload_folder', config('setting.image.upload_folder'), [
+            {!! Form::text('folder', config('setting.image.folder'), [
                 'placeholder' => __('admin/setting.image.folder_placeholder'),
             ]) !!}
         </div>

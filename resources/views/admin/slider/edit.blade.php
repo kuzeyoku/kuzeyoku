@@ -5,7 +5,7 @@
     {!! Form::open(['url' => route("admin.{$route}.update", $slider), 'method' => 'put', 'files' => true]) !!}
     {!! Form::file('image', [
         'class' => 'dropify',
-        'data-default-file' => uploadFolder($folder, $slider->image),
+        'data-default-file' => $slider->getImageUrl(),
     ]) !!}
     <div class="tab-content">
         @foreach (languageList() as $key => $lang)
@@ -28,17 +28,17 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('title_size', __("admin/{$folder}.form.title_size")) !!}
-                {!! Form::number('title_size', $slider->title_size, [
-                    'placeholder' => __("admin/{$folder}.form.title_size_placeholder"),
+                {!! Form::label('button', __("admin/{$folder}.form.button")) !!}
+                {!! Form::text('button', $slider->button, [
+                    'placeholder' => __("admin/{$folder}.form.button_placeholder"),
                 ]) !!}
             </div>
         </div>
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('description_size', __("admin/{$folder}.form.description_size")) !!}
-                {!! Form::number('description_size', $slider->description_size, [
-                    'placeholder' => __("admin/{$folder}.form.description_size_placeholder"),
+                {!! Form::label('video', __("admin/{$folder}.form.video")) !!}
+                {!! Form::text('video', $slider->video, [
+                    'placeholder' => __("admin/{$folder}.form.video_placeholder"),
                 ]) !!}
             </div>
         </div>
@@ -46,15 +46,15 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('button_url', __("admin/{$folder}.form.button_url")) !!}
-                {!! Form::text('button_url', $slider->button_url, [
-                    'placeholder' => __("admin/{$folder}.form.button_url_placeholder"),
+                {!! Form::label('order', __('admin/general.order')) !!} <span class="manitory">*</span>
+                {!! Form::number('order', $slider->order, [
+                    'placeholder' => __('admin/general.order'),
                 ]) !!}
             </div>
         </div>
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('status_', __('admin/general.status')) !!}
+                {!! Form::label('status', __('admin/general.status')) !!} <span class="manitory">*</span>
                 {!! Form::select('status', statusList(), $slider->status) !!}
             </div>
         </div>

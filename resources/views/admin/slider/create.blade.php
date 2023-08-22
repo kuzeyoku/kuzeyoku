@@ -23,29 +23,27 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('title_size', __("admin/{$folder}.form.title_size")) !!}
-                {!! Form::number('title_size', null, ['placeholder' => __("admin/{$folder}.form.title_size_placeholder")]) !!}
+                {!! Form::label('button', __("admin/{$folder}.form.button")) !!}
+                {!! Form::text('button', null, ['placeholder' => __("admin/{$folder}.form.button_placeholder")]) !!}
             </div>
         </div>
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('description_size', __("admin/{$folder}.form.description_size")) !!}
-                {!! Form::number('description_size', null, [
-                    'placeholder' => __("admin/{$folder}.form.description_size_placeholder"),
-                ]) !!}
+                {!! Form::label('video', __("admin/{$folder}.form.video")) !!}
+                {!! Form::text('video', null, ['placeholder' => __("admin/{$folder}.form.video_placeholder")]) !!}
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('button_url', __("admin/{$folder}.form.button_url")) !!}
-                {!! Form::text('button_url', null, ['placeholder' => __("admin/{$folder}.form.button_url_placeholder")]) !!}
+                {!! Form::label('order', __('admin/general.order')) !!} <span class="manitory">*</span>
+                {!! Form::number('order', 0, ['placeholder' => __('admin/general.order')]) !!}
             </div>
         </div>
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('status_', __('admin/general.status')) !!} <span class="manitory">*</span>
+                {!! Form::label('status', __('admin/general.status')) !!} <span class="manitory">*</span>
                 {!! Form::select('status', statusList(), 'default') !!}
             </div>
         </div>

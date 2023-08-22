@@ -25,6 +25,7 @@ class ServiceService extends BaseService
         $data = new Request([
             "slug" => Str::slug($request->title[app()->getLocale()]),
             "status" => $request->status,
+            "order" => $request->order,
             "category_id" => $request->category_id,
         ]);
 
@@ -46,6 +47,7 @@ class ServiceService extends BaseService
         $data = new Request([
             "slug" => Str::slug($request->title[app()->getLocale()]),
             "status" => $request->status,
+            "order" => $request->order,
             "category_id" => $request->category_id,
         ]);
 

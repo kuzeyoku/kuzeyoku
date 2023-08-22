@@ -6,6 +6,7 @@ return [
     "add" => "Ekle",
     "edit" => "Düzenle",
     "delete" => "Sil",
+    "order" => "Sıra",
     "status" => "Durum",
     "default" => "Varsayılan",
     "are_you_sure" => "Emin misiniz?",

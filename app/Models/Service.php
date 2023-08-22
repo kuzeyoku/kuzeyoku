@@ -12,6 +12,7 @@ class Service extends Model
 
     protected $fillable = [
         "status",
+        "order",
         "slug",
         "category_id",
         "image"

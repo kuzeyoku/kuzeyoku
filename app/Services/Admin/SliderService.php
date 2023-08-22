@@ -23,9 +23,9 @@ class SliderService extends BaseService
     public function create(Object $request)
     {
         $data = new Request([
-            "button_url" => $request->button_url,
-            "title_size" => $request->title_size,
-            "description_size" => $request->description_size,
+            "button" => $request->button,
+            "video" => $request->video,
+            "order" => $request->order,
             "status" => $request->status,
         ]);
 
@@ -46,9 +46,9 @@ class SliderService extends BaseService
     public function update(Object $request, Model $slider)
     {
         $data = new Request([
-            "button_url" => $request->button_url,
-            "title_size" => $request->title_size,
-            "description_size" => $request->description_size,
+            "button" => $request->button,
+            "video" => $request->video,
+            "order" => $request->order,
             "status" => $request->status,
         ]);
 

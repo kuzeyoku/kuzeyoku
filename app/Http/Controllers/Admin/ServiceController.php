@@ -18,7 +18,7 @@ class ServiceController extends Controller
         $this->authorizeResource(Service::class);
         $this->service = $service;
         view()->share([
-            "category" => $this->service->getCategories(ModuleEnum::Service),
+            "categories" => $this->service->getCategories(ModuleEnum::Service),
             "route" => $this->service->route(),
             "folder" => $this->service->folder()
         ]);

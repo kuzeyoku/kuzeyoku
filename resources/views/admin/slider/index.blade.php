@@ -18,16 +18,16 @@
                 @forelse ($items as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td><img class="table_image" src="{{ uploadFolder($folder, $item->image) }}"></td>
+                        <td><img class="table_image" src="{{ $item->getImageUrl() }}"></td>
                         <td>{{ $item->title[app()->getLocale()] ?? null }}</td>
                         <td>{{ $item->created_at->diffForHumans() }}</td>
                         <td>{{ $item->updated_at->diffForHumans() }}</td>
                         <td>{{ statusView($item->status) }}</td>
-                        <td>@include("admin.layout.action")</td>
+                        <td>@include('admin.layout.action')</td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6" class="text-center">{{ __('admin/general.table.no_data') }}</td>
+                        <td colspan="7" class="text-center">{{ __('admin/general.table.no_data') }}</td>
                     </tr>
                 @endforelse
             </tbody>
