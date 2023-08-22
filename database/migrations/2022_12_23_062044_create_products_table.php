@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer("price")->nullable();
             $table->string("currency")->nullable();
             $table->string("video", 255)->nullable();
+            $table->integer("order")->default(0);
             $table->enum("status", StatusEnum::getValues())->default(StatusEnum::Active->value);
             $table->integer("view_count")->default(0);
             $table->timestamps();

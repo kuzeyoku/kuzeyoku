@@ -48,7 +48,7 @@
             <div class="form-group">
                 {!! Form::label('order', __('admin/general.order')) !!} <span class="manitory">*</span>
                 {!! Form::number('order', $slider->order, [
-                    'placeholder' => __('admin/general.order'),
+                    'placeholder' => __('admin/general.order_placeholder'),
                 ]) !!}
             </div>
         </div>

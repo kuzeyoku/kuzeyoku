@@ -15,6 +15,7 @@ class Category extends Model
         'status',
         'module',
         'parent_id',
+        "order"
     ];
 
     protected $with = ["translate"];

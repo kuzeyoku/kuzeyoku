@@ -3,13 +3,33 @@
 @section('content')
     {!! Form::open(['route' => "admin.{$route}.store", 'method' => 'post', 'files' => true]) !!}
     {!! Form::file('image', ['class' => 'dropify']) !!}
-    <div class="form-group">
-        {!! Form::label('url', __("admin/{$folder}.form.url")) !!}
-        {!! Form::text('url', null, ['placeholder' => __("admin/{$folder}.form.url_placeholder")]) !!}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                {!! Form::label('title', __("admin/{$folder}.form.title")) !!}
+                {!! Form::text('title', null, ['placeholder' => __("admin/{$folder}.form.title_placeholder")]) !!}
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                {!! Form::label('url', __("admin/{$folder}.form.url")) !!}
+                {!! Form::text('url', null, ['placeholder' => __("admin/{$folder}.form.url_placeholder")]) !!}
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        {!! Form::label('status_', __('admin/general.status')) !!} <span class="manitory">*</span>
-        {!! Form::select('status', statusList(), 'default') !!}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                {!! Form::label('order', __('admin/general.order')) !!} <span class="manitory">*</span>
+                {!! Form::number('order', 0, ['placeholder' => __('admin/general.order')]) !!}
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                {!! Form::label('status_', __('admin/general.status')) !!} <span class="manitory">*</span>
+                {!! Form::select('status', statusList(), 'default') !!}
+            </div>
+        </div>
     </div>
     {!! Form::submit(__('admin/general.save'), ['class' => 'btn btn-primary']) !!}
     {!! Form::close() !!}

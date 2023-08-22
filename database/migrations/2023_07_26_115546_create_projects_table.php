@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date("end_date")->nullable();
             $table->string("video", 255)->nullable();
             $table->string("model3D", 255)->nullable();
+            $table->integer("order")->default(0);
             $table->enum("status", StatusEnum::getValues())->default(StatusEnum::Active->value);
             $table->timestamps();
         });

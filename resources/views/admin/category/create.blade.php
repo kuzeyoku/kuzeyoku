@@ -17,17 +17,33 @@
             </div>
         @endforeach
     </div>
-    <div class="form-group">
-        {!! Form::label('module', __("admin/{$folder}.form.module")) !!} <span class="manitory">*</span>
-        {!! Form::select('module', $modules, null) !!}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                {!! Form::label('module', __("admin/{$folder}.form.module")) !!} <span class="manitory">*</span>
+                {!! Form::select('module', $modules, null) !!}
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                {!! Form::label('parent', __("admin/{$folder}.form.parent")) !!}
+                {!! Form::select('parent', $categories, null) !!}
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        {!! Form::label('parent', __("admin/{$folder}.form.parent")) !!}
-        {!! Form::select('parent', $categories, null) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('status_', __('admin/general.status')) !!} <span class="manitory">*</span>
-        {!! Form::select('status', statusList(), 'default') !!}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                {!! Form::label('order', __('admin/general.order')) !!} <span class="manitory">*</span>
+                {!! Form::number('order', 0, ['placeholder' => __('admin/general.order_placeholder')]) !!}
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                {!! Form::label('status_', __('admin/general.status')) !!} <span class="manitory">*</span>
+                {!! Form::select('status', statusList(), 'default') !!}
+            </div>
+        </div>
     </div>
     {!! Form::submit(__('admin/general.save'), ['class' => 'btn btn-primary']) !!}
     {!! Form::close() !!}

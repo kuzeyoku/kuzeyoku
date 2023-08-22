@@ -16,6 +16,7 @@ class Project extends Model
         "model3D",
         "start_date",
         "end_date",
+        "order",
         "status"
     ];
 

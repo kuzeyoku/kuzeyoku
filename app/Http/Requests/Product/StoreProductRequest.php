@@ -28,6 +28,7 @@ class StoreProductRequest extends FormRequest
             "features.*" => "nullable",
             "price" => "nullable",
             "currency" => "nullable",
+            "order" => "required|numeric|min:0",
             "status" => "required",
             "category_id" => "nullable",
             "image" => "image|mimes:png,jpeg,jpg,gif|max:" . config("setting.image.max_size", 4096),
@@ -44,7 +45,8 @@ class StoreProductRequest extends FormRequest
             "features.*" => __("admin/{$this->folder}.form.features"),
             "price" => __("admin/{$this->folder}.form.price"),
             "currency" => __("admin/{$this->folder}.form.currency"),
-            "status" => __("admin/{$this->folder}.form.status"),
+            "order" => __("admin/general.order"),
+            "status" => __("admin/general.status"),
             "category_id" => __("admin/{$this->folder}.form.category"),
             "image" => __("admin/{$this->folder}.form.image"),
             "video" => __("admin/{$this->folder}.form.video")

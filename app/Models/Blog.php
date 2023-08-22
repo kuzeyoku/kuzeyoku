@@ -15,7 +15,8 @@ class Blog extends Model
         'status',
         'category_id',
         'user_id',
-        "image"
+        "image",
+        "order"
     ];
 
     protected $with = ["translate", "category"];
@@ -56,6 +57,4 @@ class Blog extends Model
             return $category ? $category->title[app()->getLocale()] : null;
         }
     }
-
-
 }

@@ -13,7 +13,7 @@ class ServiceTranslate extends Model
         "service_id",
         "lang",
         "title",
-        "content"
+        "description"
     ];
 
     public $timestamps = false;

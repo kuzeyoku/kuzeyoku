@@ -25,6 +25,7 @@ class StoreBlogRequest extends FormRequest
             "title." . app()->getLocale() => "required",
             "title.*" => "",
             "content.*" => "",
+            "order" => "required|numeric|min:0",
             "status" => "required",
             "category_id" => "",
             "image" => "image|mimes:jpeg,png,jpg,gif|max:" . config("setting.image.max_size", 4096)
@@ -38,6 +39,7 @@ class StoreBlogRequest extends FormRequest
             "content.*" => __("admin/{$this->folder}.form.content"),
             "category_id" => __("admin/{$this->folder}.form.category"),
             "image" => __("admin/{$this->folder}.form.image"),
+            "order" => __("admin/general.order"),
             "status" => __("admin/general.status")
         ];
     }

@@ -21,7 +21,9 @@ class BrandService extends BaseService
     public function create(Object $request)
     {
         $data = new Request([
-            "url" => $request->url ?? url("/"),
+            "url" => $request->url,
+            "title" => $request->title,
+            "order" => $request->order,
             "status" => $request->status
         ]);
 
@@ -35,7 +37,9 @@ class BrandService extends BaseService
     public function update(Object $request, Model $brand)
     {
         $data = new Request([
-            "url" => $request->url ?? url("/"),
+            "url" => $request->url,
+            "title" => $request->title,
+            "order" => $request->order,
             "status" => $request->status
         ]);
 

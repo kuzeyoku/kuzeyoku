@@ -192,8 +192,8 @@ enum ModuleEnum: string
     {
         return match ($this) {
             self::Blog => ["width" => 800, "height" => 600],
-            self::Service => ["width" => 400, "height" => 250],
-            self::Brand => ["width" => 400, "height" => 250],
+            self::Service => ["width" => 500, "height" => 500],
+            self::Brand => ["width" => 150, "height" => 50],
             self::Reference => ["width" => 400, "height" => 250],
             self::Product => ["width" => 800, "height" => 600],
             self::Project => ["width" => 800, "height" => 600],

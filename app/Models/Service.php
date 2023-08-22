@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ModuleEnum;
 use App\Models\ServiceTranslate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -32,10 +33,10 @@ class Service extends Model
         })->toArray();
     }
 
-    public function getContentAttribute()
+    public function getDescriptionAttribute()
     {
         return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
-            return [$key => $item->pluck('content')->first()];
+            return [$key => $item->pluck('description')->first()];
         })->toArray();
     }
 
@@ -50,5 +51,20 @@ class Service extends Model
             $category = Category::getCategory($this->category_id);
             return $category ? $category->title[app()->getLocale()] : null;
         }
+    }
+
+    public function getTitle()
+    {
+        return $this->title[app()->getLocale()];
+    }
+
+    public function getDescription()
+    {
+        return strip_tags($this->description[app()->getLocale()]);
+    }
+
+    public function getImageUrl()
+    {
+        return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Service->folder() . "/" . $this->image);
     }
 }

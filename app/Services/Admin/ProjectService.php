@@ -9,6 +9,7 @@ use App\Models\ProjectImage;
 use Illuminate\Http\Request;
 use App\Models\ProjectTranslate;
 use Illuminate\Database\Eloquent\Model;
+
 class ProjectService extends BaseService
 {
     protected $imageService;
@@ -30,6 +31,7 @@ class ProjectService extends BaseService
             "model3D" => $request->model3D,
             "start_date" => $request->start_date,
             "end_date" => $request->end_date,
+            "order" => $request->order
         ]);
 
         if (isset($request->image) && $request->image->isValid()) {
@@ -54,6 +56,7 @@ class ProjectService extends BaseService
             "model3D" => $request->model3D,
             "start_date" => $request->start_date,
             "end_date" => $request->end_date,
+            "order" => $request->order
         ]);
 
         if (isset($request->imageDelete)) {

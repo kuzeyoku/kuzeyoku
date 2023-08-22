@@ -24,7 +24,7 @@ class UpdateServiceRequest extends FormRequest
         return [
             "title." . app()->getLocale() => "required",
             "title.*" => "",
-            "content.*" => "",
+            "description.*" => "",
             "status" => "required",
             "order" => "required|numeric|min:0",
             "category_id" => "",
@@ -37,7 +37,7 @@ class UpdateServiceRequest extends FormRequest
     {
         return [
             "title." . app()->getLocale() => __("admin/{$this->folder}.form.title"),
-            "content.*" => __("admin/{$this->folder}.form.content"),
+            "description.*" => __("admin/{$this->folder}.form.description"),
             "category_id" => __("admin/{$this->folder}.form.category"),
             "image" => __("admin/{$this->folder}.form.image"),
             "status" => __("admin/general.status"),

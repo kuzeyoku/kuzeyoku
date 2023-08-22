@@ -410,6 +410,7 @@ $(document).ready(function () {
             document_base_url: "/",
             convert_urls: true,
             media_filter_html: false,
+            entity_encoding : "raw"
         });
     }
 

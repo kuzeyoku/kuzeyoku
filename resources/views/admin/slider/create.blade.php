@@ -38,7 +38,7 @@
         <div class="col-lg-6">
             <div class="form-group">
                 {!! Form::label('order', __('admin/general.order')) !!} <span class="manitory">*</span>
-                {!! Form::number('order', 0, ['placeholder' => __('admin/general.order')]) !!}
+                {!! Form::number('order', 0, ['placeholder' => __('admin/general.order_placeholder')]) !!}
             </div>
         </div>
         <div class="col-lg-6">

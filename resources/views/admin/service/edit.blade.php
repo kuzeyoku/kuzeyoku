@@ -5,7 +5,7 @@
     {!! Form::open(['url' => route("admin.{$route}.update", $service), 'method' => 'put', 'files' => true]) !!}
     {!! Form::file('image', [
         'class' => 'dropify',
-        'data-default-file' => uploadFolder($folder, $service->image),
+        'data-default-file' => $service->getImageUrl(),
     ]) !!}
     <div class="tab-content">
         @foreach (languageList() as $key => $lang)
@@ -17,8 +17,10 @@
                     ]) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('content', __("admin/{$folder}.form.content")) !!}
-                    {!! Form::textarea("content[$lang->code]", $service->content[$lang->code] ?? null, ['class' => 'editor']) !!}
+                    {!! Form::label('description', __("admin/{$folder}.form.description")) !!}
+                    {!! Form::textarea("description[$lang->code]", $service->description[$lang->code] ?? null, [
+                        'class' => 'editor',
+                    ]) !!}
                 </div>
             </div>
         @endforeach

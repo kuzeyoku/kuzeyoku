@@ -28,6 +28,7 @@ class UpdateCategoryRequest extends FormRequest
             "description.*" => "",
             "module" => [new Enum(ModuleEnum::class)],
             "parent" => "numeric",
+            "order" => "required|numeric|min:0",
             "status" => "required",
         ];
     }
@@ -39,6 +40,7 @@ class UpdateCategoryRequest extends FormRequest
             "description.*" => __("admin/{$this->folder}.form.description"),
             "module" => __("admin/{$this->folder}.form.module"),
             "parent" => __("admin/{$this->folder}.form.parent"),
+            "order" => __("admin/general.order"),
             "status" => __("admin/general.status")
         ];
     }

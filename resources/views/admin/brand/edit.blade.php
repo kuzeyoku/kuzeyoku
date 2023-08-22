@@ -4,15 +4,35 @@
     {!! Form::open(['url' => route("admin.{$route}.update", $brand), 'method' => 'put', 'files' => true]) !!}
     {!! Form::file('image', [
         'class' => 'dropify',
-        'data-default-file' => uploadFolder($folder, $brand->image),
+        'data-default-file' => $brand->getImageUrl(),
     ]) !!}
-    <div class="form-group">
-        {!! Form::label('url', __("admin/{$folder}.form.url")) !!}
-        {!! Form::text('url', $brand->url, ['placeholder' => "admin/{$folder}.form.url_placeholder"]) !!}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                {!! Form::label('title', __("admin/{$folder}.form.title")) !!}
+                {!! Form::text('title', $brand->title, ['placeholder' => __("admin/{$folder}.form.title_placeholder")]) !!}
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                {!! Form::label('url', __("admin/{$folder}.form.url")) !!}
+                {!! Form::text('url', $brand->url, ['placeholder' => __("admin/{$folder}.form.url_placeholder")]) !!}
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        {!! Form::label('status_', __('admin/general.status')) !!} <span class="manitory">*</span>
-        {!! Form::select('status', statusList(), $brand->status, ['class' => 'form-control']) !!}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                {!! Form::label('order', __('admin/general.order')) !!} <span class="manitory">*</span>
+                {!! Form::number('order', $brand->order) !!}
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                {!! Form::label('status_', __('admin/general.status')) !!} <span class="manitory">*</span>
+                {!! Form::select('status', statusList(), $brand->status) !!}
+            </div>
+        </div>
     </div>
     {!! Form::submit(__('admin/general.save'), ['class' => 'btn btn-primary']) !!}
     {!! Form::close() !!}

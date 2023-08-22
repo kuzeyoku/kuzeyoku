@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("slug", 255);
             $table->string("image", 30)->nullable();
             $table->integer("category_id")->default(0);
+            $table->integer("order")->default(0);
             $table->enum("status", StatusEnum::getValues())->default(StatusEnum::Active->value);
             $table->integer("view_count")->default(0);
             $table->foreignId("user_id")->constrained("users")->nullable();

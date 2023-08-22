@@ -58,9 +58,19 @@
         {!! Form::label('category', __("admin/{$folder}.form.category")) !!}
         {!! Form::select('category_id', $categories, $project->category_id) !!}
     </div>
-    <div class="form-group">
-        {!! Form::label('status_', __('admin/general.status')) !!} <span class="manitory">*</span>
-        {!! Form::select('status', statusList(), $project->status) !!}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                {!! Form::label('order', __('admin/general.order')) !!} <span class="manitory">*</span>
+                {!! Form::number('order', $project->order, ['placeholder' => __('admin/general.order_placeholder')]) !!}
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                {!! Form::label('status_', __('admin/general.status')) !!} <span class="manitory">*</span>
+                {!! Form::select('status', statusList(), $project->status) !!}
+            </div>
+        </div>
     </div>
     {!! Form::submit(__('admin/general.save'), ['class' => 'btn btn-primary']) !!}
     {!! Form::close() !!}

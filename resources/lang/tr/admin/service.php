@@ -19,7 +19,7 @@ return [
     //form
     "form.title" => "Hizmet Başlığı",
     "form.title_placeholder" => "Hizmet Başlığı Giriniz",
-    "form.content" => "Açıklama",
+    "form.description" => "Açıklama",
     "form.category" => "Kategori",
     "form.status" => "Durum",
     //table

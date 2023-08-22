@@ -24,6 +24,8 @@ class StoreBrandRequest extends FormRequest
         return [
             "image" => "required|image|mimes:jpeg,png,jpg,gif|max:" . config("setting.image.max_size", 4096),
             "url" => "nullable|active_url",
+            "title" => "nullable",
+            "order" => "required|numeric|min:0",
             "status" => "required"
         ];
     }
@@ -33,6 +35,8 @@ class StoreBrandRequest extends FormRequest
         return [
             "image" => __("admin/{$this->folder}.form.image"),
             "url" => __("admin/{$this->folder}.form.url"),
+            "title" => __("admin/{$this->folder}.form.title"),
+            "order" => __("admin/general.order"),
             "status" => __("admin/general.status")
         ];
     }

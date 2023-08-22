@@ -1,4 +1,4 @@
-<div class="testimonials-area carousel-shadow default-padding-bottom">
+<div class="testimonials-area carousel-shadow default-padding-bottom default-padding">
     <div class="container">
         <div class="heading-left">
             <div class="row">

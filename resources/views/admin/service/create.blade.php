@@ -12,8 +12,8 @@
                     {!! Form::text("title[$lang->code]", null, ['placeholder' => __("admin/{$folder}.form.title_placeholder")]) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('content', __("admin/{$folder}.form.content")) !!}
-                    {!! Form::textarea("content[$lang->code]", null, ['class' => 'editor']) !!}
+                    {!! Form::label('description', __("admin/{$folder}.form.description")) !!}
+                    {!! Form::textarea("description[$lang->code]", null, ['class' => 'editor']) !!}
                 </div>
             </div>
         @endforeach
@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('order', __('admin/general.order')) !!}
+                {!! Form::label('order', __('admin/general.order')) !!} <span class="manitory">*</span>
                 {!! Form::number('order', 0, ['placeholder' => __('admin/general.order_placeholder')]) !!}
             </div>
         </div>

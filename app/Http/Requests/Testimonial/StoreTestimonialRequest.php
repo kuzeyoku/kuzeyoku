@@ -28,6 +28,7 @@ class StoreTestimonialRequest extends FormRequest
             "company" => "nullable",
             "position" => "nullable",
             "message" => "required",
+            "order" => "required|numeric|min:0",
             "status" => "required",
         ];
     }
@@ -40,6 +41,7 @@ class StoreTestimonialRequest extends FormRequest
             "company" => __("admin/{$this->folder}.form.company"),
             "position" => __("admin/{$this->folder}.form.position"),
             "message" => __("admin/{$this->folder}.form.message"),
+            "order" => __("admin/general.order"),
             "status" => "admin.general.status",
         ];
     }

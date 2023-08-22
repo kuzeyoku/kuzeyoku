@@ -27,6 +27,7 @@ class TestimonialService extends BaseService
             "company" => $request->company,
             "position" => $request->position,
             "message" => $request->message,
+            "order" => $request->order,
             "status" => $request->status,
         ]);
 
@@ -44,6 +45,7 @@ class TestimonialService extends BaseService
             "company" => $request->company,
             "position" => $request->position,
             "message" => $request->message,
+            "order" => $request->order,
             "status" => $request->status
         ]);
 

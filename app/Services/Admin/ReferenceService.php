@@ -21,7 +21,8 @@ class ReferenceService extends BaseService
     public function create(Object $request)
     {
         $data = new Request([
-            "url" => $request->url ?? url("/"),
+            "url" => $request->url,
+            "order" => $request->order,
             "status" => $request->status
         ]);
         if (isset($request->image) && $request->image->isValid()) {
@@ -34,7 +35,8 @@ class ReferenceService extends BaseService
     public function update(Object $request, Model $reference)
     {
         $data = new Request([
-            "url" => $request->url ?? url("/"),
+            "url" => $request->url,
+            "order" => $request->order,
             "status" => $request->status
         ]);
 

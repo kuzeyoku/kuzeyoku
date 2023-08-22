@@ -18,6 +18,7 @@ class Product extends Model
         "video",
         "price",
         "currency",
+        "order"
     ];
 
     protected $with = ["translate", "images"];

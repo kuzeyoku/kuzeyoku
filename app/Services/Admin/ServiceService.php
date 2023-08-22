@@ -75,7 +75,7 @@ class ServiceService extends BaseService
     {
         $languages = languageList();
         foreach ($languages as $language) {
-            if (!empty($request->title[$language->code]) || !empty($request->content[$language->code])) {
+            if (!empty($request->title[$language->code]) || !empty($request->description[$language->code])) {
                 ServiceTranslate::updateOrCreate(
                     [
                         "service_id" => $serviceId,
@@ -83,7 +83,7 @@ class ServiceService extends BaseService
                     ],
                     [
                         "title" => $request->title[$language->code] ?? null,
-                        "content" => $request->content[$language->code] ?? null
+                        "description" => $request->description[$language->code] ?? null
                     ]
                 );
             }

@@ -16,14 +16,9 @@
     @include('layout.about')
     <!-- End About Area -->
 
-    <!-- Start Technology Area
-            ============================================= -->
-    @include('layout.technology')
-    <!-- End Technology Area -->
-
     <!-- Start Fun Factor Area
             ============================================= -->
-    @include('layout.counter')
+
     <!-- End Fun Factor Area -->
 
     <!-- Start Case Studies Area
@@ -36,10 +31,7 @@
     @include('layout.testimonial')
     <!-- End Testimonials Area -->
 
-    <!-- Start Pricing Area
-            ============================================= -->
-    @include('layout.pricing')
-    <!-- End Pricing Area -->
+    @include('layout.counter')
 
     <!-- Start Contact Area
             ============================================= -->

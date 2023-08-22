@@ -24,6 +24,7 @@ class ProductService extends BaseService
     {
         $data = new Request([
             "slug" => Str::slug($request->title[app()->getLocale()]),
+            "order" => $request->order,
             "status" => $request->status,
             "category_id" => $request->category_id,
             "video" => $request->video,
@@ -48,6 +49,7 @@ class ProductService extends BaseService
     {
         $data = new Request([
             "slug" => Str::slug($request->title[app()->getLocale()]),
+            "order" => $request->order,
             "status" => $request->status,
             "category_id" => $request->category_id,
             "video" => $request->video,

@@ -24,6 +24,7 @@ class BlogService extends BaseService
     {
         $data = new Request([
             "slug" => Str::slug($request->title[app()->getLocale()]),
+            "order" => $request->order,
             "status" => $request->status,
             "category_id" => $request->category_id,
             "user_id" => auth()->user()->id
@@ -46,6 +47,7 @@ class BlogService extends BaseService
     {
         $data = new Request([
             "slug" => Str::slug($request->title[app()->getLocale()]),
+            "order" => $request->order,
             "status" => $request->status,
             "category_id" => $request->category_id,
         ]);

@@ -10,6 +10,6 @@ class Reference extends Model
     use HasFactory;
 
     protected $fillable = [
-        "url", "image", "status"
+        "url", "image", "status", "order"
     ];
 }

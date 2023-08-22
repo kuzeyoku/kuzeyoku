@@ -1,4 +1,4 @@
-<div class="contact-area bg-gray half-bg default-padding-bottom">
+<div class="contact-area bg-gray half-bg default-padding">
     <div class="container">
         <div class="contact-box">
             <div class="row">

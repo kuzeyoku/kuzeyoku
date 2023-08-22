@@ -22,6 +22,7 @@ class CategoryService extends BaseService
     {
         $data = new Request([
             "slug" => Str::slug($request->title[app()->getLocale()]),
+            "order" => $request->order,
             "status" => $request->status,
             "parent_id" => $request->parent,
         ]);
@@ -50,6 +51,7 @@ class CategoryService extends BaseService
     {
         $data = new Request([
             "slug" => Str::slug($request->title[app()->getLocale()]),
+            "order" => $request->order,
             "status" => $request->status,
             "parent_id" => $request->parent,
         ]);

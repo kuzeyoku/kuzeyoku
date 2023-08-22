@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('image', 30)->nullable();
             $table->string('title')->nullable();
             $table->string('url')->nullable();
+            $table->integer("order")->default(0);
             $table->enum("status", StatusEnum::getValues())->default(StatusEnum::Active->value);
             $table->timestamps();
         });

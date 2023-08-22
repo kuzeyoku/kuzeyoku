@@ -3,12 +3,12 @@
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
                 <div class="site-heading text-center">
-                    <h5>Our Blog</h5>
-                    <h2 class="area-title">Latest News & Articles <br> Directly from Blog</h2>
+                    {{-- <h5>Our Blog</h5> --}}
+                    <h2 class="area-title">Bizden Haberler ve Blog</h2>
                     <div class="devider"></div>
                     <p>
-                        Outlived no dwelling denoting in peculiar as he believed. Behaviour excellent middleton be
-                        as it curiosity departure ourselves very extreme future.
+                        Gündeme dair haberleri, çalışmalarımızda kullandığımız teknolojiler ve konular hakkında bilgi
+                        paylaşımında bulunduğumuz bloğumuz.
                     </p>
                 </div>
             </div>
