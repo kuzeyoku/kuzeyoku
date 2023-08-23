@@ -15,7 +15,7 @@ return [
     'delete_log' => 'Bir Blog Konusu Silindi - :title',
     'form.title' => 'İçerik Başlığı',
     'form.title_placeholder' => 'İçerik Başlığı Giriniz',
-    'form.content' => 'Açıklama',
+    'form.description' => 'Açıklama',
     'form.category' => 'Kategori',
     'form.status' => 'Durum',
     'table.title' => 'İçerik Başlığı',

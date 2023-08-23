@@ -17,8 +17,8 @@
                     ]) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('content', __("admin/{$folder}.form.content")) !!}
-                    {!! Form::textarea("content[$lang->code]", $blog->content[$lang->code] ?? null) !!}
+                    {!! Form::label('description', __("admin/{$folder}.form.description")) !!}
+                    {!! Form::textarea("description[$lang->code]", $blog->description[$lang->code] ?? null) !!}
                 </div>
             </div>
         @endforeach

@@ -13,7 +13,7 @@ class BlogTranslate extends Model
         'post_id',
         'lang',
         'title',
-        'content'
+        'description'
     ];
 
     public $timestamps = false;

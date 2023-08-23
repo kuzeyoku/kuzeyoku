@@ -2,6 +2,6 @@
 
 namespace App\Policies;
 
-class TestimonialPolicy
+class TestimonialPolicy extends BasePolicy
 {
 }

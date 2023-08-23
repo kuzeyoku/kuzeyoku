@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Enums\ModuleEnum;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Project extends Model
 {
@@ -71,5 +72,41 @@ class Project extends Model
             $category = Category::getCategory($this->category_id);
             return $category ? $category->title[app()->getLocale()] : null;
         }
+    }
+
+    public function getTitle()
+    {
+        if (array_key_exists(app()->getLocale(), $this->title)) {
+            return $this->title[app()->getLocale()];
+        }
+        return null;
+    }
+
+    public function getDescription()
+    {
+        if (array_key_exists(app()->getLocale(), $this->description)) {
+            return $this->description[app()->getLocale()];
+        }
+        return null;
+    }
+
+    public function getFeatures()
+    {
+        if (array_key_exists(app()->getLocale(), $this->features)) {
+            return $this->features[app()->getLocale()];
+        }
+        return null;
+    }
+
+    public function getImages()
+    {
+        return $this->images->map(function ($item) {
+            return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Project->folder() . "/" . $item->image);
+        });
+    }
+
+    public function getImageUrl()
+    {
+        return $this->image ? asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Project->folder() . "/" . $this->image) : null;
     }
 }

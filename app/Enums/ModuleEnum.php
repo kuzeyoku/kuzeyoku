@@ -198,7 +198,7 @@ enum ModuleEnum: string
             self::Product => ["width" => 800, "height" => 600],
             self::Project => ["width" => 800, "height" => 600],
             self::Slider => ["width" => 1920, "height" => 1080],
-            self::Testimonial => ["width" => 100, "height" => 100],
+            self::Testimonial => ["width" => 300, "height" => 300],
             self::Popup => ["width" => 800, "height" => 600],
         };
     }

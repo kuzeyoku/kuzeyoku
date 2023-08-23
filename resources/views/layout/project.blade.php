@@ -22,15 +22,14 @@
             @foreach ($projects as $project)
                 <div class="item">
                     <div class="thumb">
-                        <img src="assets/img/portfolio/1.jpg" alt="Thumb">
+                        <img src="{{ $project->getImageUrl() }}" alt="Thumb">
                     </div>
                     <div class="info">
                         <div class="tags">
-                            <a href="#">Networking</a> /
-                            <a href="#">Technology</a>
+                            <a href="#">{{ $project->category }}</a>
                         </div>
                         <h4>
-                            <a href="#">Cyber Security</a>
+                            <a href="#">{{ $project->getTitle() }}</a>
                         </h4>
                     </div>
                 </div>
