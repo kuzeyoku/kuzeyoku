@@ -10,7 +10,7 @@
                         <div class="info">
                             <h5>Office Location</h5>
                             <p>
-                                22 Baker Street, London, <br>United Kingdom, W1U 3BW
+                                {{ config("setting.contact.address") }}
                             </p>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                         <div class="info">
                             <h5>Phone</h5>
                             <p>
-                                +44-20-7328-4499 <br>+99-34-8878-9989
+                                {{ config("setting.contact.phone") }}
                             </p>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                         <div class="info">
                             <h5>Email</h5>
                             <p>
-                                info@yourdomain.com <br>admin@yourdomain.com
+                                {{ config("setting.contact.email") }}
                             </p>
                         </div>
                     </div>
@@ -40,8 +40,8 @@
                 <div class="col-lg-6 offset-lg-1">
                     <div class="content">
                         <div class="heading">
-                            <h2>Need Help?</h2>
-                            <p>Reach out to the world’s most reliable IT services.</p>
+                            <h2>Nasıl Yardımcı Olabiliriz ?</h2>
+                            <p>Hizmetlerimiz Hakkında Bilgi Almak İçin İletişime Geçin</p>
                         </div>
                         <form action="assets/mail/contact.php" method="POST" class="contact-form">
                             <div class="row">

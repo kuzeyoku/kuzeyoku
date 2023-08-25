@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use App\Enums\ModuleEnum;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Enums\StatusEnum;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Slider extends Model
 {
@@ -24,6 +25,16 @@ class Slider extends Model
     public function translate()
     {
         return $this->hasMany(SliderTranslate::class);
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->whereStatus(StatusEnum::Active->value);
+    }
+
+    public function scopeOrder($query)
+    {
+        return $query->orderBy("order");
     }
 
     public function getTitleAttribute()

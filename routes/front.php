@@ -12,6 +12,6 @@ Route::get("/sitemap.xml", [App\Http\Controllers\SitemapController::class, "inde
 Route::get("/page/{page}/{slug}", [App\Http\Controllers\PageController::class, "show"])->name("page.show");
 
 Route::get("/blog", [App\Http\Controllers\BlogController::class, "index"])->name("blog.index");
-Route::get("/post/{post}/{slug}", [App\Http\Controllers\BlogController::class, "show"])->name("post.show");
+Route::get("/blog/{post}/{slug}", [App\Http\Controllers\BlogController::class, "show"])->name("blog.show");
 
 Route::get("/category/{category}/{slug}", [App\Http\Controllers\CategoryController::class, "show"])->name("category.show");

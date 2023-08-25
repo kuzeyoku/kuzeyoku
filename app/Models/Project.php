@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ModuleEnum;
+use App\Enums\StatusEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -31,6 +32,16 @@ class Project extends Model
     public function images()
     {
         return $this->hasMany(ProjectImage::class);
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->whereStatus(StatusEnum::Active->value);
+    }
+
+    public function scopeOrder($query)
+    {
+        return $query->orderBy("order");
     }
 
     public function getTitleAttribute()

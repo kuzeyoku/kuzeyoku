@@ -1796,7 +1796,7 @@ header.ofcanvas-nav .logo-responsive {
      # Bradcrumb
 =================================================================== */
 .breadcrumb-area {
-    padding: 150px 0;
+    padding: 200px 200px 100px 200px;
 }
 
 .breadcrumb-area .breadcrumb {

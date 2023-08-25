@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use App\Enums\ModuleEnum;
+use App\Enums\StatusEnum;
 use App\Models\ServiceTranslate;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Service extends Model
 {
@@ -24,6 +25,16 @@ class Service extends Model
     public function translate()
     {
         return $this->hasMany(ServiceTranslate::class);
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->whereStatus(StatusEnum::Active->value);
+    }
+
+    public function scopeOrder($query)
+    {
+        return $query->orderBy("order");
     }
 
     public function getTitleAttribute()
@@ -55,12 +66,16 @@ class Service extends Model
 
     public function getTitle()
     {
-        return $this->title[app()->getLocale()];
+        if (array_key_exists(app()->getLocale(), $this->title))
+            return $this->title[app()->getLocale()];
+        return null;
     }
 
     public function getDescription()
     {
-        return strip_tags($this->description[app()->getLocale()]);
+        if (array_key_exists(app()->getLocale(), $this->description))
+            return strip_tags($this->description[app()->getLocale()]);
+        return null;
     }
 
     public function getImageUrl()
