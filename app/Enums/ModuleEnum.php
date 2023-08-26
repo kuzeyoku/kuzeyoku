@@ -4,8 +4,8 @@ namespace App\Enums;
 
 enum ModuleEnum: string
 {
-    case User = "user";
     case Message = "message";
+    case Menu = "menu";
     case Page = 'page';
     case Language = 'language';
     case Blog = "blog";
@@ -18,6 +18,7 @@ enum ModuleEnum: string
     case Slider = "slider";
     case Testimonial = "testimonial";
     case Popup = "popup";
+    case User = "user";
 
     public function title(): string
     {
@@ -29,6 +30,7 @@ enum ModuleEnum: string
         return match ($this) {
             self::User => "ri-user-3-fill",
             self::Message => "ri-mail-send-line",
+            self::Menu => "ri-menu-fill",
             self::Page => 'ri-pages-fill',
             self::Language => 'ri-translate',
             self::Blog => "ri-newspaper-fill",
@@ -49,8 +51,30 @@ enum ModuleEnum: string
         return match ($this) {
             self::User => "user",
             self::Message => "message",
+            self::Menu => "menu",
             self::Page => 'page',
             self::Language => 'language',
+            self::Blog => "blog",
+            self::Category => "category",
+            self::Service => "service",
+            self::Brand => "brand",
+            self::Reference => "reference",
+            self::Product => "product",
+            self::Project => "project",
+            self::Slider => "slider",
+            self::Testimonial => "testimonial",
+            self::Popup => "popup",
+        };
+    }
+
+    public function folder(): string
+    {
+        return match ($this) {
+            self::User => "user",
+            self::Message => "message",
+            self::Menu => "menu",
+            self::Page => 'page',
+            self::Language => "language",
             self::Blog => "blog",
             self::Category => "category",
             self::Service => "service",
@@ -69,6 +93,7 @@ enum ModuleEnum: string
         return match ($this) {
             self::User => \App\Http\Controllers\Admin\UserController::class,
             self::Message => \App\Http\Controllers\Admin\MessageController::class,
+            self::Menu => \App\Http\Controllers\Admin\MenuController::class,
             self::Page => \App\Http\Controllers\Admin\PageController::class,
             self::Language => \App\Http\Controllers\Admin\LanguageController::class,
             self::Blog => \App\Http\Controllers\Admin\BlogController::class,
@@ -87,73 +112,65 @@ enum ModuleEnum: string
     public function menu(): array
     {
         return match ($this) {
-            self::User => [
-                "index" => __("admin/$this->value.index"),
-                "create" => __("admin/$this->value.create"),
-                "list" => __("admin/$this->value.list"),
-            ],
+
             self::Message => [
                 "index" => __("admin/$this->value.index"),
             ],
-            self::Page => [
-                "index" => __("admin/$this->value.index"),
+            self::User => [
                 "create" => __("admin/$this->value.create"),
-                "list" => __("admin/$this->value.list")
+                "index" => __("admin/$this->value.list"),
+            ],
+            self::Menu => [
+                "header" => __("admin/$this->value.header_title"),
+                "footer" => __("admin/$this->value.footer_title"),
+            ],
+            self::Page => [
+                "create" => __("admin/$this->value.create"),
+                "index" => __("admin/$this->value.list"),
             ],
             self::Language => [
-                "index" => __("admin/$this->value.index"),
                 "create" => __("admin/$this->value.create"),
-                "list" => __("admin/$this->value.list")
+                "index" => __("admin/$this->value.list"),
             ],
             self::Blog => [
-                "index" => __("admin/$this->value.index"),
                 "create" => __("admin/$this->value.create"),
-                "list" => __("admin/$this->value.list")
+                "index" => __("admin/$this->value.list"),
             ],
             self::Category => [
-                "index" => __("admin/$this->value.index"),
                 "create" => __("admin/$this->value.create"),
-                "list" => __("admin/$this->value.list")
+                "index" => __("admin/$this->value.list"),
             ],
             self::Service => [
-                "index" => __("admin/$this->value.index"),
                 "create" => __("admin/$this->value.create"),
-                "list" => __("admin/$this->value.list")
+                "index" => __("admin/$this->value.list"),
             ],
             self::Brand => [
-                "index" => __("admin/$this->value.index"),
                 "create" => __("admin/$this->value.create"),
-                "list" => __("admin/$this->value.list")
+                "index" => __("admin/$this->value.list"),
             ],
             self::Reference => [
-                "index" => __("admin/$this->value.index"),
                 "create" => __("admin/$this->value.create"),
-                "list" => __("admin/$this->value.list")
+                "index" => __("admin/$this->value.list"),
             ],
             self::Product => [
-                "index" => __("admin/$this->value.index"),
                 "create" => __("admin/$this->value.create"),
-                "list" => __("admin/$this->value.list")
+                "index" => __("admin/$this->value.list"),
             ],
             self::Project => [
-                "index" => __("admin/$this->value.index"),
                 "create" => __("admin/$this->value.create"),
-                "list" => __("admin/$this->value.list")
+                "index" => __("admin/$this->value.list"),
             ],
             self::Slider => [
-                "index" => __("admin/$this->value.index"),
                 "create" => __("admin/$this->value.create"),
-                "list" => __("admin/$this->value.list")
+                "index" => __("admin/$this->value.list"),
             ],
             self::Testimonial => [
-                "index" => __("admin/$this->value.index"),
                 "create" => __("admin/$this->value.create"),
-                "list" => __("admin/$this->value.list"),
+                "index" => __("admin/$this->value.list"),
             ],
             self::Popup => [
-                "index" => __("admin/$this->value.index"),
                 "create" => __("admin/$this->value.create"),
-                "list" => __("admin/$this->value.list"),
+                "index" => __("admin/$this->value.list"),
             ],
         };
     }
@@ -166,26 +183,6 @@ enum ModuleEnum: string
             self::Product->value => self::Product->title(),
             self::Project->value => self::Project->title(),
         ];
-    }
-
-    public function folder(): string
-    {
-        return match ($this) {
-            self::User => "user",
-            self::Message => "message",
-            self::Page => 'page',
-            self::Language => "language",
-            self::Blog => "blog",
-            self::Category => "category",
-            self::Service => "service",
-            self::Brand => "brand",
-            self::Reference => "reference",
-            self::Product => "product",
-            self::Project => "project",
-            self::Slider => "slider",
-            self::Testimonial => "testimonial",
-            self::Popup => "popup",
-        };
     }
 
     public function image(): array

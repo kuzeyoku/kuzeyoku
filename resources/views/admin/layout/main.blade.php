@@ -15,6 +15,7 @@
     <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
 
 </head>
+
 <body>
     <div class="main-wrapper">
         @include('admin.layout.header')
@@ -33,7 +34,6 @@
                                 </div>
                             @endforeach
                         @endif
-
                         <div class="card">
                             <div class="card-header d-flex flex-row justify-content-between">
                                 <h3 class="card-title">@yield('pageTitle')</h3>

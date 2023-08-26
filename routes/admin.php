@@ -12,10 +12,22 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Admin Dashboard Route
         Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('index');
 
+        // Resource Routes
+        foreach (App\Enums\ModuleEnum::cases() as $module) {
+            //Route::resource($module->route(), $module->controller())->except('show')->names($module->route());
+            Route::resource($module->route(), $module->controller())->names($module->route());
+        }
+
         // Setting Routes
         Route::controller(App\Http\Controllers\Admin\SettingController::class)->prefix('setting')->group(function () {
             Route::get('/', 'index')->name('setting');
             Route::put('/update', 'update')->name('setting.update');
+        });
+
+        // Menu Routes
+        Route::controller(App\Http\Controllers\Admin\MenuController::class)->prefix('menu')->group(function () {
+            Route::get('/header', 'header')->name('menu.header');
+            Route::get('/footer', 'footer')->name('menu.footer');
         });
 
         //Message Routes
@@ -26,12 +38,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post("/sendReply", "sendReply")->name("message.sendReply");
             Route::delete("/{message}/destroy", "destroy")->name("message.destroy");
         });
-
-        // Resource Routes
-        foreach (App\Enums\ModuleEnum::cases() as $module) {
-            //Route::resource($module->route(), $module->controller())->except('show')->names($module->route());
-            Route::resource($module->route(), $module->controller())->names($module->route());
-        }
 
         // Other Routes
         Route::post('editor/upload')->uses("App\Http\Controllers\Admin\EditorController@upload")->name("editor.upload");
