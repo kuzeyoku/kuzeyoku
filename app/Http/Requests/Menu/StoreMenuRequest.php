@@ -2,31 +2,31 @@
 
 namespace App\Http\Requests\Menu;
 
+use App\Enums\ModuleEnum;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreMenuRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
-     */
+    protected $folder;
+
+    public function __construct()
+    {
+        $this->folder = ModuleEnum::Menu->folder();
+    }
+
     public function rules(): array
     {
         return [
-            "title." . app()->getLoacale() => "required",
+            "title." . app()->getLocale() => "required",
             "title.*" => "",
             "url" => "nullable|url",
             "type" => "required|in:header,footer",
-            "parent_id" => "required|numeric",
+            "parent_id" => "numeric",
             "order" => "required|numeric|min:0",
         ];
     }
@@ -38,8 +38,8 @@ class StoreMenuRequest extends FormRequest
             "title.*" => __("admin/{$this->folder}.form.title"),
             "url" => __("admin/{$this->folder}.form.url"),
             "type" => __("admin/{$this->folder}.form.type"),
-            "parent_id" => __("admin/{$this->folder}.form.parent_id"),
-            "order" => __("admin/general.form.order"),
+            "parent_id" => __("admin/{$this->folder}.form.parent"),
+            "order" => __("admin/general.order"),
         ];
     }
 }

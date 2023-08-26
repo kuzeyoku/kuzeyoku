@@ -12,12 +12,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Admin Dashboard Route
         Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('index');
 
-        // Resource Routes
-        foreach (App\Enums\ModuleEnum::cases() as $module) {
-            //Route::resource($module->route(), $module->controller())->except('show')->names($module->route());
-            Route::resource($module->route(), $module->controller())->names($module->route());
-        }
-
         // Setting Routes
         Route::controller(App\Http\Controllers\Admin\SettingController::class)->prefix('setting')->group(function () {
             Route::get('/', 'index')->name('setting');
@@ -64,5 +58,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::delete("/{image}/imagedelete", "imageDelete")->name("project.image.delete");
             Route::delete("/{project}/imagealldelete", "imageAllDelete")->name("project.image.alldelete");
         });
+
+        // Resource Routes
+        foreach (App\Enums\ModuleEnum::cases() as $module) {
+            //Route::resource($module->route(), $module->controller())->except('show')->names($module->route());
+            Route::resource($module->route(), $module->controller())->names($module->route());
+        }
     });
 });

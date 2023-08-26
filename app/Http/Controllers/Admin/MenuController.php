@@ -32,16 +32,18 @@ class MenuController extends Controller
     {
         $this->authorize("index", Menu::class);
         $type = "header";
-        $parentList = Menu::toSelectArray($type);
-        return view('admin.menu.index', compact('type', "parentList"));
+        $parentList = [0 => __("admin/general.select")];
+        $parentList = array_merge($parentList, Menu::toSelectArray($type));
+        return view("admin.{$this->service->folder()}.index", compact('type', "parentList"));
     }
 
     public function footer()
     {
         $this->authorize("index", Menu::class);
         $type = "footer";
-        $parentList = Menu::toSelectArray($type);
-        return view('admin.menu.index', compact('type', "parentList"));
+        $parentList = [0 => __("admin/general.select")];
+        $parentList = array_merge($parentList, Menu::toSelectArray($type));
+        return view("admin.{$this->service->folder()}.index", compact('type', "parentList"));
     }
 
     public function edit()
@@ -50,7 +52,7 @@ class MenuController extends Controller
 
     public function store(StoreMenuRequest $request)
     {
-        dd($request->all());
+        $this->authorize("store", Menu::class);
         try {
             $this->service->create((object)$request->all());
             LogController::logger("info", __("admin/{$this->service->folder()}.create_log", ["title" => $request->title[app()->getLocale()]]));

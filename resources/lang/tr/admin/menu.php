@@ -1,6 +1,9 @@
 <?php
 return [
     "title" => "Menü Yönetimi",
+    "create" => "Menü Ekle",
+    "edit" => "Menü Düzenle",
+    "content" => "Menü İçeriği",
     "header_title" => "Header Menü",
     "footer_title" => "Footer Menü",
     "form.title" => "Başlık",
