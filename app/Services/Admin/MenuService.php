@@ -5,6 +5,8 @@ namespace App\Services\Admin;
 use App\Models\Menu;
 use App\Enums\ModuleEnum;
 use Illuminate\Http\Request;
+use App\Models\MenuTranslate;
+use Illuminate\Database\Eloquent\Model;
 
 class MenuService extends BaseService
 {
@@ -22,12 +24,52 @@ class MenuService extends BaseService
             "type" => $request->type,
             "parent_id" => $request->parent_id,
             "order" => $request->order,
+            "blank" => $request->blank ?? false,
         ]);
 
         $query = parent::create($data);
 
         if ($query->id) {
-            //$this->translations($query->id, $request);
+            $this->translations($query->id, $request);
+        }
+
+        return $query;
+    }
+
+    public function update(Object $request, Model $menu)
+    {
+        $data = new Request([
+            "url" => $request->url,
+            "type" => $request->type,
+            "parent_id" => $request->parent_id,
+            "order" => $request->order,
+            "blank" => $request->blank ?? false,
+        ]);
+
+        $query = parent::update($data, $menu);
+
+        if ($query) {
+            $this->translations($menu->id, $request);
+        }
+
+        return $query;
+    }
+
+    public function translations(int $pageId, Object $request)
+    {
+        $languages = languageList();
+        foreach ($languages as $language) {
+            if (!empty($request->title[$language->code])) {
+                MenuTranslate::updateOrCreate(
+                    [
+                        "menu_id" => $pageId,
+                        "lang" => $language->code
+                    ],
+                    [
+                        "title" => $request->title[$language->code] ?? null,
+                    ]
+                );
+            }
         }
     }
 }

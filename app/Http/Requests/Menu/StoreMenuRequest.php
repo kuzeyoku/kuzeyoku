@@ -28,6 +28,7 @@ class StoreMenuRequest extends FormRequest
             "type" => "required|in:header,footer",
             "parent_id" => "numeric",
             "order" => "required|numeric|min:0",
+            "blank" => "nullable|boolean",
         ];
     }
 
@@ -40,6 +41,7 @@ class StoreMenuRequest extends FormRequest
             "type" => __("admin/{$this->folder}.form.type"),
             "parent_id" => __("admin/{$this->folder}.form.parent"),
             "order" => __("admin/general.order"),
+            "blank" => __("admin/{$this->folder}.form.blank"),
         ];
     }
 }

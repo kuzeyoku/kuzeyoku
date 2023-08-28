@@ -14,17 +14,47 @@ class Menu extends Model
         "type",
         "parent_id",
         "order",
+        "blank",
     ];
 
     public $timestamps = false;
 
+    protected $with = ["translate"];
+
+    public function scopeOrder($query)
+    {
+        return $query->orderBy("order");
+    }
+
+    public function getSubMenu()
+    {
+        return $this->whereParentId($this->id)->order()->get();
+    }
+
+    public function translate()
+    {
+        return $this->hasMany(MenuTranslate::class);
+    }
+
+    public function getTitleAttribute()
+    {
+        return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
+            return [$key => $item->pluck('title')->first()];
+        })->toArray();
+    }
+
+    public function getTitle()
+    {
+        if (array_key_exists(app()->getLocale(), $this->title)) {
+            return $this->title[app()->getLocale()];
+        }
+        return null;
+    }
+
     public static function toSelectArray($type)
     {
-        return array_map(function ($item) {
-            return [
-                "id" => $item->id,
-                "title" => $item->title,
-            ];
-        }, Menu::whereType($type)->get()->toArray());
+        return self::whereType($type)->get()->mapWithKeys(function ($item) {
+            return [$item->id => $item->title[app()->getLocale()]];
+        })->toArray();
     }
 }

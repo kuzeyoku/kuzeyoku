@@ -9108,3 +9108,23 @@ td label {
     padding: 0 !important;
     padding-left: 10px !important;
 }
+
+.menu li {
+    padding: 10px;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.menu .parent {
+    background-color: #ff9f43;
+    color: #fff;
+}
+
+.menu .submenu {
+    margin-left: 20px;
+}
+
+.menu .submenu svg {
+    width: 20px;
+}

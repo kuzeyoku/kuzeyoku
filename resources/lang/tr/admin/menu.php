@@ -6,6 +6,12 @@ return [
     "content" => "Menü İçeriği",
     "header_title" => "Header Menü",
     "footer_title" => "Footer Menü",
+    "create_success" => "Menü başarıyla eklendi.",
+    "create_error" => "Menü eklenirken bir hata oluştu.",
+    "update_success" => "Menü başarıyla güncellendi.",
+    "update_error" => "Menü güncellenirken bir hata oluştu.",
+    "delete_success" => "Menü başarıyla silindi.",
+    "delete_error" => "Menü silinirken bir hata oluştu.",
     "form.title" => "Başlık",
     "form.title_placeholder" => "Başlık Giriniz",
     "form.url" => "Url",
@@ -13,4 +19,5 @@ return [
     "form.parent" => "Üst Menü",
     "form.order" => "Sıra",
     "form.order_placeholder" => "Sıra Giriniz",
+    "form.blank" => "Yeni Sekmede Aç",
 ];

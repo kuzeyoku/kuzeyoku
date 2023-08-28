@@ -33,6 +33,13 @@
                         {!! Form::label('parent', __("admin/{$folder}.form.parent")) !!}
                         {!! Form::select('parent_id', $parentList) !!}
                     </div>
+                    <div class="form-group">
+                        <label class="inputcheck">
+                            {!! Form::label('blank', __("admin/{$folder}.form.blank")) !!}
+                            {!! Form::checkbox('blank', true, false) !!}
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
                     {!! Form::hidden('type', $type) !!}
                     {!! Form::submit(__('admin/general.save'), ['class' => 'btn btn-primary']) !!}
                     {!! Form::close() !!}
@@ -43,6 +50,22 @@
             <div class="card">
                 <div class="card-header">
                     {{ __("admin/{$folder}.content") }}
+                </div>
+                <div class="card-body">
+                    <div class="menu">
+                        <ul>
+                            @foreach ($menus as $menu)
+                                @if ($menu->parent_id == 0)
+                                    <li class="parent">{{ $menu->getTitle() }}
+                                        <span class="badge bg-lightgreen">{{ $menu->url ? '->' . $menu->url : '' }}</span>
+                                    </li>
+                                    @if ($menu->getSubMenu())
+                                        @include("admin.{$folder}.subMenus")
+                                    @endif
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

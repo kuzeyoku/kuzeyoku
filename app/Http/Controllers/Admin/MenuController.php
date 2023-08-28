@@ -28,22 +28,22 @@ class MenuController extends Controller
     {
     }
 
-    public function header()
+    public function header($type = "header")
     {
         $this->authorize("index", Menu::class);
-        $type = "header";
+        $menus = Menu::whereType($type)->order()->get();
         $parentList = [0 => __("admin/general.select")];
         $parentList = array_merge($parentList, Menu::toSelectArray($type));
-        return view("admin.{$this->service->folder()}.index", compact('type', "parentList"));
+        return view("admin.{$this->service->folder()}.index", compact('menus', 'type', "parentList"));
     }
 
-    public function footer()
+    public function footer($type = "footer")
     {
         $this->authorize("index", Menu::class);
-        $type = "footer";
+        $menus = Menu::whereType($type)->order()->get();
         $parentList = [0 => __("admin/general.select")];
         $parentList = array_merge($parentList, Menu::toSelectArray($type));
-        return view("admin.{$this->service->folder()}.index", compact('type', "parentList"));
+        return view("admin.{$this->service->folder()}.index", compact('menus', 'type', "parentList"));
     }
 
     public function edit()
@@ -57,7 +57,7 @@ class MenuController extends Controller
             $this->service->create((object)$request->all());
             LogController::logger("info", __("admin/{$this->service->folder()}.create_log", ["title" => $request->title[app()->getLocale()]]));
             return redirect()
-                ->route("admin.{$this->service->route()}.index")
+                ->route("admin.{$this->service->route()}.$request->type")
                 ->withSuccess(__("admin/{$this->service->folder()}.create_success"));
         } catch (Exception $e) {
             LogController::logger("error", $e->getMessage());
