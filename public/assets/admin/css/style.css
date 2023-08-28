@@ -9084,6 +9084,7 @@ td label {
     width: 20px;
     color: #fff;
 }
+
 .error-log-list,
 .info-log-list {
     max-height: 440px;
@@ -9127,4 +9128,12 @@ td label {
 
 .menu .submenu svg {
     width: 20px;
+}
+
+.menu .parent .btn svg {
+    color: #fff;
+}
+
+.menu .btn svg {
+    color: #212529;
 }

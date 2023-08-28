@@ -9,40 +9,11 @@
                 </div>
                 <div class="card-body">
                     @include('admin.layout.langTabs')
-                    {!! Form::open(['route' => "admin.{$route}.store", 'method' => 'post']) !!}
-                    <div class="tab-content">
-                        @foreach (languageList() as $key => $lang)
-                            <div id="{{ $lang->code }}"
-                                class="tab-pane fade @if ($loop->first) active show @endif">
-                                <div class="form-group">
-                                    {!! Form::label('title', __("admin/{$folder}.form.title")) !!} <span class="manitory">*</span>
-                                    {!! Form::text("title[$lang->code]", null, ['placeholder' => __("admin/{$folder}.form.title_placeholder")]) !!}
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('url', __("admin/{$folder}.form.url")) !!}
-                        {!! Form::text('url', null, ['placeholder' => __("admin/{$folder}.form.url_placeholder")]) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('order', __("admin/{$folder}.form.order")) !!}
-                        {!! Form::number('order', 0, ['placeholder' => __("admin/{$folder}.form.order_placeholder")]) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('parent', __("admin/{$folder}.form.parent")) !!}
-                        {!! Form::select('parent_id', $parentList) !!}
-                    </div>
-                    <div class="form-group">
-                        <label class="inputcheck">
-                            {!! Form::label('blank', __("admin/{$folder}.form.blank")) !!}
-                            {!! Form::checkbox('blank', true, false) !!}
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                    {!! Form::hidden('type', $type) !!}
-                    {!! Form::submit(__('admin/general.save'), ['class' => 'btn btn-primary']) !!}
-                    {!! Form::close() !!}
+                    @if (!empty($menu))
+                        @include("admin.{$folder}.edit_form")
+                    @else
+                        @include("admin.{$folder}.create_form")
+                    @endif
                 </div>
             </div>
         </div>
@@ -56,8 +27,18 @@
                         <ul>
                             @foreach ($menus as $menu)
                                 @if ($menu->parent_id == 0)
-                                    <li class="parent">{{ $menu->getTitle() }}
-                                        <span class="badge bg-lightgreen">{{ $menu->url ? '->' . $menu->url : '' }}</span>
+                                    <li class="parent d-flex flex-row justify-content-between">
+                                        <div>
+                                            <a class="text-white" href="{{ $menu->url ?? "/" }}">{{ $menu->getTitle() }}</a>
+                                        </div>
+                                        <div>
+                                            <a href="{{ route("admin.{$folder}.edit", $menu) }}" class="btn btn-sm p-0">
+                                                @svg('ri-edit-2-line')
+                                            </a>
+                                            <button class="btn btn-sm p-0">
+                                                @svg('ri-close-line')
+                                            </button>
+                                        </div>
                                     </li>
                                     @if ($menu->getSubMenu())
                                         @include("admin.{$folder}.subMenus")
