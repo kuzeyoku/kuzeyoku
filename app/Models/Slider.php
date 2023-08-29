@@ -53,12 +53,18 @@ class Slider extends Model
 
     public function getTitle()
     {
-        return $this->title[app()->getLocale()];
+        if (array_key_exists(app()->getLocale(), $this->title)) {
+            return $this->title[app()->getLocale()];
+        }
+        return null;
     }
 
     public function getDescription()
     {
-        return $this->description[app()->getLocale()];
+        if (array_key_exists(app()->getLocale(), $this->description)) {
+            return $this->description[app()->getLocale()];
+        }
+        return null;
     }
 
     public function getImageUrl()

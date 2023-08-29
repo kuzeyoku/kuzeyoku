@@ -19,21 +19,21 @@ class Menu extends Model
 
     public $timestamps = false;
 
-    protected $with = ["translate"];
+    protected $with = ["translate", "subMenu"];
 
     public function scopeOrder($query)
     {
         return $query->orderBy("order");
     }
 
-    public function getSubMenu()
-    {
-        return $this->whereParentId($this->id)->order()->get();
-    }
-
     public function translate()
     {
         return $this->hasMany(MenuTranslate::class);
+    }
+
+    public function subMenu()
+    {
+        return $this->hasMany(Menu::class, "parent_id");
     }
 
     public function getTitleAttribute()

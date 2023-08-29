@@ -14,4 +14,9 @@ Route::get("/sitemap.xml", [App\Http\Controllers\SitemapController::class, "inde
 Route::get("/blog", [App\Http\Controllers\BlogController::class, "index"])->name("blog.index");
 Route::get("/blog/{post}/{slug}", [App\Http\Controllers\BlogController::class, "show"])->name("blog.show");
 
+Route::controller(App\Http\Controllers\ServiceController::class)->prefix("service")->group(function () {
+    Route::get("/", "index")->name("service.index");
+    Route::get("/{service}/{slug}", "show")->name("service.show");
+});
+
 //Route::get("/category/{category}/{slug}", [App\Http\Controllers\CategoryController::class, "show"])->name("category.show");

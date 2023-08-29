@@ -171,6 +171,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         App\Providers\SettingProvider::class,
+        App\Providers\MenuProvider::class,
 
     ])->toArray(),
 

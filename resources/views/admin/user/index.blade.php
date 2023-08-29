@@ -7,7 +7,7 @@
                 <tr>
                     <th>#ID</th>
                     <th>{{ __("admin/{$folder}.table.name") }}</th>
-                    <th>{{ __('admin/general.table.role') }}</th>
+                    <th>{{ __("admin/{$folder}.table.role") }}</th>
                     <th>{{ __('admin/general.table.created_at') }}</th>
                     <th>{{ __('admin/general.table.updated_at') }}</th>
                     <th>{{ __('admin/general.table.action') }}</th>

@@ -82,4 +82,9 @@ class Service extends Model
     {
         return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Service->folder() . "/" . $this->image);
     }
+
+    public static function getOther(int $id, int $limit)
+    {
+        return Service::active()->where("id", "!=", $id)->limit($limit)->get();
+    }
 }

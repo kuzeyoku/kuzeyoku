@@ -20,7 +20,7 @@
                     <div class="single-item col-lg-3 col-md-6">
                         <div class="item">
                             <img src="{{ $service->getImageUrl() }}" alt="Thumb">
-                            <h5><a href="services-3.html">{{ $service->getTitle() }}</a></h5>
+                            <h5><a href="{{ route('service.show', [$service, $service->slug]) }}">{{ $service->getTitle() }}</a></h5>
                             <p>
                                 {{ Str::limit($service->getDescription(), 90, '...') }}
                             </p>
@@ -30,7 +30,8 @@
             </div>
             <div class="bottom-content text-center">
                 <p>
-                    Bazı işler için fazla para ve zaman harcamayı bırakın <a href="#">Diğer hizmetlerimize göz atın.</a>
+                    Bazı işler için fazla para ve zaman harcamayı bırakın <a href="{{ route('service.index') }}">Diğer
+                        hizmetlerimize göz atın.</a>
                 </p>
             </div>
         </div>

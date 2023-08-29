@@ -24,9 +24,9 @@ class StoreMenuRequest extends FormRequest
         return [
             "title." . app()->getLocale() => "required",
             "title.*" => "",
-            "url" => "nullable|url",
+            "url" => "nullable",
             "type" => "required|in:header,footer",
-            "parent_id" => "numeric",
+            "parent_id" => "numeric|min:0|nullable",
             "order" => "required|numeric|min:0",
             "blank" => "nullable|boolean",
         ];

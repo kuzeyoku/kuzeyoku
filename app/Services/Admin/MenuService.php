@@ -22,7 +22,7 @@ class MenuService extends BaseService
         $data = new Request([
             "url" => $request->url,
             "type" => $request->type,
-            "parent_id" => $request->parent_id,
+            "parent_id" => $request->parent_id ?? 0,
             "order" => $request->order,
             "blank" => $request->blank ?? false,
         ]);
@@ -41,7 +41,7 @@ class MenuService extends BaseService
         $data = new Request([
             "url" => $request->url,
             "type" => $request->type,
-            "parent_id" => $request->parent_id,
+            "parent_id" => $request->parent_id ?? 0,
             "order" => $request->order,
             "blank" => $request->blank ?? false,
         ]);
@@ -52,6 +52,16 @@ class MenuService extends BaseService
             $this->translations($menu->id, $request);
         }
 
+        return $query;
+    }
+
+    public function delete(Model $menu)
+    {
+        $query = parent::delete($menu);
+
+        if ($query) {
+            Menu::whereParentId($menu->id)->delete();
+        }
         return $query;
     }
 

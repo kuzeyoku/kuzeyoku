@@ -22,7 +22,26 @@ class UpdateMenuRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "title." . app()->getLocale() => "required",
+            "title.*" => "",
+            "url" => "nullable",
+            "type" => "required|in:header,footer",
+            "parent_id" => "numeric|min:0|nullable",
+            "order" => "required|numeric|min:0",
+            "blank" => "nullable|boolean",
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            "title." . app()->getLocale() => __("admin/{$this->folder}.form.title"),
+            "title.*" => __("admin/{$this->folder}.form.title"),
+            "url" => __("admin/{$this->folder}.form.url"),
+            "type" => __("admin/{$this->folder}.form.type"),
+            "parent_id" => __("admin/{$this->folder}.form.parent"),
+            "order" => __("admin/general.order"),
+            "blank" => __("admin/{$this->folder}.form.blank"),
         ];
     }
 }

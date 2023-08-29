@@ -11,5 +11,6 @@ return [
     "form.password" => "Şifre",
     "form.password_placeholder" => "Şifre Giriniz",
     "form.role" => "Rolü",
-
+    "table.name" => "Adı",
+    "table.role" => "Rolü",
 ];

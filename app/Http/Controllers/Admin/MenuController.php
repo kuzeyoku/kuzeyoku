@@ -16,7 +16,7 @@ class MenuController extends Controller
 
     public function __construct(MenuService $service)
     {
-        $this->authorizeResource("menu", Menu::class);
+        $this->authorizeResource(Menu::class);
         $this->service = $service;
         view()->share([
             'route' => $this->service->route(),
@@ -37,8 +37,7 @@ class MenuController extends Controller
     public function renderMenuView($type, $menu)
     {
         $menus = Menu::whereType($type)->order()->get();
-        $parentList = [0 => __("admin/general.select")];
-        $parentList = array_merge($parentList, Menu::toSelectArray($type));
+        $parentList = Menu::toSelectArray($type);
         return view("admin.{$this->service->folder()}.index", compact('menus', 'type', "parentList", "menu"));
     }
 
@@ -81,6 +80,21 @@ class MenuController extends Controller
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.update_error"));
+        }
+    }
+
+    public function destroy(Menu $menu)
+    {
+        try {
+            $this->service->delete($menu);
+            LogController::logger("info", __("admin/{$this->service->folder()}.delete_log", ["title" => $menu->title[app()->getLocale()]]));
+            return redirect()
+                ->route("admin.{$this->service->route()}.$menu->type")
+                ->withSuccess(__("admin/{$this->service->folder()}.delete_success"));
+        } catch (Exception $e) {
+            LogController::logger("error", $e->getMessage());
+            return back()
+                ->withError(__("admin/{$this->service->folder()}.delete_error"));
         }
     }
 }

@@ -147,7 +147,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <p>Copyright &copy; 2021. Designed by <a href="#">ValidThemes.com</a></p>
+                    <p>Copyright &copy; {{ date('Y') }}. Designed by <a href="#">Babazan Software</a></p>
                 </div>
             </div>
         </div>

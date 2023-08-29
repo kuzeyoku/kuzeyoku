@@ -4575,9 +4575,6 @@ body,
     padding-left: 35px;
 }
 
-.choose-us-area .info {
-    margin-top: -50px;
-}
 
 .choose-us-area .thumb .content {
     position: absolute;
@@ -4688,7 +4685,7 @@ body,
     margin-top: 25px;
     padding-top: 25px;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .choose-us-area .info .contact p,

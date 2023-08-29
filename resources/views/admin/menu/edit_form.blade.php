@@ -21,7 +21,7 @@
 </div>
 <div class="form-group">
     {!! Form::label('parent', __("admin/{$folder}.form.parent")) !!}
-    {!! Form::select('parent_id', $parentList, $menu->parent_id) !!}
+    {!! Form::select('parent_id', $parentList, $menu->parent_id, ['placeholder' => __('admin/general.select')]) !!}
 </div>
 <div class="form-group">
     <label class="inputcheck">

@@ -5,7 +5,7 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">
-                    {{ __("admin/{$folder}.create") }}
+                    {{ $menu ? __("admin/{$folder}.edit") : __("admin/{$folder}.create") }}
                 </div>
                 <div class="card-body">
                     @include('admin.layout.langTabs')
@@ -29,18 +29,24 @@
                                 @if ($menu->parent_id == 0)
                                     <li class="parent d-flex flex-row justify-content-between">
                                         <div>
-                                            <a class="text-white" href="{{ $menu->url ?? "/" }}">{{ $menu->getTitle() }}</a>
+                                            <a class="text-white" href="{{ $menu->url ?? '/' }}">{{ $menu->getTitle() }}</a>
                                         </div>
                                         <div>
                                             <a href="{{ route("admin.{$folder}.edit", $menu) }}" class="btn btn-sm p-0">
                                                 @svg('ri-edit-2-line')
                                             </a>
-                                            <button class="btn btn-sm p-0">
+                                            {!! Form::open([
+                                                'url' => route("admin.{$route}.destroy", $menu),
+                                                'method' => 'delete',
+                                                'class' => 'd-inline',
+                                            ]) !!}
+                                            <button type="button" class="btn btn-sm p-0 destroy-btn">
                                                 @svg('ri-close-line')
                                             </button>
+                                            {!! Form::close() !!}
                                         </div>
                                     </li>
-                                    @if ($menu->getSubMenu())
+                                    @if ($menu->subMenu)
                                         @include("admin.{$folder}.subMenus")
                                     @endif
                                 @endif
