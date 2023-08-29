@@ -25,9 +25,9 @@
                                 <h5><a
                                         href="{{ route('service.show', [$service, $service->slug]) }}">{{ $service->getTitle() }}</a>
                                 </h5>
-                                <p>
-                                    {{ Str::limit($service->getDescription(), 90, '...') }}
-                                </p>
+                                {{-- <p>
+                                    {{ Str::limit($service->getDescription(true), 90, '...') }}
+                                </p> --}}
                             </div>
                         </div>
                     @endforeach

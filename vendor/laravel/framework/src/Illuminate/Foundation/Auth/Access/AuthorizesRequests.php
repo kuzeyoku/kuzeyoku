@@ -116,8 +116,10 @@ trait AuthorizesRequests
             'edit' => 'edit',
             'update' => 'update',
             'destroy' => 'destroy',
+            "image" => "image",
+            "imageStore" => "imageStore",
             "imageDelete" => "imageDelete",
-            "imageAllDelete" => "imageAllDelete",
+            "imageAllDelete" => "imageAllDelete"
         ];
     }
 

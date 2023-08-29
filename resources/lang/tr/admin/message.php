@@ -1,6 +1,7 @@
 <?php
 return [
     "title" => "Mesaj Yönetimi",
+    "list" => "Mesaj Listesi",
     "show" => "Mesaj Görüntüle",
     "reply" => "Mesajı Yanıtla",
     "email" => "E-Mail:",

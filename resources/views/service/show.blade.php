@@ -61,7 +61,7 @@
                         <img src="{{ $service->getImageUrl() }}" alt="{{ $service->getTitle() }}">
                         <h2>{{ $service->getTitle() }}</h2>
                         <p>
-                            {{ $service->getDescription() }}
+                            {!! $service->getDescription() !!}
                         </p>
                     </div>
                 </div>

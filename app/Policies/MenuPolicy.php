@@ -4,4 +4,5 @@ namespace App\Policies;
 
 class MenuPolicy extends BasePolicy
 {
+
 }

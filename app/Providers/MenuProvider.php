@@ -20,11 +20,18 @@ class MenuProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        view()->composer('layout.header', function ($view) {
-            $view->with('headerMenu', Menu::whereType('header')->order()->get());
+        $headerMenu = cache()->rememberForever('headerMenu', function () {
+            return Menu::whereType("header")->order()->get();
         });
-        view()->composer('layout.footer', function ($view) {
-            $view->with('footerMenu', Menu::whereType('footer')->order()->get());
+        $footerMenu = cache()->rememberForever('footerMenu', function () {
+            return Menu::whereType('footer')->order()->get();
+        });
+
+        view()->composer('layout.header', function ($view) use ($headerMenu) {
+            $view->with('headerMenu', $headerMenu);
+        });
+        view()->composer('layout.footer', function ($view) use ($footerMenu) {
+            $view->with('footerMenu', $footerMenu);
         });
     }
 }

@@ -36,31 +36,45 @@
                     <div class="f-item about">
                         <img src="assets/img/logo-light.png" alt="Logo">
                         <p>
-                            Happen active county. Winding for the morning am shyness evident to poor. Garrets
-                            because elderly new.
+                            {{ config('setting.general.description') }}
                         </p>
                         <div class="social">
                             <ul>
-                                <li>
-                                    <a href="#">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fab fa-linkedin-in"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </li>
+                                @if (config('setting.social.facebook'))
+                                    <li>
+                                        <a href="{{ config('setting.social.facebook') }}">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                @endif
+                                @if (config('setting.social.twitter'))
+                                    <li>
+                                        <a href="{{ config('setting.social.twitter') }}">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                @endif
+                                @if (config('setting.social.linkedin'))
+                                    <li>
+                                        <a href="{{ config('setting.social.linkedin') }}">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                @endif
+                                @if (config('setting.social.instagram'))
+                                    <li>
+                                        <a href="{{ config('setting.social.instagram') }}">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                @endif
+                                @if (config('setting.social.youtube'))
+                                    <li>
+                                        <a href="{{ config('setting.social.youtube') }}">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -118,16 +132,16 @@
 
                 <div class="col-lg-4 col-md-6 item">
                     <div class="f-item">
-                        <h4 class="widget-title">Get In Touch</h4>
+                        <h4 class="widget-title">İletişim Bilgilerimiz</h4>
                         <div class="address">
                             <ul>
                                 <li>
                                     <strong>Address:</strong>
-                                    5919 Trussville Crossings Pkwy, Birmingham AL 35235
+                                    {{ config('setting.contact.address') }}
                                 </li>
                                 <li>
                                     <strong>Email:</strong>
-                                    <a href="mailto:info@validtheme.com">info@validtheme.com</a>
+                                    <a href="mailto:{{ config('setting.contact.email') }}">{{ config('setting.contact.email') }}</a>
                                 </li>
                             </ul>
                         </div>

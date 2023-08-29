@@ -21,9 +21,10 @@ class Menu extends Model
 
     protected $with = ["translate", "subMenu"];
 
+
     public function scopeOrder($query)
     {
-        return $query->orderBy("order");
+        return $query->orderBy("order", "asc");
     }
 
     public function translate()

@@ -12,11 +12,12 @@
                 </li>
 
                 @foreach (App\Enums\ModuleEnum::cases() as $module)
-                    <li class="submenu">
-                        @if (count($module->menu()) == 1)
-                            <a
+                    @if (count($module->menu()) == 1)
+                        <li><a
                                 href="{{ route("admin.{$module->route()}.index") }}">@svg($module->icon())<span>{{ $module->title() }}</span></a>
-                        @else
+                        </li>
+                    @else
+                        <li class="submenu">
                             <a href="javascript:void(0);">
                                 @svg($module->icon())
                                 <span>{{ $module->title() }}</span>
@@ -33,8 +34,8 @@
                                     </li>
                                 @endforeach
                             </ul>
-                        @endif
-                    </li>
+                        </li>
+                    @endif
                 @endforeach
 
             </ul>

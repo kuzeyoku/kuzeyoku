@@ -25,14 +25,12 @@
                         <td>{{ statusView($item->status) }}</td>
                         <td>
                             <a class="btn btn-show" href="{{ route("admin.{$route}.show", $item) }}">@svg('ri-eye-line')</a>
-                            <button data-id="{{ $item->id }}"
-                                class="btn btn-delete destroy-btn">@svg('ri-delete-bin-2-line')</button>
                             {!! Form::open([
                                 'url' => route("admin.{$route}.destroy", $item),
                                 'method' => 'delete',
                                 'class' => 'd-inline',
-                                'id' => 'form_' . $item->id,
                             ]) !!}
+                            <button type="button" class="btn btn-delete destroy-btn">@svg('ri-close-line')</button>
                             {!! Form::close() !!}
                         </td>
                     </tr>

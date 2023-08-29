@@ -17,6 +17,7 @@ Route::get("/blog/{post}/{slug}", [App\Http\Controllers\BlogController::class, "
 Route::controller(App\Http\Controllers\ServiceController::class)->prefix("service")->group(function () {
     Route::get("/", "index")->name("service.index");
     Route::get("/{service}/{slug}", "show")->name("service.show");
+    Route::get("/{category}", "category")->name("service.category");
 });
 
 //Route::get("/category/{category}/{slug}", [App\Http\Controllers\CategoryController::class, "show"])->name("category.show");

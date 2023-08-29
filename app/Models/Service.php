@@ -71,10 +71,10 @@ class Service extends Model
         return null;
     }
 
-    public function getDescription()
+    public function getDescription($strip = false)
     {
         if (array_key_exists(app()->getLocale(), $this->description))
-            return strip_tags($this->description[app()->getLocale()]);
+            return $strip ? strip_tags($this->description[app()->getLocale()]) : $this->description[app()->getLocale()];
         return null;
     }
 

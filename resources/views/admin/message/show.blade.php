@@ -1,7 +1,7 @@
 @extends('admin.layout.main')
 @section('pageTitle', __("admin/{$folder}.show"))
 @section('content')
-    <img class="avatar-sm" src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/512/user-male-icon.png">
+    <img class="avatar-sm" src="{{ asset('assets/admin/img/avatar.png') }}">
     <div>{{ $message->name }}</div>
     <small class="text-muted">
         {{ __("admin/{$folder}.email") }} {{ $message->email }} |
@@ -15,13 +15,11 @@
     <a class="btn btn-primary" href="{{ route("admin.{$route}.reply", $message) }}">
         @svg('ri-reply-fill') {{ __("admin/{$folder}.reply") }}
     </a>
-    <button class="btn btn-danger destroy-btn" data-id="{{ $message->id }}">
-        @svg('ri-delete-bin-2-fill') {{ __('admin/general.delete') }}
-    </button>
     {!! Form::open([
         'url' => route("admin.{$route}.destroy", $message),
         'method' => 'delete',
-        'id' => 'form_' . $message->id,
+        'class' => 'd-inline',
     ]) !!}
+    <button type="button" class="btn btn-delete destroy-btn">@svg('ri-close-line') {{ __('admin/general.delete') }}</button>
     {!! Form::close() !!}
 @endsection
