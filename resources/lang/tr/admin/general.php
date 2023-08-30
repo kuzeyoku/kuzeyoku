@@ -1,6 +1,9 @@
 <?php
 return [
     "home" => "Anasayfa",
+    "gofront" => "Siteye Git",
+    "logout" => "Çıkış Yap",
+    "cacheclear" => "Önbelleği Temizle",
     "save" => "Kaydet",
     "saveAndContinue" => "Kaydet ve Devam Et",
     "add" => "Ekle",

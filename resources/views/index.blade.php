@@ -1,40 +1,31 @@
 @extends('layout.main')
 @section('title', config('setting.general.title'))
 @section('content')
-    <!-- Start Banner
-                ============================================= -->
-    @include('layout.slider')
-    <!-- End Banner -->
 
-    <!-- Star Services Area
-                ============================================= -->
-    @include('layout.service')
-    <!-- End Services Area -->
+    @if ($sliders->count() > 0)
+        @include('layout.slider')
+    @endif
 
-    <!-- Start About Area
-                ============================================= -->
+    @if ($services->count() > 0)
+        @include('layout.service')
+    @endif
+
     @include('layout.about')
-    <!-- End About Area -->
 
-    <!-- Start Case Studies Area
-                ============================================= -->
-    @include('layout.project')
-    <!-- End Case Studies Area -->
+    @if ($projects->count() > 0)
+        @include('layout.project')
+    @endif
 
-    <!-- Start Testimonials Area
-                ============================================= -->
-    @include('layout.testimonial')
-    <!-- End Testimonials Area -->
+    @if ($testimonials->count() > 0)
+        @include('layout.testimonial')
+    @endif
 
     @include('layout.counter')
 
-    <!-- Start Contact Area
-                ============================================= -->
     @include('layout.contact', ['half' => true])
-    <!-- End Contact Area -->
 
-    <!-- Start Blog Area
-                ============================================= -->
-    @include('layout.blog')
-    <!-- End Blog Area Area -->
+    @if ($blogs->count() > 0)
+        @include('layout.blog')
+    @endif
+
 @endsection

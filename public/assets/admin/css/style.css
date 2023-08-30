@@ -4090,6 +4090,7 @@ hr {
 
 .dropdown-toggle svg {
     width: 20px;
+    margin-right: 5px;
     color: #000;
 }
 

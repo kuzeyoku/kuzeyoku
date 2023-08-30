@@ -55,8 +55,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::controller(App\Http\Controllers\Admin\ProjectController::class)->prefix("project")->group(function () {
             Route::get("/{project}/image", "image")->name("project.image");
             Route::post("/imageStore", "imageStore")->name("project.imageStore");
-            Route::delete("/{image}/imagedelete", "imageDelete")->name("project.image.delete");
-            Route::delete("/{project}/imagealldelete", "imageAllDelete")->name("project.image.alldelete");
+            Route::delete("/{image}/imageDelete", "imageDelete")->name("project.imageDelete");
+            Route::delete("/{project}/imageAllDelete", "imageAllDelete")->name("project.imageAllDelete");
         });
 
         // Resource Routes

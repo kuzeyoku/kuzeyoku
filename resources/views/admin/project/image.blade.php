@@ -2,7 +2,7 @@
 @section('pageTitle', __("admin/{$folder}.images") . ' - ' . $project->title[app()->getLocale()])
 @section('button')
     {!! Form::open([
-        'url' => route("admin.{$route}.image.alldelete", $project),
+        'url' => route("admin.{$route}.imageAllDelete", $project),
         'method' => 'delete',
         'class' => 'd-inline',
     ]) !!}
@@ -24,7 +24,7 @@
                 <div class="p-2 border rounded position-relative mb-4">
                     <img src="{{ uploadFolder($folder, $image->image) }}" class="img-fluid">
                     {!! Form::open([
-                        'url' => route("admin.{$route}.image.delete", $image),
+                        'url' => route("admin.{$route}.imageDelete", $image),
                         'method' => 'delete',
                         'class' => 'd-inline',
                     ]) !!}

@@ -130,6 +130,6 @@ trait AuthorizesRequests
      */
     protected function resourceMethodsWithoutModels()
     {
-        return ['index', 'create', 'store'];
+        return ['index', 'create', 'store', "imageStore", "imageDelete", "imageAllDelete"];
     }
 }

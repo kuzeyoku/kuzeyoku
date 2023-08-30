@@ -1,13 +1,13 @@
 <div class="header">
     <div class="header-left active">
         <a href="{{ route('admin.index') }}" class="logo logo-normal">
-            <img src="{{ asset('assets/admin/img/logo.png') }}" alt="">
+            <img src="{{ asset('assets/admin/img/logo.png') }}">
         </a>
         <a href="{{ route('admin.index') }}" class="logo logo-white">
-            <img src="{{ asset('assets/admin/img/logo-white.png') }}" alt="">
+            <img src="{{ asset('assets/admin/img/logo-white.png') }}">
         </a>
         <a href="{{ route('admin.index') }}" class="logo-small">
-            <img src="{{ asset('assets/admin/img/logo-small.png') }}" alt="">
+            <img src="{{ asset('assets/admin/img/logo-small.png') }}">
         </a>
         <a id="toggle_btn" href="javascript:void(0);">
         </a>
@@ -23,8 +23,18 @@
 
     <ul class="nav user-menu">
         <li class="nav-item dropdown has-arrow main-drop">
+            <a href="{{ route("admin.cache-clear") }}" class="dropdown-toggle nav-link userset">
+                @svg('ri-brush-3-line') {{ __('admin/general.cacheclear') }}
+            </a>
+        </li>
+        <li class="nav-item dropdown has-arrow main-drop">
+            <a href="{{ url('/') }}" class="dropdown-toggle nav-link userset blank">
+                @svg('ri-global-fill') {{ __('admin/general.gofront') }}
+            </a>
+        </li>
+        <li class="nav-item dropdown has-arrow main-drop">
             <a href="{{ route('admin.auth.logout') }}" class="dropdown-toggle nav-link userset">
-                @svg('ri-door-open-fill')
+                @svg('ri-door-open-fill') {{ __('admin/general.logout') }}
             </a>
         </li>
     </ul>

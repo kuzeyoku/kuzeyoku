@@ -1,19 +1,7 @@
 @extends('layout.main')
 @section('title', 'Hizmetlerimiz')
 @section('content')
-    <div class="breadcrumb-area text-center shadow dark bg-fixed text-light"
-        style="background-image: url({{ asset('assets/img/banner/11.jpg') }});">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>Hizmetlerimiz</h2>
-                    <ul class="breadcrumb">
-                        <li><a href="{{ url('/') }}"><i class="fas fa-home"></i> Ana Sayfa</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('layout.breadcrumb')
     <div class="services-area default-padding">
         <div class="container">
             <div class="services-content text-center">

@@ -1,4 +1,9 @@
 $(document).ready(function () {
+    $("a.blank").on("click", function () {
+        window.open(this.href);
+        return false;
+    });
+
     var $wrapper = $(".main-wrapper");
     var $slimScrolls = $(".slimscroll");
     feather.replace();
@@ -29,6 +34,7 @@ $(document).ready(function () {
     $(document).on("click", ".delete-set", function () {
         $(this).parent().parent().hide();
     });
+
     if ($(".product-slide").length > 0) {
         $(".product-slide").owlCarousel({
             items: 1,
@@ -410,7 +416,7 @@ $(document).ready(function () {
             document_base_url: "/",
             convert_urls: true,
             media_filter_html: false,
-            entity_encoding : "raw"
+            entity_encoding: "raw",
         });
     }
 
