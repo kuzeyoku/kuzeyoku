@@ -87,4 +87,9 @@ class Service extends Model
     {
         return Service::active()->where("id", "!=", $id)->limit($limit)->get();
     }
+
+    public function getUrl()
+    {
+        return route(ModuleEnum::Service->route() . ".show", [$this, $this->slug]);
+    }
 }

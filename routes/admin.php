@@ -47,14 +47,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::controller(App\Http\Controllers\Admin\ProductController::class)->prefix("product")->group(function () {
             // Route::get("/{project}", "show")->name("product.show");
             Route::get("/{product}/image", "image")->name("product.image");
-            Route::post("/image/store", "imageStore")->name("product.image.store");
+            Route::post("/imageStore", "imageStore")->name("product.imageStore");
             Route::delete("/{image}/imagedelete", "imageDelete")->name("product.image.delete");
             Route::delete("/{product}/imagealldelete", "imageAllDelete")->name("product.image.alldelete");
         });
 
         Route::controller(App\Http\Controllers\Admin\ProjectController::class)->prefix("project")->group(function () {
             Route::get("/{project}/image", "image")->name("project.image");
-            Route::post("/image/store", "imageStore")->name("project.image.store");
+            Route::post("/imageStore", "imageStore")->name("project.imageStore");
             Route::delete("/{image}/imagedelete", "imageDelete")->name("project.image.delete");
             Route::delete("/{project}/imagealldelete", "imageAllDelete")->name("project.image.alldelete");
         });

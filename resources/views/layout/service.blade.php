@@ -20,7 +20,7 @@
                     <div class="single-item col-lg-3 col-md-6">
                         <div class="item">
                             <img src="{{ $service->getImageUrl() }}" alt="Thumb">
-                            <h5><a href="{{ route('service.show', [$service, $service->slug]) }}">{{ $service->getTitle() }}</a></h5>
+                            <h5><a href="{{ $service->getUrl() }}">{{ $service->getTitle() }}</a></h5>
                             {{-- <p>
                                 {!! Str::limit($service->getDescription(true), 90, '...') !!}
                             </p> --}}

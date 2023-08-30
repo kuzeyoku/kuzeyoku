@@ -31,14 +31,9 @@ class ProjectController extends Controller
         return view("admin.{$this->service->folder()}.index", compact("items"));
     }
 
-    public function show(Project $project)
-    {
-        return view("admin/{$this->service->folder()}/show", compact("project"));
-    }
-
     public function image(Project $project)
     {
-        return view("admin/{$this->service->folder()}/image", compact("project"));
+        return view("admin/{$this->service->folder()}.image", compact("project"));
     }
 
     public function imageStore(ImageProjectRequest $request): object

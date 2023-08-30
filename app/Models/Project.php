@@ -67,11 +67,13 @@ class Project extends Model
 
     public function getFeaturesList()
     {
-        $featuresLine = explode("\r\n", $this->features[app()->getLocale()]);
+        $featuresLine = explode("\r\n", trim($this->features[app()->getLocale()]));
+        $featuresLine = array_filter($featuresLine, function ($item) {
+            return !empty($item);
+        });
         $result = [];
-
         array_map(function ($item) use (&$result) {
-            list($key, $value) = explode("|", $item);
+            list($key, $value) = explode(":", $item);
             $result[$key] = $value;
         }, $featuresLine);
         return $result;
@@ -119,5 +121,10 @@ class Project extends Model
     public function getImageUrl()
     {
         return $this->image ? asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Project->folder() . "/" . $this->image) : null;
+    }
+
+    public function getUrl()
+    {
+        return route(ModuleEnum::Project->route() . ".show", [$this, $this->slug]);
     }
 }

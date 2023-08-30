@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ModuleEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,10 +15,15 @@ class ProjectImage extends Model
         'image',
     ];
 
+    public $timestamps = false;
+
     public function project()
     {
         return $this->belongsTo(Project::class);
     }
 
-    public $timestamps = false;
+    public function getImageUrl()
+    {
+        return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Project->folder() . "/" . $this->image);
+    }
 }

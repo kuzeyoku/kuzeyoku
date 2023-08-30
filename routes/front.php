@@ -20,4 +20,10 @@ Route::controller(App\Http\Controllers\ServiceController::class)->prefix("servic
     Route::get("/{category}", "category")->name("service.category");
 });
 
+Route::controller(App\Http\Controllers\ProjectController::class)->prefix("project")->group(function () {
+    Route::get("/", "index")->name("project.index");
+    Route::get("/{project}/{slug}", "show")->name("project.show");
+    Route::get("/{category}", "category")->name("project.category");
+});
+
 //Route::get("/category/{category}/{slug}", [App\Http\Controllers\CategoryController::class, "show"])->name("category.show");

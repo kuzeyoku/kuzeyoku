@@ -12,7 +12,7 @@
 @endsection
 @section('content')
     {!! Form::open([
-        'url' => route("admin.{$folder}.image.store"),
+        'url' => route("admin.{$folder}.imageStore"),
         'class' => 'dropzone mb-3',
         'file' => true,
     ]) !!}
