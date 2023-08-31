@@ -5,7 +5,7 @@
     {!! Form::open(['url' => route("admin.{$route}.update", $blog), 'method' => 'put', 'files' => true]) !!}
     {!! Form::file('image', [
         'class' => 'dropify',
-        'data-default-file' => uploadFolder($folder, $blog->image),
+        'data-default-file' => $blog->getImageUrl(),
     ]) !!}
     <div class="tab-content">
         @foreach (languageList() as $key => $lang)
@@ -19,6 +19,12 @@
                 <div class="form-group">
                     {!! Form::label('description', __("admin/{$folder}.form.description")) !!}
                     {!! Form::textarea("description[$lang->code]", $blog->description[$lang->code] ?? null, ['class' => 'editor']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('tags', __("admin/{$folder}.form.tags")) !!}
+                    {!! Form::text("tags[$lang->code]", $blog->tags[$lang->code] ?? null, [
+                        'placeholder' => __("admin/{$folder}.form.tags_placeholder"),
+                    ]) !!}
                 </div>
             </div>
         @endforeach

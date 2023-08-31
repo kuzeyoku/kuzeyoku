@@ -84,7 +84,8 @@ class BlogService extends BaseService
                     ],
                     [
                         "title" => $request->title[$language->code] ?? null,
-                        "description" => $request->description[$language->code] ?? null
+                        "description" => $request->description[$language->code] ?? null,
+                        "tags" => $request->tags[$language->code] ?? null,
                     ]
                 );
             }

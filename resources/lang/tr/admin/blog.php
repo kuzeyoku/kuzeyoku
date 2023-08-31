@@ -16,6 +16,8 @@ return [
     'form.title' => 'İçerik Başlığı',
     'form.title_placeholder' => 'İçerik Başlığı Giriniz',
     'form.description' => 'Açıklama',
+    "form.tags" => "Etiketler",
+    "form.tags_placeholder" => "Etiketleri virgül ile ayırarak giriniz. Örnek: etiket1, etiket2, etiket3",
     'form.category' => 'Kategori',
     'form.status' => 'Durum',
     'table.title' => 'İçerik Başlığı',

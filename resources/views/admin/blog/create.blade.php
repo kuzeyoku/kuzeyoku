@@ -15,6 +15,10 @@
                     {!! Form::label('description', __("admin/{$folder}.form.description")) !!}
                     {!! Form::textarea("description[$lang->code]", null, ['class' => 'editor']) !!}
                 </div>
+                <div class="form-group">
+                    {!! Form::label('tags', __("admin/{$folder}.form.tags")) !!}
+                    {!! Form::text("tags[$lang->code]", null, ['placeholder' => __("admin/{$folder}.form.tags_placeholder")]) !!}
+                </div>
             </div>
         @endforeach
     </div>

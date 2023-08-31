@@ -19,6 +19,9 @@ class BlogController extends Controller
 
     public function show(Blog $post)
     {
-        return view("blog.show", compact("post"));
+        $post->increment("view_count");
+        $previousPost = Blog::active()->order()->where("id", "<", $post->id)->first();
+        $nextPost = Blog::active()->order()->where("id", ">", $post->id)->first();
+        return view("blog.show", compact("post", "previousPost", "nextPost"));
     }
 }

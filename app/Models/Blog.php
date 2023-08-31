@@ -67,6 +67,13 @@ class Blog extends Model
         })->toArray();
     }
 
+    public function getTagsAttribute()
+    {
+        return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
+            return [$key => $item->pluck('tags')->first()];
+        })->toArray();
+    }
+
     public function getCategoryAttribute()
     {
         if ($this->category_id !== 0) {
@@ -86,6 +93,13 @@ class Blog extends Model
     {
         if (array_key_exists(app()->getLocale(), $this->description))
             return strip_tags($this->description[app()->getLocale()]);
+        return null;
+    }
+
+    public function getTags()
+    {
+        if (array_key_exists(app()->getLocale(), $this->tags))
+            return explode(",", $this->tags[app()->getLocale()]);
         return null;
     }
 

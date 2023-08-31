@@ -1,11 +1,7 @@
 <footer class="bg-dark text-light">
-    <!-- Fixed Shape -->
     <div class="fixed-shape">
-        <img src="assets/img/shape/bg-3.png" alt="Shape">
+        <img src="{{ asset('assets/img/shape/bg-3.png') }}" alt="Shape">
     </div>
-    <!-- Fixed Shape -->
-
-    <!-- Footer Top -->
     <div class="footer-top">
         <div class="container">
             <div class="footer-top-content">
@@ -28,13 +24,12 @@
             </div>
         </div>
     </div>
-    <!-- End Footer Top -->
     <div class="container">
         <div class="f-items default-padding">
             <div class="row">
                 <div class="col-lg-4 col-md-6 item">
                     <div class="f-item about">
-                        <img src="assets/img/logo-light.png" alt="Logo">
+                        <img src="{{ asset('assets/img/logo-light.png') }}" alt="Logo">
                         <p>
                             {{ config('setting.general.description') }}
                         </p>
@@ -141,7 +136,8 @@
                                 </li>
                                 <li>
                                     <strong>Email:</strong>
-                                    <a href="mailto:{{ config('setting.contact.email') }}">{{ config('setting.contact.email') }}</a>
+                                    <a
+                                        href="mailto:{{ config('setting.contact.email') }}">{{ config('setting.contact.email') }}</a>
                                 </li>
                             </ul>
                         </div>
@@ -156,7 +152,6 @@
             </div>
         </div>
     </div>
-    <!-- Start Footer Bottom -->
     <div class="footer-bottom text-center">
         <div class="container">
             <div class="row">
@@ -166,5 +161,4 @@
             </div>
         </div>
     </div>
-    <!-- End Footer Bottom -->
 </footer>

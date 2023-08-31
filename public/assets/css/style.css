@@ -5821,6 +5821,13 @@ body,
      # Blog
 =================================================================== */
 
+.blog-content .thumb {
+    max-width: 100%;
+    height: 500px;
+    background-position: center center;
+    background-size: cover;
+}
+
 .blog-area .single-item {
     margin-bottom: 30px;
 }
@@ -5897,6 +5904,12 @@ body,
 
 .blog-area .blog-items .info .meta ul li i {
     font-weight: 500;
+    margin-right: 2px;
+    color: #104cba;
+}
+
+.blog-area .blog-items .info .meta ul li svg {
+    width: 15px;
     margin-right: 2px;
     color: #104cba;
 }
@@ -6120,6 +6133,12 @@ body,
     font-size: 13px;
     color: #888888;
     font-weight: 500;
+}
+
+.sidebar-item.recent-post li svg {
+    width: 15px;
+    margin-right: 2px;
+    color: #104cba;
 }
 
 .sidebar-item.recent-post .meta-title a {
@@ -6506,7 +6525,8 @@ body,
     color: #0077b5;
 }
 
-.blog-area .blog-content .post-tags .tags a {
+.blog-area .blog-content .post-tags .tags span {
+    font-weight: bold;
     background: #f7f7f7;
     padding: 10px 15px;
     font-size: 14px;

@@ -8,5 +8,4 @@
             <iframe src="{{ config('setting.contact.map') }}"></iframe>
         </div>
     </div>
-
 @endsection

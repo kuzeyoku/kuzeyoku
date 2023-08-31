@@ -1,28 +1,13 @@
 @extends('layout.main')
 @section('title', 'Blog')
 @section('content')
-    <div class="breadcrumb-area text-center shadow dark bg-fixed text-light"
-        style="background-image: url(assets/img/banner/11.jpg);">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>Blog Sidebar</h2>
-                    <ul class="breadcrumb">
-                        <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li class="active">Sidebar</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('layout.breadcrumb')
     <div class="blog-area full-blog right-sidebar full-blog default-padding">
         <div class="container">
             <div class="blog-items">
                 <div class="row">
                     <div class="blog-content col-lg-8 col-md-12">
                         <div class="blog-item-box">
-
                             @foreach ($posts as $post)
                                 <div class="single-item">
                                     <div class="item wow fadeInUp">
@@ -34,9 +19,9 @@
                                         <div class="info">
                                             <div class="meta">
                                                 <ul>
-                                                    <li><i class="fas fa-calendar-alt"></i>
+                                                    <li>@svg('ri-calendar-2-line')
                                                         {{ $post->updated_at->translatedFormat('d m Y') }}</li>
-                                                    <li><i class="fas fa-eye"></i> {{ $post->view_count }} Görüntüleme</li>
+                                                    <li>@svg('ri-eye-fill') {{ $post->view_count }} Görüntüleme</li>
                                                 </ul>
                                             </div>
                                             <h3>
@@ -46,10 +31,10 @@
                                                 {{ Str::limit($post->getDescription(), 160) }}
                                             </p>
                                             <div class="bottom">
-                                                <a href="#">
-                                                    <img src="assets/img/teams/1.jpg" alt="Author">
-                                                    <span>{{ $post->user->name }}</span>
-                                                </a>
+                                                <span class="font-weight-bold">
+                                                    <img src="{{ asset('assets/img/teams/1.jpg') }}">
+                                                    {{ $post->user->name }}
+                                                </span>
                                                 <a class="btn circle btn-theme effect btn-md"
                                                     href="{{ $post->getUrl() }}">Devamı</a>
                                             </div>
@@ -57,7 +42,6 @@
                                     </div>
                                 </div>
                             @endforeach
-
                         </div>
 
                         <!-- Pagination -->
@@ -103,7 +87,7 @@
                                             <div class="info">
                                                 <a href="{{ $post->getUrl() }}">{{ $post->getTitle() }}</a>
                                                 <div class="meta-title">
-                                                    <span class="post-date"><i class="fas fa-calendar-alt"></i>
+                                                    <span class="post-date">@svg('ri-calendar-2-line')</i>
                                                         {{ $post->updated_at->translatedFormat('d m Y') }}</span>
                                                 </div>
                                             </div>
@@ -117,21 +101,12 @@
                                 </div>
                                 <div class="sidebar-info">
                                     <ul>
-                                        <li>
-                                            <a href="#">national <span>(69)</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#">national <span>(25)</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#">sports <span>(18)</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#">megazine <span>(37)</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#">health <span>(12)</span></a>
-                                        </li>
+                                        @foreach ($categories as $category)
+                                            <li>
+                                                <a href="{{ $category->getUrl() }}">{{ $categorty->getTitle() }}
+                                                    <span>(69)</span></a>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -141,35 +116,45 @@
                                 </div>
                                 <div class="sidebar-info">
                                     <ul>
-                                        <li class="facebook">
-                                            <a href="#">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="twitter">
-                                            <a href="#">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="pinterest">
-                                            <a href="#">
-                                                <i class="fab fa-pinterest"></i>
-                                            </a>
-                                        </li>
-                                        <li class="g-plus">
-                                            <a href="#">
-                                                <i class="fab fa-google-plus-g"></i>
-                                            </a>
-                                        </li>
-                                        <li class="linkedin">
-                                            <a href="#">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
+                                        @if (config('setting.social.facebook'))
+                                            <li class="facebook">
+                                                <a href="{{ config('setting.social.facebook') }}">
+                                                    <i class="fab fa-facebook-f"></i>
+                                                </a>
+                                            </li>
+                                        @endif
+                                        @if (config('setting.social.twitter'))
+                                            <li class="twitter">
+                                                <a href="{{ config('setting.social.twitter') }}">
+                                                    <i class="fab fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                        @endif
+                                        @if (config('setting.social.instagram'))
+                                            <li class="instagram">
+                                                <a href="{{ config('setting.social.instagram') }}">
+                                                    <i class="fab fa-instagram"></i>
+                                                </a>
+                                            </li>
+                                        @endif
+                                        @if (config('setting.social.youtube'))
+                                            <li class="youtube">
+                                                <a href="{{ config('setting.social.youtube') }}">
+                                                    <i class="fab fa-youtube"></i>
+                                                </a>
+                                            </li>
+                                        @endif
+                                        @if (config('setting.social.linkedin'))
+                                            <li class="linkedin">
+                                                <a href="{{ config('setting.social.linkedin') }}">
+                                                    <i class="fab fa-linkedin"></i>
+                                                </a>
+                                            </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
-                            <div class="sidebar-item tags">
+                            {{-- <div class="sidebar-item tags">
                                 <div class="title">
                                     <h4>tags</h4>
                                 </div>
@@ -193,7 +178,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> --}}
                         </aside>
                     </div>
                     <!-- End Start Sidebar -->

@@ -25,6 +25,7 @@ class StoreBlogRequest extends FormRequest
             "title." . app()->getLocale() => "required",
             "title.*" => "",
             "description.*" => "",
+            "tags.*" => "",
             "order" => "required|numeric|min:0",
             "status" => "required",
             "category_id" => "",
@@ -37,6 +38,7 @@ class StoreBlogRequest extends FormRequest
         return [
             "title." . app()->getLocale() => __("admin/{$this->folder}.form.title"),
             "description.*" => __("admin/{$this->folder}.form.description"),
+            "tags.*" => __("admin/{$this->folder}.form.tags"),
             "category_id" => __("admin/{$this->folder}.form.category"),
             "image" => __("admin/{$this->folder}.form.image"),
             "order" => __("admin/general.order"),
