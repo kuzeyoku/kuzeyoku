@@ -29,7 +29,7 @@
         </li>
         <li class="nav-item dropdown has-arrow main-drop">
             <a href="{{ url('/') }}" class="dropdown-toggle nav-link userset blank">
-                @svg('ri-global-fill') {{ __('admin/general.gofront') }}
+                @svg('ri-chrome-fill') {{ __('admin/general.gofront') }}
             </a>
         </li>
         <li class="nav-item dropdown has-arrow main-drop">

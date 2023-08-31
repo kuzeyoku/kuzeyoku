@@ -22,8 +22,7 @@
                     <div class="single-item col-lg-4">
                         <div class="item">
                             <div class="thumb">
-                                <img src="{{ $blog->getImageUrl() }}" alt="{{ $blog->getTitle() }}">
-
+                                <img class="home" src="{{ $blog->getImageUrl() }}" alt="{{ $blog->getTitle() }}">
                                 <div class="date">{{ $blog->updated_at->day }}
                                     <span>{{ $blog->updated_at->translatedFormat('m Y') }}</span>
                                 </div>

@@ -5821,13 +5821,6 @@ body,
      # Blog
 =================================================================== */
 
-.blog-content .thumb {
-    max-width: 100%;
-    height: 500px;
-    background-position: center center;
-    background-size: cover;
-}
-
 .blog-area .single-item {
     margin-bottom: 30px;
 }
@@ -5891,6 +5884,16 @@ body,
 
 .blog-area .blog-items .item .thumb img {
     border-radius: 5px;
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+.blog-area .blog-items .item .thumb .home {
+    border-radius: 5px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
 .blog-area .blog-items .info .meta ul li {

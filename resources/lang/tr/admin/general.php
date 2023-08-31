@@ -34,5 +34,6 @@ return [
     "table.created_at" => "Oluşturuldu",
     "table.updated_at" => "Güncellendi",
     "table.no_data" => "Herhangi bir veri bulunamadı.",
-    "invalid_value" => "Geçersiz değer!"
+    "invalid_value" => "Geçersiz değer!",
+    "no_category" => "Kategorisiz"
 ];

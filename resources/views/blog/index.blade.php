@@ -12,9 +12,7 @@
                                 <div class="single-item">
                                     <div class="item wow fadeInUp">
                                         <div class="thumb">
-                                            <a href="{{ $post->getUrl() }}">
-                                                <img src="{{ $post->getImageUrl() }}" alt="{{ $post->getTitle() }}">
-                                            </a>
+                                            <img src="{{ $post->getImageUrl() }}" alt="{{ $post->getTitle() }}">
                                         </div>
                                         <div class="info">
                                             <div class="meta">
@@ -103,7 +101,7 @@
                                     <ul>
                                         @foreach ($categories as $category)
                                             <li>
-                                                <a href="{{ $category->getUrl() }}">{{ $categorty->getTitle() }}
+                                                <a href="{{ $category->getUrl() }}">{{ $category->getTitle() }}
                                                     <span>(69)</span></a>
                                             </li>
                                         @endforeach

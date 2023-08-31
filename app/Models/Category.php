@@ -50,6 +50,18 @@ class Category extends Model
         })->toArray();
     }
 
+    public function getTitle()
+    {
+        if (array_key_exists(app()->getLocale(), $this->title))
+            return $this->title[app()->getLocale()];
+        return null;
+    }
+
+    public function getUrl()
+    {
+        return "aaa";
+    }
+
     public static function getCategory(int $id)
     {
         return Cache::remember('category_' . $id, 3600, function () use ($id) {
@@ -62,6 +74,7 @@ class Category extends Model
         parent::boot();
         self::deleting(function ($category) {
             $category->products()->update(["category_id" => 0]);
+            $category->projects()->update(["category_id" => 0]);
             $category->services()->update(["category_id" => 0]);
             $category->blogs()->update(["category_id" => 0]);
         });
@@ -70,6 +83,11 @@ class Category extends Model
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
     }
 
     public function services()

@@ -74,14 +74,6 @@ class Blog extends Model
         })->toArray();
     }
 
-    public function getCategoryAttribute()
-    {
-        if ($this->category_id !== 0) {
-            $category = Category::getCategory($this->category_id);
-            return $category ? $category->title[app()->getLocale()] : null;
-        }
-    }
-
     public function getTitle()
     {
         if (array_key_exists(app()->getLocale(), $this->title))

@@ -188,7 +188,7 @@ enum ModuleEnum: string
     public function image(): array
     {
         return match ($this) {
-            self::Blog => ["width" => 800, "height" => 600],
+            self::Blog => ["width" => 800, "height" => 400],
             self::Service => ["width" => 500, "height" => 500],
             self::Brand => ["width" => 150, "height" => 50],
             self::Reference => ["width" => 400, "height" => 250],
