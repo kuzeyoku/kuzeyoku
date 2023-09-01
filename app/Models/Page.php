@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Enums\StatusEnum;
-use App\Models\PageTranslate;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,8 +16,6 @@ class Page extends Model
         'status',
     ];
 
-    protected $with = ["translate"];
-
     public function translate()
     {
         return $this->hasMany(PageTranslate::class);
@@ -26,16 +23,22 @@ class Page extends Model
 
     public function getTitleAttribute()
     {
-        return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
-            return [$key => $item->pluck('title')->first()];
-        })->toArray();
+        return $this->translate()->pluck("title", "lang")->toArray();
     }
 
     public function getContentAttribute()
     {
-        return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
-            return [$key => $item->pluck('content')->first()];
-        })->toArray();
+        return $this->translate()->pluck("content", "lang")->toArray();
+    }
+
+    public function getTitle()
+    {
+        return $this->getTitleAttribute()[app()->getLocale()];
+    }
+
+    public function getContent()
+    {
+        return $this->getContentAttribute()[app()->getLocale()];
     }
 
     public static function toSelectArray()

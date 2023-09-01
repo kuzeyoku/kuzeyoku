@@ -24,7 +24,7 @@ class UpdateProductRequest extends FormRequest
         return [
             "title." . app()->getLocale() => "required",
             "title.*" => "nullable",
-            "content.*" => "nullable",
+            "description.*" => "nullable",
             "features.*" => "nullable",
             "price" => "nullable",
             "currency" => "nullable",
@@ -42,7 +42,7 @@ class UpdateProductRequest extends FormRequest
         return [
             "title." . app()->getLocale() => __("admin/{$this->folder}.form.title"),
             "title.*" => __("admin/{$this->folder}.form.title"),
-            "content.*" => __("admin/{$this->folder}.form.content"),
+            "description.*" => __("admin/{$this->folder}.form.description"),
             "features.*" => __("admin/{$this->folder}.form.features"),
             "price" => __("admin/{$this->folder}.form.price"),
             "currency" => __("admin/{$this->folder}.form.currency"),

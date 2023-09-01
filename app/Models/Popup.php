@@ -14,8 +14,6 @@ class Popup extends Model
         "type", "image", "video", "url", "time", "width", "closeOnEscape", "closeButton", "overlayClose", "pauseOnHover", "fullScreenButton", "color", "status"
     ];
 
-    protected $with = ["translate"];
-
     public function translate()
     {
         return $this->hasMany(PopupTranslate::class);
@@ -23,15 +21,11 @@ class Popup extends Model
 
     public function getTitleAttribute()
     {
-        return $this->translate->groupBy("lang")->mapWithKeys(function ($item, $key) {
-            return [$key => $item->pluck("title")->first()];
-        })->toArray();
+        return $this->translate->pluck("title", "lang")->toArray();
     }
 
-    public function getMessageAttribute()
+    public function getDescriptionAttribute()
     {
-        return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
-            return [$key => $item->pluck('message')->first()];
-        })->toArray();
+        return $this->translate->pluck("description", "lang")->toArray();
     }
 }

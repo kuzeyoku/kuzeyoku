@@ -17,8 +17,10 @@
                     ]) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('content', __("admin/{$folder}.form.content")) !!}
-                    {!! Form::textarea("content[$lang->code]", $product->content[$lang->code] ?? null, ['class' => 'editor']) !!}
+                    {!! Form::label('description', __("admin/{$folder}.form.description")) !!}
+                    {!! Form::textarea("description[$lang->code]", $product->description[$lang->code] ?? null, [
+                        'class' => 'editor',
+                    ]) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('features', __("admin/{$folder}.form.features")) !!}

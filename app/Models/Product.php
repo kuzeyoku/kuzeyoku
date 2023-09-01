@@ -21,8 +21,6 @@ class Product extends Model
         "order"
     ];
 
-    protected $with = ["translate", "images"];
-
     public function translate()
     {
         return $this->hasMany(ProductTranslate::class);
@@ -35,16 +33,12 @@ class Product extends Model
 
     public function getTitleAttribute()
     {
-        return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
-            return [$key => $item->pluck('title')->first()];
-        })->toArray();
+        return $this->translate->pluce("title", "lang")->toArray();
     }
 
-    public function getContentAttribute()
+    public function getDescriptionAttribute()
     {
-        return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
-            return [$key => $item->pluck('content')->first()];
-        })->toArray();
+        return $this->translate->pluck("description", "lang")->toArray();
     }
 
     public function getFeaturesAttribute()

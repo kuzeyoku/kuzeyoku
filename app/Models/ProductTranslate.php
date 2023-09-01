@@ -13,7 +13,7 @@ class ProductTranslate extends Model
         "product_id",
         "lang",
         "title",
-        "content",
+        "description",
         "features",
     ];
 

@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Enums\ModuleEnum;
 use App\Enums\StatusEnum;
-use App\Models\BlogTranslate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -21,7 +20,17 @@ class Blog extends Model
         "order"
     ];
 
-    protected $with = ["translate", "category"];
+    private $locale;
+
+    public function __construct()
+    {
+        $this->locale = app()->getLocale();
+    }
+
+    public function translate()
+    {
+        return $this->hasMany(BlogTranslate::class, 'post_id', 'id');
+    }
 
     public function category()
     {
@@ -33,11 +42,6 @@ class Blog extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function translate()
-    {
-        return $this->hasMany(BlogTranslate::class, 'post_id', 'id');
-    }
-
     public function scopeActive($query)
     {
         return $query->whereStatus(StatusEnum::Active->value);
@@ -45,7 +49,7 @@ class Blog extends Model
 
     public function scopeOrder($query)
     {
-        return $query->orderBy("order");
+        return $query->orderBy("order", "asc");
     }
 
     public function scopeViewOrder($query)
@@ -55,53 +59,44 @@ class Blog extends Model
 
     public function getTitleAttribute()
     {
-        return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
-            return [$key => $item->pluck('title')->first()];
-        })->toArray();
+        return $this->translate->pluck('title', "lang")->toArray();
     }
 
     public function getDescriptionAttribute()
     {
-        return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
-            return [$key => $item->pluck('description')->first()];
-        })->toArray();
+        return $this->translate->pluck('description', "lang")->toArray();
     }
 
     public function getTagsAttribute()
     {
-        return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
-            return [$key => $item->pluck('tags')->first()];
-        })->toArray();
+        return $this->translate->pluck('tags', "lang")->first();
     }
 
     public function getTitle()
     {
-        if (array_key_exists(app()->getLocale(), $this->title))
-            return $this->title[app()->getLocale()];
-        return null;
+        return $this->getTitleAttribute()[$this->locale];
     }
 
     public function getDescription()
     {
-        if (array_key_exists(app()->getLocale(), $this->description))
-            return strip_tags($this->description[app()->getLocale()]);
-        return null;
+        return $this->getDescriptionAttribute()[$this->locale];
     }
 
     public function getTags()
     {
-        if (array_key_exists(app()->getLocale(), $this->tags))
-            return explode(",", $this->tags[app()->getLocale()]);
-        return null;
+        $tags = $this->getTagsAttribute()[$this->locale];
+        if (!empty($tags))
+            return explode(",", $tags);
+        return [];
+    }
+
+    public function getUrl()
+    {
+        return route(ModuleEnum::Blog->route() . ".show", [$this->id, $this->slug]);
     }
 
     public function getImageUrl()
     {
         return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Blog->folder() . "/" . $this->image);
-    }
-
-    public function getUrl()
-    {
-        return route("blog.show", [$this->id, $this->slug]) . ".html";
     }
 }

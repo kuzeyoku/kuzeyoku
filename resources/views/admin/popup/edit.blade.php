@@ -40,8 +40,8 @@
                     ]) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('message', __("admin/{$folder}.form.message")) !!}
-                    {!! Form::textarea("message[$lang->code]", $popup->message[$lang->code] ?? null) !!}
+                    {!! Form::label('description', __("admin/{$folder}.form.description")) !!}
+                    {!! Form::textarea("description[$lang->code]", $popup->description[$lang->code] ?? null) !!}
                 </div>
             </div>
         @endforeach

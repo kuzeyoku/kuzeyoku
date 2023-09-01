@@ -24,8 +24,8 @@
                     {!! Form::text("title[$lang->code]", null, ['placeholder' => __("admin/{$folder}.form.title_placeholder")]) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('message', __("admin/{$folder}.form.message")) !!}
-                    {!! Form::textarea("message[$lang->code]", null) !!}
+                    {!! Form::label('description', __("admin/{$folder}.form.description")) !!}
+                    {!! Form::textarea("description[$lang->code]", null) !!}
                 </div>
             </div>
         @endforeach

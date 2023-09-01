@@ -95,7 +95,7 @@ class PopupService extends BaseService
                     ],
                     [
                         "title" => $request->title[$language->code] ?? null,
-                        "message" => $request->message[$language->code] ?? null
+                        "description" => $request->description[$language->code] ?? null
                     ]
                 );
             }

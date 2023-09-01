@@ -16,8 +16,8 @@ return [
     //form
     "form.title" => "Ürün Başlığı",
     "form.title_placeholder" => "Ürün Başlığı Giriniz",
-    "form.content" => "Açıklama",
-    "form.content_placeholder" => "Açıklama Giriniz",
+    "form.description" => "Açıklama",
+    "form.description_placeholder" => "Açıklama Giriniz",
     "form.features" => "Ürün Özellikleri",
     "form.category" => "Kategori",
     "form.status" => "Durum",

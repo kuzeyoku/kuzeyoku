@@ -19,12 +19,11 @@ class Menu extends Model
 
     public $timestamps = false;
 
-    protected $with = ["translate", "subMenu"];
+    private $locale;
 
-
-    public function scopeOrder($query)
+    public function __construct()
     {
-        return $query->orderBy("order", "asc");
+        $this->locale = app()->getLocale();
     }
 
     public function translate()
@@ -37,25 +36,23 @@ class Menu extends Model
         return $this->hasMany(Menu::class, "parent_id");
     }
 
+    public function scopeOrder($query)
+    {
+        return $query->orderBy("order", "asc");
+    }
+
     public function getTitleAttribute()
     {
-        return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
-            return [$key => $item->pluck('title')->first()];
-        })->toArray();
+        return  $this->translate->pluck("title", "lang")->toArray();
     }
 
     public function getTitle()
     {
-        if (array_key_exists(app()->getLocale(), $this->title)) {
-            return $this->title[app()->getLocale()];
-        }
-        return null;
+        return $this->getTitleAttribute()[$this->locale];
     }
 
     public static function toSelectArray($type)
     {
-        return self::whereType($type)->get()->mapWithKeys(function ($item) {
-            return [$item->id => $item->title[app()->getLocale()]];
-        })->toArray();
+        return Menu::whereType($type)->get()->pluck("title." . app()->getLocale(), "id")->toArray();
     }
 }

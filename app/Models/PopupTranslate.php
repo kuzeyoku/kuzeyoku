@@ -13,7 +13,7 @@ class PopupTranslate extends Model
         "popup_id",
         "lang",
         "title",
-        "message"
+        "description"
     ];
 
     public $timestamps = false;

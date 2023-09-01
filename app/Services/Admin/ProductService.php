@@ -9,6 +9,7 @@ use App\Enums\ModuleEnum;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
+
 class ProductService extends BaseService
 {
     protected $imageService;
@@ -88,7 +89,7 @@ class ProductService extends BaseService
                     ],
                     [
                         "title" => $request->title[$language->code] ?? null,
-                        "content" => $request->content[$language->code] ?? null,
+                        "description" => $request->description[$language->code] ?? null,
                         "features" => trim($request->features[$language->code]) ?? null
                     ]
                 );
