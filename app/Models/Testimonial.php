@@ -12,7 +12,13 @@ class Testimonial extends Model
     use HasFactory;
 
     protected $fillable = [
-        "image", "name", "company", "position", "message", "status", "order"
+        "image",
+        "name",
+        "company",
+        "position",
+        "message",
+        "status",
+        "order"
     ];
 
     public function scopeActive($query)
@@ -27,8 +33,6 @@ class Testimonial extends Model
 
     public function getImageUrl()
     {
-        if ($this->image)
-            return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Testimonial->folder() . "/" . $this->image);
-        return null;
+        return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Testimonial->folder() . "/" . $this->image);
     }
 }

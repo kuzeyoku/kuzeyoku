@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Slider extends Model
 {
-
     use HasFactory;
 
     protected $fillable = [
@@ -20,7 +19,12 @@ class Slider extends Model
         "order"
     ];
 
-    protected $with = ["translate"];
+    private $locale;
+
+    public function __construct()
+    {
+        $this->locale = app()->getLocale();
+    }
 
     public function translate()
     {
@@ -39,36 +43,32 @@ class Slider extends Model
 
     public function getTitleAttribute()
     {
-        return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
-            return [$key => $item->pluck('title')->first()];
-        })->toArray();
+        return $this->translate->pluck("title", "lang")->toArray();
     }
 
     public function getDescriptionAttribute()
     {
-        return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
-            return [$key => $item->pluck('description')->first()];
-        })->toArray();
+        return $this->translate->pluck("description", "lang")->toArray();
     }
 
     public function getTitle()
     {
-        if (array_key_exists(app()->getLocale(), $this->title)) {
-            return $this->title[app()->getLocale()];
-        }
+        if (array_key_exists($this->locale, $this->title))
+            return $this->title[$this->locale];
         return null;
     }
 
     public function getDescription()
     {
-        if (array_key_exists(app()->getLocale(), $this->description)) {
-            return $this->description[app()->getLocale()];
-        }
+        if (array_key_exists($this->locale, $this->description))
+            return $this->description[$this->locale];
         return null;
     }
 
     public function getImageUrl()
     {
-        return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Slider->folder() . "/" . $this->attributes["image"]);
+        if ($this->image)
+            return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Slider->folder() . "/" . $this->attributes["image"]);
+        return asset("assets/img/noimage.png");
     }
 }

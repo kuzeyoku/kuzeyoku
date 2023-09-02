@@ -15,7 +15,9 @@
                                 <ul>
                                     <li>@svg('ri-calendar-2-line') {{ $post->updated_at->translatedFormat('d m Y') }}</li>
                                     <li>@svg('ri-eye-fill') {{ $post->view_count }} Görüntüleme</li>
-                                    <li>@svg('ri-list-check-2') {{ $post->category->getTitle() }}</li>
+                                    @if ($post->category)
+                                        <li>@svg('ri-list-check-2') {{ $post->category->getTitle() }}</li>
+                                    @endif
                                 </ul>
                             </div>
                             <h3>

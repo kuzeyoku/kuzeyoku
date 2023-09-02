@@ -30,7 +30,7 @@
                         <div class="project-info">
                             <h3>Proje Detayları</h3>
                             <ul>
-                                @foreach ($project->getFeaturesList() as $key => $value)
+                                @foreach ($project->getFeatures() as $key => $value)
                                     <li>
                                         {{ $key }} <span>{{ $value }}</span>
                                     </li>
@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="main-content">
-                {{ $project->getDescription() }}
+                {!! $project->getDescription() !!}
                 @if ($project->video)
                     <iframe width="100%" height="400" src="{{ $project->video }}"></iframe>
                 @endif

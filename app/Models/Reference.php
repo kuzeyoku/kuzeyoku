@@ -12,7 +12,10 @@ class Reference extends Model
     use HasFactory;
 
     protected $fillable = [
-        "url", "image", "status", "order"
+        "url",
+        "image",
+        "status",
+        "order"
     ];
 
     public function scopeActive($query)
@@ -27,6 +30,8 @@ class Reference extends Model
 
     public function getImageUrl()
     {
-        return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Reference->folder() . "/" . $this->image);
+        if ($this->image)
+            return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Reference->folder() . "/" . $this->image);
+        return asset("assets/img/noimage.png");
     }
 }

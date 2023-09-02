@@ -22,7 +22,12 @@ class Project extends Model
         "status"
     ];
 
-    protected $with = ["translate", "images"];
+    private $locale;
+
+    public function __construct()
+    {
+        $this->locale = app()->getLocale();
+    }
 
     public function translate()
     {
@@ -46,85 +51,59 @@ class Project extends Model
 
     public function getTitleAttribute()
     {
-        return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
-            return [$key => $item->pluck('title')->first()];
-        })->toArray();
+        return $this->translate->pluck("title", "lang")->toArray();
     }
 
     public function getDescriptionAttribute()
     {
-        return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
-            return [$key => $item->pluck('description')->first()];
-        })->toArray();
+        return $this->translate->pluck("description", "lang")->toArray();
     }
 
     public function getFeaturesAttribute()
     {
-        return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
-            return [$key => $item->pluck('features')->first()];
-        })->toArray();
-    }
-
-    public function getFeaturesList()
-    {
-        $featuresLine = explode("\r\n", trim($this->features[app()->getLocale()]));
-        $featuresLine = array_filter($featuresLine, function ($item) {
-            return !empty($item);
-        });
-        $result = [];
-        array_map(function ($item) use (&$result) {
-            list($key, $value) = explode(":", $item);
-            $result[$key] = $value;
-        }, $featuresLine);
-        return $result;
-    }
-
-    public function getCategoryAttribute()
-    {
-        if ($this->category_id !== 0) {
-            $category = Category::getCategory($this->category_id);
-            return $category ? $category->title[app()->getLocale()] : null;
-        }
+        return $this->translate->pluck("features", "lang")->toArray();
     }
 
     public function getTitle()
     {
-        if (array_key_exists(app()->getLocale(), $this->title)) {
-            return $this->title[app()->getLocale()];
+        if (array_key_exists($this->locale, $this->title)) {
+            return $this->title[$this->locale];
         }
         return null;
     }
 
     public function getDescription()
     {
-        if (array_key_exists(app()->getLocale(), $this->description)) {
-            return $this->description[app()->getLocale()];
+        if (array_key_exists($this->locale, $this->description)) {
+            return $this->description[$this->locale];
         }
         return null;
     }
 
     public function getFeatures()
     {
-        if (array_key_exists(app()->getLocale(), $this->features)) {
-            return $this->features[app()->getLocale()];
+        $result = [];
+        if (array_key_exists($this->locale, $this->features)) {
+            $featuresLine = array_filter(explode("\r\n", $this->features[$this->locale]), function ($item) {
+                return !empty($item);
+            });
+            array_map(function ($item) use (&$result) {
+                list($key, $value) = explode(":", $item);
+                $result[$key] = $value;
+            }, $featuresLine);
         }
-        return null;
-    }
-
-    public function getImages()
-    {
-        return $this->images->map(function ($item) {
-            return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Project->folder() . "/" . $item->image);
-        });
-    }
-
-    public function getImageUrl()
-    {
-        return $this->image ? asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Project->folder() . "/" . $this->image) : null;
+        return $result;
     }
 
     public function getUrl()
     {
         return route(ModuleEnum::Project->route() . ".show", [$this, $this->slug]);
+    }
+
+    public function getImageUrl()
+    {
+        if ($this->image)
+            return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Project->folder() . "/" . $this->image);
+        return asset("assets/img/noimage.png");
     }
 }

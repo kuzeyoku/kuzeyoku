@@ -72,12 +72,16 @@ class Category extends Model
 
     public function getTitle()
     {
-        return $this->getTitleAttribute()[$this->locale];
+        if (array_key_exists($this->locale, $this->title))
+            return $this->title[$this->locale];
+        return null;
     }
 
     public function getDescription()
     {
-        return $this->getDescriptionAttribute()[$this->locale];
+        if (array_key_exists($this->locale, $this->description))
+            return $this->description[$this->locale];
+        return null;
     }
 
     public static function boot()

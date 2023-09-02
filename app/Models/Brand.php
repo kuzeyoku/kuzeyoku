@@ -12,7 +12,11 @@ class Brand extends Model
     use HasFactory;
 
     protected $fillable = [
-        "url", "image", "title", "order", "status"
+        "url",
+        "image",
+        "title",
+        "order",
+        "status"
     ];
 
     public function scopeActive($query)
@@ -27,6 +31,8 @@ class Brand extends Model
 
     public function getImageUrl()
     {
-        return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Brand->folder() . "/" . $this->image);
+        if ($this->image)
+            return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Brand->folder() . "/" . $this->image);
+        return asset("assets/img/noimage.png");
     }
 }

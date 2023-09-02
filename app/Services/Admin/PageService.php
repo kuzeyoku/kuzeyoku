@@ -63,7 +63,7 @@ class PageService extends BaseService
                     ],
                     [
                         "title" => $request->title[$language->code] ?? null,
-                        "content" => $request->content[$language->code] ?? null
+                        "description" => $request->description[$language->code] ?? null
                     ]
                 );
             }

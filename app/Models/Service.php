@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Enums\ModuleEnum;
 use App\Enums\StatusEnum;
-use App\Models\ServiceTranslate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -20,11 +19,21 @@ class Service extends Model
         "image"
     ];
 
-    protected $with = ["translate"];
+    private $locale;
+
+    public function __construct()
+    {
+        $this->locale = app()->getLocale();
+    }
 
     public function translate()
     {
         return $this->hasMany(ServiceTranslate::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     public function scopeActive($query)
@@ -39,57 +48,42 @@ class Service extends Model
 
     public function getTitleAttribute()
     {
-        return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
-            return [$key => $item->pluck('title')->first()];
-        })->toArray();
+        return $this->translate->pluck("title", "lang")->toArray();
     }
 
     public function getDescriptionAttribute()
     {
-        return $this->translate->groupBy('lang')->mapWithKeys(function ($item, $key) {
-            return [$key => $item->pluck('description')->first()];
-        })->toArray();
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
-
-    public function getCategoryAttribute()
-    {
-        if ($this->category_id !== 0) {
-            $category = Category::getCategory($this->category_id);
-            return $category ? $category->title[app()->getLocale()] : null;
-        }
+        return $this->translate->pluck("description", "lang")->toArray();
     }
 
     public function getTitle()
     {
-        if (array_key_exists(app()->getLocale(), $this->title))
-            return $this->title[app()->getLocale()];
+        if (array_key_exists($this->locale, $this->title))
+            return $this->title[$this->locale];
         return null;
     }
 
-    public function getDescription($strip = false)
+    public function getDescription()
     {
-        if (array_key_exists(app()->getLocale(), $this->description))
-            return $strip ? strip_tags($this->description[app()->getLocale()]) : $this->description[app()->getLocale()];
+        if (array_key_exists($this->locale, $this->description))
+            return $this->description[$this->locale];
         return null;
-    }
-
-    public function getImageUrl()
-    {
-        return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Service->folder() . "/" . $this->image);
-    }
-
-    public static function getOther(int $id, int $limit)
-    {
-        return Service::active()->where("id", "!=", $id)->limit($limit)->get();
     }
 
     public function getUrl()
     {
         return route(ModuleEnum::Service->route() . ".show", [$this, $this->slug]);
+    }
+
+    public function getImageUrl()
+    {
+        if ($this->image)
+            return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Service->folder() . "/" . $this->image);
+        return asset("assets/img/noimage.png");
+    }
+
+    public static function getOther(int $id, int $limit)
+    {
+        return Service::active()->where("id", "!=", $id)->limit($limit)->get();
     }
 }

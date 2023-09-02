@@ -38,7 +38,7 @@
                                     <a href="{{ $blog->getUrl() }}">{{ $blog->getTitle() }}</a>
                                 </h4>
                                 <p>
-                                    {{ Str::limit($blog->getDescription(), 110) }}
+                                    {!! Str::limit($blog->getDescription(), 110) !!}
                                 </p>
                                 <a class="btn-more" href="{{ $blog->getUrl() }}">Devamı
                                     <i class="fas fa-long-arrow-alt-right"></i></a>

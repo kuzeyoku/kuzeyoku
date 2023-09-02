@@ -13,8 +13,8 @@
                     ]) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('content', __("admin/{$folder}.form.content")) !!}
-                    {!! Form::textarea("content[$lang->code]", $page->content[$lang->code] ?? null, ['class' => 'editor']) !!}
+                    {!! Form::label('description', __("admin/{$folder}.form.description")) !!}
+                    {!! Form::textarea("description[$lang->code]", $page->content[$lang->code] ?? null, ['class' => 'editor']) !!}
                 </div>
             </div>
         @endforeach

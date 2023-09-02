@@ -17,6 +17,7 @@ return [
     "update_log" => "Bir Slider Güncellendi - :title",
     "delete_log" => "Bir Slider Silindi - :title",
     //form
+    "form.image" => "Slider Görseli",
     "form.title" => "Slider Başlığı",
     "form.title_placeholder" => "Slider Başlığı Giriniz",
     "form.description" => "Açıklama",

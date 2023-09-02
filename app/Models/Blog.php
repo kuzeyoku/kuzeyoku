@@ -39,7 +39,7 @@ class Blog extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class);
     }
 
     public function scopeActive($query)
@@ -59,34 +59,37 @@ class Blog extends Model
 
     public function getTitleAttribute()
     {
-        return $this->translate->pluck('title', "lang")->toArray();
+        return $this->translate->pluck('title', "lang")->all();
     }
 
     public function getDescriptionAttribute()
     {
-        return $this->translate->pluck('description', "lang")->toArray();
+        return $this->translate->pluck('description', "lang")->all();
     }
 
     public function getTagsAttribute()
     {
-        return $this->translate->pluck('tags', "lang")->first();
+        return $this->translate->pluck('tags', "lang")->all();
     }
 
     public function getTitle()
     {
-        return $this->getTitleAttribute()[$this->locale];
+        if (array_key_exists($this->locale, $this->title))
+            return $this->title[$this->locale];
+        return null;
     }
 
     public function getDescription()
     {
-        return $this->getDescriptionAttribute()[$this->locale];
+        if (array_key_exists($this->locale, $this->description))
+            return $this->description[$this->locale];
+        return null;
     }
 
     public function getTags()
     {
-        $tags = $this->getTagsAttribute()[$this->locale];
-        if (!empty($tags))
-            return explode(",", $tags);
+        if (array_key_exists($this->locale, $this->tags))
+            return explode(",", $this->tags[$this->locale]);
         return [];
     }
 
@@ -97,6 +100,8 @@ class Blog extends Model
 
     public function getImageUrl()
     {
-        return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Blog->folder() . "/" . $this->image);
+        if ($this->image)
+            return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Blog->folder() . "/" . $this->image);
+        return asset("assets/img/noimage.png");
     }
 }

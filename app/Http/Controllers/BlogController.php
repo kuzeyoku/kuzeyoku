@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Enums\ModuleEnum;
-use App\Enums\StatusEnum;
 
 class BlogController extends Controller
 {

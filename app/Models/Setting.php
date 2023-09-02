@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Enums\SettingCategoryEnum;
 
 class Setting extends Model
 {
@@ -12,7 +11,9 @@ class Setting extends Model
 
     public $table = "settings";
     public $timestamps = false;
-    protected $fillable = ["key","value","category"];
-
-    
+    protected $fillable = [
+        "key",
+        "value",
+        "category"
+    ];
 }

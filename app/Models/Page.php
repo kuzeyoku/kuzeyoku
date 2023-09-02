@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\ModuleEnum;
 use App\Enums\StatusEnum;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -16,9 +16,21 @@ class Page extends Model
         'status',
     ];
 
+    private $locale;
+
+    public function __construct()
+    {
+        $this->locale = app()->getLocale();
+    }
+
     public function translate()
     {
         return $this->hasMany(PageTranslate::class);
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->whereStatus(StatusEnum::Active->value);
     }
 
     public function getTitleAttribute()
@@ -26,27 +38,32 @@ class Page extends Model
         return $this->translate()->pluck("title", "lang")->toArray();
     }
 
-    public function getContentAttribute()
+    public function getDescriptionAttribute()
     {
-        return $this->translate()->pluck("content", "lang")->toArray();
+        return $this->translate()->pluck("description", "lang")->toArray();
     }
 
     public function getTitle()
     {
-        return $this->getTitleAttribute()[app()->getLocale()];
+        if (array_key_exists($this->locale, $this->title))
+            return $this->title[$this->locale];
+        return null;
     }
 
-    public function getContent()
+    public function getDescription()
     {
-        return $this->getContentAttribute()[app()->getLocale()];
+        if (array_key_exists($this->locale, $this->description))
+            return $this->description[$this->locale];
+        return null;
     }
 
     public static function toSelectArray()
     {
-        return Cache::remember('page_list', config("setting.cache.time", 3600), function () {
-            return self::where("status", StatusEnum::Active->value)->get()->mapWithKeys(function ($item) {
-                return [$item->id => $item->title[app()->getLocale()]];
-            })->toArray();
-        });
+        return Page::active()->get()->pluck("title." . app()->getLocale(), "id")->toArray();
+    }
+
+    public function getUrl()
+    {
+        return route(ModuleEnum::Page->route() . ".show", [$this->id, $this->slug]);
     }
 }

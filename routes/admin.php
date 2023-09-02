@@ -48,8 +48,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
             // Route::get("/{project}", "show")->name("product.show");
             Route::get("/{product}/image", "image")->name("product.image");
             Route::post("/imageStore", "imageStore")->name("product.imageStore");
-            Route::delete("/{image}/imagedelete", "imageDelete")->name("product.image.delete");
-            Route::delete("/{product}/imagealldelete", "imageAllDelete")->name("product.image.alldelete");
+            Route::delete("/{image}/imagedelete", "imageDelete")->name("product.imageDelete");
+            Route::delete("/{product}/imagealldelete", "imageAllDelete")->name("product.imageAllDelete");
         });
 
         Route::controller(App\Http\Controllers\Admin\ProjectController::class)->prefix("project")->group(function () {

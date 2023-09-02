@@ -11,7 +11,15 @@ class Message extends Model
     use HasFactory;
 
     protected $fillable = [
-        "name", "email", "phone", "subject", "content", "ip", "user_agent", "consent", "status"
+        "name",
+        "email",
+        "phone",
+        "subject",
+        "content",
+        "ip",
+        "user_agent",
+        "consent",
+        "status"
     ];
 
     public function scopeUnread($query)

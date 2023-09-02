@@ -15,7 +15,7 @@ class PageTranslate extends Model
         'page_id',
         'lang',
         'title',
-        'content'
+        'description',
     ];
 
     public  $timestamps = false;

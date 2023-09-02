@@ -24,7 +24,7 @@ class StorePageRequest extends FormRequest
         return [
             "title." . app()->getLocale() => "required",
             "title.*" => "",
-            "content.*" => "",
+            "description.*" => "",
             "status" => "required",
         ];
     }
@@ -33,7 +33,7 @@ class StorePageRequest extends FormRequest
     {
         return [
             "title." . app()->getLocale() => __("admin/{$this->folder}.form.title"),
-            "content.*" => __("admin/{$this->folder}.form.content"),
+            "description.*" => __("admin/{$this->folder}.form.description"),
             "status" => __("admin/general.status")
         ];
     }
