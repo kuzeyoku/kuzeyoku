@@ -3,17 +3,13 @@
 @section('content')
     <div class="row">
         <div class="col-lg-4 col-xl-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-                        @foreach (App\Enums\SettingCategoryEnum::cases() as $tab)
-                            <a class="nav-link @if ($loop->first) active @endif mb-2 border"
-                                data-bs-toggle="pill" href="#{{ $tab->value }}" role="tab" aria-selected="true">
-                                @svg($tab->icon()) {{ $tab->title() }}
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
+            <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
+                @foreach (App\Enums\SettingCategoryEnum::cases() as $tab)
+                    <a class="nav-link @if ($loop->first) active @endif mb-2 border" data-bs-toggle="pill"
+                        href="#{{ $tab->value }}" role="tab" aria-selected="true">
+                        @svg($tab->icon()) {{ $tab->title() }}
+                    </a>
+                @endforeach
             </div>
         </div>
         <div class="col-lg-8 col-xl-9">

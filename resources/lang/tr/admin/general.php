@@ -35,5 +35,7 @@ return [
     "table.updated_at" => "Güncellendi",
     "table.no_data" => "Herhangi bir veri bulunamadı.",
     "invalid_value" => "Geçersiz değer!",
-    "no_category" => "Kategorisiz"
+    "no_category" => "Kategorisiz",
+    "log_clean_success" => "Loglar başarıyla temizlendi.",
+    "log_clean_error" => "Loglar temizlenirken bir hata oluştu.",
 ];
