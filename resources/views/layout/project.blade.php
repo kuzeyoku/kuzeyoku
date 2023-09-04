@@ -29,7 +29,7 @@
                             <a href="#">{{ $project->category }}</a>
                         </div>
                         <h4>
-                            <a href="#">{{ $project->getTitle() }}</a>
+                            <a href="{{ $project->getUrl() }}">{{ $project->getTitle() }}</a>
                         </h4>
                     </div>
                 </div>
