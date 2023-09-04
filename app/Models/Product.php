@@ -24,8 +24,11 @@ class Product extends Model
 
     private $locale;
 
+    protected $with = ["translate", "category", "images"];
+
     public function __construct()
     {
+        parent::__construct();
         $this->locale = app()->getLocale();
     }
 

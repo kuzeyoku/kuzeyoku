@@ -21,8 +21,11 @@ class Service extends Model
 
     private $locale;
 
+    protected $with = ["translate", "category"];
+
     public function __construct()
     {
+        parent::__construct();
         $this->locale = app()->getLocale();
     }
 

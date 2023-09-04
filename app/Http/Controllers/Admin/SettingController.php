@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Setting;
 use Throwable;
+use App\Models\Page;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Services\Admin\SettingService;
 
@@ -24,7 +25,8 @@ class SettingController extends Controller
     public function index()
     {
         $this->authorize("index", Setting::class);
-        return view("admin.{$this->service->folder()}.index");
+        $pagelist = Page::toSelectArray();
+        return view("admin.{$this->service->folder()}.index", compact("pagelist"));
     }
 
     public function update(Request $request)

@@ -5,7 +5,6 @@ namespace App\Services\Admin;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use App\Models\Page;
 
 class SettingService
 {
@@ -33,11 +32,6 @@ class SettingService
         Setting::upsert($settings, ['key', 'category'], ['value']);
 
         Cache::forget("setting");
-    }
-
-    public function pageList(): array
-    {
-        return array_merge([__("admin/general.select")], Page::toSelectArray());
     }
 
     public static function getSitemapModuleList()

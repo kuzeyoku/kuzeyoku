@@ -29,8 +29,11 @@ class Popup extends Model
 
     private $locale;
 
+    protected $with = ["translate"];
+
     public function __construct()
     {
+        parent::__construct();
         $this->locale = app()->getLocale();
     }
 

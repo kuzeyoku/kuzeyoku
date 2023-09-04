@@ -8,9 +8,13 @@
 </div>
 <div class="form-group">
     {!! Form::label('cookie_page', __('admin/setting.information.cookie_page')) !!}
-    {!! Form::select('cookie_page', $service->pageList(), config('setting.information.cookie_page')) !!}
+    {!! Form::select('cookie_page', $pagelist, config('setting.information.cookie_page'), [
+        'placeholder' => __('admin/general.select'),
+    ]) !!}
 </div>
 <div class="form-group">
     {!! Form::label('privacy_page', __('admin/setting.information.privacy_page')) !!}
-    {!! Form::select('privacy_page', $service->pageList(), config('setting.information.privacy_page')) !!}
+    {!! Form::select('privacy_page', $pagelist, config('setting.information.privacy_page'), [
+        'placeholder' => __('admin/general.select'),
+    ]) !!}
 </div>

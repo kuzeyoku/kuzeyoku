@@ -20,10 +20,10 @@ class MenuProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $headerMenu = cache()->rememberForever('headerMenu', function () {
+        $headerMenu = cache()->remember(3600, 'headerMenu', function () {
             return Menu::whereType("header")->order()->get();
         });
-        $footerMenu = cache()->rememberForever('footerMenu', function () {
+        $footerMenu = cache()->remember(3600, 'footerMenu', function () {
             return Menu::whereType('footer')->order()->get();
         });
 

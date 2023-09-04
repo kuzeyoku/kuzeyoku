@@ -24,14 +24,22 @@ class Project extends Model
 
     private $locale;
 
+    protected $with = ["translate", "category", "images"];
+
     public function __construct()
     {
+        parent::__construct();
         $this->locale = app()->getLocale();
     }
 
     public function translate()
     {
         return $this->hasMany(ProjectTranslate::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     public function images()

@@ -25,12 +25,16 @@
                         <img src="{{ $project->getImageUrl() }}" alt="Thumb">
                     </div>
                     <div class="info">
-                        <div class="tags">
-                            <a href="#">{{ $project->category }}</a>
-                        </div>
-                        <h4>
+                        @if ($project->category != 0)
+                            <div class="tags">
+                                <a href="{{ route('project.category', $project->category) }}">
+                                    {{ $project->category }}
+                                </a>
+                            </div>
+                        @endif
+                        <h3>
                             <a href="{{ $project->getUrl() }}">{{ $project->getTitle() }}</a>
-                        </h4>
+                        </h3>
                     </div>
                 </div>
             @endforeach

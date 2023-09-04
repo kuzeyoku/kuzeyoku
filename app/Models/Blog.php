@@ -22,6 +22,8 @@ class Blog extends Model
 
     private $locale;
 
+    protected $with = ["translate", "category", "user"];
+
     public function __construct()
     {
         parent::__construct();

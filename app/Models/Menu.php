@@ -21,8 +21,11 @@ class Menu extends Model
 
     private $locale;
 
+    protected $with = ["translate", "subMenu"];
+
     public function __construct()
     {
+        parent::__construct();
         $this->locale = app()->getLocale();
     }
 
