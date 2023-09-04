@@ -7,7 +7,9 @@
                 {!! Form::open(['url' => route("admin.{$route}.files", $language)]) !!}
                 {!! Form::hidden('folder', 'admin') !!}
                 {!! Form::label('Admin Panel Dil Dosyaları') !!}
-                {!! Form::select('filename', $adminFiles, $filename, ['placeholder' => __('admin/general.select')]) !!}
+                {!! Form::select('filename', $adminFiles, $dir == 'admin' ? $filename : 'default', [
+                    'placeholder' => __('admin/general.select'),
+                ]) !!}
                 {!! Form::close() !!}
             </div>
         </div>
@@ -16,7 +18,9 @@
                 {!! Form::open(['url' => route("admin.{$route}.files", $language)]) !!}
                 {!! Form::hidden('folder', 'front') !!}
                 {!! Form::label('Site Dil Dosyaları') !!}
-                {!! Form::select('filename', $frontFiles, $filename, ['placeholder' => __('admin/general.select')]) !!}
+                {!! Form::select('filename', $frontFiles, $dir == 'front' ? $filename : 'default', [
+                    'placeholder' => __('admin/general.select'),
+                ]) !!}
                 {!! Form::close() !!}
             </div>
         </div>
@@ -46,6 +50,18 @@
                         <div class="alert alert-primary mb-0 text-center">{{ __("admin/{$folder}.files.table_empty") }}
                         </div>
                     @endforelse
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                {!! Form::text('key', null) !!}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                {!! Form::text('value', null) !!}
+                            </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
