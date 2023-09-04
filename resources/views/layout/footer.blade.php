@@ -141,14 +141,8 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="download">
-                            <h5>Download</h5>
-                            <a href="#"><i class="fab fa-apple"></i> App Store</a>
-                            <a href="#"><i class="fab fa-google-play"></i> Google Play</a>
-                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
