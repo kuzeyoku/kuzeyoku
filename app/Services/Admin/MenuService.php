@@ -20,7 +20,7 @@ class MenuService extends BaseService
     public function create(Object $request)
     {
         $data = new Request([
-            "url" => $request->url,
+            "url" => $request->urlSelect ?? $request->url,
             "type" => $request->type,
             "parent_id" => $request->parent_id ?? 0,
             "order" => $request->order,
@@ -39,7 +39,7 @@ class MenuService extends BaseService
     public function update(Object $request, Model $menu)
     {
         $data = new Request([
-            "url" => $request->url,
+            "url" => $request->urlSelect ?? $request->url,
             "type" => $request->type,
             "parent_id" => $request->parent_id ?? 0,
             "order" => $request->order,
@@ -81,5 +81,17 @@ class MenuService extends BaseService
                 );
             }
         }
+    }
+
+    public function getUrlList(): array
+    {
+        return [
+            route(ModuleEnum::Blog->Route() . ".index") => ModuleEnum::Blog->singleTitle(),
+            route(ModuleEnum::Service->Route() . ".index") => ModuleEnum::Service->singleTitle(),
+            route(ModuleEnum::Product->Route() . ".index") => ModuleEnum::Product->singleTitle(),
+            route(ModuleEnum::Project->Route() . ".index") => ModuleEnum::Project->singleTitle(),
+            route(ModuleEnum::Reference->Route() . ".index") => ModuleEnum::Reference->singleTitle(),
+            route("contact.index") => __("contact.title"),
+        ];
     }
 }

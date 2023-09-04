@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Admin\LogController;
 use Exception;
 use App\Models\Menu;
 use App\Services\Admin\MenuService;
@@ -38,7 +37,8 @@ class MenuController extends Controller
     {
         $menus = Menu::whereType($type)->order()->get();
         $parentList = Menu::toSelectArray($type);
-        return view("admin.{$this->service->folder()}.index", compact('menus', 'type', "parentList", "menu"));
+        $urlList = $this->service->getUrlList();
+        return view("admin.{$this->service->folder()}.index", compact('menus', 'type', "parentList", "urlList", "menu"));
     }
 
     public function edit(Menu $menu)

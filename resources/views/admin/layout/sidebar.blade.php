@@ -12,29 +12,33 @@
                 </li>
 
                 @foreach (App\Enums\ModuleEnum::cases() as $module)
-                    @if (count($module->menu()) == 1)
-                        <li><a
-                                href="{{ route("admin.{$module->route()}.index") }}">@svg($module->icon())<span>{{ $module->title() }}</span></a>
-                        </li>
-                    @else
-                        <li class="submenu">
-                            <a href="javascript:void(0);">
-                                @svg($module->icon())
-                                <span>{{ $module->title() }}</span>
-                                <span class="menu-arrow">
-                                    {{ svg('ri-arrow-right-s-line') }}
-                                </span>
-                            </a>
-                            <ul>
-                                @foreach ($module->menu() as $key => $value)
-                                    <li>
-                                        <a href="{{ route("admin.{$module->route()}.{$key}") }}">
-                                            {{ $value }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </li>
+                    @if ($module->status())
+                        @if (count($module->menu()) == 1)
+                            <li>
+                                <a href="{{ route("admin.{$module->route()}.index") }}">@svg($module->icon())
+                                    <span>{{ $module->title() }}</span>
+                                </a>
+                            </li>
+                        @else
+                            <li class="submenu">
+                                <a href="javascript:void(0);">
+                                    @svg($module->icon())
+                                    <span>{{ $module->title() }}</span>
+                                    <span class="menu-arrow">
+                                        {{ svg('ri-arrow-right-s-line') }}
+                                    </span>
+                                </a>
+                                <ul>
+                                    @foreach ($module->menu() as $key => $value)
+                                        <li>
+                                            <a href="{{ route("admin.{$module->route()}.{$key}") }}">
+                                                {{ $value }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                        @endif
                     @endif
                 @endforeach
 

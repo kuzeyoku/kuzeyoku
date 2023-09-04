@@ -2,6 +2,7 @@
 return [
     //general
     "title" => "Ürün Yönetimi",
+    "single_title" => "Ürünlerimiz",
     "create" => "Ürün Oluştur",
     "edit" => "Ürün Düzenle",
     "list" => "Ürün Listesi",

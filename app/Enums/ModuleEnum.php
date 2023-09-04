@@ -20,9 +20,35 @@ enum ModuleEnum: string
     case Popup = "popup";
     case User = "user";
 
+    public function status(): bool
+    {
+        return match ($this) {
+            self::User => true,
+            self::Message => true,
+            self::Menu => true,
+            self::Page => true,
+            self::Language => true,
+            self::Blog => true,
+            self::Category => true,
+            self::Service => true,
+            self::Brand => true,
+            self::Reference => true,
+            self::Product => true,
+            self::Project => true,
+            self::Slider => true,
+            self::Testimonial => true,
+            self::Popup => true,
+        };
+    }
+
     public function title(): string
     {
         return __("admin/$this->value.title");
+    }
+
+    public function singleTitle(): string
+    {
+        return __("admin/$this->value.single_title");
     }
 
     public function icon(): string

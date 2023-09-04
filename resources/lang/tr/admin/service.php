@@ -2,6 +2,7 @@
 return [
     //general
     "title" => "Hizmet Yönetimi",
+    "single_title" => "Hizmetlerimiz",
     "create" => "Hizmet Oluştur",
     "edit" => "Hizmet Düzenle",
     "list" => "Hizmet Listesi",

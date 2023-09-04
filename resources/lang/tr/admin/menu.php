@@ -16,8 +16,11 @@ return [
     "form.title_placeholder" => "Başlık Giriniz",
     "form.url" => "Url",
     "form.url_placeholder" => "Url Giriniz",
+    "form.urlSelect" => "Url Seçiniz",
+    "form.urlSelectNote" => "Url seçerseniz *Url* alanına girilen değer geçersiz olacaktır.",
     "form.parent" => "Üst Menü",
     "form.order" => "Sıra",
     "form.order_placeholder" => "Sıra Giriniz",
     "form.blank" => "Yeni Sekmede Aç",
+
 ];

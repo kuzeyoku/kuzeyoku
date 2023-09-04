@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\ModuleEnum;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -19,19 +20,21 @@ Route::prefix('admin')->name('admin.')->group(function () {
         });
 
         // Menu Routes
-        Route::controller(App\Http\Controllers\Admin\MenuController::class)->prefix('menu')->group(function () {
-            Route::get('/header', 'header')->name('menu.header');
-            Route::get('/footer', 'footer')->name('menu.footer');
-        });
+        if (ModuleEnum::Menu->status())
+            Route::controller(App\Http\Controllers\Admin\MenuController::class)->prefix('menu')->group(function () {
+                Route::get('/header', 'header')->name('menu.header');
+                Route::get('/footer', 'footer')->name('menu.footer');
+            });
 
         //Message Routes
-        Route::controller(App\Http\Controllers\Admin\MessageController::class)->prefix("message")->group(function () {
-            Route::get("/", "index")->name("message.index");
-            Route::get("/{message}/show", "show")->name("message.show");
-            Route::get("/{message}/reply", "reply")->name("message.reply");
-            Route::post("/sendReply", "sendReply")->name("message.sendReply");
-            Route::delete("/{message}/destroy", "destroy")->name("message.destroy");
-        });
+        if (ModuleEnum::Message->status())
+            Route::controller(App\Http\Controllers\Admin\MessageController::class)->prefix("message")->group(function () {
+                Route::get("/", "index")->name("message.index");
+                Route::get("/{message}/show", "show")->name("message.show");
+                Route::get("/{message}/reply", "reply")->name("message.reply");
+                Route::post("/sendReply", "sendReply")->name("message.sendReply");
+                Route::delete("/{message}/destroy", "destroy")->name("message.destroy");
+            });
 
         // Other Routes
         Route::post('editor/upload')->uses("App\Http\Controllers\Admin\EditorController@upload")->name("editor.upload");
@@ -44,25 +47,28 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::put("/{language}/updateFileContent", "updateFileContent")->name("language.updateFileContent");
         });
 
-        Route::controller(App\Http\Controllers\Admin\ProductController::class)->prefix("product")->group(function () {
-            // Route::get("/{project}", "show")->name("product.show");
-            Route::get("/{product}/image", "image")->name("product.image");
-            Route::post("/imageStore", "imageStore")->name("product.imageStore");
-            Route::delete("/{image}/imagedelete", "imageDelete")->name("product.imageDelete");
-            Route::delete("/{product}/imagealldelete", "imageAllDelete")->name("product.imageAllDelete");
-        });
+        if (ModuleEnum::Product->status())
+            Route::controller(App\Http\Controllers\Admin\ProductController::class)->prefix("product")->group(function () {
+                // Route::get("/{project}", "show")->name("product.show");
+                Route::get("/{product}/image", "image")->name("product.image");
+                Route::post("/imageStore", "imageStore")->name("product.imageStore");
+                Route::delete("/{image}/imagedelete", "imageDelete")->name("product.imageDelete");
+                Route::delete("/{product}/imagealldelete", "imageAllDelete")->name("product.imageAllDelete");
+            });
 
-        Route::controller(App\Http\Controllers\Admin\ProjectController::class)->prefix("project")->group(function () {
-            Route::get("/{project}/image", "image")->name("project.image");
-            Route::post("/imageStore", "imageStore")->name("project.imageStore");
-            Route::delete("/{image}/imageDelete", "imageDelete")->name("project.imageDelete");
-            Route::delete("/{project}/imageAllDelete", "imageAllDelete")->name("project.imageAllDelete");
-        });
+        if (ModuleEnum::Project->status())
+            Route::controller(App\Http\Controllers\Admin\ProjectController::class)->prefix("project")->group(function () {
+                Route::get("/{project}/image", "image")->name("project.image");
+                Route::post("/imageStore", "imageStore")->name("project.imageStore");
+                Route::delete("/{image}/imageDelete", "imageDelete")->name("project.imageDelete");
+                Route::delete("/{project}/imageAllDelete", "imageAllDelete")->name("project.imageAllDelete");
+            });
 
         // Resource Routes
         foreach (App\Enums\ModuleEnum::cases() as $module) {
             //Route::resource($module->route(), $module->controller())->except('show')->names($module->route());
-            Route::resource($module->route(), $module->controller())->names($module->route());
+            if ($module->status())
+                Route::resource($module->route(), $module->controller())->names($module->route());
         }
     });
 });

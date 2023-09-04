@@ -10,6 +10,11 @@
     @endforeach
 </div>
 <div class="form-group">
+    {!! Form::label('urlSelect', __("admin/{$folder}.form.urlSelect")) !!}
+    {!! Form::select('urlSelect', $urlList, null, ['placeholder' => __('admin/general.select')]) !!}
+    <span>{{ __("admin/{$folder}.form.urlSelectNote") }}</span>
+</div>
+<div class="form-group">
     {!! Form::label('url', __("admin/{$folder}.form.url")) !!}
     {!! Form::text('url', null, ['placeholder' => __("admin/{$folder}.form.url_placeholder")]) !!}
 </div>

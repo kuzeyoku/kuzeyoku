@@ -1,6 +1,7 @@
 <?php
 return [
     'title' => 'Blog Yönetimi',
+    "single_title" => "Blog",
     'create' => 'İçerik Oluştur',
     'edit' => 'İçerik Düzenle',
     'list' => 'İçerik Listesi',
