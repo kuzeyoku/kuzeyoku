@@ -58,8 +58,8 @@ class LanguageController extends Controller
     {
         $this->authorize("fileProcess", Language::class);
         $response = $this->service->files($language);
-        $frontFiles = $response['frontFiles'];
-        $adminFiles = $response['adminFiles'];
+        $frontFiles = $response['frontFiles'] ?? [];
+        $adminFiles = $response['adminFiles'] ?? [];
         $fileContent = $response['fileContent'] ?? [];
         $filename = $response['filename'] ?? null;
         $dir = $response['folder'] ?? null;
