@@ -88,3 +88,4 @@ class LanguageService extends BaseService
         return Storage::disk("lang")->put($language->code . "/" . $folder . "/" . $filename . ".php", $content);
     }
 }
+
