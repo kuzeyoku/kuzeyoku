@@ -5,37 +5,42 @@
                 <div class="col-lg-3 col-md-6 item">
                     <div class="fun-fact">
                         <div class="counter">
-                            <div class="timer" data-to="58" data-speed="5000">58</div>
-                            <div class="operator">K</div>
+                            <div class="timer" data-to="{{ (int) __('front/counter.year_number') }}" data-speed="5000">
+                                {{ __('front/counter.year_number') }}</div>
                         </div>
-                        <span class="medium">Happy Clients</span>
+                        <span class="medium">{{ __('front/counter.year_text') }}</span>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 item">
                     <div class="fun-fact">
                         <div class="counter">
-                            <div class="timer" data-to="875" data-speed="5000">875</div>
+                            <div class="timer" data-to="{{ (int) __('front/counter.project_number') }}"
+                                data-speed="5000">
+                                {{ __('front/counter.project_number') }}</div>
                             <div class="operator">+</div>
                         </div>
-                        <span class="medium">Finished Projects</span>
+                        <span class="medium">{{ __('front/counter.project_text') }}</span>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 item">
                     <div class="fun-fact">
                         <div class="counter">
-                            <div class="timer" data-to="42" data-speed="5000">42</div>
+                            <div class="timer" data-to="{{ (int) __('front/counter.area_number') }}" data-speed="5000">
+                                {{ __('front/counter.area_number') }}</div>
                             <div class="operator">+</div>
                         </div>
-                        <span class="medium">Skilled Experts</span>
+                        <span class="medium">{{ __('front/counter.area_text') }}</span>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 item">
                     <div class="fun-fact">
                         <div class="counter">
-                            <div class="timer" data-to="100" data-speed="5000">100</div>
+                            <div class="timer" data-to="{{ (int) __('front/counter.satisfied') }}" data-speed="5000">
+                                {{ __('front/counter.satisfied') }}
+                            </div>
                             <div class="operator">%</div>
                         </div>
-                        <span class="medium">Satisfaction</span>
+                        <span class="medium">{{ __('front/counter.satisfied_text') }}</span>
                     </div>
                 </div>
             </div>

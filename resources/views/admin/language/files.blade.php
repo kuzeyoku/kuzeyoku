@@ -5,18 +5,18 @@
         <div class="col-lg-6">
             <div class="form-group">
                 {!! Form::open(['url' => route("admin.{$route}.files", $language)]) !!}
-                {!! Form::hidden('_folder', 'admin') !!}
+                {!! Form::hidden('folder', 'admin') !!}
                 {!! Form::label('Admin Panel Dil Dosyaları') !!}
-                {!! Form::select('_filename', $adminFiles, 'default') !!}
+                {!! Form::select('filename', $adminFiles, $filename, ['placeholder' => __('admin/general.select')]) !!}
                 {!! Form::close() !!}
             </div>
         </div>
         <div class="col-lg-6">
             <div class="form-group">
                 {!! Form::open(['url' => route("admin.{$route}.files", $language)]) !!}
-                {!! Form::hidden('_folder', 'front') !!}
+                {!! Form::hidden('folder', 'front') !!}
                 {!! Form::label('Site Dil Dosyaları') !!}
-                {!! Form::select('_filename', $files, 'default') !!}
+                {!! Form::select('filename', $frontFiles, $filename, ['placeholder' => __('admin/general.select')]) !!}
                 {!! Form::close() !!}
             </div>
         </div>
@@ -24,8 +24,8 @@
 @endsection
 @section('card')
     {!! Form::open(['url' => route("admin.{$route}.updateFileContent", $language), 'method' => 'put']) !!}
-    {!! Form::hidden('_filename', $_filename) !!}
-    {!! Form::hidden('_folder', $_folder) !!}
+    {!! Form::hidden('filename', $filename) !!}
+    {!! Form::hidden('folder', $dir) !!}
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">{{ __("admin/{$folder}.files.title") }}</h3>
@@ -58,7 +58,7 @@
 @section('script')
     <script>
         $(function() {
-            $("select[name='_filename']").change(function() {
+            $("select[name='filename']").change(function() {
                 $(this).closest('form').submit();
             });
         });

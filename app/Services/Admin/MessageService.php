@@ -48,11 +48,11 @@ class MessageService extends BaseService
     public function setMailSettings()
     {
         config([
-            "mail.mailers.smtp.host" => config("setting.smtp_host") ?? env('MAIL_HOST'),
-            "mail.mailers.smtp.port" => config("setting.smtp_port") ?? env('MAIL_PORT'),
-            "mail.mailers.smtp.encryption" => config("setting.smtp_encryption") ?? env('MAIL_ENCRYPTION'),
-            "mail.mailers.smtp.username" => config("setting.smtp_username") ?? env('MAIL_USERNAME'),
-            "mail.mailers.smtp.password" => config("setting.smtp_password") ?? env('MAIL_PASSWORD'),
+            "mail.mailers.smtp.host" => config("setting.smtp_host", env('MAIL_HOST')),
+            "mail.mailers.smtp.port" => config("setting.smtp_port", env('MAIL_PORT')),
+            "mail.mailers.smtp.encryption" => config("setting.smtp_encryption", env('MAIL_ENCRYPTION')),
+            "mail.mailers.smtp.username" => config("setting.smtp_username", env('MAIL_USERNAME')),
+            "mail.mailers.smtp.password" => config("setting.smtp_password", env('MAIL_PASSWORD')),
         ]);
     }
 }

@@ -42,59 +42,49 @@ class LanguageService extends BaseService
     static function toArray()
     {
         return cache()->rememberForever('languages', function () {
-            return Language::where('status', StatusEnum::Active->value)->get();
+            return Language::active()->get();
         });
     }
 
-    public function files(Language $language): array
+    public function files(Language $language)
     {
-        $languageCode = $language->code;
-        $_folder = request()->_folder === "admin" ? "admin" : null;
-        $_filename = request()->_filename;
-
-        $fileContent = [];
-        if (request()->isMethod("POST")) {
-            Lang::setLocale($languageCode);
-            $fileContent = Lang::get("{$_folder}/{$_filename}");
-        }
-
         $langDisk = Storage::disk("lang");
 
         $extractFileData = function ($file) {
-            $fileName = basename($file, ".php");
-            return [strtolower($fileName) => ucfirst($fileName)];
+            return [strtolower(basename($file, ".php")) => ucfirst(basename($file, ".php"))];
         };
 
-        $initialOption = ['select' => 'Seçiniz'];
+        $getFiles = function ($folder) use ($langDisk, $extractFileData, $language) {
+            return array_reduce($langDisk->files("{$language->code}/{$folder}"), function ($carry, $file) use ($extractFileData) {
+                return array_merge($carry, $extractFileData($file));
+            }, []);
+        };
 
-        $files = array_reduce($langDisk->files($languageCode), function ($carry, $file) use ($extractFileData, $initialOption) {
-            return array_merge($initialOption, $carry, $extractFileData($file));
-        }, []);
+        $frontFiles = $getFiles("front");
+        $adminFiles = $getFiles("admin");
 
-        $adminFiles = array_reduce($langDisk->files("{$languageCode}/admin"), function ($carry, $file) use ($extractFileData, $initialOption) {
-            return array_merge($initialOption, $carry, $extractFileData($file));
-        }, []);
+        if (request()->isMethod("POST")) {
+            $filename = request("filename");
+            $folder = request("folder");
+            $fileContent = [];
+            if (Lang::has($folder . "/" . $filename)) {
+                $fileContent = Lang::get($folder . "/" . $filename);
+            }
+            return compact('frontFiles', 'adminFiles', 'fileContent', 'filename', 'folder');
+        }
 
-        return [
-            "files" => $files,
-            "adminFiles" => $adminFiles,
-            "fileContent" => $fileContent,
-            "_filename" => $_filename,
-            "_folder" => $_folder,
-        ];
+        return compact('frontFiles', 'adminFiles');
     }
 
     public function updateFileContent(Language $language)
     {
-        $folder = request()->_folder == "admin" ? "admin" : null;
+        $folder = request()->_folder;
         $filename = request()->_filename;
-        $content = request()->except("_token", "_method", "_filename", "_folder");
-        $path = "{$language->code}/{$folder}/{$filename}.php";
-        $stringContent = "<?php\nreturn [\n";
-        foreach ($content as $key => $value) {
-            $stringContent = $stringContent . "'{$key}' => '{$value}',\n";
-        }
-        $stringContent = $stringContent . "];";
-        return Storage::disk("lang")->put($path, $stringContent);
+        $request = request()->except("_token", "_method", "_filename", "_folder");
+        $content = "<?php\nreturn [\n" . implode(",\n", array_map(function ($key, $value) {
+            return "'{$key}' => '{$value}'";
+        }, array_keys($request), $request)) . "\n];";
+
+        return Storage::disk("lang")->put($language->code . "/" . $folder . "/" . $filename . ".php", $content);
     }
 }

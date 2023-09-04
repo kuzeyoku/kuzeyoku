@@ -9,10 +9,10 @@
                                 <div class="item">
                                     <div class="title">
                                         <i class="flaticon-target"></i>
-                                        <h4>Misyonumuz</h4>
+                                        <h4>{{ __('front/about.mission') }}</h4>
                                     </div>
                                     <p>
-                                        Misyonumuz, müşterilerimizin ihtiyaçlarına ve beklentilerine en iyi şekilde cevap vererek, onlara değer katmaktır.
+                                        {{ __('front/about.mission_description') }}
                                     </p>
                                 </div>
                             </div>
@@ -20,21 +20,22 @@
                                 <div class="item">
                                     <div class="title">
                                         <i class="flaticon-vision-1"></i>
-                                        <h4>Vizyonumuz</h4>
+                                        <h4>{{ __('front/about.vision') }}</h4>
                                     </div>
                                     <p>
-                                        Vizyonumuz, dünya çapında lider bir firma olmak ve yenilikçi ürünler ve hizmetlerle müşterilerimizin ihtiyaçlarını karşılamaktır.
+                                        {{ __('front/about.vision_description') }}
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="bottom-info">
-                        <h2>Hep En İyisini Tercih Ediyoruz</h2>
+                        <h2>{{ __('front/about.brand_title') }}</h2>
                         <div class="clients-carousel-3-col owl-carousel owl-theme">
                             @foreach ($brands as $brand)
-                                <a href="{{ $brand->url }}"><img src="{{ $brand->getImageUrl() }}"
-                                        alt="{{ $brand->title }}"></a>
+                                <a href="{{ $brand->url }}">
+                                    <img src="{{ $brand->getImageUrl() }}" alt="{{ $brand->title }}">
+                                </a>
                             @endforeach
                         </div>
                     </div>

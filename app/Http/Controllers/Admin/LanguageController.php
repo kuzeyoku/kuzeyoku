@@ -58,12 +58,12 @@ class LanguageController extends Controller
     {
         $this->authorize("fileProcess", Language::class);
         $response = $this->service->files($language);
-        $files = $response['files'];
+        $frontFiles = $response['frontFiles'];
         $adminFiles = $response['adminFiles'];
-        $fileContent = $response['fileContent'];
-        $_filename = $response['_filename'];
-        $_folder = $response['_folder'];
-        return view("admin.{$this->service->folder()}.files", compact('language', 'files', 'adminFiles', 'fileContent', '_filename', '_folder'));
+        $fileContent = $response['fileContent'] ?? [];
+        $filename = $response['filename'] ?? null;
+        $dir = $response['folder'] ?? null;
+        return view("admin.{$this->service->folder()}.files", compact('language', 'frontFiles', 'adminFiles', 'fileContent', 'filename', 'dir'));
     }
 
     public function updateFileContent(Language $language)
