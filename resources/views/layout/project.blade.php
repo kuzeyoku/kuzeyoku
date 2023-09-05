@@ -1,7 +1,7 @@
 <div class="case-studies-area bg-gray default-padding-bottom default-padding">
     <!-- Fixed BG -->
     <div class="fixed-shape-top">
-        <img src="assets/img/shape/bg-7.png" alt="Shape">
+        <img src="{{ asset('assets/img/shape/bg-7.png') }}">
     </div>
     <!-- End Fixed BG -->
     <div class="container">
@@ -25,11 +25,9 @@
                         <img src="{{ $project->getImageUrl() }}" alt="Thumb">
                     </div>
                     <div class="info">
-                        @if ($project->category != 0)
+                        @if ($project->category_id != 0)
                             <div class="tags">
-                                <a href="{{ route('project.category', $project->category) }}">
-                                    {{ $project->category }}
-                                </a>
+                                # {{ $project->category->getTitle() }}
                             </div>
                         @endif
                         <h3>
@@ -38,7 +36,6 @@
                     </div>
                 </div>
             @endforeach
-
         </div>
     </div>
 </div>

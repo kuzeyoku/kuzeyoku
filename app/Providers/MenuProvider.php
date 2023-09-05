@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Menu;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
 
 class MenuProvider extends ServiceProvider
@@ -20,16 +21,13 @@ class MenuProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $headerMenu = cache()->remember(3600, 'headerMenu', function () {
-            return Menu::whereType("header")->order()->get();
-        });
-        $footerMenu = cache()->remember(3600, 'footerMenu', function () {
-            return Menu::whereType('footer')->order()->get();
-        });
+        $headerMenu = Menu::whereType("header")->order()->get();
+        $footerMenu = Menu::whereType('footer')->order()->get();
 
         view()->composer('layout.header', function ($view) use ($headerMenu) {
             $view->with('headerMenu', $headerMenu);
         });
+
         view()->composer('layout.footer', function ($view) use ($footerMenu) {
             $view->with('footerMenu', $footerMenu);
         });

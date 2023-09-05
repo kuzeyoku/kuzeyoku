@@ -19,7 +19,8 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->title[app()->getLocale()] }}</td>
-                        <td>{{ $item->category }}</td>
+                        <td>{{ $item->category ? $item->category->getTitle() : __('admin/general.no_category') }}
+                        </td>
                         <td>{{ $item->created_at->diffForHumans() }}</td>
                         <td>{{ $item->updated_at->diffForHumans() }}</td>
                         <td>{{ statusView($item->status) }}</td>

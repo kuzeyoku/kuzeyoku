@@ -27,7 +27,8 @@ class ImageService
         ['width' => $width, 'height' => $height] = $this->module->image();
         $this->imageManager
             ->fromFile($file->getPathname())
-            ->bestFit($width, $height)
+            ->fitToWidth($width)
+            ->crop(0, 0, $width, $height)
             ->toFile($file->getPathname());
         return Storage::putFileAs($path, $file, $fileName) ? $fileName : null;
     }
