@@ -55,6 +55,10 @@ class ServiceService extends BaseService
             parent::imageDelete($service);
         }
 
+        // request()->whenFilled("imageDelete", function () use ($service) {
+        //     parent::imageDelete($service);
+        // });
+
         if (isset($request->image) && $request->image->isValid()) {
             $data->merge(["image" => $this->imageService->upload($request->image)]);
             if ($data->image && !is_null($service->image)) {
