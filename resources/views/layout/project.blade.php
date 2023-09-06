@@ -1,17 +1,15 @@
 <div class="case-studies-area bg-gray default-padding-bottom default-padding">
-    <!-- Fixed BG -->
     <div class="fixed-shape-top">
         <img src="{{ asset('assets/img/shape/bg-7.png') }}">
     </div>
-    <!-- End Fixed BG -->
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
                 <div class="site-heading text-center">
-                    <h2 class="area-title">Projelerimiz</h2>
+                    <h2 class="area-title">{{ __('front/project.home_title') }}</h2>
                     <div class="devider"></div>
                     <p>
-                        Yapımı devam eden yada tamamladığımız projelerimizi 3D olarak inceleyebilirsiniz..
+                        {{ __('front/project.home_description') }}
                     </p>
                 </div>
             </div>
@@ -25,7 +23,7 @@
                         <img src="{{ $project->getImageUrl() }}" alt="Thumb">
                     </div>
                     <div class="info">
-                        @if ($project->category_id != 0)
+                        @if ($project->category)
                             <div class="tags">
                                 # {{ $project->category->getTitle() }}
                             </div>

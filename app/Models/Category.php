@@ -28,6 +28,26 @@ class Category extends Model
         $this->locale = app()->getLocale();
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
+
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
+
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class);
+    }
+
     public function translate()
     {
         return $this->hasMany(CategoryTranslate::class);
@@ -65,6 +85,26 @@ class Category extends Model
         if (array_key_exists($this->locale, $this->description))
             return $this->description[$this->locale];
         return null;
+    }
+
+    public function countProducts()
+    {
+        return $this->products()->count();
+    }
+
+    public function countProjects()
+    {
+        return $this->projects()->count();
+    }
+
+    public function countServices()
+    {
+        return $this->services()->count();
+    }
+
+    public function countBlogs()
+    {
+        return $this->blogs()->count();
     }
 
     public static function boot()

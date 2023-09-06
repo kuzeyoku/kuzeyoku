@@ -1,7 +1,7 @@
 @extends('layout.main')
 @section('title', $post->getTitle())
 @section('content')
-    @include('layout.breadcrumb', ['nav' => [route('blog.index') => 'Blog']])
+    @include('layout.breadcrumb', ['nav' => [route('blog.index') => __('front/blog.page_title')]])
     <div class="blog-area single full-blog full-blog default-padding">
         <div class="container">
             <div class="blog-items">
@@ -13,8 +13,8 @@
                         <div class="info">
                             <div class="meta">
                                 <ul>
-                                    <li>@svg('ri-calendar-2-line') {{ $post->updated_at->translatedFormat('d m Y') }}</li>
-                                    <li>@svg('ri-eye-fill') {{ $post->view_count }} Görüntüleme</li>
+                                    <li>@svg('ri-calendar-2-line') {{ $post->getCreatedDate() }}</li>
+                                    <li>@svg('ri-eye-fill') {{ $post->view_count }} {{ __('front/blog.view') }}</li>
                                     @if ($post->category)
                                         <li>@svg('ri-list-check-2') {{ $post->category->getTitle() }}</li>
                                     @endif
@@ -23,20 +23,20 @@
                             <h3>
                                 {{ $post->getTitle() }}
                             </h3>
-                            {!! Str::limit($post->getDescription(), 150) !!}
+                            {!! $post->getDescription() !!}
                         </div>
                     </div>
                     @if (isset($previousPost) || isset($nextPost))
                         <div class="post-pagi-area">
                             @if (isset($previousPost))
                                 <a href="{{ $previousPost->getUrl() }}">
-                                    <i class="fas fa-angle-double-left"></i> Önceki Konu
+                                    <i class="fas fa-angle-double-left"></i> {{ __('front/blog.previous_post') }}
                                     <h5>{{ $previousPost->getTitle() }}</h5>
                                 </a>
                             @endif
                             @if (isset($nextPost))
                                 <a href="{{ $nextPost->getUrl() }}">
-                                    Sonraki Konu <i class="fas fa-angle-double-right"></i>
+                                    {{ __('front/blog.next_post') }} <i class="fas fa-angle-double-right"></i>
                                     <h5>{{ $nextPost->getTitle() }}</h5>
                                 </a>
                             @endif
@@ -45,7 +45,7 @@
                     <div class="post-tags">
                         <div class="tags">
                             @foreach ($post->getTags() as $tag)
-                                <span>#{{ $tag }}</span>
+                                <span>#{{ trim($tag) }}</span>
                             @endforeach
                         </div>
                         <span class="font-weight-bold">{{ $post->user->name }}</span>

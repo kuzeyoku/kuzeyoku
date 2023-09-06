@@ -2,8 +2,8 @@
 return [
     'previous' => 'Önceki',
     'next' => 'Sonraki',
-    'results' => "adet kayıttan",
-    "to" => "ile",
-    "of" => "arası",
-    "showing" => "gösteriliyor"
+    'results' => "Adet Kayıttan",
+    "to" => "İle",
+    "of" => "Arası",
+    "showing" => "Gösteriliyor"
 ];

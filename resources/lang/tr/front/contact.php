@@ -1,5 +1,6 @@
 <?php
 return [
+    "page_title" => "İletişim",
     "how_can_help" => "Nasıl yardımcı olabiliriz?",
     "description" => "Hizmet ve fiyatlarımız hakkında bilgi almak, soru, görüş ve önerileriniz için mesaj
     gönderebilirsiniz.",

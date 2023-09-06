@@ -107,4 +107,9 @@ class Blog extends Model
             return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Blog->folder() . "/" . $this->image);
         return asset("assets/img/noimage.png");
     }
+
+    public function getCreatedDate()
+    {
+        return date("d m Y", strtotime($this->created_at));
+    }
 }

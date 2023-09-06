@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title', 'İletişim')
+@section('title', __('front/contact.page_title'))
 @section('content')
     @include('layout.breadcrumb')
     @include('layout.contact', ['half' => false])

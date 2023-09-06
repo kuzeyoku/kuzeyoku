@@ -3,11 +3,10 @@
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
                 <div class="site-heading text-center">
-                    {{-- <h5>Hizmetlerimiz</h5> --}}
-                    <h2 class="area-title">Hizmetlerimiz</h2>
+                    <h2 class="area-title">{{ __('front/service.home_title') }}</h2>
                     <div class="devider"></div>
                     <p>
-                        Hassasiyet gerektiren işlerinizi önemsiyor ve en kaliteli hizmetleri sunmaya çalışıyoruz.
+                        {{ __('front/service.home_description') }}
                     </p>
                 </div>
             </div>
@@ -19,19 +18,21 @@
                 @foreach ($services as $service)
                     <div class="single-item col-lg-3 col-md-6">
                         <div class="item">
-                            <img src="{{ $service->getImageUrl() }}" alt="Thumb">
+                            <img src="{{ $service->getImageUrl() }}" alt="{{ $service->getTitle() }}">
                             <h5><a href="{{ $service->getUrl() }}">{{ $service->getTitle() }}</a></h5>
-                            {{-- <p>
-                                {!! Str::limit($service->getDescription(true), 90, '...') !!}
-                            </p> --}}
+                            <p>
+                                {!! Str::limit($service->getDescription(), 90, '...') !!}
+                            </p>
                         </div>
                     </div>
                 @endforeach
             </div>
             <div class="bottom-content text-center">
                 <p>
-                    Bazı işler için fazla para ve zaman harcamayı bırakın <a href="{{ route('service.index') }}">Diğer
-                        hizmetlerimize göz atın.</a>
+                    {{ __('front/service.other_service_description') }}
+                    <a href="{{ route('service.index') }}">
+                        {{ __('front/service.other_service_link_title') }}
+                    </a>
                 </p>
             </div>
         </div>
