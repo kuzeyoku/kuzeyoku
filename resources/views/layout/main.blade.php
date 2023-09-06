@@ -2,19 +2,14 @@
 <html lang="en">
 
 <head>
-    <!-- ========== Meta Tags ========== -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ config('setting.general.description') }}">
 
-    <!-- ========== Page Title ========== -->
     <title>@yield('title')</title>
 
-    <!-- ========== Favicon Icon ========== -->
     <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
-
-    <!-- ========== Start Stylesheet ========== -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/themify-icons.css') }}" rel="stylesheet">
@@ -27,8 +22,6 @@
     <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
-    <!-- ========== End Stylesheet ========== -->
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -40,31 +33,12 @@
 
 <body>
 
-    <!-- Preloader Start -->
     <div class="se-pre-con"></div>
-    <!-- Preloader Ends -->
-
-
-    <!-- Start Header Top
-    ============================================= -->
     @include('layout.topbar')
-    <!-- End Header Top -->
-
-    <!-- Header
-    ============================================= -->
     @include('layout.header')
-    <!-- End Header -->
-
-
     @yield('content')
-
-    <!-- Start Footer
-    ============================================= -->
     @include('layout.footer')
-    <!-- End Footer -->
 
-    <!-- jQuery Frameworks
-    ============================================= -->
     <script src="{{ asset('assets/js/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>

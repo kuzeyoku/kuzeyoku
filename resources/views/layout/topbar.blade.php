@@ -12,13 +12,13 @@
                 </ul>
             </div>
             <div class="col-lg-6 text-right item-flex">
-                <div class="info">
+                {{-- <div class="info">
                     <ul>
                         <li>
                             <i class="fas fa-clock"></i>{{ date('d/m/y H:i') }}
                         </li>
                     </ul>
-                </div>
+                </div> --}}
                 <div class="social">
                     <ul>
                         @if (config('setting.social.facebook'))
