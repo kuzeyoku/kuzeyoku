@@ -19,7 +19,7 @@ class Service extends Model
         "image"
     ];
 
-    private $locale;
+    protected $locale;
 
     protected $with = ["translate", "category"];
 

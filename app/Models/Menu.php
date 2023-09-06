@@ -19,7 +19,7 @@ class Menu extends Model
 
     public $timestamps = false;
 
-    private $locale;
+    protected $locale;
 
     protected $with = ["translate", "subMenu"];
 

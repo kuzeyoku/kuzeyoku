@@ -27,7 +27,7 @@ class Popup extends Model
         "status"
     ];
 
-    private $locale;
+    protected $locale;
 
     protected $with = ["translate"];
 

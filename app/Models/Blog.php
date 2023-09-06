@@ -20,9 +20,9 @@ class Blog extends Model
         "order"
     ];
 
-    private $locale;
+    protected $locale;
 
-    protected $with = ["translate", "category", "user"];
+    protected $with = ["category", "translate", "user"];
 
     public function __construct()
     {

@@ -101,7 +101,7 @@
                                     <ul>
                                         @foreach ($categories as $category)
                                             <li>
-                                                <a href="{{ $category->getUrl() }}">{{ $category->getTitle() }}
+                                                <a href="">{{ $category->getTitle() }}
                                                     <span>(69)</span></a>
                                             </li>
                                         @endforeach

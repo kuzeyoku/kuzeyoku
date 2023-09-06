@@ -16,7 +16,7 @@ class Page extends Model
         'status',
     ];
 
-    private $locale;
+    protected $locale;
 
     protected $with = ["translate"];
 

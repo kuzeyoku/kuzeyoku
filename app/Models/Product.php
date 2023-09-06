@@ -22,7 +22,7 @@ class Product extends Model
         "order"
     ];
 
-    private $locale;
+    protected $locale;
 
     protected $with = ["translate", "category", "images"];
 

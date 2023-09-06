@@ -22,7 +22,7 @@ class Project extends Model
         "status"
     ];
 
-    private $locale;
+    protected $locale;
 
     protected $with = ["translate", "category", "images"];
 

@@ -18,7 +18,7 @@ class Category extends Model
         "order"
     ];
 
-    private $locale;
+    protected $locale;
 
     protected $with = ["translate"];
 
@@ -33,26 +33,6 @@ class Category extends Model
         return $this->hasMany(CategoryTranslate::class);
     }
 
-    public function products()
-    {
-        return $this->hasMany(Product::class);
-    }
-
-    public function projects()
-    {
-        return $this->hasMany(Project::class);
-    }
-
-    public function services()
-    {
-        return $this->hasMany(Service::class);
-    }
-
-    public function blogs()
-    {
-        return $this->hasMany(Blog::class);
-    }
-
     public function scopeActive($query)
     {
         return $query->whereStatus(StatusEnum::Active->value);
@@ -65,12 +45,12 @@ class Category extends Model
 
     public function getTitleAttribute()
     {
-        return $this->translate->pluck("title", "lang")->toArray();
+        return $this->translate->pluck("title", "lang")->all();
     }
 
     public function getDescriptionAttribute()
     {
-        return $this->translate->pluck("description", "lang")->toArray();
+        return $this->translate->pluck("description", "lang")->all();
     }
 
     public function getTitle()

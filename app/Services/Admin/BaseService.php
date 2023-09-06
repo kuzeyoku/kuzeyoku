@@ -79,7 +79,7 @@ class BaseService
     public function getCategories()
     {
         return Cache::remember(($this->module ? $this->module->value . "_" : "all_") . "categories", config("setting.cache.time", 3600), function () {
-            $categories = Category::where("status", StatusEnum::Active)
+            $categories = Category::whereStatus(StatusEnum::Active->value)
                 ->when($this->module !== null, function ($query) {
                     return $query->where("module", $this->module);
                 })

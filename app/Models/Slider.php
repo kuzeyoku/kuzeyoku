@@ -19,7 +19,7 @@ class Slider extends Model
         "order"
     ];
 
-    private $locale;
+    protected $locale;
 
     protected $with = ["translate"];
 
