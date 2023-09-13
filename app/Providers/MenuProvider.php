@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Menu;
-use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class MenuProvider extends ServiceProvider
@@ -21,15 +21,17 @@ class MenuProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $headerMenu = Menu::whereType("header")->order()->get();
-        $footerMenu = Menu::whereType('footer')->order()->get();
+        if (Schema::hasTable('menus')) {
+            $headerMenu = Menu::whereType("header")->order()->get();
+            $footerMenu = Menu::whereType('footer')->order()->get();
 
-        view()->composer('layout.header', function ($view) use ($headerMenu) {
-            $view->with('headerMenu', $headerMenu);
-        });
+            view()->composer('layout.header', function ($view) use ($headerMenu) {
+                $view->with('headerMenu', $headerMenu);
+            });
 
-        view()->composer('layout.footer', function ($view) use ($footerMenu) {
-            $view->with('footerMenu', $footerMenu);
-        });
+            view()->composer('layout.footer', function ($view) use ($footerMenu) {
+                $view->with('footerMenu', $footerMenu);
+            });
+        }
     }
 }

@@ -12,9 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::defaultStringLength(191);
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string("key", 255)->unique();
+            $table->string("key")->unique();
             $table->text("value")->nullable();
             $table->enum("category", SettingCategoryEnum::getValues());
         });

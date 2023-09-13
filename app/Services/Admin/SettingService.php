@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin;
 
+use App\Enums\ModuleEnum;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -36,22 +37,13 @@ class SettingService
 
     public static function getSitemapModuleList()
     {
-        return [
-            "home",
-            "static_pages",
-            "blog",
-            "blog_category",
-            "blog_post",
-            "service",
-            "service_category",
-            "service_detail",
-            "product",
-            "product_category",
-            "product_detail",
-            "project",
-            "project_category",
-            "project_detail",
-        ];
+        $response = ["home"];
+        if (ModuleEnum::Page->status()) array_push($response, "static_pages");
+        if (ModuleEnum::Blog->status()) array_push($response, "blog", "blog_category", "blog_post");
+        if (ModuleEnum::Service->status()) array_push($response, "service", "service_category", "service_detail");
+        if (ModuleEnum::Product->status()) array_push($response, "product", "product_category", "product_detail");
+        if (ModuleEnum::Project->status()) array_push($response, "project", "project_category", "project_detail");
+        return $response;
     }
 
     public static function getChangeFreqList(): array
