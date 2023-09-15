@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\admin;
 
+use Throwable;
+use App\Models\User;
 use App\Enums\UserRole;
-use App\Http\Controllers\Admin\LogController;
+use App\Services\Admin\UserService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserStoreRequest;
-use App\Services\Admin\UserService;
-use Throwable;
+use App\Http\Requests\User\UserUpdateRequest;
+use App\Http\Controllers\Admin\LogController;
 
 class UserController extends Controller
 {
@@ -15,6 +17,7 @@ class UserController extends Controller
 
     public function __construct(UserService $service)
     {
+        $this->authorizeResource(User::class);
         $this->service = $service;
         view()->share([
             "route" => $this->service->route(),
@@ -47,6 +50,27 @@ class UserController extends Controller
             return back()
                 ->withInput()
                 ->withError(__("admin/{$this->service->folder()}.create_error"));
+        }
+    }
+
+    public function edit(User $user)
+    {
+        return view('admin.user.edit', compact('user'));
+    }
+
+    public function update(UserUpdateRequest $request, User $user)
+    {
+        try {
+            $this->service->update((object)$request->validated(), $user);
+            LogController::logger("info", __("admin/{$this->service->folder()}.update_log", ["title" => $request->name]));
+            return redirect()
+                ->route("admin.{$this->service->route()}.index")
+                ->withSuccess(__("admin/{$this->service->folder()}.update_success"));
+        } catch (Throwable $e) {
+            LogController::logger("error", $e->getMessage());
+            return back()
+                ->withInput()
+                ->withError(__("admin/{$this->service->folder()}.update_error"));
         }
     }
 }

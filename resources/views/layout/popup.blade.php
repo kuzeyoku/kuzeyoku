@@ -1,3 +1,4 @@
+@if($popup)
 <div id="modal">
     @if($popup->type == "image")
     <a href="{{ $popup->url }}"><img class="w-100 img-fluid" src="{{ $popup->getImageUrl() }}" alt="{{ $popup->getTitle() }}"></a>
@@ -50,3 +51,4 @@
 </script>
 @endif
 @endsection
+@endif

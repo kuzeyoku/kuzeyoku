@@ -26,7 +26,7 @@ class SettingProvider extends ServiceProvider
      */
     public function boot()
     {
-        $settingsConfig = Cache::rememberForever('setting', function () {
+        $settingsConfig = Cache::remember('setting', config("setting.caching.time", 3600), function () {
             $settings = Schema::hasTable('settings') ? Setting::all() : collect([]);
             $config = [];
             $settings->each(function ($setting) use (&$config) {

@@ -4,9 +4,8 @@ namespace App\Providers;
 
 use App\Models\Menu;
 use App\Models\Page;
-use App\Enums\StatusEnum;
 use App\Models\Service;
-use Illuminate\Support\Facades\Schema;
+use App\Enums\StatusEnum;
 use Illuminate\Support\ServiceProvider;
 
 class MenuProvider extends ServiceProvider
@@ -24,18 +23,27 @@ class MenuProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (Schema::hasTable('menus')) {
-            $headerMenu = Menu::whereType("header")->order()->get();
-            $pages = Page::whereStatus(StatusEnum::Active)->limit(5)->get();
-            $services = Service::whereStatus(StatusEnum::Active)->limit(5)->get();
+        $cache = cache();
+        $cacheTime = config("setting.caching.time", 3600);
 
-            view()->composer('layout.header', function ($view) use ($headerMenu) {
-                $view->with('headerMenu', $headerMenu);
-            });
+        $headerMenu = $cache->remember("headerMenu", $cacheTime, function () {
+            return Menu::whereType("header")->order()->get();
+        });
 
-            view()->composer('layout.footer', function ($view) use ($pages, $services) {
-                $view->with(["pages" => $pages, "services" => $services]);
-            });
-        }
+        $pages = $cache->remember("footerPages", $cacheTime, function () {
+            return Page::whereStatus(StatusEnum::Active)->limit(5)->get();
+        });
+
+        $services = $cache->remember("footerServices", $cacheTime, function () {
+            return Service::whereStatus(StatusEnum::Active)->limit(5)->get();
+        });
+
+        view()->composer('layout.header', function ($view) use ($headerMenu) {
+            $view->with('headerMenu', $headerMenu);
+        });
+
+        view()->composer('layout.footer', function ($view) use ($pages, $services) {
+            $view->with(["pages" => $pages, "services" => $services]);
+        });
     }
 }
