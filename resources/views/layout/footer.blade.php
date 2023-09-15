@@ -8,10 +8,9 @@
                 <div class="row align-center">
                     <div class="col-lg-7">
                         <ul>
-                            <li><a href="#">Membership</a></li>
-                            <li><a href="#">Support</a></li>
-                            <li><a href="#">Terms</a></li>
-                            <li><a href="#">Contact</a></li>
+                            @if(config("setting.information.cookie_page"))<li><a href="#">{{ config("setting.information.cookie_page") }}</a></li>@endif
+                            @if(config("setting.information.cookie_page"))<li><a href="#">{{ config("setting.information.pricacy_page") }}</a></li>@endif
+                            <li><a href="{{ route('contact.index') }}"> {{ __("front/contact.page_title")  }}</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-5">
@@ -36,39 +35,39 @@
                         <div class="social">
                             <ul>
                                 @if (config('setting.social.facebook'))
-                                    <li>
-                                        <a href="{{ config('setting.social.facebook') }}">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-                                    </li>
+                                <li>
+                                    <a href="{{ config('setting.social.facebook') }}">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
                                 @endif
                                 @if (config('setting.social.twitter'))
-                                    <li>
-                                        <a href="{{ config('setting.social.twitter') }}">
-                                            <i class="fab fa-twitter"></i>
-                                        </a>
-                                    </li>
+                                <li>
+                                    <a href="{{ config('setting.social.twitter') }}">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>
                                 @endif
                                 @if (config('setting.social.linkedin'))
-                                    <li>
-                                        <a href="{{ config('setting.social.linkedin') }}">
-                                            <i class="fab fa-linkedin-in"></i>
-                                        </a>
-                                    </li>
+                                <li>
+                                    <a href="{{ config('setting.social.linkedin') }}">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </li>
                                 @endif
                                 @if (config('setting.social.instagram'))
-                                    <li>
-                                        <a href="{{ config('setting.social.instagram') }}">
-                                            <i class="fab fa-instagram"></i>
-                                        </a>
-                                    </li>
+                                <li>
+                                    <a href="{{ config('setting.social.instagram') }}">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
                                 @endif
                                 @if (config('setting.social.youtube'))
-                                    <li>
-                                        <a href="{{ config('setting.social.youtube') }}">
-                                            <i class="fab fa-youtube"></i>
-                                        </a>
-                                    </li>
+                                <li>
+                                    <a href="{{ config('setting.social.youtube') }}">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </li>
                                 @endif
                             </ul>
                         </div>
@@ -76,68 +75,42 @@
                 </div>
                 <div class="col-lg-2 col-md-6 item">
                     <div class="f-item link">
-                        <h4 class="widget-title">Company</h4>
+                        <h4 class="widget-title">{{ __("front/footer.pages") }}</h4>
                         <ul>
+
+                            @foreach ($pages as $page)
                             <li>
-                                <a href="#">About Us</a>
+                                <a href="{{ $page->getTitle() }}">{{$page->getTitle()}}</a>
                             </li>
-                            <li>
-                                <a href="#">Meet Our Team</a>
-                            </li>
-                            <li>
-                                <a href="#">News & Media</a>
-                            </li>
-                            <li>
-                                <a href="#">Case Studies</a>
-                            </li>
-                            <li>
-                                <a href="#">Contact Us</a>
-                            </li>
-                            <li>
-                                <a href="#">Investors</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6 item">
                     <div class="f-item link">
-                        <h4 class="widget-title">Solutions</h4>
+                        <h4 class="widget-title">{{ __("front/footer.services" )}}</h4>
                         <ul>
+                            @foreach ($services as $service)
                             <li>
-                                <a href="#">IT Management</a>
+                                <a href="{{ $service->getUrl() }}">{{ $service->getTitle() }}</a>
                             </li>
-                            <li>
-                                <a href="#">Cyber Security</a>
-                            </li>
-                            <li>
-                                <a href="#">Cloud Computing</a>
-                            </li>
-                            <li>
-                                <a href="#">IT Consulting</a>
-                            </li>
-                            <li>
-                                <a href="#">Software Dev</a>
-                            </li>
-                            <li>
-                                <a href="#">Backup & Recovery</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 item">
                     <div class="f-item">
-                        <h4 class="widget-title">İletişim Bilgilerimiz</h4>
+                        <h4 class="widget-title">{{ __("front/footer.contact") }}</h4>
                         <div class="address">
                             <ul>
                                 <li>
-                                    <strong>Address:</strong>
+                                    <strong>{{ __("front/footer.contact.address") }}:</strong>
                                     {{ config('setting.contact.address') }}
                                 </li>
                                 <li>
-                                    <strong>Email:</strong>
-                                    <a
-                                        href="mailto:{{ config('setting.contact.email') }}">{{ config('setting.contact.email') }}</a>
+                                    <strong>{{ __("front/footer.contact.email") }}:</strong>
+                                    <a href="mailto:{{ config('setting.contact.email') }}">{{ config('setting.contact.email') }}</a>
                                 </li>
                             </ul>
                         </div>
@@ -150,7 +123,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <p>Copyright &copy; {{ date('Y') }}. Designed by <a href="#">Babazan Software</a></p>
+                    <p>{{ __("front/footer.copyright", ["date" => date("Y")]) }} <a href="#">{{ env("APP_NAME") }}</a></p>
                 </div>
             </div>
         </div>

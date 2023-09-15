@@ -23,15 +23,15 @@
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
                         @foreach ($headerMenu as $menu)
-                            @if ($menu->parent_id === 0)
-                                @if ($menu->subMenu->count() > 0)
-                                    @include('layout.menu', ['menu' => $menu])
-                                @else
-                                    <li>
-                                        <a href="{{ $menu->url }}">{{ $menu->getTitle() }}</a>
-                                    </li>
-                                @endif
-                            @endif
+                        @if ($menu->parent_id === 0)
+                        @if ($menu->subMenu->count() > 0)
+                        @include('layout.menu', ['menu' => $menu])
+                        @else
+                        <li>
+                            <a href="{{ $menu->url }}">{{ $menu->getTitle() }}</a>
+                        </li>
+                        @endif
+                        @endif
                         @endforeach
                     </ul>
                 </div>
