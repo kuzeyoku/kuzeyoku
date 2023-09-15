@@ -26,7 +26,6 @@ class MenuProvider extends ServiceProvider
     {
         if (Schema::hasTable('menus')) {
             $headerMenu = Menu::whereType("header")->order()->get();
-            $footerMenu = Menu::whereType('footer')->order()->get();
             $pages = Page::whereStatus(StatusEnum::Active)->limit(5)->get();
             $services = Service::whereStatus(StatusEnum::Active)->limit(5)->get();
 
@@ -34,8 +33,8 @@ class MenuProvider extends ServiceProvider
                 $view->with('headerMenu', $headerMenu);
             });
 
-            view()->composer('layout.footer', function ($view) use ($footerMenu, $pages, $services) {
-                $view->with(["footerMenu" => $footerMenu, "pages" => $pages, "services" => $services]);
+            view()->composer('layout.footer', function ($view) use ($pages, $services) {
+                $view->with(["pages" => $pages, "services" => $services]);
             });
         }
     }

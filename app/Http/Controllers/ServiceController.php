@@ -16,7 +16,7 @@ class ServiceController extends Controller
 
     public function show(Service $service)
     {
-        $other = Service::getOther($service->id, 3);
-        return view("service.show", compact("service", "other"));
+        $otherServices = Service::getOther($service->id, 3);
+        return view("service.show", compact("service", "otherServices"));
     }
 }

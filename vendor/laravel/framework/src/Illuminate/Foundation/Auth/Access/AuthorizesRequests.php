@@ -119,7 +119,8 @@ trait AuthorizesRequests
             "image" => "image",
             "imageStore" => "imageStore",
             "imageDelete" => "imageDelete",
-            "imageAllDelete" => "imageAllDelete"
+            "imageAllDelete" => "imageAllDelete",
+
         ];
     }
 
@@ -130,6 +131,6 @@ trait AuthorizesRequests
      */
     protected function resourceMethodsWithoutModels()
     {
-        return ['index', 'create', 'store', "imageStore", "imageDelete", "imageAllDelete"];
+        return ['index', 'create', 'store'];
     }
 }

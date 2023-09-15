@@ -172,6 +172,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         App\Providers\SettingProvider::class,
         App\Providers\MenuProvider::class,
+        App\Providers\PopupProvider::class,
 
     ])->toArray(),
 

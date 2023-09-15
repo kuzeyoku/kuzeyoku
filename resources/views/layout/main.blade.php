@@ -21,7 +21,7 @@
     <link href="{{ asset('assets/css/bootsnav.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('assets/css/izimodal.min.css') }}" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -37,6 +37,7 @@
     @include('layout.topbar')
     @include('layout.header')
     @yield('content')
+    @include('layout.popup')
     @include('layout.footer')
 
     <script src="{{ asset('assets/js/jquery-1.12.4.min.js') }}"></script>
@@ -55,6 +56,7 @@
     <script src="{{ asset('assets/js/YTPlayer.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootsnav.js') }}"></script>
+    @yield('script')
     <script src="{{ asset('assets/js/main.js') }}"></script>
 </body>
 
