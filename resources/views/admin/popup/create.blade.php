@@ -58,31 +58,31 @@
         <div class="col-lg-4">
             <div class="form-group">
                 {!! Form::label('closeButton', __("admin/{$folder}.form.closeButton")) !!}
-                {!! Form::select('closeButton', App\Enums\StatusEnum::getYesNoSelectArray()) !!}
+                {!! Form::select('closeButton', App\Enums\StatusEnum::getTrueFalseSelectArray()) !!}
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 {!! Form::label('closeOnEscape', __("admin/{$folder}.form.closeOnEscape")) !!}
-                {!! Form::select('closeOnEscape', App\Enums\StatusEnum::getYesNoSelectArray()) !!}
+                {!! Form::select('closeOnEscape', App\Enums\StatusEnum::getTrueFalseSelectArray()) !!}
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 {!! Form::label('overlayClose', __("admin/{$folder}.form.overlayClose")) !!}
-                {!! Form::select('overlayClose', App\Enums\StatusEnum::getYesNoSelectArray()) !!}
+                {!! Form::select('overlayClose', App\Enums\StatusEnum::getTrueFalseSelectArray()) !!}
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 {!! Form::label('pauseOnHover', __("admin/{$folder}.form.pauseOnHover")) !!}
-                {!! Form::select('pauseOnHover', App\Enums\StatusEnum::getYesNoSelectArray()) !!}
+                {!! Form::select('pauseOnHover', App\Enums\StatusEnum::getTrueFalseSelectArray()) !!}
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 {!! Form::label('fullScreenButton', __("admin/{$folder}.form.fullScreenButton")) !!}
-                {!! Form::select('fullScreenButton', App\Enums\StatusEnum::getYesNoSelectArray()) !!}
+                {!! Form::select('fullScreenButton', App\Enums\StatusEnum::getTrueFalseSelectArray()) !!}
             </div>
         </div>
         <div class="col-lg-4">

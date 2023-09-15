@@ -96,6 +96,14 @@ enum StatusEnum: string
         ];
     }
 
+    public static function getTrueFalseSelectArray()
+    {
+        return [
+            false => StatusEnum::No->title(),
+            true => StatusEnum::Yes->title(),
+        ];
+    }
+
     public static function getYesNoSelectArray()
     {
         return [

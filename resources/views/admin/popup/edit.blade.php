@@ -3,10 +3,6 @@
 @section('style')
     <link rel="stylesheet" href="{{ asset('assets/admin/css/izimodal.min.css') }}">
 @endsection
-@section('button')
-    <button class="btn btn-sm btn-primary" id="#modal"
-        data-izimodal-open="#modal">{{ __('admin/general.preview') }}</button>
-@endsection
 @section('content')
     @include('admin.layout.langTabs')
     <p>{{ __("admin/{$folder}.info") }}</p>
@@ -74,31 +70,31 @@
         <div class="col-lg-4">
             <div class="form-group">
                 {!! Form::label('closeButton', __("admin/{$folder}.form.closeButton")) !!}
-                {!! Form::select('closeButton', App\Enums\StatusEnum::getYesNoSelectArray(), $popup->closeButton) !!}
+                {!! Form::select('closeButton', App\Enums\StatusEnum::getTrueFalseSelectArray(), $popup->closeButton) !!}
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 {!! Form::label('closeOnEscape', __("admin/{$folder}.form.closeOnEscape")) !!}
-                {!! Form::select('closeOnEscape', App\Enums\StatusEnum::getYesNoSelectArray(), $popup->closeOnEscape) !!}
+                {!! Form::select('closeOnEscape', App\Enums\StatusEnum::getTrueFalseSelectArray(), $popup->closeOnEscape) !!}
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 {!! Form::label('overlayClose', __("admin/{$folder}.form.overlayClose")) !!}
-                {!! Form::select('overlayClose', App\Enums\StatusEnum::getYesNoSelectArray(), $popup->overlayClose) !!}
+                {!! Form::select('overlayClose', App\Enums\StatusEnum::getTrueFalseSelectArray(), $popup->overlayClose) !!}
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 {!! Form::label('pauseOnHover', __("admin/{$folder}.form.pauseOnHover")) !!}
-                {!! Form::select('pauseOnHover', App\Enums\StatusEnum::getYesNoSelectArray(), $popup->pauseOnHover) !!}
+                {!! Form::select('pauseOnHover', App\Enums\StatusEnum::getTrueFalseSelectArray(), $popup->pauseOnHover) !!}
             </div>
         </div>
         <div class="col-lg-4">
             <div class="form-group">
                 {!! Form::label('fullScreenButton', __("admin/{$folder}.form.fullScreenButton")) !!}
-                {!! Form::select('fullScreenButton', App\Enums\StatusEnum::getYesNoSelectArray(), $popup->fullScreenButton) !!}
+                {!! Form::select('fullScreenButton', App\Enums\StatusEnum::getTrueFalseSelectArray(), $popup->fullScreenButton) !!}
             </div>
         </div>
         <div class="col-lg-4">
@@ -118,18 +114,4 @@
         'class' => 'btn btn-success',
     ]) !!}
     {!! Form::close() !!}
-@endsection
-@section('script')
-    <div id="modal">
-        @if ($popup->type == 'image')
-            <img onerror="this.style.display='none'" src="{{ uploadFolder($folder, $popup->image) }}"
-                alt="{{ $popup->title[app()->getLocale()] }}">
-        @elseif ($popup->type == 'text')
-            <p class="p-3">{{ $popup->message[app()->getLocale()] }}</p>
-        @elseif ($popup->type == 'video')
-            <video src="{{ $popup->video }}" controls></video>
-        @endif
-    </div>
-    <script src="{{ asset('assets/admin/js/izimodal.min.js') }}"></script>
-    @include("admin.$folder.modal-init")
 @endsection

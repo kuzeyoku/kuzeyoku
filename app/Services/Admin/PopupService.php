@@ -23,17 +23,17 @@ class PopupService extends BaseService
     {
         $data = new Request([
             "type" => $request->type,
-            "time" => $request->time,
+            "time" => $request->time ?? 0,
             "url" => $request->url,
             "video" => $request->video,
             "status" => $request->status,
-            "width" => $request->width,
+            "width" => $request->width ?? 600,
             "closeOnEscape" => $request->closeOnEscape,
             "closeButton" => $request->closeButton,
             "overlayClose" => $request->overlayClose,
             "pauseOnHover" => $request->pauseOnHover,
             "fullScreenButton" => $request->fullScreenButton,
-            "color" => $request->color,
+            "color" => $request->color ?? "#88A0B9",
         ]);
 
         if (isset($request->image) && $request->image->isValid()) {
@@ -52,17 +52,17 @@ class PopupService extends BaseService
     {
         $data = new Request([
             "type" => $request->type,
-            "time" => $request->time,
+            "time" => $request->time ?? 0,
             "url" => $request->url,
             "video" => $request->video,
             "status" => $request->status,
-            "width" => $request->width,
+            "width" => $request->width ?? 600,
             "closeOnEscape" => $request->closeOnEscape,
             "closeButton" => $request->closeButton,
             "overlayClose" => $request->overlayClose,
             "pauseOnHover" => $request->pauseOnHover,
             "fullScreenButton" => $request->fullScreenButton,
-            "color" => $request->color,
+            "color" => $request->color ?? "#88A0B9",
         ]);
 
         if (isset($request->imageDelete)) {
@@ -87,18 +87,16 @@ class PopupService extends BaseService
     {
         $languages = languageList();
         foreach ($languages as $language) {
-            if (!empty($request->title[$language->code]) || !empty($request->message[$language->code])) {
-                PopupTranslate::updateOrCreate(
-                    [
-                        "popup_id" => $popupId,
-                        "lang" => $language->code
-                    ],
-                    [
-                        "title" => $request->title[$language->code] ?? null,
-                        "description" => $request->description[$language->code] ?? null
-                    ]
-                );
-            }
+            PopupTranslate::updateOrCreate(
+                [
+                    "popup_id" => $popupId,
+                    "lang" => $language->code
+                ],
+                [
+                    "title" => $request->title[$language->code] ?? null,
+                    "description" => $request->description[$language->code] ?? null
+                ]
+            );
         }
     }
 }

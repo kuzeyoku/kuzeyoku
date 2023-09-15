@@ -39,7 +39,6 @@
     @yield('content')
     @include('layout.popup')
     @include('layout.footer')
-
     <script src="{{ asset('assets/js/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
