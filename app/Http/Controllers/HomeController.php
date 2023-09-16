@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Menu;
 use App\Models\Brand;
 use App\Models\Slider;
 use App\Models\Project;

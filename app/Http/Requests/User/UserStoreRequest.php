@@ -25,9 +25,17 @@ class UserStoreRequest extends FormRequest
             "name" => "required",
             "email" => "required|email|unique:users,email",
             "password" => "required|min:6|confirmed",
-            "password_confirmation" => "required|min:6",
             "role" => "required",
-            "permissions" => "required|array",
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            "name" => __("admin/user.form.name"),
+            "email" => __("admin/user.form.email"),
+            "password" => __("admin/user.form.password"),
+            "role" => __("admin/user.form.role"),
         ];
     }
 }

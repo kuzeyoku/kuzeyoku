@@ -23,7 +23,7 @@ class PopupProvider extends ServiceProvider
     {
         $popup = Popup::whereStatus(StatusEnum::Active->value)->first();
         view()->composer('layout.popup', function ($view) use ($popup) {
-            $view->with('popup', $popup);
+            $view->with(compact('popup'));
         });
     }
 }

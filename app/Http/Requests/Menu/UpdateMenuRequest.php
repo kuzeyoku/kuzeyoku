@@ -26,7 +26,7 @@ class UpdateMenuRequest extends FormRequest
             "title.*" => "",
             "url" => "nullable",
             "type" => "required|in:header,footer",
-            "parent_id" => "numeric|min:0|nullable|different:id",
+            "parent_id" => "numeric|min:0|nullable",
             "order" => "required|numeric|min:0",
             "blank" => "nullable|boolean",
         ];
