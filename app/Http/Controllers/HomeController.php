@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
+
     public function index()
     {
         $sliders = Cache::remember("sliders", config("setting.caching.time", 3600), function () {

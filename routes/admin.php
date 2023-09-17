@@ -2,6 +2,7 @@
 
 use App\Enums\ModuleEnum;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 Route::prefix('admin')->name('admin.')->group(function () {
     // Auth Routes
@@ -63,6 +64,25 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::delete("/{image}/imageDelete", "imageDelete")->name("project.imageDelete");
                 Route::delete("/{project}/imageAllDelete", "imageAllDelete")->name("project.imageAllDelete");
             });
+
+        Route::group(['prefix' => 'artisan', 'middleware' => ['web', 'auth']], function () {
+            Route::get("migrate", function () {
+                Artisan::call("migrate");
+                Artisan::call("db:seed");
+                return redirect()->back()->with("success", "Migrate Successfull");
+            })->name("artisan.migrate");
+
+            Route::get("migrate_refresh", function () {
+                Artisan::call("migrate:refresh");
+                Artisan::call("db:seed");
+                return redirect()->back()->with("success", "Migrate Refresh Successfull");
+            })->name("artisan.migrate_refresh");
+
+            route::get("storage_link", function () {
+                Artisan::call("storage:link");
+                return redirect()->back()->with("success", "Storage Link Successfull");
+            });
+        });
 
         // Resource Routes
         foreach (App\Enums\ModuleEnum::cases() as $module) {
