@@ -4,7 +4,7 @@ use App\Enums\ModuleEnum;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware("checkInstallation")->group(function () {
     // Auth Routes
     Route::get('login', [App\Http\Controllers\Admin\AuthController::class, 'login'])->name('auth.login');
     Route::post('authenticate', [App\Http\Controllers\Admin\AuthController::class, 'authenticate'])->name('auth.authenticate');

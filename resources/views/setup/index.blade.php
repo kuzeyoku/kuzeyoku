@@ -10,7 +10,12 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}">
-
+    <style>
+        strong svg {
+            width: 20px;
+            margin-right: 0.25em;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,13 +43,19 @@
                     <div class="col-6">
 
                         @if ($errors->any())
-                            @foreach ($errors->all() as $error)
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    <strong>{{ __('Admin/general.error') }} !</strong> {{ $error }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                        aria-label="Close"></button>
-                                </div>
-                            @endforeach
+                        @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>{{ __('Admin/general.error') }} !</strong> {{ $error }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        @endforeach
+                        @endif
+
+                        @if (session()->has("info"))
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            <strong>@svg("ri-information-fill")</strong> {{ session("info") }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
                         @endif
 
                         <div class="card">
@@ -52,7 +63,7 @@
                                 <h3 class="card-title">Kurulum</h3>
                             </div>
                             <div class="card-body">
-                                {!! Form::open(['route' => 'setup']) !!}
+                                {!! Form::open(['route' => 'setup.store']) !!}
                                 <div class="form-group">
                                     {!! Form::label('Veri Tabanı Adı') . formInfo('Veritabanının Eklendiğinden Emin Olun') !!}
                                     {!! Form::text('db_name') !!}
@@ -65,7 +76,7 @@
                                     {!! Form::label('Parola') !!}
                                     {!! Form::text('password') !!}
                                 </div>
-                                <div class="form-group"></div>
+                                {!! Form::submit(__("admin/general.save"), ["class"=>"btn btn-primary"]) !!}
                                 {!! Form::close() !!}
                             </div>
                         </div>
