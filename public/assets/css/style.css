@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
     font-family: "Heebo";
     font-style: normal;
     font-weight: 200;
@@ -45,7 +45,7 @@
     font-display: swap;
     src: url(https://fonts.gstatic.com/s/heebo/v21/NGSpv5_NC0k9P_v6ZUCbLRAHxK1ECSuccg.ttf)
         format("truetype");
-}
+} */
 @font-face {
     font-family: "Nunito";
     font-style: normal;
@@ -92,7 +92,7 @@ h6 {
     color: #0e2b3d;
     font-weight: normal;
     line-height: 1.2;
-    font-family: "Heebo", sans-serif;
+    /* font-family: "Heebo", sans-serif; */
     letter-spacing: 0;
     margin: 0;
 }
@@ -166,9 +166,9 @@ p {
     line-height: 1.7;
 }
 
-li {
+/* li {
     font-family: "Heebo", sans-serif;
-}
+} */
 
 hr {
     margin-top: 0;
@@ -223,7 +223,7 @@ a {
     -ms-transition: all 0.35s ease-in-out;
     -o-transition: all 0.35s ease-in-out;
     text-decoration: none;
-    font-family: "Heebo", sans-serif;
+    /* font-family: "Heebo", sans-serif; */
     font-weight: 600;
 }
 
@@ -534,7 +534,7 @@ input {
 
 .btn {
     display: inline-block;
-    font-family: "Heebo", sans-serif;
+    /* font-family: "Heebo", sans-serif; */
     font-weight: 500;
     line-height: 25px;
     text-transform: capitalize;
@@ -3702,12 +3702,22 @@ body,
     margin: 40px 0;
 }
 
-.services-details-area .services-single-content ul {
-    list-style: disc;
-    margin-left: 20px;
+.services-details-items .services-single-content p {
+    margin-bottom: 10px;
 }
 
-.services-details-area .services-single-content ul li {
+.services-details-area .services-single-content ul {
+    list-style: disc;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.services-details-area .services-single-content ol {
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.services-details-area .services-single-content ul li, .services-details-area .services-single-content ol li {
     line-height: 30px;
 }
 
@@ -4323,7 +4333,7 @@ body,
 }
 
 .fun-fact {
-    font-family: "Heebo", sans-serif;
+    /* font-family: "Heebo", sans-serif; */
 }
 
 .fun-fact-area .fun-fact-items .counter .operator {
@@ -4408,7 +4418,7 @@ body,
     position: relative;
     line-height: 1;
     color: #104cba;
-    font-family: "Heebo", sans-serif;
+    /* font-family: "Heebo", sans-serif; */
 }
 
 .work-process-area .process-items .single-item:nth-child(2n) .item .top {
@@ -5853,7 +5863,7 @@ body,
     font-weight: 800;
     border-radius: 5px;
     line-height: 1;
-    font-family: "Heebo", sans-serif;
+    /* font-family: "Heebo", sans-serif; */
 }
 
 .blog-area .blog-items .item .thumb .date span {

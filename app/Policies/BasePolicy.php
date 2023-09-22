@@ -17,7 +17,7 @@ class BasePolicy
 
     public function before(): ?bool
     {
-        if ($this->userRole === UserRole::ADMIN) {
+        if (UserRole::ADMIN->in($this->userRole->value)) {
             return true;
         }
         return null;

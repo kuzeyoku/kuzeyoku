@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     @endif
-                    <div class="single-widget quick-contact text-light" style="background-image: url({{ asset('assets/img/about/1.jpg') }});">
+                    <div class="single-widget quick-contact text-light" style="background-image: url({{ asset('assets/img/about/1.jpg') }})">
                         <div class="content">
                             <i class="fas fa-phone"></i>
                             <h4>{{ __("front/service.show.call") }}</h4>
@@ -41,9 +41,7 @@
                 <div class="col-lg-8 services-single-content">
                     <img src="{{ $service->getImageUrl() }}" alt="{{ $service->getTitle() }}">
                     <h2>{{ $service->getTitle() }}</h2>
-                    <p>
-                        {!! $service->getDescription() !!}
-                    </p>
+                    {!! trim($service->getDescription()) !!}
                 </div>
             </div>
         </div>
