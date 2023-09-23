@@ -24,29 +24,34 @@ class MenuProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (Schema::hasTable("menus")) {
-            $cache = cache();
-            $cacheTime = config("setting.caching.time", 3600);
+        $cache = cache();
+        $cacheTime = config("setting.caching.time", 3600);
 
-            $headerMenu = $cache->remember("headerMenu", $cacheTime, function () {
-                return Menu::whereType("header")->order()->get();
-            });
-
+        view()->composer("layout.footer", function ($view) use ($cache, $cacheTime) {
             $pages = $cache->remember("footerPages", $cacheTime, function () {
-                return Page::whereStatus(StatusEnum::Active)->limit(5)->get();
+                $page = new Page();
+                if (!Schema::hasTable($page->getTable()))
+                    return [];
+                return $page->whereStatus(StatusEnum::Active)->limit(5)->get();
             });
 
             $services = $cache->remember("footerServices", $cacheTime, function () {
-                return Service::whereStatus(StatusEnum::Active)->limit(5)->get();
+                $service = new Service();
+                if (!Schema::hasTable($service->getTable()))
+                    return [];
+                return $service->whereStatus(StatusEnum::Active)->limit(5)->get();
             });
+            $view->with(compact("pages", "services"));
+        });
 
-            view()->composer('layout.header', function ($view) use ($headerMenu) {
-                $view->with('headerMenu', $headerMenu);
+        view()->composer("layout.header", function ($view) use ($cache, $cacheTime) {
+            $headerMenu = $cache->remember("headerMenu", $cacheTime, function () {
+                $menu = new Menu();
+                if (!Schema::hasTable($menu->getTable()))
+                    return [];
+                return $menu->whereType("header")->order()->get();
             });
-
-            view()->composer('layout.footer', function ($view) use ($pages, $services) {
-                $view->with(["pages" => $pages, "services" => $services]);
-            });
-        }
+            $view->with(compact("headerMenu"));
+        });
     }
 }

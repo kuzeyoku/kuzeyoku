@@ -22,11 +22,14 @@ class PopupProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (Schema::hasTable("popups")) {
-            $popup = Popup::whereStatus(StatusEnum::Active->value)->first();
-            view()->composer('layout.popup', function ($view) use ($popup) {
-                $view->with(compact('popup'));
-            });
-        }
+        view()->composer("layout.popup", function ($view) {
+            $popupModel = new Popup();
+            if (Schema::hasTable($popupModel->getTable())) {
+                $popup = Popup::whereStatus(StatusEnum::Active->value)->first();
+            } else {
+                $popup = null;
+            }
+            $view->with("popup", $popup);
+        });
     }
 }

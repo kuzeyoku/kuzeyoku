@@ -4,7 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Schema;
+
+
+use function PHPUnit\Framework\fileExists;
 
 class CheckInstallation
 {
@@ -15,11 +17,9 @@ class CheckInstallation
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Schema::hasTable('setups')) {
-            if (\App\Models\Setup::status() != 'installed') {
-                return redirect()->route('setup.index')->with("info", "Kurulum henüz tamamlanmadı.");
-            }
+        if (file_exists(config_path("custom_config.php")) && config("custom_config.setup") === true) {
+            return $next($request);
         }
-        return $next($request);
+        return redirect()->route('setup.index')->with("info", "Kurulum henüz tamamlanmadı.");
     }
 }

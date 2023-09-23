@@ -23,7 +23,7 @@
                                             <li>@svg('ri-eye-fill') {{ $post->view_count }}
                                                 {{ __('front/blog.view') }}
                                             </li>
-                                            <li>@svg('ri-list-check-2') {{ $post->category->getTitle() }}</li>
+                                            <li>@svg('ri-list-check-2') {{ $post->getCategoryTitle() }}</li>
                                         </ul>
                                     </div>
                                     <h3>
@@ -45,7 +45,7 @@
                         </div>
                         @endforeach
                     </div>
-                    {{ $posts->render('pagination::front') }}
+                    {{ $posts->render('pagination::default') }}
                 </div>
                 <div class="sidebar wow fadeInLeft col-lg-4 col-md-12">
                     <aside>

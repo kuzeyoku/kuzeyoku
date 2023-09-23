@@ -12,8 +12,8 @@
                         <h4 class="widget-title">{{ __("front/service.show.other_services") }}</h4>
                         <div class="content">
                             <ul>
-                                @foreach ($other as $item)
-                                <li class="{{ $loop->first ? 'current-item' : '' }}"><a href="{{ route('service.show', [$item, $item->slug]) }}">{{ $ss->getTitle() }}</a>
+                                @foreach ($otherServices as $item)
+                                <li class="{{ $loop->first ? 'current-item' : '' }}"><a href="{{ route('service.show', [$item, $item->slug]) }}">{{ $item->getTitle() }}</a>
                                 </li>
                                 @endforeach
                             </ul>

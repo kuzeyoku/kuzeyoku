@@ -12,6 +12,7 @@ return [
     "order" => "Sıra",
     "status" => "Durum",
     "default" => "Varsayılan",
+    "uncategorized" => "Kategori Yok",
     "are_you_sure" => "Emin misiniz?",
     "this_action_cannot_be_undone" => "Bu işlem geri alınamaz!",
     "alert_button" => "Tamam",

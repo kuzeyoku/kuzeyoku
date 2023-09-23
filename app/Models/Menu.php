@@ -60,4 +60,9 @@ class Menu extends Model
     {
         return Menu::whereType($type)->get()->pluck("title." . app()->getLocale(), "id")->toArray();
     }
+
+    public static function toSelectArrayWithUrl($type)
+    {
+        return Menu::whereType($type)->get()->pluck("title." . app()->getLocale(), "url")->toArray();
+    }
 }

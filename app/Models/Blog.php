@@ -108,6 +108,13 @@ class Blog extends Model
         return asset("assets/img/noimage.png");
     }
 
+    public function getCategoryTitle()
+    {
+        if ($this->category == 0)
+            return __("admin/general.uncategorized");
+        return $this->category->getTitle();
+    }
+
     public function getCreatedDate()
     {
         return date("d m Y", strtotime($this->created_at));

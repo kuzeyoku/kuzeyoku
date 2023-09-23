@@ -1,12 +1,6 @@
 <div class="contact-area bg-gray {{ $half ? 'half-bg' : '' }} default-padding">
     <div class="container">
         <div class="contact-box">
-            @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger" role="alert"><strong>{{ __('admin/general.error') }} !</strong>
-                        {{ $error }}</div>
-                @endforeach
-            @endif
             <div class="row align-center">
                 <div class="col-lg-5 left-info">
                     <div class="item">

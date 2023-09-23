@@ -5,7 +5,8 @@
 
                 <div class="attr-nav inc-border">
                     <ul>
-                        <li class="button"><a href="{{ route('contact.index') }}">{{ __('front/contact.page_title') }}</a>
+                        <li class="button">
+                            <a href="{{ route('contact.index') }}">{{ __('front/contact.page_title') }}</a>
                         </li>
                     </ul>
                 </div>

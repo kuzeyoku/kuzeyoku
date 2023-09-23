@@ -12,11 +12,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::controller(App\Http\Controllers\SetupController::class)->prefix("setup")->group(function () {
     Route::get("/", "index")->name("setup.index");
     Route::post("/store", "store")->name("setup.store");
-    Route::get("/end", "end")->name("setup.end");
 });
 
 require __DIR__ . "/admin.php";
