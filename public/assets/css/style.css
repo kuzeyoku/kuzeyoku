@@ -6581,6 +6581,10 @@ body,
     border-radius: 30px;
 }
 
+.blog-area.single .post-pagi-area a svg{
+    width: 18px;
+}
+
 .blog-area.single .post-pagi-area h5 {
     margin: 0;
     margin-top: 5px;
@@ -12341,6 +12345,6 @@ body.wrap-nav-sidebar {
 }
 
 .carousel-control svg {
-    width: 35px;
+    width: 25px;
 }
 

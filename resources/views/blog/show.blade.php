@@ -13,9 +13,9 @@
                     <div class="info">
                         <div class="meta">
                             <ul>
-                                <li>@svg('ri-calendar-2-line') {{ $post->getCreatedDate() }}</li>
-                                <li>@svg('ri-eye-fill') {{ $post->view_count }} {{ __('front/blog.view') }}</li>
-                                <li>@svg('ri-list-check-2') {{ $post->getCategoryTitle() }}</li>
+                                <li>@svg('fas-calendar-alt') {{ $post->getCreatedDate() }}</li>
+                                <li>@svg('fas-eye') {{ $post->view_count }} {{ __('front/blog.view') }}</li>
+                                <li>@svg('fas-list-ul') {{ $post->getCategoryTitle() }}</li>
                             </ul>
                         </div>
                         <h3>
@@ -28,13 +28,13 @@
                 <div class="post-pagi-area">
                     @if (isset($previousPost))
                     <a href="{{ $previousPost->getUrl() }}">
-                        <i class="fas fa-angle-double-left"></i> {{ __('front/blog.previous_post') }}
+                        @svg('fas-angle-double-left') {{ __('front/blog.previous_post') }}
                         <h5>{{ $previousPost->getTitle() }}</h5>
                     </a>
                     @endif
                     @if (isset($nextPost))
                     <a href="{{ $nextPost->getUrl() }}">
-                        {{ __('front/blog.next_post') }} <i class="fas fa-angle-double-right"></i>
+                        {{ __('front/blog.next_post') }} @svg('fas-angle-double-right')
                         <h5>{{ $nextPost->getTitle() }}</h5>
                     </a>
                     @endif

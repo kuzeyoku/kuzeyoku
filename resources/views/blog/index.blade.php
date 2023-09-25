@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title', 'Blog')
+@section('title', __("front/blog.page_title"))
 @section('content')
 @include('layout.breadcrumb')
 <div class="blog-area full-blog right-sidebar full-blog default-padding">
@@ -17,13 +17,13 @@
                                 <div class="info">
                                     <div class="meta">
                                         <ul>
-                                            <li>@svg('ri-calendar-2-line')
+                                            <li>@svg('fas-calendar-alt')
                                                 {{ $post->getCreatedDate() }}
                                             </li>
-                                            <li>@svg('ri-eye-fill') {{ $post->view_count }}
+                                            <li>@svg('fas-eye') {{ $post->view_count }}
                                                 {{ __('front/blog.view') }}
                                             </li>
-                                            <li>@svg('ri-list-check-2') {{ $post->getCategoryTitle() }}</li>
+                                            <li>@svg('fas-list-ul') {{ $post->getCategoryTitle() }}</li>
                                         </ul>
                                     </div>
                                     <h3>
@@ -72,7 +72,7 @@
                                     <div class="info">
                                         <a href="{{ $post->getUrl() }}">{{ $post->getTitle() }}</a>
                                         <div class="meta-title">
-                                            <span class="post-date">@svg('ri-calendar-2-line')</i>
+                                            <span class="post-date">@svg('fas-calendar-alt')</i>
                                                 {{ $post->getCreatedDate() }}</span>
                                         </div>
                                     </div>

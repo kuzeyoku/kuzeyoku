@@ -39,11 +39,11 @@
             @endforeach
         </div>
         <a class="left carousel-control light" href="#bootcarousel" data-slide="prev">
-            @svg('fas-arrow-left')
+            @svg('fas-angle-left')
             <span class="sr-only">Previous</span>
         </a>
         <a class="right carousel-control light" href="#bootcarousel" data-slide="next">
-            @svg('fas-arrow-right')
+            @svg('fas-angle-right')
             <span class="sr-only">Next</span>
         </a>
     </div>

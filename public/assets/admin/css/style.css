@@ -9141,3 +9141,17 @@ td label {
 .menu .btn svg {
     color: #212529;
 }
+
+.btn-edit svg {
+    width: 14px;
+    margin-right: 5px;
+    margin-left: 5px;
+    color: #fff;
+}
+
+.btn-delete svg {
+    width: 10px;
+    margin-right: 6px;
+    margin-left: 6px;
+    color: #fff;
+}
