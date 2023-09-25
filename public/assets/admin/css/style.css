@@ -4089,9 +4089,9 @@ hr {
 }
 
 .dropdown-toggle svg {
-    width: 20px;
+    width: 15px;
     margin-right: 5px;
-    color: #000;
+    color: #39424b;
 }
 
 .user-menu.nav > li > a {
@@ -4934,7 +4934,7 @@ span.select2-container.select2-container--default.select2-container--open {
 }
 
 .sidebar .sidebar-menu > ul > li > a svg {
-    width: 1rem;
+    width: 16px;
     color: #637381;
 }
 
@@ -4988,10 +4988,7 @@ span.select2-container.select2-container--default.select2-container--open {
 
 .sidebar .sidebar-menu > ul > li > a .menu-arrow {
     display: inline-block;
-    font-family: "font awesome 5 free";
-    text-rendering: auto;
     line-height: 40px;
-    font-size: 18px;
     line-height: 18px;
     position: absolute;
     top: 12px;
@@ -5002,6 +4999,11 @@ span.select2-container.select2-container--default.select2-container--open {
     -webkit-transition: all 0.2s ease;
     -ms-transition: all 0.2s ease;
     transition: all 0.2s ease;
+}
+
+.sidebar .sidebar-menu > ul > li > a .menu-arrow svg{
+    width: 10px;
+    color: #637381;
 }
 
 .sidebar .sidebar-menu > ul > li > a.subdrop .menu-arrow {
@@ -8976,8 +8978,9 @@ span.select2-container.select2-container--default.select2-container--open {
 
 .content .nav svg,
 [data-toggle="tooltip"] svg {
-    width: 1rem;
-    margin-right: 0.3rem;
+    width: 16px;
+    margin-right: 5px;
+    color: #637381;
 }
 
 .content .nav .nav-link {

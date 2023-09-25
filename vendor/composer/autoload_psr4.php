@@ -96,5 +96,4 @@ return array(
     'BladeUI\\Icons\\' => array($vendorDir . '/blade-ui-kit/blade-icons/src'),
     'Barryvdh\\Debugbar\\' => array($vendorDir . '/barryvdh/laravel-debugbar/src'),
     'App\\' => array($baseDir . '/app', $vendorDir . '/laravel/pint/app'),
-    'AndreiIonita\\BladeRemixIcon\\' => array($vendorDir . '/andreiio/blade-remix-icon/src'),
 );

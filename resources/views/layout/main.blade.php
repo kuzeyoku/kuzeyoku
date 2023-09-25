@@ -11,8 +11,8 @@
 
     <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/themify-icons.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet"> -->
+    <!-- <link href="{{ asset('assets/css/themify-icons.css') }}" rel="stylesheet"> -->
     <link href="{{ asset('assets/css/flaticon-set.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/magnific-popup.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/owl.carousel.min.css') }}" rel="stylesheet">

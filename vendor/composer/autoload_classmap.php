@@ -6,7 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'AndreiIonita\\BladeRemixIcon\\BladeRemixIconServiceProvider' => $vendorDir . '/andreiio/blade-remix-icon/src/BladeRemixIconServiceProvider.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Enums\\ModuleEnum' => $baseDir . '/app/Enums/ModuleEnum.php',
     'App\\Enums\\SettingCategoryEnum' => $baseDir . '/app/Enums/SettingCategoryEnum.php',

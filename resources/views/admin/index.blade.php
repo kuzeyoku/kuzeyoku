@@ -10,7 +10,7 @@
                     <h5>Hoşgeldiniz - IP: {{ request()->ip() }}</h5>
                 </div>
                 <div class="dash-imgs">
-                    @svg('ri-shield-user-fill')
+                    @svg('fas-user')
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
                     @endif
                 </div>
                 <div class="dash-imgs">
-                    @svg('ri-mail-send-fill')
+                    @svg('fas-envelope')
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
                     <h5>Bugün Toplam Ziyaretçi</h5>
                 </div>
                 <div class="dash-imgs">
-                    @svg('ri-user-fill')
+                    @svg('fas-user')
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
                     <h5>Toplam Ziyaretçi</h5>
                 </div>
                 <div class="dash-imgs">
-                    @svg('ri-user-fill')
+                    @svg('fas-users')
                 </div>
             </div>
         </div>

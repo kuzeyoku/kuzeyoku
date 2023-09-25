@@ -5,7 +5,7 @@
                 <div class="col-lg-5 left-info">
                     <div class="item">
                         <div class="icon">
-                            <i class="fas fa-map-marked-alt"></i>
+                            @svg("fas-map-location-dot")
                         </div>
                         <div class="info">
                             <h5>{{ __('front/contact.address') }}</h5>
@@ -16,7 +16,7 @@
                     </div>
                     <div class="item">
                         <div class="icon">
-                            <i class="fas fa-phone"></i>
+                            @svg("fas-phone")
                         </div>
                         <div class="info">
                             <h5>{{ __('front/contact.phone') }}</h5>
@@ -27,7 +27,7 @@
                     </div>
                     <div class="item">
                         <div class="icon">
-                            <i class="fas fa-envelope-open"></i>
+                            @svg("fas-envelope")
                         </div>
                         <div class="info">
                             <h5>{{ __('front/contact.email') }}</h5>

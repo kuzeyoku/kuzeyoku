@@ -24,17 +24,17 @@ enum SettingCategoryEnum: string
     public function icon(): string
     {
         return match ($this) {
-            self::General => "ri-settings-4-fill",
-            self::Dashboard => "ri-dashboard-2-fill",
-            self::Information => "ri-information-fill",
-            self::Social => "ri-share-fill",
-            self::Caching => "ri-server-fill",
-            self::Contact => "ri-mail-fill",
-            self::Smtp => "ri-mail-settings-fill",
-            self::Maintenance => "ri-time-fill",
-            self::Image => "ri-image-fill",
-            self::Sitemap => "ri-mind-map",
-            self::Recaptcha => "ri-shield-star-fill"
+            self::General => "fas-cog",
+            self::Dashboard => "fas-tachometer-alt",
+            self::Information => "fas-info-circle",
+            self::Social => "fas-share-alt",
+            self::Caching => "fas-sync",
+            self::Contact => "fas-address-book",
+            self::Smtp => "fas-envelope-open-text",
+            self::Maintenance => "fas-tools",
+            self::Image => "fas-image",
+            self::Sitemap => "fas-sitemap",
+            self::Recaptcha => "fas-shield-alt",
         };
     }
 

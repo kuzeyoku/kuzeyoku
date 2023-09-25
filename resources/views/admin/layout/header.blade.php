@@ -22,19 +22,19 @@
     </a>
 
     <ul class="nav user-menu">
-        <li class="nav-item dropdown has-arrow main-drop">
+        <li class="nav-item dropdown main-drop">
             <a href="{{ route("admin.cache-clear") }}" class="dropdown-toggle nav-link userset">
-                @svg('ri-brush-3-line') {{ __('admin/general.cacheclear') }}
+                @svg('fas-brush') {{ __('admin/general.cacheclear') }}
             </a>
         </li>
-        <li class="nav-item dropdown has-arrow main-drop">
+        <li class="nav-item dropdown main-drop">
             <a href="{{ url('/') }}" class="dropdown-toggle nav-link userset blank">
-                @svg('ri-chrome-fill') {{ __('admin/general.gofront') }}
+                @svg('fas-arrow-pointer') {{ __('admin/general.gofront') }}
             </a>
         </li>
-        <li class="nav-item dropdown has-arrow main-drop">
+        <li class="nav-item dropdown main-drop">
             <a href="{{ route('admin.auth.logout') }}" class="dropdown-toggle nav-link userset">
-                @svg('ri-door-open-fill') {{ __('admin/general.logout') }}
+                @svg('fas-person-running') {{ __('admin/general.logout') }}
             </a>
         </li>
     </ul>

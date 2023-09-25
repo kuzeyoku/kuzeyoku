@@ -3,22 +3,13 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '3a102e03fb67b748e5ec07034fb3b9a74f6f4840',
+        'reference' => '964f18cc25c0c16bf5d154c107beb2af4ada46ed',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        'andreiio/blade-remix-icon' => array(
-            'pretty_version' => '2.5.0',
-            'version' => '2.5.0.0',
-            'reference' => '3f557db572c7469436f3baa2ed5d7c73600f54fa',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../andreiio/blade-remix-icon',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
         'barryvdh/laravel-debugbar' => array(
             'pretty_version' => 'v3.9.2',
             'version' => '3.9.2.0',
@@ -409,7 +400,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '3a102e03fb67b748e5ec07034fb3b9a74f6f4840',
+            'reference' => '964f18cc25c0c16bf5d154c107beb2af4ada46ed',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

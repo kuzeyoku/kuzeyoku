@@ -16,7 +16,7 @@
                     <div class="col-lg-5">
                         <form action="#">
                             <input type="email" placeholder="Your Email" class="form-control" name="email">
-                            <button type="submit"> <i class="fa fa-paper-plane"></i></button>
+                            <button type="submit"> @svg("fas-paper-plane")</i></button>
                         </form>
                     </div>
                 </div>
@@ -37,35 +37,35 @@
                                 @if (config('setting.social.facebook'))
                                 <li>
                                     <a href="{{ config('setting.social.facebook') }}">
-                                        <i class="fab fa-facebook-f"></i>
+                                        @svg('fab-facebook')
                                     </a>
                                 </li>
                                 @endif
                                 @if (config('setting.social.twitter'))
                                 <li>
                                     <a href="{{ config('setting.social.twitter') }}">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                </li>
-                                @endif
-                                @if (config('setting.social.linkedin'))
-                                <li>
-                                    <a href="{{ config('setting.social.linkedin') }}">
-                                        <i class="fab fa-linkedin-in"></i>
+                                        @svg('fab-twitter')
                                     </a>
                                 </li>
                                 @endif
                                 @if (config('setting.social.instagram'))
                                 <li>
                                     <a href="{{ config('setting.social.instagram') }}">
-                                        <i class="fab fa-instagram"></i>
+                                        @svg('fab-instagram')
+                                    </a>
+                                </li>
+                                @endif
+                                @if (config('setting.social.linkedin'))
+                                <li>
+                                    <a href="{{ config('setting.social.linkedin') }}">
+                                        @svg('fab-linkedin')
                                     </a>
                                 </li>
                                 @endif
                                 @if (config('setting.social.youtube'))
                                 <li>
                                     <a href="{{ config('setting.social.youtube') }}">
-                                        <i class="fab fa-youtube"></i>
+                                        @svg('fab-youtube')
                                     </a>
                                 </li>
                                 @endif

@@ -104,35 +104,35 @@
                                     @if (config('setting.social.facebook'))
                                     <li class="facebook">
                                         <a href="{{ config('setting.social.facebook') }}">
-                                            <i class="fab fa-facebook-f"></i>
+                                            @svg('fab-facebook')
                                         </a>
                                     </li>
                                     @endif
                                     @if (config('setting.social.twitter'))
                                     <li class="twitter">
                                         <a href="{{ config('setting.social.twitter') }}">
-                                            <i class="fab fa-twitter"></i>
+                                            @svg('fab-twitter')
                                         </a>
                                     </li>
                                     @endif
                                     @if (config('setting.social.instagram'))
                                     <li class="instagram">
                                         <a href="{{ config('setting.social.instagram') }}">
-                                            <i class="fab fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                    @endif
-                                    @if (config('setting.social.youtube'))
-                                    <li class="youtube">
-                                        <a href="{{ config('setting.social.youtube') }}">
-                                            <i class="fab fa-youtube"></i>
+                                            @svg('fab-instagram')
                                         </a>
                                     </li>
                                     @endif
                                     @if (config('setting.social.linkedin'))
                                     <li class="linkedin">
                                         <a href="{{ config('setting.social.linkedin') }}">
-                                            <i class="fab fa-linkedin"></i>
+                                            @svg('fab-linkedin')
+                                        </a>
+                                    </li>
+                                    @endif
+                                    @if (config('setting.social.youtube'))
+                                    <li class="youtube">
+                                        <a href="{{ config('setting.social.youtube') }}">
+                                            @svg('fab-youtube')
                                         </a>
                                     </li>
                                     @endif
