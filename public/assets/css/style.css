@@ -4666,28 +4666,15 @@ body,
     margin-bottom: 15px;
     position: relative;
     z-index: 1;
-    padding-left: 40px;
 }
 
 .choose-us-area .info ul li:last-child {
     margin-bottom: 0;
 }
 
-.choose-us-area .info ul li::after {
-    position: absolute;
-    left: 0;
-    top: 0;
-    content: "\f12a";
-    font-family: "Flaticon";
-    font-weight: 600;
-    height: 30px;
-    width: 30px;
-    line-height: 30px;
-    background: rgba(8, 106, 216, 0.1);
-    text-align: center;
-    border-radius: 50%;
-    color: rgba(8, 106, 216, 1);
-    font-size: 12px;
+.choose-us-area .info ul li svg{
+    width: 20px;
+    color: #0077b5;
 }
 
 .choose-us-area .info ul {
@@ -5542,7 +5529,7 @@ body,
     z-index: 1;
     height: 45px;
     width: 45px;
-    line-height: 49px;
+    line-height: 45px;
     background: #fff;
     text-align: center;
     border-radius: 50%;

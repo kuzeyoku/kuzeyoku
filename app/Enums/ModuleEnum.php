@@ -57,7 +57,7 @@ enum ModuleEnum: string
             self::User => "fas-user",
             self::Message => "fas-envelope-open-text",
             self::Menu => "fas-bars",
-            self::Page => 'fas-file-alt',
+            self::Page => 'fas-pager',
             self::Language => 'fas-language',
             self::Blog => "fas-blog",
             self::Category => "fas-list-ul",

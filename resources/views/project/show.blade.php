@@ -43,3 +43,6 @@
     </div>
 </div>
 @endsection
+@section("style")
+<link href="{{ asset('assets/css/magnific-popup.css') }}" rel="stylesheet">
+@endsection

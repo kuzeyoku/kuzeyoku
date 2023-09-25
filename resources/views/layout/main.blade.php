@@ -11,10 +11,6 @@
 
     <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet"> -->
-    <!-- <link href="{{ asset('assets/css/themify-icons.css') }}" rel="stylesheet"> -->
-    <link href="{{ asset('assets/css/flaticon-set.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/magnific-popup.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/owl.theme.default.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
@@ -22,6 +18,7 @@
     <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/izimodal.min.css') }}" rel="stylesheet">
+    @yield('style')
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,8 +34,8 @@
     <div class="se-pre-con"></div>
     @include('layout.topbar')
     @include('layout.header')
-    @yield('content')
     @include('layout.popup')
+    @yield('content')
     @include('layout.footer')
     <script src="{{ asset('assets/js/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
