@@ -24,13 +24,13 @@
                         <td>{{ $item->updated_at->diffForHumans() }}</td>
                         <td>{{ statusView($item->status) }}</td>
                         <td>
-                            <a class="btn btn-show" href="{{ route("admin.{$route}.show", $item) }}">@svg('ri-eye-line')</a>
+                            <a class="btn btn-show" href="{{ route("admin.{$route}.show", $item) }}">@svg('fas-eye')</a>
                             {!! Form::open([
                                 'url' => route("admin.{$route}.destroy", $item),
                                 'method' => 'delete',
                                 'class' => 'd-inline',
                             ]) !!}
-                            <button type="button" class="btn btn-delete destroy-btn">@svg('ri-close-line')</button>
+                            <button type="button" class="btn btn-delete destroy-btn">@svg('fas-times')</button>
                             {!! Form::close() !!}
                         </td>
                     </tr>
