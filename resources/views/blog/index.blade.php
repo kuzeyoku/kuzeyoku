@@ -50,13 +50,13 @@
                 <div class="sidebar wow fadeInLeft col-lg-4 col-md-12">
                     <aside>
                         {{-- <div class="sidebar-item search">
-                                <div class="sidebar-info">
-                                    <form>
-                                        <input type="text" name="text" class="form-control">
-                                        <button type="submit"><i class="fas fa-search"></i></button>
-                                    </form>
-                                </div>
-                            </div> --}}
+                                    <div class="sidebar-info">
+                                        <form>
+                                            <input type="text" name="text" class="form-control">
+                                            <button type="submit"><i class="fas fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                </div> --}}
                         <div class="sidebar-item recent-post">
                             <div class="title">
                                 <h4>{{ __('front/blog.popular_post') }}</h4>
