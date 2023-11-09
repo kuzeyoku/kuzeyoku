@@ -15,7 +15,7 @@
     <div class="container">
         <div class="blog-items">
             <div class="row">
-                @foreach ($blogs as $blog)
+                @foreach ($blog as $blog)
                 <div class="single-item col-lg-4">
                     <div class="item">
                         <div class="thumb">

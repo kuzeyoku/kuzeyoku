@@ -5,7 +5,7 @@ namespace App\Enums;
 enum SettingCategoryEnum: string
 {
     case General = "general";
-    case Dashboard = "dashboard";
+    case Pagination = "pagination";
     case Information = "information";
     case Social = "social";
     case Caching = "caching";
@@ -25,7 +25,7 @@ enum SettingCategoryEnum: string
     {
         return match ($this) {
             self::General => "fas-cog",
-            self::Dashboard => "fas-tachometer-alt",
+            self::Pagination => "fas-map-signs",
             self::Information => "fas-info-circle",
             self::Social => "fas-share-alt",
             self::Caching => "fas-sync",

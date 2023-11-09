@@ -7,6 +7,7 @@ use App\Models\Language;
 use App\Services\Admin\LanguageService;
 use App\Http\Requests\Language\StoreLanguageRequest;
 use App\Http\Requests\Language\UpdateLanguageRequest;
+use Illuminate\Http\Request;
 
 class LanguageController extends Controller
 {
@@ -66,7 +67,7 @@ class LanguageController extends Controller
         return view("admin.{$this->service->folder()}.files", compact('language', 'frontFiles', 'adminFiles', 'fileContent', 'filename', 'dir'));
     }
 
-    public function updateFileContent(Language $language)
+    public function updateFileContent(Language $language, Request $request)
     {
         $this->authorize("fileProcess", Language::class);
         try {

@@ -4,7 +4,6 @@ namespace App\Services\Admin;
 
 use App\Models\Language;
 use App\Enums\ModuleEnum;
-use App\Enums\StatusEnum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Database\Eloquent\Model;
@@ -78,14 +77,14 @@ class LanguageService extends BaseService
 
     public function updateFileContent(Language $language)
     {
-        $folder = request()->_folder;
-        $filename = request()->_filename;
-        $request = request()->except("_token", "_method", "_filename", "_folder");
+        $folder = request()->folder;
+        $filename = request()->filename;
+        $request = request()->except("_token", "_method", "filename", "folder");
         $content = "<?php\nreturn [\n" . implode(",\n", array_map(function ($key, $value) {
-            return "'{$key}' => '{$value}'";
+            if (!is_null($key) && !is_null($value)) {
+                return "'{$key}' => '{$value}'";
+            }
         }, array_keys($request), $request)) . "\n];";
-
         return Storage::disk("lang")->put($language->code . "/" . $folder . "/" . $filename . ".php", $content);
     }
 }
-

@@ -22,7 +22,7 @@
                         <td>{{ $item->updated_at->diffForHumans() }}</td>
                         <td>{{ statusView($item->status) }}</td>
                         <td>
-                            <a class="btn btn-info" href="{{ route("admin.{$folder}.files", $item) }}">@svg('ri-translate')</a>
+                            <a class="btn btn-info" href="{{ route("admin.{$folder}.files", $item) }}">@svg('fas-language')</a>
                             @include('admin.layout.action')
                         </td>
                     </tr>

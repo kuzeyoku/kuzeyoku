@@ -15,7 +15,7 @@
     <div class="container">
         <div class="services-content text-center">
             <div class="row">
-                @foreach ($services as $service)
+                @foreach ($service as $service)
                     <div class="single-item col-lg-3 col-md-6">
                         <div class="item">
                             <img src="{{ $service->getImageUrl() }}" alt="{{ $service->getTitle() }}">

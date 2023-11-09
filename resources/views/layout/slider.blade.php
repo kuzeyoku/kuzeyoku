@@ -1,7 +1,7 @@
 <div class="banner-area text-center top-pad-80 inc-shape text-large">
     <div id="bootcarousel" class="carousel text-light slide carousel-fade animate_text" data-ride="carousel">
         <div class="carousel-inner carousel-zoom">
-            @foreach ($sliders as $slider)
+            @foreach ($slider as $slider)
             <div class="carousel-item @if ($loop->first) active @endif">
                 <div class="slider-thumb bg-cover" style="background-image: url({{ $slider->getImageUrl() }});">
                 </div>

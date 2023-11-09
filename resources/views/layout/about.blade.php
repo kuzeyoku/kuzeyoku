@@ -42,7 +42,7 @@
                     <div class="bottom-info">
                         <h2>{{ __('front/about.brand_title') }}</h2>
                         <div class="clients-carousel-3-col owl-carousel owl-theme">
-                            @foreach ($brands as $brand)
+                            @foreach ($brand as $brand)
                             <a href="{{ $brand->url }}">
                                 <img src="{{ $brand->getImageUrl() }}" alt="{{ $brand->title }}">
                             </a>

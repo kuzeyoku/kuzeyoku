@@ -50,18 +50,6 @@
                         <div class="alert alert-primary mb-0 text-center">{{ __("admin/{$folder}.files.table_empty") }}
                         </div>
                     @endforelse
-                    <tr>
-                        <td>
-                            <div class="form-group">
-                                {!! Form::text('key', null) !!}
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                {!! Form::text('value', null) !!}
-                            </div>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>

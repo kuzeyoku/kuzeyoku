@@ -17,7 +17,7 @@
     </div>
     <div class="container-fill">
         <div class="case-carousel text-center text-light owl-carousel owl-theme">
-            @foreach ($projects as $project)
+            @foreach ($project as $project)
                 <div class="item">
                     <div class="thumb">
                         <img src="{{ $project->getImageUrl() }}" alt="Thumb">

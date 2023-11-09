@@ -34,7 +34,6 @@ class ContactController extends Controller
 
         $data = array_merge($validator->validate(), ["user_agent" => $request->userAgent(), "ip" => $request->ip()]);
         if (Message::Create($data)) {
-            //Cache::flush();
             return back()
                 ->withSuccess(__("contact.send_success"));
         }
