@@ -78,11 +78,11 @@
                         <h4 class="widget-title">{{ __("front/footer.pages") }}</h4>
                         <ul>
 
-                            @foreach ($pages as $page)
+                            {{-- @foreach ($pages as $page)
                             <li>
                                 <a href="{{ $page->getTitle() }}">{{$page->getTitle()}}</a>
                             </li>
-                            @endforeach
+                            @endforeach --}}
                         </ul>
                     </div>
                 </div>
@@ -90,11 +90,11 @@
                     <div class="f-item link">
                         <h4 class="widget-title">{{ __("front/footer.services" )}}</h4>
                         <ul>
-                            @foreach ($services as $service)
+                            {{-- @foreach ($services as $service)
                             <li>
                                 <a href="{{ $service->getUrl() }}">{{ $service->getTitle() }}</a>
                             </li>
-                            @endforeach
+                            @endforeach --}}
                         </ul>
                     </div>
                 </div>
