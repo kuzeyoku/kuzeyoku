@@ -18,13 +18,17 @@ class ImageService
         $this->module = $module;
     }
 
-    public function upload(UploadedFile $file)
+    public function upload(UploadedFile $file, bool $thumbnail = false)
     {
         $fileName = uniqid() . "." . $file->getClientOriginalExtension();
         $uploadFolder = config("setting.image.upload_folder", "image");
-        $path =  "public/" . $uploadFolder . "/" . $this->module->folder();
+        $path = "public/" . $uploadFolder . "/" . $this->module->folder();
         Storage::makeDirectory($path, 0755, true);
-        ['width' => $width, 'height' => $height] = $this->module->image();
+        if ($thumbnail) {
+            ['width' => $width, 'height' => $height] = $this->module->image()['thumbnail'];
+        } else {
+            ['width' => $width, 'height' => $height] = $this->module->image()['image'];
+        }
         $this->imageManager
             ->fromFile($file->getPathname())
             ->fitToWidth($width)

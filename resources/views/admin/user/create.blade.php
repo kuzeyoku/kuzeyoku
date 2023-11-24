@@ -15,8 +15,14 @@
         {!! Form::password('password', ['placeholder' => __("admin/{$folder}.form.password_placeholder")]) !!}
     </div>
     <div class="form-group">
+        {!! Form::label('password_confirmation', __("admin/{$folder}.form.password_confirmation")) !!}
+        {!! Form::password('password_confirmation', [
+            'placeholder' => __("admin/{$folder}.form.password_confirmation_placeholder"),
+        ]) !!}
+    </div>
+    <div class="form-group">
         {!! Form::label('role', __("admin/{$folder}.form.role")) !!}
-        {!! Form::select('role', $roles, null) !!}
+        {!! Form::select('role', $roles, "default") !!}
     </div>
     {!! Form::submit(__('admin/general.save'), ['class' => 'btn btn-primary']) !!}
     {!! Form::close() !!}

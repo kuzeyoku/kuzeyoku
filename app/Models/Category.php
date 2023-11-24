@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ModuleEnum;
 use App\Enums\StatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -105,6 +106,11 @@ class Category extends Model
     public function countBlogs()
     {
         return $this->blogs()->count();
+    }
+
+    public function getUrl(ModuleEnum $module)
+    {
+        return route($module->route() . ".category", [$this->id, $this->slug]);
     }
 
     public static function boot()

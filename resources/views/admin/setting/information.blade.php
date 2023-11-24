@@ -6,15 +6,14 @@
         config('setting.information.cookie_notification_status'),
     ) !!}
 </div>
-<div class="form-group">
-    {!! Form::label('cookie_page', __('admin/setting.information.cookie_page')) !!}
-    {!! Form::select('cookie_page', $pagelist, config('setting.information.cookie_page'), [
-        'placeholder' => __('admin/general.select'),
-    ]) !!}
-</div>
-<div class="form-group">
-    {!! Form::label('privacy_page', __('admin/setting.information.privacy_page')) !!}
-    {!! Form::select('privacy_page', $pagelist, config('setting.information.privacy_page'), [
-        'placeholder' => __('admin/general.select'),
-    ]) !!}
-</div>
+@php
+    $formElementList = ['cookie_policy_page', 'user_agreement_page', 'privacy_agreement_page', 'kvkk_page', 'about_page', 'faq_page', 'distance_sales_agreement_page'];
+@endphp
+@foreach ($formElementList as $element)
+    <div class="form-group">
+        {!! Form::label($element, __('admin/setting.information.' . $element)) !!}
+        {!! Form::select($element, $pagelist, config('setting.information.' . $element), [
+            'placeholder' => __('admin/general.select'),
+        ]) !!}
+    </div>
+@endforeach

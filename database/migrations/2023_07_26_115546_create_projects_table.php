@@ -16,11 +16,13 @@ return new class extends Migration
             $table->id();
             $table->string("slug", 255);
             $table->string("image", 50)->nullable();
-            $table->integer("category_id");
-            $table->date("start_date")->nullable();
-            $table->date("end_date")->nullable();
+            $table->string("thumbnail", 50)->nullable();
+            // $table->integer("category_id")->default(0);
+            // $table->date("start_date")->nullable();
+            // $table->date("end_date")->nullable();
             $table->string("video", 255)->nullable();
-            $table->string("model3D", 255)->nullable();
+            $table->string("brochure", 255)->nullable();
+            // $table->string("model3D", 255)->nullable();
             $table->integer("order")->default(0);
             $table->enum("status", StatusEnum::getValues())->default(StatusEnum::Active->value);
             $table->timestamps();

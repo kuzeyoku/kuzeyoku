@@ -431,17 +431,14 @@ $(document).ready(function () {
     }
 
     $(".dropify-clear").one("click", function () {
-        // Create a new hidden input element with name 'image-delete' and value 'true'
+        var input = $(this).prev("input.dropify");
+        var inputName = input.attr("name") + "Delete";
         const deleteInput = $(
-            '<input type="hidden" name="imageDelete" value="true">'
+            '<input type="hidden" name="' + inputName + '" value="true">'
         );
-
-        // Find the parent form of the button and append the new input element to it
         const form = $(this).closest("form");
         form.append(deleteInput);
-
-        // Disable all clear buttons in this form to prevent multiple clicks
-        form.find(".dropify-clear").prop("disabled", true);
+        $(this).prop("disabled", true);
     });
 
     if ($(".destroy-btn").length > 0) {

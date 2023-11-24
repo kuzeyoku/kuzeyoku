@@ -6,7 +6,7 @@
             <thead>
                 <tr>
                     <th>#ID</th>
-                    <th>{{ __("admin/{$folder}.table.image") }}</th>
+                    {{-- <th>{{ __("admin/{$folder}.table.image") }}</th> --}}
                     <th>{{ __("admin/{$folder}.table.name") }}</th>
                     <th>{{ __("admin/{$folder}.table.company") }}</th>
                     <th>{{ __('admin/general.table.created_at') }}</th>
@@ -19,7 +19,7 @@
                 @forelse ($items as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td><img class="table_image" src="{{ uploadFolder($folder, $item->image) }}"></td>
+                        {{-- <td><img class="table_image" src="{{ uploadFolder($folder, $item->image) }}"></td> --}}
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->company }}</td>
                         <td>{{ $item->created_at->diffForHumans() }}</td>

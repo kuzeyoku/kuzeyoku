@@ -25,7 +25,6 @@
                         <td>{{ $item->updated_at->diffForHumans() }}</td>
                         <td>{{ statusView($item->status) }}</td>
                         <td>
-                            <a href="{{ route("admin.{$route}.show", $item) }}" class="btn btn-show">@svg('fas-eye')</a>
                             <a href="{{ route("admin.{$route}.image", $item) }}" class="btn btn-image">@svg('fas-image')</a>
                             @include('admin.layout.action')
                         </td>

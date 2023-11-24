@@ -110,9 +110,14 @@ class Blog extends Model
 
     public function getCategoryTitle()
     {
-        if ($this->category == 0)
+        if ($this->category->id == 0)
             return __("admin/general.uncategorized");
         return $this->category->getTitle();
+    }
+
+    public function getCategoryUrl()
+    {
+        return route(ModuleEnum::Blog->route() . ".category", [$this->category->id, $this->category->slug]);
     }
 
     public function getCreatedDate()

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string("email")->nullable();
             $table->string("phone")->nullable();
             $table->string("subject")->nullable();
-            $table->text("content")->nullable();
+            $table->text("message")->nullable();
             $table->enum("status", ["read", "unread", "answered"])->default("unread");
             $table->string("ip")->nullable();
             $table->text("user_agent")->nullable();

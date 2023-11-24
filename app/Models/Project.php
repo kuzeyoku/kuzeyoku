@@ -12,12 +12,14 @@ class Project extends Model
     use HasFactory;
     protected $fillable = [
         "slug",
-        "category_id",
+        // "category_id",
         "image",
+        "thumbnail",
         "video",
-        "model3D",
-        "start_date",
-        "end_date",
+        "brochure",
+        // "model3D",
+        // "start_date",
+        // "end_date",
         "order",
         "status"
     ];
@@ -67,10 +69,15 @@ class Project extends Model
         return $this->translate->pluck("description", "lang")->toArray();
     }
 
-    public function getFeaturesAttribute()
+    public function getShortDescriptionAttribute()
     {
-        return $this->translate->pluck("features", "lang")->toArray();
+        return $this->translate->pluck("shortdescription", "lang")->toArray();
     }
+
+    // public function getFeaturesAttribute()
+    // {
+    //     return $this->translate->pluck("features", "lang")->toArray();
+    // }
 
     public function getTitle()
     {
@@ -88,20 +95,28 @@ class Project extends Model
         return null;
     }
 
-    public function getFeatures()
+    public function getShortDescription()
     {
-        $result = [];
-        if (array_key_exists($this->locale, $this->features)) {
-            $featuresLine = array_filter(explode("\r\n", $this->features[$this->locale]), function ($item) {
-                return !empty($item);
-            });
-            array_map(function ($item) use (&$result) {
-                list($key, $value) = explode(":", $item);
-                $result[$key] = $value;
-            }, $featuresLine);
+        if (array_key_exists($this->locale, $this->shortdescription)) {
+            return $this->shortdescription[$this->locale];
         }
-        return $result;
+        return null;
     }
+
+    // public function getFeatures()
+    // {
+    //     $result = [];
+    //     if (array_key_exists($this->locale, $this->features)) {
+    //         $featuresLine = array_filter(explode("\r\n", $this->features[$this->locale]), function ($item) {
+    //             return !empty($item);
+    //         });
+    //         array_map(function ($item) use (&$result) {
+    //             list($key, $value) = explode(":", $item);
+    //             $result[$key] = $value;
+    //         }, $featuresLine);
+    //     }
+    //     return $result;
+    // }
 
     public function getUrl()
     {
@@ -113,5 +128,19 @@ class Project extends Model
         if ($this->image)
             return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Project->folder() . "/" . $this->image);
         return asset("assets/img/noimage.png");
+    }
+
+    public function getThumbnailUrl()
+    {
+        if ($this->thumbnail)
+            return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Project->folder() . "/" . $this->thumbnail);
+        return asset("assets/img/noimage.png");
+    }
+
+    public function getBrochureUrl()
+    {
+        if ($this->brochure)
+            return asset("storage/" . config("setting.file.folder", "file") . "/" . ModuleEnum::Project->folder() . "/" . $this->brochure);
+        return null;
     }
 }

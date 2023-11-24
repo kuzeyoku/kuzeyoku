@@ -33,7 +33,7 @@
                                         </div>
                                         <div>
                                             <a href="{{ route("admin.{$folder}.edit", $menu) }}" class="btn btn-sm p-0">
-                                                @svg('ri-edit-2-line')
+                                                @svg('fas-edit')
                                             </a>
                                             {!! Form::open([
                                                 'url' => route("admin.{$route}.destroy", $menu),
@@ -41,7 +41,7 @@
                                                 'class' => 'd-inline',
                                             ]) !!}
                                             <button type="button" class="btn btn-sm p-0 destroy-btn">
-                                                @svg('ri-close-line')
+                                                @svg('fas-window-close')
                                             </button>
                                             {!! Form::close() !!}
                                         </div>

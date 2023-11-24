@@ -4,8 +4,6 @@ namespace App\Providers;
 
 use App\Models\Menu;
 use App\Models\Page;
-use App\Models\Service;
-use App\Enums\StatusEnum;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,20 +26,14 @@ class MenuProvider extends ServiceProvider
         $cacheTime = config("setting.caching.time", 3600);
 
         view()->composer("layout.footer", function ($view) use ($cache, $cacheTime) {
-            $pages = $cache->remember("footerPages", $cacheTime, function () {
-                $page = new Page();
-                if (!Schema::hasTable($page->getTable()))
-                    return [];
-                return $page->whereStatus(StatusEnum::Active)->limit(5)->get();
-            });
-
-            $services = $cache->remember("footerServices", $cacheTime, function () {
-                $service = new Service();
-                if (!Schema::hasTable($service->getTable()))
-                    return [];
-                return $service->whereStatus(StatusEnum::Active)->limit(5)->get();
-            });
-            $view->with(compact("pages", "services"));
+            $pageList = config("setting.information");
+            if ($pageList) {
+                $pageList = array_filter($pageList, "is_numeric");
+                $pages = [];
+                foreach ($pageList as $index => $page)
+                    $pages[$index] = Page::find($page);
+                $view->with(compact("pages"));
+            }
         });
 
         view()->composer("layout.header", function ($view) use ($cache, $cacheTime) {

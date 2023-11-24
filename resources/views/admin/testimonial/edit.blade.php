@@ -2,10 +2,10 @@
 @section('pageTitle', __("admin/{$folder}.edit"))
 @section('content')
     {!! Form::open(['url' => route("admin.{$route}.update", $testimonial), 'method' => 'put', 'files' => true]) !!}
-    {!! Form::file('image', [
+    {{-- {!! Form::file('image', [
         'class' => 'dropify',
         'data-default-file' => uploadFolder($folder, $testimonial->image),
-    ]) !!}
+    ]) !!} --}}
     <div class="form-group">
         {!! Form::label('name', __("admin/{$folder}.form.name")) !!}
         {!! Form::text('name', $testimonial->name, ['placeholder' => __("admin/{$folder}.form.name_placeholder")]) !!}

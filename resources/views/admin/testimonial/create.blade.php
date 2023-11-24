@@ -2,7 +2,7 @@
 @section('pageTitle', __("admin/{$folder}.create"))
 @section('content')
     {!! Form::open(['route' => "admin.{$route}.store", 'method' => 'post', 'files' => true]) !!}
-    {!! Form::file('image', ['class' => 'dropify']) !!}
+    {{-- {!! Form::file('image', ['class' => 'dropify']) !!} --}}
     <div class="form-group">
         {!! Form::label('name', __("admin/{$folder}.form.name")) !!}
         {!! Form::text('name', null, ['placeholder' => __("admin/{$folder}.form.name_placeholder")]) !!}

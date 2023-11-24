@@ -25,16 +25,21 @@ class UpdateProjectRequest extends FormRequest
             "title." . app()->getLocale() => "required",
             "title.*" => "nullable",
             "description.*" => "nullable",
-            "features.*" => "nullable",
-            "start_date" => "nullable",
-            "end_date" => "nullable",
+            "shortdescription.*" => "nullable",
+            // "features.*" => "nullable",
+            // "start_date" => "nullable",
+            // "end_date" => "nullable",
             "video" => "nullable|active_url",
-            "model3D" => "nullable",
+            "brochure" => "nullable|mimes:pdf|max:" . config("setting.file.max_size", 4096),
+            // "model3D" => "nullable",
             "order" => "nullable|numeric|min:0",
             "status" => "required",
-            "category_id" => "nullable|numeric",
+            // "category_id" => "nullable|numeric",
             "image" => "image|mimes:png,jpeg,jpg,gif|max:" . config("setting.image.max_size", 4096),
-            "imageDelete" => "nullable"
+            "thumbnail" => "image|mimes:png,jpeg,jpg,gif|max:" . config("setting.image.max_size", 4096),
+            "imageDelete" => "nullable",
+            "thumbnailDelete" => "nullable",
+            "brochureDelete" => "nullable"
         ];
     }
 
@@ -44,15 +49,18 @@ class UpdateProjectRequest extends FormRequest
             "title." . app()->getLocale() => __("admin/{$this->folder}.form.title"),
             "title.*" => __("admin/{$this->folder}.form.title"),
             "description.*" => __("admin/{$this->folder}.form.description"),
-            "features.*" => __("admin/{$this->folder}.form.features"),
-            "start_date" => __("admin/{$this->folder}.form.start_date"),
-            "end_date" => __("admin/{$this->folder}.form.end_date"),
+            "shortdescription.*" => __("admin/{$this->folder}.form.shortdescription"),
+            // "features.*" => __("admin/{$this->folder}.form.features"),
+            // "start_date" => __("admin/{$this->folder}.form.start_date"),
+            // "end_date" => __("admin/{$this->folder}.form.end_date"),
             "video" => __("admin/{$this->folder}.form.video"),
-            "model3D" => __("admin/{$this->folder}.form.3d"),
+            "brochure" => __("admin/{$this->folder}.form.brochure"),
+            // "model3D" => __("admin/{$this->folder}.form.3d"),
             "order" => __("admin/general.order"),
             "status" => __("admin/general.status"),
-            "category_id" => __("admin/{$this->folder}.form.category"),
+            // "category_id" => __("admin/{$this->folder}.form.category"),
             "image" => __("admin/{$this->folder}.form.image"),
+            "thumbnail" => __("admin/{$this->folder}.form.thumbnail"),
         ];
     }
 }

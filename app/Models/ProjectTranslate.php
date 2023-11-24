@@ -14,7 +14,8 @@ class ProjectTranslate extends Model
         "lang",
         "title",
         "description",
-        "features",
+        "shortdescription",
+        // "features",
     ];
 
     public $timestamps = false;

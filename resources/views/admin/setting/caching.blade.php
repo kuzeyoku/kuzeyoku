@@ -3,8 +3,8 @@
     {{ Form::select(
         'status',
         [
-            1 => __('admin/general.on'),
             0 => __('admin/general.off'),
+            1 => __('admin/general.on'),
         ],
         config('setting.caching.status'),
     ) }}

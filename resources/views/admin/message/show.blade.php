@@ -10,7 +10,7 @@
 </small>
 <hr>
 <h4 class="mb-3">{{ $message->subject }}</h4>
-{{ $message->content }}
+{{ $message->message }}
 <hr>
 <a class="btn btn-primary" href="{{ route("admin.{$route}.reply", $message) }}">
     @svg('fas-reply') {{ __("admin/{$folder}.reply") }}

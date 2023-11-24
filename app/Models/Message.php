@@ -15,7 +15,7 @@ class Message extends Model
         "email",
         "phone",
         "subject",
-        "content",
+        "message",
         "ip",
         "user_agent",
         "consent",

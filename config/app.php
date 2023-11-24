@@ -70,7 +70,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Istanbul',
 
     /*
     |--------------------------------------------------------------------------
@@ -173,6 +173,7 @@ return [
         App\Providers\SettingProvider::class,
         App\Providers\MenuProvider::class,
         App\Providers\PopupProvider::class,
+        App\Providers\CookieProvider::class,
 
     ])->toArray(),
 

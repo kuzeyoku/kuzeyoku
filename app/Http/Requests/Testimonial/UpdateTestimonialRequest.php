@@ -23,7 +23,7 @@ class UpdateTestimonialRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "image" => "image|mimes:jpeg,png,jpg,gif|max:" . config("setting.image.max_size", 4096),
+            // "image" => "image|mimes:jpeg,png,jpg,gif|max:" . config("setting.image.max_size", 4096),
             "name" => "required",
             "company" => "nullable",
             "position" => "nullable",
@@ -37,7 +37,7 @@ class UpdateTestimonialRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            "image" => __("admin/{$this->folder}.form.image"),
+            // "image" => __("admin/{$this->folder}.form.image"),
             "name" => __("admin/{$this->folder}.form.name"),
             "company" => __("admin/{$this->folder}.form.company"),
             "position" => __("admin/{$this->folder}.form.position"),

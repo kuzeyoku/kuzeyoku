@@ -73,4 +73,30 @@ class UserController extends Controller
                 ->withError(__("admin/{$this->service->folder()}.update_error"));
         }
     }
+
+    public function destroy(User $user)
+    {
+        if (User::count() == 1) {
+            return back()
+                ->withError(__("admin/{$this->service->folder()}.delete_error_last"));
+        } else if ($user->id == auth()->user()->id) {
+            return back()
+                ->withError(__("admin/{$this->service->folder()}.delete_error_self"));
+        } else if (User::where("role", UserRole::ADMIN)->count() == 1) {
+            return back()
+                ->withError(__("admin/{$this->service->folder()}.delete_error_last_admin"));
+        } else {
+            try {
+                $this->service->delete($user);
+                LogController::logger("info", __("admin/{$this->service->folder()}.delete_log", ["title" => $user->name]));
+                return redirect()
+                    ->route("admin.{$this->service->route()}.index")
+                    ->withSuccess(__("admin/{$this->service->folder()}.delete_success"));
+            } catch (Throwable $e) {
+                LogController::logger("error", $e->getMessage());
+                return back()
+                    ->withError(__("admin/{$this->service->folder()}.delete_error"));
+            }
+        }
+    }
 }

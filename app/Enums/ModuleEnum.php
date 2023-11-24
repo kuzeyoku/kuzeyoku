@@ -135,6 +135,27 @@ enum ModuleEnum: string
         };
     }
 
+    public function model(): string
+    {
+        return match ($this) {
+            self::User => \App\Models\User::class,
+            self::Message => \App\Models\Message::class,
+            self::Menu => \App\Models\Menu::class,
+            self::Page => \App\Models\Page::class,
+            self::Language => \App\Models\Language::class,
+            self::Blog => \App\Models\Blog::class,
+            self::Category => \App\Models\Category::class,
+            self::Service => \App\Models\Service::class,
+            self::Brand => \App\Models\Brand::class,
+            self::Reference => \App\Models\Reference::class,
+            self::Product => \App\Models\Product::class,
+            self::Project => \App\Models\Project::class,
+            self::Slider => \App\Models\Slider::class,
+            self::Testimonial => \App\Models\Testimonial::class,
+            self::Popup => \App\Models\Popup::class,
+        };
+    }
+
     public function menu(): array
     {
         return match ($this) {
@@ -214,15 +235,15 @@ enum ModuleEnum: string
     public function image(): array
     {
         return match ($this) {
-            self::Blog => ["width" => 1080, "height" => 720],
-            self::Service => ["width" => 1080, "height" => 720],
-            self::Brand => ["width" => 150, "height" => 50],
-            self::Reference => ["width" => 400, "height" => 250],
-            self::Product => ["width" => 1080, "height" => 720],
-            self::Project => ["width" => 1080, "height" => 720],
-            self::Slider => ["width" => 1920, "height" => 1080],
-            self::Testimonial => ["width" => 300, "height" => 300],
-            self::Popup => ["width" => 800, "height" => 600],
+            self::Blog => ["image" => ["width" => 1080, "height" => 720]],
+            self::Service => ["image" => ["width" => 1080, "height" => 720]],
+            self::Brand => ["image" => ["width" => 150, "height" => 50]],
+            self::Reference => ["image" => ["width" => 400, "height" => 250]],
+            self::Product => ["image" => ["width" => 1080, "height" => 720]],
+            self::Project => ["thumbnail" => ["width" => 500, "height" => 500], "image" => ["width" => 1920, "height" => 1080]],
+            self::Slider => ["image" => ["width" => 1920, "height" => 1080]],
+            self::Testimonial => ["image" => ["width" => 300, "height" => 300]],
+            self::Popup => ["image" => ["width" => 800, "height" => 600]],
         };
     }
 }
