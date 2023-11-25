@@ -27,21 +27,22 @@
                         <ul>
                             @foreach ($menus as $menu)
                                 @if ($menu->parent_id == 0)
-                                    <li class="parent d-flex flex-row justify-content-between">
+                                    <li class="parent d-flex flex-row justify-content-between align-center">
                                         <div>
-                                            <a class="text-white" href="{{ $menu->url ?? '/' }}">{{ $menu->getTitle() }}</a>
+                                            <a class="text-white">{{ $menu->getTitle() }}</a>
                                         </div>
                                         <div>
-                                            <a href="{{ route("admin.{$folder}.edit", $menu) }}" class="btn btn-sm p-0">
-                                                @svg('fas-edit')
+                                            <a href="{{ route("admin.{$folder}.edit", $menu) }}"
+                                                class="btn btn-sm btn-light">
+                                                {{ __('admin/general.edit') }}
                                             </a>
                                             {!! Form::open([
                                                 'url' => route("admin.{$route}.destroy", $menu),
                                                 'method' => 'delete',
                                                 'class' => 'd-inline',
                                             ]) !!}
-                                            <button type="button" class="btn btn-sm p-0 destroy-btn">
-                                                @svg('fas-window-close')
+                                            <button type="button" class="btn btn-sm destroy-btn btn-danger">
+                                                {{ __('admin/general.delete') }}
                                             </button>
                                             {!! Form::close() !!}
                                         </div>

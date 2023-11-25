@@ -6,6 +6,7 @@
     {!! Form::file('image', [
         'class' => 'dropify',
         'data-default-file' => $slider->getImageUrl(),
+        'accept' => '.png, .jpg, .jpeg, .gif',
     ]) !!}
     <div class="tab-content">
         @foreach (languageList() as $key => $lang)

@@ -9,6 +9,7 @@ use App\Models\Project;
 use App\Models\Service;
 use App\Enums\ModuleEnum;
 use App\Models\Testimonial;
+use App\Models\Reference;
 use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
@@ -22,6 +23,7 @@ class HomeController extends Controller
             ModuleEnum::Project->value => Project::class,
             ModuleEnum::Testimonial->value => Testimonial::class,
             ModuleEnum::Blog->value => Blog::class,
+            ModuleEnum::Reference->value => Reference::class,
         ];
 
         $data = [];

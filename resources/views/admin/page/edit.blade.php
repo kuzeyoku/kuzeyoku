@@ -14,7 +14,7 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('description', __("admin/{$folder}.form.description")) !!}
-                    {!! Form::textarea("description[$lang->code]", $page->content[$lang->code] ?? null, ['class' => 'editor']) !!}
+                    {!! Form::textarea("description[$lang->code]", $page->description[$lang->code] ?? null, ['class' => 'editor']) !!}
                 </div>
             </div>
         @endforeach

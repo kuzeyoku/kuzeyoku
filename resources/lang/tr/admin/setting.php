@@ -15,6 +15,7 @@ return [
     "category.image" => "Resim Ayarları",
     "category.sitemap" => "Site Haritası Ayarları",
     "category.recaptcha" => "Google Recaptcha Ayarları",
+    "category.logo" => "Logo Ayarları",
     "general.title" => "Site Başlığı",
     "general.title_placeholder" => "Site Başlığını Giriniz",
     "general.description" => "Site Açıklaması",
@@ -123,4 +124,7 @@ return [
     "recaptcha.site_key_placeholder" => "Site Anahtarı Giriniz",
     "recaptcha.secret_key" => "Gizli Anahtar",
     "recaptcha.secret_key_placeholder" => "Gizli Anahtar Giriniz",
+    "logo.header" => "Header Logo",
+    "logo.footer" => "Footer Logo",
+    "logo.favicon" => "Favicon",
 ];

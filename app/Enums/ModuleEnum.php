@@ -237,10 +237,10 @@ enum ModuleEnum: string
         return match ($this) {
             self::Blog => ["image" => ["width" => 1080, "height" => 720]],
             self::Service => ["image" => ["width" => 1080, "height" => 720]],
-            self::Brand => ["image" => ["width" => 150, "height" => 50]],
-            self::Reference => ["image" => ["width" => 400, "height" => 250]],
+            self::Brand => ["image" => ["width" => 150, "height" => 150]],
+            self::Reference => ["image" => ["width" => 400, "height" => 400]],
             self::Product => ["image" => ["width" => 1080, "height" => 720]],
-            self::Project => ["thumbnail" => ["width" => 500, "height" => 500], "image" => ["width" => 1920, "height" => 1080]],
+            self::Project => ["image" => ["width" => 1920, "height" => 1080]],
             self::Slider => ["image" => ["width" => 1920, "height" => 1080]],
             self::Testimonial => ["image" => ["width" => 300, "height" => 300]],
             self::Popup => ["image" => ["width" => 800, "height" => 600]],

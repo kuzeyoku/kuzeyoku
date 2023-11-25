@@ -1,20 +1,20 @@
 <ul class="submenu">
     @foreach ($menu->subMenu as $subMenu)
-        <li class="d-flex flex-row justify-content-between">
+        <li class="d-flex flex-row justify-content-between align-center">
             <div>
-                @svg('ri-arrow-right-down-line') <a href="{{ $subMenu->url ?? '/' }}">{{ $subMenu->getTitle() }}</a>
+                <a>{{ $subMenu->getTitle() }}</a>
             </div>
             <div>
-                <a href="{{ route("admin.{$folder}.edit", $subMenu) }}" class="btn btn-sm p-0">
-                    @svg('ri-edit-2-line')
+                <a href="{{ route("admin.{$folder}.edit", $subMenu) }}" class="btn btn-sm btn-primary">
+                    {{ __('admin/general.edit') }}
                 </a>
                 {!! Form::open([
                     'url' => route("admin.{$route}.destroy", $subMenu),
                     'method' => 'delete',
                     'class' => 'd-inline',
                 ]) !!}
-                <button type="button" class="btn btn-sm p-0 destroy-btn">
-                    @svg('ri-close-line')
+                <button type="button" class="btn btn-sm btn-danger destroy-btn">
+                    {{ __('admin/general.delete') }}
                 </button>
                 {!! Form::close() !!}
             </div>

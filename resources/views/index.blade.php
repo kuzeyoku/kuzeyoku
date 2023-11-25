@@ -19,4 +19,7 @@
     @if ($blog->count() > 0)
         @include('layout.blog')
     @endif
+    @if ($reference->count() > 0)
+        @include('layout.reference')
+    @endif
 @endsection

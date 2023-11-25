@@ -22,7 +22,7 @@
                                 <h5 class="card-title">{{ $tabContent->title() }}</h5>
                             </div>
                             <div class="card-body">
-                                {!! Form::open(['url' => route("admin.{$route}.update"), 'method' => 'PUT']) !!}
+                                {!! Form::open(['url' => route("admin.{$route}.update"), 'method' => 'PUT', 'files' => true]) !!}
                                 @include("admin.{$folder}." . $tabContent->value)
                                 {!! Form::hidden('category', $tabContent->value) !!}
                                 {!! Form::submit(__('admin/general.save'), ['class' => 'btn btn-primary']) !!}

@@ -110,7 +110,7 @@ class Blog extends Model
 
     public function getCategoryTitle()
     {
-        if ($this->category->id == 0)
+        if ($this->category_id == 0)
             return __("admin/general.uncategorized");
         return $this->category->getTitle();
     }
