@@ -13,14 +13,12 @@ use Illuminate\Database\Eloquent\Model;
 class ProjectService extends BaseService
 {
     protected $imageService;
-    protected $fileService;
     protected $project;
 
     public function __construct(Project $project)
     {
         parent::__construct($project, ModuleEnum::Project);
         $this->imageService = new ImageService(ModuleEnum::Project);
-        $this->fileService = new FileService(ModuleEnum::Project);
     }
 
     public function create(Object $request)
@@ -31,21 +29,13 @@ class ProjectService extends BaseService
             "category_id" => $request->category_id,
             "video" => $request->video,
             "model3D" => $request->model3D,
-            "start_date" => $request->start_date,
-            "end_date" => $request->end_date,
+            // "start_date" => $request->start_date,
+            // "end_date" => $request->end_date,
             "order" => $request->order
         ]);
 
         if (isset($request->image) && $request->image->isValid()) {
             $data->merge(["image" => $this->imageService->upload($request->image)]);
-        }
-
-        if (isset($request->thumbnail) && $request->thumbnail->isValid()) {
-            $data->merge(["thumbnail" => $this->imageService->upload($request->thumbnail, true)]);
-        }
-
-        if (isset($request->brochure) && $request->brochure->isValid()) {
-            $data->merge(["brochure" => $this->fileService->upload($request->brochure)]);
         }
 
         $query = parent::create($data);
@@ -64,8 +54,8 @@ class ProjectService extends BaseService
             "category_id" => $request->category_id,
             "video" => $request->video,
             "model3D" => $request->model3D,
-            "start_date" => $request->start_date,
-            "end_date" => $request->end_date,
+            // "start_date" => $request->start_date,
+            // "end_date" => $request->end_date,
             "order" => $request->order
         ]);
 
@@ -73,34 +63,10 @@ class ProjectService extends BaseService
             parent::imageDelete($project);
         }
 
-        if (isset($request->thumbnailDelete)) {
-            if ($project->thumbnail)
-                $this->imageService->delete($project->thumbnail);
-            $data->merge(["thumbnail" => null]);
-        }
-
-        if (isset($request->brochureDelete)) {
-            if ($project->brochure)
-                $this->fileService->delete($project->brochure);
-            $data->merge(["brochure" => null]);
-        }
-
         if (isset($request->image) && $request->image->isValid()) {
             $data->merge(["image" => $this->imageService->upload($request->image)]);
             if ($data->image && !is_null($project->image))
                 $this->imageService->delete($project->image);
-        }
-
-        if (isset($request->thumbnail) && $request->thumbnail->isValid()) {
-            $data->merge(["thumbnail" => $this->imageService->upload($request->thumbnail, true)]);
-            if ($data->thumbnail && !is_null($project->thumbnail))
-                $this->imageService->delete($project->thumbnail);
-        }
-
-        if (isset($request->brochure) && $request->brochure->isValid()) {
-            $data->merge(["brochure" => $this->fileService->upload($request->brochure)]);
-            if ($data->brochure && !is_null($project->brochure))
-                $this->fileService->delete($project->brochure);
         }
 
         $query = parent::update($data, $project);
@@ -125,7 +91,6 @@ class ProjectService extends BaseService
                     [
                         "title" => $request->title[$language->code] ?? null,
                         "description" => $request->description[$language->code] ?? null,
-                        "shortdescription" => $request->shortdescription[$language->code] ?? null,
                         "features" => trim($request->features[$language->code]) ?? null
                     ]
                 );

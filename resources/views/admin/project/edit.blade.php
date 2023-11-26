@@ -25,10 +25,6 @@
                     ]) !!}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('shortdescription', __("admin/{$folder}.form.shortdescription")) }}
-                    {{ Form::text("shortdescription[$lang->code]", $project->shortdescription[$lang->code] ?? null, ['placeholder' => __("admin/{$folder}.form.shortdescription_placeholder")]) }}
-                </div>
-                <div class="form-group">
                     {{ Form::label('features', __("admin/{$folder}.form.features")) }}
                     {{ Form::textarea("features[$lang->code]", $project->features[$lang->code] ?? null, ['placeholder' => __("admin/{$folder}.form.features_placeholder")]) }}
                 </div>

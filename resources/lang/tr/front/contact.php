@@ -13,4 +13,8 @@ return [
     "form.subject_placeholder" => "Konu Başlığını Girin",
     "form.message_placeholder" => "Mesajınızı Girin",
     "form.send" => "Gönder",
+    "form_error" => "Eksik Yada Hatalı Bilgi Girdiniz.",
+    "send_success" => "Mesajınız Başarıyla Gönderildi.",
+    "send_error" => "Mesajınız Gönderilirken Bir Hata Oluştu.",
+    "recaptcha_error" => "Robot Doğrulaması Başarısız.",
 ];

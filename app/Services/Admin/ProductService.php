@@ -29,8 +29,8 @@ class ProductService extends BaseService
             "status" => $request->status,
             "category_id" => $request->category_id,
             "video" => $request->video,
-            "price" => $request->price,
-            "currency" => $request->currency,
+            // "price" => $request->price,
+            //"currency" => $request->currency,
         ]);
 
         if (isset($request->image) && $request->image->isValid()) {
@@ -54,8 +54,8 @@ class ProductService extends BaseService
             "status" => $request->status,
             "category_id" => $request->category_id,
             "video" => $request->video,
-            "price" => $request->price,
-            "currency" => $request->currency,
+            // "price" => $request->price,
+            // "currency" => $request->currency,
         ]);
 
         if (isset($request->imageDelete)) {

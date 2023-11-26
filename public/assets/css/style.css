@@ -6845,7 +6845,7 @@ ul.pagination {
     min-height: 150px;
 }
 
-.contact-area .content form button {
+.contact-area .content form .btn-primary {
     background: linear-gradient(
         90deg,
         rgb(15 80 197) 0%,

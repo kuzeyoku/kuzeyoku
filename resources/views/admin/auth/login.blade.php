@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}">
     <script src="{{ asset('assets/admin/js/sweetalert2.all.min.js') }}"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 
 <body class="account-page">
@@ -39,8 +40,9 @@
                         <div class="form-login">
                             {!! Form::submit(__('admin/auth.login'), [
                                 'class' => 'btn btn-login g-recaptcha',
-                                'data-sitekey' => config('setting.recaptcha_site_key'),
+                                'data-sitekey' => config('setting.recaptcha.site_key'),
                                 'data-callback' => 'onSubmit',
+                                'data-action' => 'submit',
                             ]) !!}
                         </div>
 
@@ -57,8 +59,7 @@
     <script src="{{ asset('assets/admin/js/feather.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/script.js') }}"></script>
-    @if (config('setting.recaptcha_status') == App\Enums\StatusEnum::Active->value)
-        <script src="https://www.google.com/recaptcha/api.js"></script>
+    @if (config('setting.recaptcha.status') == App\Enums\StatusEnum::Active->value)
         <script>
             function onSubmit(token) {
                 document.getElementById("login-form").submit();

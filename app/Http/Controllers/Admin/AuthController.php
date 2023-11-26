@@ -68,8 +68,8 @@ class AuthController extends Controller
 
     protected function recaptcha(FormAuthRequest $request)
     {
-        if (config("setting.recaptcha_status") === StatusEnum::Active->value) {
-            $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . config("setting.recaptcha_secret_key") . '&response=' . $request->{"g-recaptcha-response"});
+        if (config("setting.recaptcha.status") === StatusEnum::Active->value) {
+            $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . config("setting.recaptcha.secret_key") . '&response=' . $request->{"g-recaptcha-response"});
 
             if (($recaptcha = json_decode($response)) && $recaptcha->success && $recaptcha->score >= 0.5) {
                 return true;

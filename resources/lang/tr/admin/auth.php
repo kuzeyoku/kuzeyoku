@@ -14,6 +14,4 @@ return [
 'login_error' => 'Kullanıcı bilgileri hatalı',
 'logout_success' => 'Başarıyla çıkış yaptınız',
 'recaptcha_error' => 'Robot doğrulaması başarısız',
-'key' => '',
-'value' => ''
 ];

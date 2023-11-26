@@ -6,6 +6,7 @@
     {!! Form::file('image', [
         'class' => 'dropify',
         'data-default-file' => uploadFolder($folder, $product->image),
+        'accept' => '.jpg, .png, .gif'
     ]) !!}
     <div class="tab-content">
         @foreach (languageList() as $key => $lang)

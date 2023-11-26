@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware("checkInstallation")->group(function () {
     Route::get("/", [App\Http\Controllers\HomeController::class, "index"])->name("home");
 
+    Route::get("/education", [App\Http\Controllers\ContactController::class, "education"])->name("education.index");
+    Route::post("/education/send", [App\Http\Controllers\ContactController::class, "educationSend"])->name("education.send");
+
     Route::get("/contact", [App\Http\Controllers\ContactController::class, "index"])->name("contact.index");
     Route::post("/contact/send", [App\Http\Controllers\ContactController::class, "send"])->name("contact.send");
 

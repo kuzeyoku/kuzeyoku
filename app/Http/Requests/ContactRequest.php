@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ContactSendRequest extends FormRequest
+class ContactRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,6 +27,7 @@ class ContactSendRequest extends FormRequest
             "email" => "required|email:filter",
             "subject" => "required|string|min:3|max:50",
             "message" => "required|string|min:3|max:500",
+            "g-recaptcha-response" => "",
         ];
     }
 }

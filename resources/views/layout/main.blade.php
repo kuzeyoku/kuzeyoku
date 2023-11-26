@@ -14,23 +14,14 @@
     <link href="{{ asset('assets/css/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/owl.theme.default.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
-    <!-- <link href="{{ asset('assets/css/bootsnav.css') }}" rel="stylesheet"> -->
     <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/izimodal.min.css') }}" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     @yield('style')
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="assets/js/html5/html5shiv.min.js"></script>
-      <script src="assets/js/html5/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body>
-
     <div class="se-pre-con"></div>
     @include('layout.topbar')
     @include('layout.header')
@@ -45,16 +36,6 @@
     @yield('script')
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/sweetalert2.all.min.js') }}"></script>
-    <!-- <script src="{{ asset('assets/js/popper.min.js') }}"></script> -->
-    <!-- <script src="{{ asset('assets/js/jquery.appear.js') }}"></script> -->
-    <!-- <script src="{{ asset('assets/js/jquery.easing.min.js') }}"></script> -->
-    <!-- <script src="{{ asset('assets/js/modernizr.custom.13711.js') }}"></script> -->
-    <!-- <script src="{{ asset('assets/js/progress-bar.min.js') }}"></script> -->
-    <!-- <script src="{{ asset('assets/js/isotope.pkgd.min.js') }}"></script> -->
-    <!-- <script src="{{ asset('assets/js/imagesloaded.pkgd.min.js') }}"></script> -->
-    <!-- <script src="{{ asset('assets/js/YTPlayer.min.js') }}"></script> -->
-    <!-- <script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script> -->
-    <!-- <script src="{{ asset('assets/js/bootsnav.js') }}"></script> -->
     @include('layout.alert')
 </body>
 
