@@ -15,7 +15,7 @@ enum SettingCategoryEnum: string
     case Image = "image";
     case Sitemap = "sitemap";
     case Recaptcha = "recaptcha";
-    case Logo = "logo";
+    //case Logo = "logo";
 
     public function title(): string
     {
@@ -36,7 +36,7 @@ enum SettingCategoryEnum: string
             self::Image => "fas-image",
             self::Sitemap => "fas-sitemap",
             self::Recaptcha => "fas-shield-alt",
-            self::Logo => "fas-image",
+            //self::Logo => "fas-image",
         };
     }
 

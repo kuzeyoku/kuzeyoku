@@ -12,14 +12,12 @@ class Project extends Model
     use HasFactory;
     protected $fillable = [
         "slug",
-        // "category_id",
+        "category_id",
         "image",
-        "thumbnail",
         "video",
-        "brochure",
-        // "model3D",
-        // "start_date",
-        // "end_date",
+        "model3D",
+        "start_date",
+        "end_date",
         "order",
         "status"
     ];
@@ -74,10 +72,10 @@ class Project extends Model
         return $this->translate->pluck("shortdescription", "lang")->toArray();
     }
 
-    // public function getFeaturesAttribute()
-    // {
-    //     return $this->translate->pluck("features", "lang")->toArray();
-    // }
+    public function getFeaturesAttribute()
+    {
+        return $this->translate->pluck("features", "lang")->toArray();
+    }
 
     public function getTitle()
     {
@@ -103,20 +101,20 @@ class Project extends Model
         return null;
     }
 
-    // public function getFeatures()
-    // {
-    //     $result = [];
-    //     if (array_key_exists($this->locale, $this->features)) {
-    //         $featuresLine = array_filter(explode("\r\n", $this->features[$this->locale]), function ($item) {
-    //             return !empty($item);
-    //         });
-    //         array_map(function ($item) use (&$result) {
-    //             list($key, $value) = explode(":", $item);
-    //             $result[$key] = $value;
-    //         }, $featuresLine);
-    //     }
-    //     return $result;
-    // }
+    public function getFeatures()
+    {
+        $result = [];
+        if (array_key_exists($this->locale, $this->features)) {
+            $featuresLine = array_filter(explode("\r\n", $this->features[$this->locale]), function ($item) {
+                return !empty($item);
+            });
+            array_map(function ($item) use (&$result) {
+                list($key, $value) = explode(":", $item);
+                $result[$key] = $value;
+            }, $featuresLine);
+        }
+        return $result;
+    }
 
     public function getUrl()
     {

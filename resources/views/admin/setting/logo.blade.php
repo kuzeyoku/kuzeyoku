@@ -1,20 +1,20 @@
 <div class="row">
     <div class="col-lg-4">
         <div class="form-group">
-            {!! Form::label('logo_header', __('admin/setting.logo.header'), ['class' => 'd-block']) !!}
-            {!! Form::file('logo_header', [
+            {!! Form::label('header', __('admin/setting.logo.header'), ['class' => 'd-block']) !!}
+            {!! Form::file('header', [
                 'class' => 'dropify',
-                'data-default-file' => config('setting.general.logo'),
+                'data-default-file' => asset('storage/' . config('setting.image.folder', 'image') . '/' . 'header_logo.png'),
                 'accept' => '.png, .jpg, .jpeg, .gif',
             ]) !!}
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            {!! Form::label('logo_footer', __('admin/setting.logo.footer'), ['class' => 'd-block']) !!}
-            {!! Form::file('logo_footer', [
+            {!! Form::label('footer', __('admin/setting.logo.footer'), ['class' => 'd-block']) !!}
+            {!! Form::file('footer', [
                 'class' => 'dropify',
-                'data-default-file' => config('setting.general.logo'),
+                'data-default-file' => asset('storage/' . config('setting.image.folder', 'image') . '/' . 'footer_logo.png'),
                 'accept' => '.png, .jpg, .jpeg, .gif',
             ]) !!}
         </div>
@@ -24,7 +24,7 @@
             {!! Form::label('favicon', __('admin/setting.logo.favicon'), ['class' => 'd-block']) !!}
             {!! Form::file('favicon', [
                 'class' => 'dropify',
-                'data-default-file' => config('setting.general.logo'),
+                'data-default-file' => asset('storage/' . config('setting.image.folder', 'image') . '/' . 'favicon.ico'),
                 'accept' => '.png, .ico',
             ]) !!}
         </div>

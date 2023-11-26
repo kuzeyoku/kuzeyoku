@@ -2,10 +2,13 @@
 
 namespace App\Services\Admin;
 
-use App\Enums\ModuleEnum;
 use App\Models\Setting;
+use App\Enums\ModuleEnum;
+// use App\Enums\SettingCategoryEnum;
+// use claviska\SimpleImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+// use Illuminate\Support\Facades\Storage;
 
 class SettingService
 {
@@ -21,21 +24,57 @@ class SettingService
 
     public function update(Request $request)
     {
-        if ($request->category == "logo") {
-            //TODO : Logo Upload
-        } else {
-            $settings = collect($request->except(["_token", "_method", "category"]))
-                ->map(function ($value, $key) use ($request) {
-                    return [
-                        'category' => $request->category,
-                        'key' => $key,
-                        'value' => $value
-                    ];
-                })->toArray();
-            Setting::upsert($settings, ['key', 'category'], ['value']);
-        }
+        // if ($request->category == SettingCategoryEnum::Logo->value) {
+        //     if ($request->hasFile("header") && $request->file("header")->isValid())
+        //         $header = $this->logoUpload($request->file("header"), config("setting.logo.header", "header_logo.png"));
+        //     if ($request->hasFile("footer") && $request->file("footer")->isValid())
+        //         $footer = $this->logoUpload($request->file("footer"), config("setting.logo.footer", "footer_logo.png"));
+        //     if ($request->hasFile("favicon") && $request->file("favicon")->isValid())
+        //         $favicon = $this->logoUpload($request->file("favicon"), config("setting.logo.favicon", "favicon.ico"));
+        //     $newRequest = new Request([
+        //         "header" => $header ?? null,
+        //         "footer" => $footer ?? null,
+        //         "favicon" => $favicon ?? null,
+        //         "category" => SettingCategoryEnum::Logo->value,
+        //     ]);
+        //     $this->query($newRequest);
+        // } else {
+        //     $this->query($request);
+        // }
+
+        $settings = collect($request->except(["_token", "_method", "category"]))
+            ->map(function ($value, $key) use ($request) {
+                return [
+                    'category' => $request->category,
+                    'key' => $key,
+                    'value' => $value
+                ];
+            })->toArray();
+        return Setting::upsert($settings, ['key', 'category'], ['value']);
         Cache::forget("setting");
     }
+
+    // private function query(Request $request)
+    // {
+    //     $settings = collect($request->except(["_token", "_method", "category"]))
+    //         ->map(function ($value, $key) use ($request) {
+    //             return [
+    //                 'category' => $request->category,
+    //                 'key' => $key,
+    //                 'value' => $value
+    //             ];
+    //         })->toArray();
+    //     return Setting::upsert($settings, ['key', 'category'], ['value']);
+    // }
+
+    // private function logoUpload(object $file, string $fileName = null)
+    // {
+    //     $uploadFolder = config("setting.image.upload_folder", "image");
+    //     $path = "public/" . $uploadFolder;
+    //     Storage::makeDirectory($path, 755, true);
+
+    //     return Storage::putFileAs($path, $file, $fileName) ? $fileName : null;
+    // }
 
     public static function getSitemapModuleList()
     {

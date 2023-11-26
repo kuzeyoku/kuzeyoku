@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\SettingCategoryEnum;
 use Throwable;
 use App\Models\Page;
 use App\Models\Setting;

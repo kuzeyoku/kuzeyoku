@@ -20,6 +20,7 @@ return [
     "form.description" => "Açıklama",
     "form.description_placeholder" => "Açıklama Giriniz",
     "form.features" => "Ürün Özellikleri",
+    "form.features_placeholder" => "Örnek: (Satır İle Ayırın)\n\nFirma : RhpSoft\nBütçe : 1.000.000 $",
     "form.category" => "Kategori",
     "form.status" => "Durum",
     "form.video" => "Video",
@@ -27,7 +28,7 @@ return [
     "form.price" => "Fiyat",
     "form.price_placeholder" => "Fiyat Giriniz",
     "form.currency" => "Para Birimi",
-    "cform.urrency_placeholder" => "Para Birimi Giriniz [₺, $, €]",
+    "form.currency_placeholder" => "Para Birimi Giriniz [₺, $, €]",
     //log
     "create_log" => "Bir Ürün Oluşturuldu - :title",
     "update_log" => "Bir Ürün Güncellendi - :title",

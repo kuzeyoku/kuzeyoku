@@ -17,13 +17,13 @@
                 </div>
                 <div class="form-group">
                     {{ Form::label('features', __("admin/{$folder}.form.features")) }}
-                    {{ Form::textarea("features[$lang->code]", null) }}
+                    {{ Form::textarea("features[$lang->code]", null, ['placeholder' => __("admin/{$folder}.form.features_placeholder")]) }}
                 </div>
             </div>
         @endforeach
     </div>
     <div class="row">
-        <div class="col-lg-6">
+        {{-- <div class="col-lg-6">
             <div class="form-group">
                 {!! Form::label('price', __("admin/{$folder}.form.price")) !!}
                 {!! Form::number('price', null, ['placeholder' => __("admin/{$folder}.form.price_placeholder")]) !!}
@@ -34,7 +34,7 @@
                 {!! Form::label('currency', __("admin/{$folder}.form.currency")) !!}
                 {!! Form::text('currency', null, ['placeholder' => __("admin/{$folder}.form.currency_placeholder")]) !!}
             </div>
-        </div>
+        </div> --}}
         <div class="col-lg-6">
             <div class="form-group">
                 {!! Form::label('category', __("admin/{$folder}.form.category")) !!}
