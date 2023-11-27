@@ -17,4 +17,5 @@ return [
     "send_success" => "Mesajınız Başarıyla Gönderildi.",
     "send_error" => "Mesajınız Gönderilirken Bir Hata Oluştu.",
     "recaptcha_error" => "Robot Doğrulaması Başarısız.",
+    "newsletter_success" => "E-posta Adresiniz Başarıyla Kaydedildi.",
 ];

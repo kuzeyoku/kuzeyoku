@@ -40,7 +40,7 @@ Route::middleware("checkInstallation")->group(function () {
                 });
 
             // Other Routes
-            Route::post('editor/upload')->uses("App\Http\Controllers\Admin\EditorController@upload")->name("editor.upload");
+            Route::post('editor/upload')->uses("App\Http\Controllers\Admin\EditorController@store")->name("editor.upload");
             Route::get('cache-clear')->uses("App\Http\Controllers\Admin\HomeController@cacheClear")->name('cache-clear');
             Route::post("logclean")->uses("App\Http\Controllers\Admin\HomeController@logclean")->name("logclean");
 

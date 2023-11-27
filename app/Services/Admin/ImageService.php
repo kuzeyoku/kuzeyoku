@@ -55,18 +55,4 @@ class ImageService
 
         return false;
     }
-
-    public function editorUpload(UploadedFile $file)
-    {
-        $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
-        $uploadFolder = config("setting.image.upload_folder") ?? "image";
-        $path =  "public/" . $uploadFolder . "/editor";
-        Storage::makeDirectory($path, 0755, true);
-        $this->imageManager
-            ->fromFile($file->getPathname())
-            ->bestFit(800, 600)
-            ->toFile($file->getPathname());
-        Storage::putFileAs($path, $file, $fileName);
-        return ["location" => asset($path . "/" . $fileName)];
-    }
 }

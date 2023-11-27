@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostEditorRequest extends FormRequest
+class EditorRequest extends FormRequest
 {
     public function authorize(): bool
     {
