@@ -39,7 +39,7 @@
                     {{ Form::submit(__('front/education.send'), [
                         'class' => 'btn btn-primary g-recaptcha',
                         'data-sitekey' => config('setting.recaptcha.site_key'),
-                        'data-callback' => 'onSubmit',
+                        'data-callback' => 'education',
                         'data-action' => 'submit',
                     ]) }}
                     {{ Form::close() }}
@@ -50,13 +50,4 @@
             </div>
         </div>
     </div>
-@endsection
-@section('script')
-    @if (config('setting.recaptcha.status') == App\Enums\StatusEnum::Active->value)
-        <script>
-            function onSubmit(token) {
-                document.getElementById("education-form").submit();
-            }
-        </script>
-    @endif
 @endsection

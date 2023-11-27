@@ -18,18 +18,12 @@
                         </ul>
                     </div>
                     <div class="col-lg-5">
-                        {{ Form::open(['url' => route('newsletter.store'), 'method' => 'POST']) }}
+                        {{ Form::open(['url' => route('newsletter.store'), 'method' => 'POST', 'id' => 'newsletter-form']) }}
                         {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => __('front/contact.form.email_placeholder'), 'required' => '']) }}
                         <button type="submit" class="g-recaptcha"
-                            data-sitekey="{{ config('setting.recaptcha.site_key') }}" data-callback="onSubmit"
+                            data-sitekey="{{ config('setting.recaptcha.site_key') }}" data-callback="newsletter"
                             data-action="submit">@svg('fas-paper-plane')</button>
                         {{ Form::close() }}
-                        {{-- {{ Form::open(['url' => route('newsletter.store'), 'method' => 'POST']) }}
-                        {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => __('front/contact.form.email_placeholder'), 'required' => '']) }}
-                        <button type="submit" class="g-recaptcha"
-                            data-sitekey="{{ config('setting.recaptcha.site_key') }}" data-callback="onSubmit"
-                            data-action="submit">@svg('fas-paper-plane')</button>
-                        {{ Form::close() }} --}}
                     </div>
                 </div>
             </div>

@@ -1094,3 +1094,15 @@
         $(".navbar-collapse").removeClass("bounceIn");
     });
 })(jQuery);
+
+function newsletter(token) {
+    document.getElementById("newsletter-form").submit();
+}
+
+function contact(token) {
+    document.getElementById("contact-form").submit();
+}
+
+function education(token) {
+    document.getElementById("education-form").submit();
+}

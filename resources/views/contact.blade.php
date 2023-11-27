@@ -9,12 +9,3 @@
         </div>
     </div>
 @endsection
-@section('script')
-    @if (config('setting.recaptcha.status') == App\Enums\StatusEnum::Active->value)
-        <script>
-            function onSubmit(token) {
-                document.getElementById("contact-form").submit();
-            }
-        </script>
-    @endif
-@endsection

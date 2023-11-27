@@ -56,8 +56,7 @@ class ContactController extends Controller
                 ->withInput()
                 ->withError(__("front/contact.recaptcha_error"));
         }
-
-        $data = array_merge($request->validate(), ["user_agent" => $request->userAgent(), "ip" => $request->ip()]);
+        $data = array_merge($request->validated(), ["user_agent" => $request->userAgent(), "ip" => $request->ip()]);
 
         if (Message::Create($data)) {
             return back()

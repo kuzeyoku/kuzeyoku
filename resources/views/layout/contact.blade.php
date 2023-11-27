@@ -68,7 +68,7 @@
                         {{ Form::submit(__('front/contact.form.send'), [
                             'class' => 'btn btn-primary g-recaptcha',
                             'data-sitekey' => config('setting.recaptcha.site_key'),
-                            'data-callback' => 'onSubmit',
+                            'data-callback' => 'contact',
                             'data-action' => 'submit',
                         ]) }}
                         {{ Form::close() }}
