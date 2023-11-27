@@ -8,6 +8,8 @@ Route::middleware("checkInstallation")->group(function () {
     Route::get("/education", [App\Http\Controllers\ContactController::class, "education"])->name("education.index");
     Route::post("/education/send", [App\Http\Controllers\ContactController::class, "educationSend"])->name("education.send");
 
+    Route::post("/newsletter", [App\Http\Controllers\NewsletterController::class, "store"])->name("newsletter.store");
+
     Route::get("/contact", [App\Http\Controllers\ContactController::class, "index"])->name("contact.index");
     Route::post("/contact/send", [App\Http\Controllers\ContactController::class, "send"])->name("contact.send");
 
@@ -37,7 +39,7 @@ Route::middleware("checkInstallation")->group(function () {
     });
 
 
-    Route::get("/reference", [App\Http\Controllers\ReferenceController::class, "index"])->name("reference.index");
+    // Route::get("/reference", [App\Http\Controllers\ReferenceController::class, "index"])->name("reference.index");
 });
 
 //Route::get("/category/{category}/{slug}", [App\Http\Controllers\CategoryController::class, "show"])->name("category.show");

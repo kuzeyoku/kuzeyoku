@@ -8,16 +8,28 @@
                 <div class="row align-center">
                     <div class="col-lg-7">
                         <ul>
-                            @if(config("setting.information.cookie_page"))<li><a href="#">{{ config("setting.information.cookie_page") }}</a></li>@endif
-                            @if(config("setting.information.cookie_page"))<li><a href="#">{{ config("setting.information.pricacy_page") }}</a></li>@endif
-                            <li><a href="{{ route('contact.index') }}"> {{ __("front/contact.page_title")  }}</a></li>
+                            @if (config('setting.information.cookie_page'))
+                                <li><a href="#">{{ config('setting.information.cookie_page') }}</a></li>
+                            @endif
+                            @if (config('setting.information.cookie_page'))
+                                <li><a href="#">{{ config('setting.information.pricacy_page') }}</a></li>
+                            @endif
+                            <li><a href="{{ route('contact.index') }}"> {{ __('front/contact.page_title') }}</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-5">
-                        <form action="#">
-                            <input type="email" placeholder="Your Email" class="form-control" name="email">
-                            <button type="submit"> @svg("fas-paper-plane")</i></button>
-                        </form>
+                        {{ Form::open(['url' => route('newsletter.store'), 'method' => 'POST']) }}
+                        {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => __('front/contact.form.email_placeholder'), 'required' => '']) }}
+                        <button type="submit" class="g-recaptcha"
+                            data-sitekey="{{ config('setting.recaptcha.site_key') }}" data-callback="onSubmit"
+                            data-action="submit">@svg('fas-paper-plane')</button>
+                        {{ Form::close() }}
+                        {{-- {{ Form::open(['url' => route('newsletter.store'), 'method' => 'POST']) }}
+                        {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => __('front/contact.form.email_placeholder'), 'required' => '']) }}
+                        <button type="submit" class="g-recaptcha"
+                            data-sitekey="{{ config('setting.recaptcha.site_key') }}" data-callback="onSubmit"
+                            data-action="submit">@svg('fas-paper-plane')</button>
+                        {{ Form::close() }} --}}
                     </div>
                 </div>
             </div>
@@ -35,39 +47,39 @@
                         <div class="social">
                             <ul>
                                 @if (config('setting.social.facebook'))
-                                <li>
-                                    <a href="{{ config('setting.social.facebook') }}">
-                                        @svg('fab-facebook')
-                                    </a>
-                                </li>
+                                    <li>
+                                        <a href="{{ config('setting.social.facebook') }}">
+                                            @svg('fab-facebook')
+                                        </a>
+                                    </li>
                                 @endif
                                 @if (config('setting.social.twitter'))
-                                <li>
-                                    <a href="{{ config('setting.social.twitter') }}">
-                                        @svg('fab-twitter')
-                                    </a>
-                                </li>
+                                    <li>
+                                        <a href="{{ config('setting.social.twitter') }}">
+                                            @svg('fab-twitter')
+                                        </a>
+                                    </li>
                                 @endif
                                 @if (config('setting.social.instagram'))
-                                <li>
-                                    <a href="{{ config('setting.social.instagram') }}">
-                                        @svg('fab-instagram')
-                                    </a>
-                                </li>
+                                    <li>
+                                        <a href="{{ config('setting.social.instagram') }}">
+                                            @svg('fab-instagram')
+                                        </a>
+                                    </li>
                                 @endif
                                 @if (config('setting.social.linkedin'))
-                                <li>
-                                    <a href="{{ config('setting.social.linkedin') }}">
-                                        @svg('fab-linkedin')
-                                    </a>
-                                </li>
+                                    <li>
+                                        <a href="{{ config('setting.social.linkedin') }}">
+                                            @svg('fab-linkedin')
+                                        </a>
+                                    </li>
                                 @endif
                                 @if (config('setting.social.youtube'))
-                                <li>
-                                    <a href="{{ config('setting.social.youtube') }}">
-                                        @svg('fab-youtube')
-                                    </a>
-                                </li>
+                                    <li>
+                                        <a href="{{ config('setting.social.youtube') }}">
+                                            @svg('fab-youtube')
+                                        </a>
+                                    </li>
                                 @endif
                             </ul>
                         </div>
@@ -75,7 +87,7 @@
                 </div>
                 <div class="col-lg-2 col-md-6 item">
                     <div class="f-item link">
-                        <h4 class="widget-title">{{ __("front/footer.pages") }}</h4>
+                        <h4 class="widget-title">{{ __('front/footer.pages') }}</h4>
                         <ul>
 
                             {{-- @foreach ($pages as $page)
@@ -88,7 +100,7 @@
                 </div>
                 <div class="col-lg-2 col-md-6 item">
                     <div class="f-item link">
-                        <h4 class="widget-title">{{ __("front/footer.services" )}}</h4>
+                        <h4 class="widget-title">{{ __('front/footer.services') }}</h4>
                         <ul>
                             {{-- @foreach ($services as $service)
                             <li>
@@ -101,16 +113,17 @@
 
                 <div class="col-lg-4 col-md-6 item">
                     <div class="f-item">
-                        <h4 class="widget-title">{{ __("front/footer.contact") }}</h4>
+                        <h4 class="widget-title">{{ __('front/footer.contact') }}</h4>
                         <div class="address">
                             <ul>
                                 <li>
-                                    <strong>{{ __("front/footer.contact.address") }}:</strong>
+                                    <strong>{{ __('front/footer.contact.address') }}:</strong>
                                     {{ config('setting.contact.address') }}
                                 </li>
                                 <li>
-                                    <strong>{{ __("front/footer.contact.email") }}:</strong>
-                                    <a href="mailto:{{ config('setting.contact.email') }}">{{ config('setting.contact.email') }}</a>
+                                    <strong>{{ __('front/footer.contact.email') }}:</strong>
+                                    <a
+                                        href="mailto:{{ config('setting.contact.email') }}">{{ config('setting.contact.email') }}</a>
                                 </li>
                             </ul>
                         </div>
@@ -123,7 +136,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <p>{{ __("front/footer.copyright", ["date" => date("Y")]) }} <a href="#">{{ env("APP_NAME") }}</a></p>
+                    <p>{{ __('front/footer.copyright', ['date' => date('Y')]) }} <a
+                            href="#">{{ env('APP_NAME') }}</a></p>
                 </div>
             </div>
         </div>

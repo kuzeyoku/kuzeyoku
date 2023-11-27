@@ -83,8 +83,4 @@ class ContactController extends Controller
 
         return true;
     }
-
-    public function subscribe()
-    {
-    }
 }
