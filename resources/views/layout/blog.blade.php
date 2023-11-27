@@ -16,34 +16,34 @@
         <div class="blog-items">
             <div class="row">
                 @foreach ($blog as $blog)
-                <div class="single-item col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <img class="home" src="{{ $blog->getImageUrl() }}" alt="{{ $blog->getTitle() }}">
-                            <div class="date">{{ $blog->updated_at->day }}
-                                <span>{{ $blog->updated_at->translatedFormat('m Y') }}</span>
+                    <div class="single-item col-lg-4">
+                        <div class="item">
+                            <div class="thumb">
+                                <img class="home" src="{{ $blog->getImageUrl() }}" alt="{{ $blog->getTitle() }}">
+                                <div class="date">{{ $blog->updated_at->day }}
+                                    <span>{{ $blog->updated_at->translatedFormat('m Y') }}</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="info">
-                            <div class="meta">
-                                <ul>
-                                    <li>@svg('fas-user-circle')</i> {{ $blog->user->name }}</li>
-                                    <li>@svg('fas-eye') {{ $blog->view_count }}</li>
-                                </ul>
+                            <div class="info">
+                                <div class="meta">
+                                    <ul>
+                                        <li>@svg('fas-user-circle')</i> {{ $blog->user->name }}</li>
+                                        <li>@svg('fas-eye') {{ $blog->view_count }}</li>
+                                    </ul>
+                                </div>
+                                <h4>
+                                    <a href="{{ $blog->getUrl() }}">{{ $blog->getTitle() }}</a>
+                                </h4>
+                                <p>
+                                    {{ Str::limit(strip_tags($blog->getDescription()), 100) }}
+                                </p>
+                                <a class="btn-more" href="{{ $blog->getUrl() }}">
+                                    {{ __('front/blog.read_more') }}
+                                    <i class="fas fa-long-arrow-alt-right"></i>
+                                </a>
                             </div>
-                            <h4>
-                                <a href="{{ $blog->getUrl() }}">{{ $blog->getTitle() }}</a>
-                            </h4>
-                            <p>
-                                {!! Str::limit($blog->getDescription(), 110) !!}
-                            </p>
-                            <a class="btn-more" href="{{ $blog->getUrl() }}">
-                                {{ __('front/blog.read_more') }}
-                                <i class="fas fa-long-arrow-alt-right"></i>
-                            </a>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>

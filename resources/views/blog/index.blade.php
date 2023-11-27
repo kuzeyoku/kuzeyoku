@@ -30,7 +30,7 @@
                                                 <a href="{{ $post->getUrl() }}">{{ $post->getTitle() }}</a>
                                             </h3>
                                             <p>
-                                                {!! Str::limit($post->getDescription(), 160) !!}
+                                                {!! Str::limit(strip_tags($post->getDescription()), 160) !!}
                                             </p>
                                             <div class="bottom">
                                                 <span class="font-weight-bold">
