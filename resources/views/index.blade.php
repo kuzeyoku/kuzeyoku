@@ -1,23 +1,14 @@
 @extends('layout.main')
 @section('title', config('setting.general.title'))
 @section('content')
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <video controls autoplay loop muted class="myvid w-100" id="player">
-                    <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-                        type="video/mp4">
-                </video>
-            </div>
-        </div>
-    </div>
-    {{-- @if ($slider->count() > 0)
+
+    @if ($slider->count() > 0)
         @include('layout.slider')
-    @endif --}}
+    @endif
+    @include('layout.chose')
     @if ($service->count() > 0)
         @include('layout.service')
     @endif
-    @include('layout.about')
     @if ($project->count() > 0)
         @include('layout.project')
     @endif

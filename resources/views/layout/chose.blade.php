@@ -1,4 +1,4 @@
-<div class="choose-us-area overflow-hidden reverse default-padding-bottom">
+<div class="choose-us-area overflow-hidden reverse default-padding-top bg-gray">
     <div class="container">
         <div class="row align-center">
             <div class="col-lg-6 info wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
@@ -18,7 +18,7 @@
                     <h5>@svg("fas-phone") {{ config('setting.contact.phone') }}</h5>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 d-none d-lg-block">
                 <div class="thumb wow fadeInRight" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInRight;">
                     <img src="{{ asset('assets/img/about.gif') }}" alt="Thumb">
                 </div>

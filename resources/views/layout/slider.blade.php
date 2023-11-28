@@ -1,4 +1,22 @@
-<div class="banner-area text-center top-pad-80 inc-shape text-large">
+<div class="carousel slide carousel-fade">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <video controls autoplay loop muted class="myvid w-100" id="player">
+                <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                    type="video/mp4">
+            </video>
+            <div class="carousel-caption">
+                <div class="bar">
+                    <img src="{{ asset('assets/img/2.png') }}" alt="">
+                    <h1 data-animation="animated slideInRight">
+                        Türkiyenin İha Akademisine Hoş Geldiniz
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- <div class="banner-area text-center top-pad-80 inc-shape text-large">
     <div id="bootcarousel" class="carousel text-light slide carousel-fade animate_text" data-ride="carousel">
         <div class="carousel-inner carousel-zoom">
             @foreach ($slider as $slider)
@@ -47,4 +65,4 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-</div>
+</div> --}}

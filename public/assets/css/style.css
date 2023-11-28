@@ -1542,7 +1542,7 @@ header.ofcanvas-nav .logo-responsive {
     color: #ffffff !important;
 }
 
-.top-bar-area.transparent svg {
+.top-bar-area svg {
     width: 20px;
     color: #ffffff;
 }
@@ -5281,6 +5281,9 @@ body,
 
 .case-studies-area img {
     border-radius: 5px;
+    width: 100%;
+    object-fit: cover;
+    height: 200px;
 }
 
 .case-studies-area .case-carousel .item {
@@ -12268,4 +12271,34 @@ body.wrap-nav-sidebar {
 
 .carousel-control svg {
     width: 25px;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 80px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-caption h1 {
+    position: absolute;
+    width: 50%;
+    text-align: center;
+    font-size: 80px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: #000 0px 0px 5px;
+}
+
+.carousel-caption img{
+    width: 200px;
+    object-fit: cover;
 }

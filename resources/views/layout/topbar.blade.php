@@ -1,4 +1,4 @@
-<div class="top-bar-area inc-pad transparent text-light">
+<div class="top-bar-area inc-pad bg-gradient text-light">
     <div class="container-full">
         <div class="row align-center">
             <div class="col-lg-6 info">
