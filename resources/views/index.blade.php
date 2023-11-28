@@ -2,9 +2,7 @@
 @section('title', config('setting.general.title'))
 @section('content')
 
-    @if ($slider->count() > 0)
         @include('layout.slider')
-    @endif
     @include('layout.chose')
     @if ($service->count() > 0)
         @include('layout.service')
