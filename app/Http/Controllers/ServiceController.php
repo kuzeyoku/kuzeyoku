@@ -9,9 +9,9 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $services = Service::active()->order()->get();
-        $references = Reference::active()->order()->get();
-        return view("service.index", compact("services", "references"));
+        $service = Service::active()->order()->get();
+        $reference = Reference::active()->order()->get();
+        return view("service.index", compact("service", "reference"));
     }
 
     public function show(Service $service)

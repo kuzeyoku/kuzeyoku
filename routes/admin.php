@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Artisan;
 Route::middleware("checkInstallation")->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
 
+        // Route::get("/storage-link", function () {
+        //     Artisan::call("storage:link");
+        //     return back()->with("success", "Storage Link Successfull");
+        // })->name("storage-link");
+
         // Auth Routes
         Route::get('login', [App\Http\Controllers\Admin\AuthController::class, 'login'])->name('auth.login');
         Route::post('authenticate', [App\Http\Controllers\Admin\AuthController::class, 'authenticate'])->name('auth.authenticate');
