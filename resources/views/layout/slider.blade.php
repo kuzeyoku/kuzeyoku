@@ -2,8 +2,7 @@
     <div class="carousel-inner">
         <div class="carousel-item active">
             <video controls autoplay loop muted class="myvid w-100" id="player">
-                <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-                    type="video/mp4">
+                <source src="{{ asset('assets/img/slider.mp4') }}" type="video/mp4">
             </video>
             <div class="carousel-caption">
                 <div class="bar">

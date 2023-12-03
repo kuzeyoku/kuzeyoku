@@ -5279,7 +5279,7 @@ body,
     background: #ffffff;
 }
 
-.case-studies-area img {
+.case-studies-area #portfolio-grid img {
     border-radius: 5px;
     width: 100%;
     object-fit: cover;
@@ -12275,7 +12275,7 @@ body.wrap-nav-sidebar {
 
 .carousel-caption {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
@@ -12288,11 +12288,11 @@ body.wrap-nav-sidebar {
     position: absolute;
     width: 50%;
     text-align: center;
-    font-size: 80px;
+    font-size: 5rem;
     font-weight: 700;
     text-transform: uppercase;
     color: #fff;
-    top: 70%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-shadow: #000 0px 0px 5px;
@@ -12301,4 +12301,33 @@ body.wrap-nav-sidebar {
 .carousel-caption img{
     width: 200px;
     object-fit: cover;
+}
+
+@media (max-width: 992px) {
+    .carousel-caption {
+        font-size: 70px;
+    }
+
+    .carousel-caption h1 {
+        font-size: 2rem;
+    }
+
+    .carousel-caption img {
+        width: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-caption {
+        font-size: 60px;
+    }
+
+    .carousel-caption h1 {
+        font-size: 1.3rem;
+        top: 70%;
+    }
+
+    .carousel-caption img {
+        width: 60px;
+    }
 }

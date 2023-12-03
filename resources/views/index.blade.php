@@ -1,8 +1,7 @@
 @extends('layout.main')
 @section('title', config('setting.general.title'))
 @section('content')
-
-        @include('layout.slider')
+    @include('layout.slider')
     @include('layout.chose')
     @if ($service->count() > 0)
         @include('layout.service')
