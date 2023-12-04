@@ -82,7 +82,7 @@
                         <ul>
                             @foreach ($pages as $page)
                                 <li>
-                                    <a href="{{ $page->getTitle() }}">{{ $page->getTitle() }}</a>
+                                    <a href="{{ $page->getUrl() }}">{{ $page->getTitle() }}</a>
                                 </li>
                             @endforeach
                         </ul>
