@@ -32,7 +32,13 @@ class MenuProvider extends ServiceProvider
                 $pages = [];
                 foreach ($pageList as $index => $page)
                     $pages[$index] = Page::find($page);
-                $view->with(compact("pages"));
+                $services = $cache->remember("services", $cacheTime, function () {
+                    $query = \App\Models\Service::active()->order()->limit(5)->get();
+                    if ($query->count() > 0)
+                        return $query;
+                    return [];
+                });
+                $view->with(compact("pages", "services"));
             }
         });
 

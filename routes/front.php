@@ -36,7 +36,7 @@ Route::middleware("checkInstallation")->group(function () {
         Route::get("/{category}", "category")->name("project.category");
     });
 
-    Route::controller(App\Http\Controllers\ProjectController::class)->prefix("product")->group(function () {
+    Route::controller(App\Http\Controllers\ProductController::class)->prefix("product")->group(function () {
         Route::get("/", "index")->name("product.index");
         Route::get("/{product}/{slug}", "show")->name("product.show");
         Route::get("/{category}", "category")->name("product.category");

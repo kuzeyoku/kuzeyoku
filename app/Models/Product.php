@@ -95,7 +95,7 @@ class Product extends Model
             });
             $result = [];
             array_map(function ($item) use (&$result) {
-                list($key, $value) = explode("|", $item);
+                list($key, $value) = explode(":", $item);
                 $result[$key] = $value;
             }, $featuresLine);
             return $result;

@@ -6,18 +6,15 @@
         <div class="container">
             <div class="footer-top-content">
                 <div class="row align-center">
-                    <div class="col-lg-7">
+                    <div class="col-lg-6">
                         <ul>
-                            @if (config('setting.information.cookie_page'))
-                                <li><a href="#">{{ config('setting.information.cookie_page') }}</a></li>
-                            @endif
-                            @if (config('setting.information.cookie_page'))
-                                <li><a href="#">{{ config('setting.information.pricacy_page') }}</a></li>
-                            @endif
+                            <li><a href="{{ route('service.index') }}">{{ __('front/service.page_title') }}</a></li>
+                            <li><a href="{{ route('project.index') }}">{{ __('front/project.page_title') }}</a></li>
+                            <li><a href="{{ route('blog.index') }}">{{ __('front/blog.page_title') }}</a></li>
                             <li><a href="{{ route('contact.index') }}"> {{ __('front/contact.page_title') }}</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-6">
                         {{ Form::open(['url' => route('newsletter.store'), 'method' => 'POST', 'id' => 'newsletter-form']) }}
                         {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => __('front/contact.form.email_placeholder'), 'required' => '']) }}
                         <button type="submit" class="g-recaptcha"
@@ -83,12 +80,11 @@
                     <div class="f-item link">
                         <h4 class="widget-title">{{ __('front/footer.pages') }}</h4>
                         <ul>
-
-                            {{-- @foreach ($pages as $page)
-                            <li>
-                                <a href="{{ $page->getTitle() }}">{{$page->getTitle()}}</a>
-                            </li>
-                            @endforeach --}}
+                            @foreach ($pages as $page)
+                                <li>
+                                    <a href="{{ $page->getTitle() }}">{{ $page->getTitle() }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -96,11 +92,11 @@
                     <div class="f-item link">
                         <h4 class="widget-title">{{ __('front/footer.services') }}</h4>
                         <ul>
-                            {{-- @foreach ($services as $service)
-                            <li>
-                                <a href="{{ $service->getUrl() }}">{{ $service->getTitle() }}</a>
-                            </li>
-                            @endforeach --}}
+                            @foreach ($services as $service)
+                                <li>
+                                    <a href="{{ $service->getTitle() }}">{{ $service->getTitle() }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

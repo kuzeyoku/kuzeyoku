@@ -7229,6 +7229,10 @@ footer.bg-dark .f-item .download a i {
     color: #c2d1e2;
 }
 
+footer .f-item img {
+    max-width: 250px;
+}
+
 /* Footer Bottom */
 
 footer .footer-bottom {
@@ -12309,7 +12313,7 @@ body.wrap-nav-sidebar {
     text-shadow: #000 0px 0px 5px;
 }
 
-.carousel-caption img{
+.carousel-caption img {
     width: 200px;
     object-fit: cover;
 }
