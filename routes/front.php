@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::middleware("checkInstallation")->group(function () {
+
     Route::get("/", [App\Http\Controllers\HomeController::class, "index"])->name("home");
+    Route::post("/setlocale", [App\Http\Controllers\HomeController::class, "setLocale"])->name("locale.set");
 
     Route::controller(App\Http\Controllers\EducationController::class)->prefix("education")->group(function () {
         Route::get("/", "index")->name("education.index");
@@ -36,7 +38,7 @@ Route::middleware("checkInstallation")->group(function () {
         Route::get("/{category}", "category")->name("project.category");
     });
 
-    Route::controller(App\Http\Controllers\ProjectController::class)->prefix("product")->group(function () {
+    Route::controller(App\Http\Controllers\ProductController::class)->prefix("product")->group(function () {
         Route::get("/", "index")->name("product.index");
         Route::get("/{product}/{slug}", "show")->name("product.show");
         Route::get("/{category}", "category")->name("product.category");

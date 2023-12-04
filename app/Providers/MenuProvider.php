@@ -32,7 +32,13 @@ class MenuProvider extends ServiceProvider
                 $pages = [];
                 foreach ($pageList as $index => $page)
                     $pages[$index] = Page::find($page);
-                $view->with(compact("pages"));
+                $services = $cache->remember("services", $cacheTime, function () {
+                    $query = \App\Models\Service::active()->order()->limit(5)->get();
+                    if ($query->count() > 0)
+                        return $query;
+                    return [];
+                });
+                $view->with(compact("pages", "services"));
             }
         });
 
@@ -44,6 +50,14 @@ class MenuProvider extends ServiceProvider
                 return $menu->whereType("header")->order()->get();
             });
             $view->with(compact("headerMenu"));
+        });
+
+        view()->composer("layout.topbar", function ($view) use ($cache, $cacheTime) {
+            $languageList = $cache->remember("languageList", $cacheTime, function () {
+                $language = new \App\Models\Language();
+                return $language->active()->pluck("title", "code");
+            });
+            $view->with(compact("languageList"));
         });
     }
 }

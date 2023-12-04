@@ -14,6 +14,9 @@ return [
     "delete_error" => "Çeviri Silinemedi",
     "update_file_content_success" => "Çeviri Dosyası Başarıyla Güncellendi",
     "update_file_content_error" => "Çeviri Dosyası Güncellenemedi",
+    "code_exists" => "Bu dil kodu zaten kullanılıyor.",
+    "default_delete_error" => "Varsayılan dil silinemez.",
+    "file_not_found" => "Dil dosyası bulunamadı.",
     //log
     "create_log" => "Bir Çeviri Oluşturuldu - :title",
     "update_log" => "Bir Çeviri Güncellendi - :title",

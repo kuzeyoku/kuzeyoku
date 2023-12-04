@@ -7229,6 +7229,10 @@ footer.bg-dark .f-item .download a i {
     color: #c2d1e2;
 }
 
+footer .f-item img {
+    max-width: 250px;
+}
+
 /* Footer Bottom */
 
 footer .footer-bottom {

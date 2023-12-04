@@ -4,7 +4,9 @@ namespace App\Services\Admin;
 
 use App\Models\Language;
 use App\Enums\ModuleEnum;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -20,9 +22,16 @@ class LanguageService extends BaseService
 
     public function create(Object $request)
     {
+        $code = strtolower($request->code);
+        $from = resource_path("lang/tr");
+        $to = resource_path("lang/{$code}");
+        if (!File::exists($to))
+            File::copyDirectory($from, $to);
+        else
+            throw new Exception("Dil dosyası zaten mevcut.");
         $data = new Request([
             'title' => $request->title,
-            'code' => $request->code,
+            'code' => $code,
             'status' => $request->status,
         ]);
         return parent::create($data);
@@ -32,10 +41,22 @@ class LanguageService extends BaseService
     {
         $data = new Request([
             'title' => $request->title,
-            'code' => $request->code,
             'status' => $request->status,
         ]);
         return parent::update($data, $language);
+    }
+
+    public function delete(Model $language)
+    {
+        $code = $language->code;
+        if ($code == app()->getLocale())
+            throw new Exception(__("admin/language.default_delete_error"));
+        $from = resource_path("lang/{$code}");
+        if (File::exists($from))
+            File::deleteDirectory($from);
+        else
+            throw new Exception(__("admin/language.file_not_found"));
+        return parent::delete($language);
     }
 
     static function toArray()
