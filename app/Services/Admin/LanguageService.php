@@ -54,8 +54,6 @@ class LanguageService extends BaseService
         $from = resource_path("lang/{$code}");
         if (File::exists($from))
             File::deleteDirectory($from);
-        else
-            throw new Exception(__("admin/language.file_not_found"));
         return parent::delete($language);
     }
 
