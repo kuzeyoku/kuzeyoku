@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-lg-6">
                         {{ Form::open(['url' => route('newsletter.store'), 'method' => 'POST', 'id' => 'newsletter-form']) }}
-                        {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => __('front/contact.form.email_placeholder'), 'required' => '']) }}
+                        {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => __('front/contact.form_email_placeholder'), 'required' => '']) }}
                         <button type="submit" class="g-recaptcha"
                             data-sitekey="{{ config('setting.recaptcha.site_key') }}" data-callback="newsletter"
                             data-action="submit">@svg('fas-paper-plane')</button>
@@ -107,13 +107,13 @@
                         <div class="address">
                             <ul>
                                 <li>
-                                    <strong>{{ __('front/footer.contact.address') }}:</strong>
-                                    {{ config('setting.contact.address') }}
+                                    <strong>{{ __('front/footer.contact_address') }}:</strong>
+                                    {{ config('setting.contact_address') }}
                                 </li>
                                 <li>
-                                    <strong>{{ __('front/footer.contact.email') }}:</strong>
+                                    <strong>{{ __('front/footer.contact_email') }}:</strong>
                                     <a
-                                        href="mailto:{{ config('setting.contact.email') }}">{{ config('setting.contact.email') }}</a>
+                                        href="mailto:{{ config('setting.contact_email') }}">{{ config('setting.contact_email') }}</a>
                                 </li>
                             </ul>
                         </div>

@@ -23,15 +23,15 @@
                     <div class="single-widget quick-contact text-light" style="background-image: url({{ asset('assets/img/about/1.jpg') }})">
                         <div class="content">
                             <i class="fas fa-phone"></i>
-                            <h4>{{ __("front/service.show.call") }}</h4>
+                            <h4>{{ __("front/service.show_call") }}</h4>
                             <p>
-                                {{ __("front/service.show.call_description") }}
+                                {{ __("front/service.show_call_description") }}
                             </p>
                             <h2>{{ config('setting.contact.phone') }}</h2>
                         </div>
                     </div>
                     <!-- <div class="single-widget brochure">
-                        <h4 class="widget-title">{{ __("front/service.show.brochure") }}</h4>
+                        <h4 class="widget-title">{{ __("front/service.show_brochure") }}</h4>
                         <ul>
                             <li><a href="#"><i class="fas fa-file-pdf"></i> Download Docs</a></li>
                             <li><a href="#"><i class="fas fa-file-word"></i> Company details</a></li>
