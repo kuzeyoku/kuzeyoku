@@ -1,6 +1,8 @@
 <?php
 return [
-    "page_title" => "Eğitim Başvuru Formu",
+    "page_title" => "Eğitimlerimiz",
+    "detail" => "Detaylar",
+    "application.page_title" => "Eğitim Başvurusu",
     "form_title" => "Başvuru Formu",
     "name" => "Adınız",
     "surname" => "Soyadınız",

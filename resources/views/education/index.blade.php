@@ -2,50 +2,36 @@
 @section('title', __('front/education.page_title'))
 @section('content')
     @include('layout.breadcrumb')
-    <div class="about-area center-responsive default-padding">
+    <div class="blog-area default-padding-bottom default-padding-top">
         <div class="container">
-            <h2>{{ __('front/education.form_title') }}</h2>
-            @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger">
-                        <strong>{{ $error }}</strong>
-                    </div>
-                @endforeach
-            @endif
-            <div class="row">
-                <div class="col-lg-7">
-                    {{ Form::open(['url' => route('education.send'), 'method' => 'POST', 'id' => 'education-form']) }}
-                    <div class="form-group">
-                        {{ Form::label(__('front/education.name')) }}
-                        {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => __('front/education.name'), 'required' => '']) }}
-                    </div>
-                    <div class="form-group">
-                        {{ Form::label(__('front/education.surname')) }}
-                        {{ Form::text('surname', null, ['class' => 'form-control', 'placeholder' => __('front/education.surname'), 'required' => '']) }}
-                    </div>
-                    <div class="form-group">
-                        {{ Form::label(__('front/education.phone')) }}
-                        {{ Form::text('phone', null, ['class' => 'form-control', 'placeholder' => __('front/education.phone'), 'required' => '']) }}
-                    </div>
-                    <div class="form-group">
-                        {{ Form::label(__('front/education.email')) }}
-                        {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => __('front/education.email'), 'required' => '']) }}
-                    </div>
-                    <div class="form-group">
-                        {{ Form::label(__('front/education.education_type')) }}
-                        {{ Form::select('type', $educationTypes, 'default', ['class' => 'form-control', 'placeholder' => __('admin/general.select'), 'required' => '']) }}
-                        <strong>{{ __('front/education.education_type_description') }}</strong>
-                    </div>
-                    {{ Form::submit(__('front/education.send'), [
-                        'class' => 'btn btn-primary g-recaptcha',
-                        'data-sitekey' => config('setting.recaptcha.site_key'),
-                        'data-callback' => 'education',
-                        'data-action' => 'submit',
-                    ]) }}
-                    {{ Form::close() }}
+            <div class="blog-items">
+                <div class="alert alert-success">Firmamızdan Aldığınız Sertifikanızı Sorulamak İçin <strong><a
+                            href="http://ihaakademisi.com/SertifikaYonetim/">Buraya Tıklayın</a></strong>
                 </div>
-                <div class="col-lg-5">
-                    <img class="border" src="{{ asset('assets/img/education_form.png') }}">
+                <div class="alert alert-warning">Firmamız Tarafından Düzenlenen Eğitimlere Katılmak ve Başvuru Yapmak İçin
+                    <strong><a href="{{ route("education.application") }}">Buraya Tıklayın</a></strong>
+                </div>
+                <div class="row">
+                    @foreach ($educations as $education)
+                        <div class="single-item col-lg-4">
+                            <div class="item">
+                                <div class="education-thumb">
+                                    <img src="{{ $education->getImageUrl() }}" alt="Thumb">
+                                </div>
+                                <div class="education-info">
+                                    <h4>
+                                        <a href="{{ $education->getUrl() }}">{{ $education->getTitle() }}</a>
+                                    </h4>
+                                    <p>
+                                        {!! Str::limit(strip_tags($education->getDescription()), 160) !!}
+                                    </p>
+                                    <a class="btn-more"
+                                        href="{{ $education->getUrl() }}">{{ __('front/education.detail') }}<i
+                                            class="fas fa-long-arrow-alt-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

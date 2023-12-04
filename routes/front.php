@@ -5,8 +5,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware("checkInstallation")->group(function () {
     Route::get("/", [App\Http\Controllers\HomeController::class, "index"])->name("home");
 
-    Route::get("/education", [App\Http\Controllers\ContactController::class, "education"])->name("education.index");
-    Route::post("/education/send", [App\Http\Controllers\ContactController::class, "educationSend"])->name("education.send");
+    Route::controller(App\Http\Controllers\EducationController::class)->prefix("education")->group(function () {
+        Route::get("/", "index")->name("education.index");
+        Route::get("/{education}/{slug}", "show")->name("education.show");
+        Route::get("/application", "application")->name("education.application");
+        Route::post("/application/send", "applicationSend")->name("education.application.send");
+    });
 
     Route::post("/newsletter", [App\Http\Controllers\NewsletterController::class, "store"])->name("newsletter.store");
 

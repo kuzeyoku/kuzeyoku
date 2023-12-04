@@ -5831,6 +5831,10 @@ body,
     padding-top: 50px;
 }
 
+.blog-area .blog-items .education-info {
+    padding: 30px;
+}
+
 .blog-area .blog-items .info h2,
 .blog-area .blog-items .info h3,
 .blog-area .blog-items .info h4 {
@@ -5851,6 +5855,13 @@ body,
     border-radius: 5px;
     width: 100%;
     height: 450px;
+    object-fit: cover;
+}
+
+.blog-area .blog-items .item .education-thumb img {
+    border-radius: 5px;
+    width: 100%;
+    height: 220px;
     object-fit: cover;
 }
 
