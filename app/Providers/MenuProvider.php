@@ -43,12 +43,10 @@ class MenuProvider extends ServiceProvider
         });
 
         view()->composer("layout.header", function ($view) use ($cache, $cacheTime) {
-            $headerMenu = $cache->remember("headerMenu", $cacheTime, function () {
-                $menu = new Menu();
-                if (!Schema::hasTable($menu->getTable()))
-                    return [];
-                return $menu->whereType("header")->order()->get();
-            });
+            // $headerMenu = $cache->remember("headerMenu", $cacheTime, function () {
+            $menu = new Menu();
+            $headerMenu = Schema::hasTable($menu->getTable()) ? $menu->whereType("header")->order()->get() : [];
+            // });
             $view->with(compact("headerMenu"));
         });
 
