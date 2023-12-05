@@ -19,7 +19,7 @@ return [
     //Form
     "form.title" => "Sayfa Başlığı",
     "form.title_placeholder" => "Sayfa Başlığı Giriniz",
-    "form.content" => "Sayfa İçeriği",
+    "form.description" => "Sayfa İçeriği",
     //Table
     "table.title" => "Sayfa Başlığı",
 ];

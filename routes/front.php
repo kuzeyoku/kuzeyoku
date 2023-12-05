@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::middleware("checkInstallation")->group(function () {
+
     Route::get("/", [App\Http\Controllers\HomeController::class, "index"])->name("home");
+    Route::post("/setlocale", [App\Http\Controllers\HomeController::class, "setLocale"])->name("locale.set");
 
     Route::controller(App\Http\Controllers\EducationController::class)->prefix("education")->group(function () {
         Route::get("/", "index")->name("education.index");

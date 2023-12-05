@@ -8,8 +8,10 @@ use App\Models\Slider;
 use App\Models\Project;
 use App\Models\Service;
 use App\Enums\ModuleEnum;
-use App\Models\Testimonial;
 use App\Models\Reference;
+use App\Models\Testimonial;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
@@ -40,5 +42,14 @@ class HomeController extends Controller
         }
 
         return view("index", $data);
+    }
+
+    public function setLocale(Request $request)
+    {
+        $request->validate([
+            "locale" => "required|exists:languages,code",
+        ]);
+        session()->put("locale", $request->locale);
+        return redirect()->back();
     }
 }

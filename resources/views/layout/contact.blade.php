@@ -45,27 +45,27 @@
                         </div>
                         {{ Form::open(['route' => 'contact.send', 'method' => 'post', 'id' => 'contact-form']) }}
                         <div class="form-group">
-                            {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => __('front/contact.form.name_placeholder')]) }}
+                            {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => __('front/contact.form_name_placeholder')]) }}
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => __('front/contact.form.email_placeholder')]) }}
+                                    {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => __('front/contact.form_email_placeholder')]) }}
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    {{ Form::text('phone', null, ['class' => 'form-control', 'placeholder' => __('front/contact.form.phone_placeholder')]) }}
+                                    {{ Form::text('phone', null, ['class' => 'form-control', 'placeholder' => __('front/contact.form_phone_placeholder')]) }}
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            {{ Form::text('subject', null, ['class' => 'form-control', 'placeholder' => __('front/contact.form.subject_placeholder')]) }}
+                            {{ Form::text('subject', null, ['class' => 'form-control', 'placeholder' => __('front/contact.form_subject_placeholder')]) }}
                         </div>
                         <div class="form-group">
-                            {{ Form::textarea('message', null, ['class' => 'form-control', 'placeholder' => __('front/contact.form.message_placeholder'), 'rows' => 3]) }}
+                            {{ Form::textarea('message', null, ['class' => 'form-control', 'placeholder' => __('front/contact.form_message_placeholder'), 'rows' => 3]) }}
                         </div>
-                        {{ Form::submit(__('front/contact.form.send'), [
+                        {{ Form::submit(__('front/contact.form_send'), [
                             'class' => 'btn btn-primary g-recaptcha',
                             'data-sitekey' => config('setting.recaptcha.site_key'),
                             'data-callback' => 'contact',

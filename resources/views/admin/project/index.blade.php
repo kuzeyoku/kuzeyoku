@@ -18,7 +18,7 @@
                 @forelse ($items as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->title[app()->getLocale()] }}</td>
+                        <td>{{ $item->title[config("app.fallback_locale")] }}</td>
                         <td>{{ $item->category ? $item->category->getTitle() : __('admin/general.no_category') }}
                         </td>
                         <td>{{ $item->created_at->diffForHumans() }}</td>

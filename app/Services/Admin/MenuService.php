@@ -90,7 +90,7 @@ class MenuService extends BaseService
             route(ModuleEnum::Service->Route() . ".index") => ModuleEnum::Service->singleTitle(),
             route(ModuleEnum::Product->Route() . ".index") => ModuleEnum::Product->singleTitle(),
             route(ModuleEnum::Project->Route() . ".index") => ModuleEnum::Project->singleTitle(),
-            route(ModuleEnum::Reference->Route() . ".index") => ModuleEnum::Reference->singleTitle(),
+            // route(ModuleEnum::Reference->Route() . ".index") => ModuleEnum::Reference->singleTitle(),
             route("contact.index") => __("front/contact.page_title"),
         ];
     }
