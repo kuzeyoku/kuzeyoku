@@ -17,19 +17,19 @@ return [
     "update_log" => "Bir Müşteri Yorumu Güncellendi",
     "delete_log" => "Bir Müşteri Yorumu Silindi",
     //form
-    "form.image" => "Resim",
-    "form.name" => "Ad Soyad",
-    "form.name_placeholder" => "Ad Soyad Giriniz",
-    "form.company" => "Şirket",
-    "form.company_placeholder" => "Şirket Giriniz",
-    "form.position" => "Pozisyon",
-    "form.position_placeholder" => "Pozisyon Giriniz",
-    "form.message" => "Müşteri Mesajı",
-    "form.message_placeholder" => "Müşteri Mesajı Giriniz",
-    "form.status" => "Durum",
+    "form_image" => "Resim",
+    "form_name" => "Ad Soyad",
+    "form_name_placeholder" => "Ad Soyad Giriniz",
+    "form_company" => "Şirket",
+    "form_company_placeholder" => "Şirket Giriniz",
+    "form_position" => "Pozisyon",
+    "form_position_placeholder" => "Pozisyon Giriniz",
+    "form_message" => "Müşteri Mesajı",
+    "form_message_placeholder" => "Müşteri Mesajı Giriniz",
+    "form_status" => "Durum",
     //table
-    "table.image" => "Resim",
-    "table.name" => "Ad Soyad",
-    "table.company" => "Şirket",
-    "table.position" => "Pozisyon"
+    "table_image" => "Resim",
+    "table_name" => "Ad Soyad",
+    "table_company" => "Şirket",
+    "table_position" => "Pozisyon"
 ];

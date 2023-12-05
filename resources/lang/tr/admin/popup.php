@@ -38,9 +38,9 @@ return [
     "update_log" => "Bir Popup Güncellendi - :title",
     "delete_log" => "Bir Popup Silindi - :title",
     //type
-    "type.image" => "Resim",
-    "type.video" => "Video",
-    "type.text" => "Metin",
+    "type_image" => "Resim",
+    "type_video" => "Video",
+    "type_text" => "Metin",
     //table
     "table_type" => "Popup Tipi",
     "table_title" => "Popup Başlığı",

@@ -31,6 +31,6 @@ return [
     //table
     "table_title" => "Başlık",
     "table_code" => "Kod",
-    "files.title" => "Dil Dosyası İçeriği",
-    "files.table_empty" => "Henüz dosya seçmediniz. Lütfen düzenlemek istediğiniz dil dosyasını seçiniz."
+    "files_title" => "Dil Dosyası İçeriği",
+    "files_table_empty" => "Henüz dosya seçmediniz. Lütfen düzenlemek istediğiniz dil dosyasını seçiniz."
 ];

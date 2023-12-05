@@ -18,14 +18,14 @@ return [
     "update_log" => "Bir Eğitim Güncellendi - :title",
     "delete_log" => "Bir Eğitim Silindi - :title",
     //form
-    "form.title" => "Eğitim Başlığı",
-    "form.title_placeholder" => "Eğitim Başlığı Giriniz",
-    "form.description" => "Açıklama",
-    "form.video" => "Video",
-    "form.video_placeholder" => "Video Linki Giriniz",
-    "form.category" => "Kategori",
-    "form.status" => "Durum",
+    "form_title" => "Eğitim Başlığı",
+    "form_title_placeholder" => "Eğitim Başlığı Giriniz",
+    "form_description" => "Açıklama",
+    "form_video" => "Video",
+    "form_video_placeholder" => "Video Linki Giriniz",
+    "form_category" => "Kategori",
+    "form_status" => "Durum",
     //table
-    "table.title" => "Eğitim Başlığı",
-    "table.category" => "Kategori",
+    "table_title" => "Eğitim Başlığı",
+    "table_category" => "Kategori",
 ];

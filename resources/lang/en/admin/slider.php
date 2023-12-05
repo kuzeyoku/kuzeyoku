@@ -17,17 +17,17 @@ return [
     "update_log" => "Bir Slider Güncellendi - :title",
     "delete_log" => "Bir Slider Silindi - :title",
     //form
-    "form.image" => "Slider Görseli",
-    "form.title" => "Slider Başlığı",
-    "form.title_placeholder" => "Slider Başlığı Giriniz",
-    "form.description" => "Açıklama",
-    "form.description_placeholder" => "Slider Açıklaması Giriniz",
-    "form.button" => "Buton Linki",
-    "form.button_placeholder" => "Buton Linki Giriniz",
-    "form.video" => "Video Linki",
-    "form.video_placeholder" => "Video Linki Giriniz",
-    "form.status" => "Durum",
+    "form_image" => "Slider Görseli",
+    "form_title" => "Slider Başlığı",
+    "form_title_placeholder" => "Slider Başlığı Giriniz",
+    "form_description" => "Açıklama",
+    "form_description_placeholder" => "Slider Açıklaması Giriniz",
+    "form_button" => "Buton Linki",
+    "form_button_placeholder" => "Buton Linki Giriniz",
+    "form_video" => "Video Linki",
+    "form_video_placeholder" => "Video Linki Giriniz",
+    "form_status" => "Durum",
     //table
-    "table.image" => "Slider Resmi",
-    "table.title" => "Slider Başlığı"
+    "table_image" => "Slider Resmi",
+    "table_title" => "Slider Başlığı"
 ];

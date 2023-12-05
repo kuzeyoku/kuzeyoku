@@ -23,14 +23,14 @@ return [
     "delete_log" => "Bir Çeviri Silindi - :title",
     "update_file_content_log" => "Bir Çeviri Dosyası Güncellendi - :title",
     //form
-    "form.title" => "Dil Başlığı",
-    "form.title_placeholder" => "Dil Başlığı Giriniz",
-    "form.code" => "Dil Kodu",
-    "form.code_placeholder" => "Dil Kodu Giriniz",
-    "form.status" => "Durum",
+    "form_title" => "Dil Başlığı",
+    "form_title_placeholder" => "Dil Başlığı Giriniz",
+    "form_code" => "Dil Kodu",
+    "form_code_placeholder" => "Dil Kodu Giriniz",
+    "form_status" => "Durum",
     //table
-    "table.title" => "Başlık",
-    "table.code" => "Kod",
+    "table_title" => "Başlık",
+    "table_code" => "Kod",
     "files.title" => "Dil Dosyası İçeriği",
     "files.table_empty" => "Henüz dosya seçmediniz. Lütfen düzenlemek istediğiniz dil dosyasını seçiniz."
 ];

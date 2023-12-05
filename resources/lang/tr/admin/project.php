@@ -36,10 +36,10 @@ return [
     "update_log" => "Bir Proje Güncellendi - :title",
     "delete_log" => "Bir Proje Silindi - :title",
     //image
-    "image.success" => "Resim Başarıyla Yüklendi",
-    "image.error" => "Resim Yüklenirken Bir Hata Oluştu",
-    "image.delete_success" => "Resim Başarıyla Silindi",
-    "image.delete_error" => "Resim Silinirken Bir Hata Oluştu",
+    "image_success" => "Resim Başarıyla Yüklendi",
+    "image_error" => "Resim Yüklenirken Bir Hata Oluştu",
+    "image_delete_success" => "Resim Başarıyla Silindi",
+    "image_delete_error" => "Resim Silinirken Bir Hata Oluştu",
     //table
     "table_title" => "Proje Başlığı",
     "table_category" => "Kategori",

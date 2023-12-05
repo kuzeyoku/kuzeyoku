@@ -18,9 +18,9 @@ return [
     "update_log" => "Bir Referans Güncellendi",
     "delete_log" => "Bir Referans Silindi",
     //form
-    "form.url" => "Referans Bağlantısı",
-    "form.url_placeholder" => "Referans Bağlantısı Giriniz",
-    "form.image" => "Referans Görseli",
+    "form_url" => "Referans Bağlantısı",
+    "form_url_placeholder" => "Referans Bağlantısı Giriniz",
+    "form_image" => "Referans Görseli",
     //table
-    "table.image" => "Resim",
+    "table_image" => "Resim",
 ];
