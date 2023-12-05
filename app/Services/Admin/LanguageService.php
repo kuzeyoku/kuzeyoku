@@ -28,7 +28,7 @@ class LanguageService extends BaseService
         if (!File::exists($to))
             File::copyDirectory($from, $to);
         else
-            throw new Exception("Dil dosyası zaten mevcut.");
+            throw new Exception(__("admin/language.code_exists"));
         $data = new Request([
             'title' => $request->title,
             'code' => $code,
@@ -59,7 +59,7 @@ class LanguageService extends BaseService
 
     static function toArray()
     {
-        return cache()->rememberForever('languages', function () {
+        return cache()->remember('languages', config("setting.cache.caching_time", 3600), function () {
             return Language::active()->get();
         });
     }
@@ -71,7 +71,6 @@ class LanguageService extends BaseService
         $extractFileData = function ($file) {
             return [strtolower(basename($file, ".php")) => ucfirst(basename($file, ".php"))];
         };
-
         $getFiles = function ($folder) use ($langDisk, $extractFileData, $language) {
             return array_reduce($langDisk->files("{$language->code}/{$folder}"), function ($carry, $file) use ($extractFileData) {
                 return array_merge($carry, $extractFileData($file));
@@ -85,7 +84,9 @@ class LanguageService extends BaseService
             $filename = request("filename");
             $folder = request("folder");
             $fileContent = [];
+
             if (Lang::has($folder . "/" . $filename)) {
+                Lang::setLocale($language->code);
                 $fileContent = Lang::get($folder . "/" . $filename);
             }
             return compact('frontFiles', 'adminFiles', 'fileContent', 'filename', 'folder');

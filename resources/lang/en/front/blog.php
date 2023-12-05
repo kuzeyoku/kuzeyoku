@@ -1,8 +1,8 @@
 <?php
 return [
-'home_title' => 'Blog',
+'home_title' => 'Blog En',
 'home_description' => 'Gündeme dair haberleri, çalışmalarımızda kullandığımız teknolojiler ve konular hakkında bilgi    paylaşımında bulunduğumuz bloğumuz.',
-'page_title' => 'Blog',
+'page_title' => 'Blog En',
 'read_more' => 'Devamını Oku',
 'view' => 'Görüntüleme',
 'popular_post' => 'Popüler Yazılar',
