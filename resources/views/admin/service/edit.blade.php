@@ -11,13 +11,13 @@
         @foreach (languageList() as $key => $lang)
             <div id="{{ $lang->code }}" class="tab-pane fade @if ($loop->first) active show @endif">
                 <div class="form-group">
-                    {!! Form::label('title', __("admin/{$folder}.form.title")) !!} <span class="manitory">*</span>
+                    {!! Form::label('title', __("admin/{$folder}.form_title")) !!} <span class="manitory">*</span>
                     {!! Form::text("title[$lang->code]", $service->title[$lang->code] ?? null, [
-                        'placeholder' => __("admin/{$folder}.form.title_placeholder"),
+                        'placeholder' => __("admin/{$folder}.form_title_placeholder"),
                     ]) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('description', __("admin/{$folder}.form.description")) !!}
+                    {!! Form::label('description', __("admin/{$folder}.form_description")) !!}
                     {!! Form::textarea("description[$lang->code]", $service->description[$lang->code] ?? null, [
                         'class' => 'editor',
                     ]) !!}
@@ -26,7 +26,7 @@
         @endforeach
     </div>
     <div class="form-group">
-        {!! Form::label('category', __("admin/{$folder}.form.category")) !!}
+        {!! Form::label('category', __("admin/{$folder}.form_category")) !!}
         {!! Form::select('category_id', $categories, $service->category_id) !!}
     </div>
     <div class="row">

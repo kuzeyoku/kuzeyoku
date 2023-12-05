@@ -7,11 +7,11 @@
         @foreach (LanguageList() as $key => $lang)
             <div id="{{ $lang->code }}" class="tab-pane fade @if ($loop->first) active show @endif">
                 <div class="form-group">
-                    {!! Form::label('title', __("admin/{$folder}.form.title")) !!} <span class="manitory">*</span>
-                    {!! Form::text("title[$lang->code]", null, ['placeholder' => __("admin/{$folder}.form.title_placeholder")]) !!}
+                    {!! Form::label('title', __("admin/{$folder}.form_title")) !!} <span class="manitory">*</span>
+                    {!! Form::text("title[$lang->code]", null, ['placeholder' => __("admin/{$folder}.form_title_placeholder")]) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('description', __("admin/{$folder}.form.description")) !!}
+                    {!! Form::label('description', __("admin/{$folder}.form_description")) !!}
                     {!! Form::textarea("description[$lang->code]", null, ['class' => 'editor']) !!}
                 </div>
             </div>
@@ -20,13 +20,13 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('module', __("admin/{$folder}.form.module")) !!} <span class="manitory">*</span>
+                {!! Form::label('module', __("admin/{$folder}.form_module")) !!} <span class="manitory">*</span>
                 {!! Form::select('module', $modules, null) !!}
             </div>
         </div>
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('parent', __("admin/{$folder}.form.parent")) !!}
+                {!! Form::label('parent', __("admin/{$folder}.form_parent")) !!}
                 {!! Form::select('parent', $categories, null) !!}
             </div>
         </div>

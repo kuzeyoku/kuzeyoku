@@ -7,8 +7,8 @@
         'data-default-file' => uploadFolder($folder, $reference->image),
     ]) !!}
     <div class="form-group">
-        {!! Form::label('url', __("admin/{$folder}.form.url")) !!}
-        {!! Form::text('url', $reference->url, ['placeholder' => "admin/{$folder}.form.url_placeholder"]) !!}
+        {!! Form::label('url', __("admin/{$folder}.form_url")) !!}
+        {!! Form::text('url', $reference->url, ['placeholder' => "admin/{$folder}.form_url_placeholder"]) !!}
     </div>
     <div class="row">
         <div class="col-lg-6">

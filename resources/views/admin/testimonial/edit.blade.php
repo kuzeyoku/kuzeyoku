@@ -7,25 +7,25 @@
         'data-default-file' => uploadFolder($folder, $testimonial->image),
     ]) !!} --}}
     <div class="form-group">
-        {!! Form::label('name', __("admin/{$folder}.form.name")) !!}
-        {!! Form::text('name', $testimonial->name, ['placeholder' => __("admin/{$folder}.form.name_placeholder")]) !!}
+        {!! Form::label('name', __("admin/{$folder}.form_name")) !!}
+        {!! Form::text('name', $testimonial->name, ['placeholder' => __("admin/{$folder}.form_name_placeholder")]) !!}
     </div>
     <div class="form-group">
-        {!! Form::label('company', __("admin/{$folder}.form.company")) !!}
+        {!! Form::label('company', __("admin/{$folder}.form_company")) !!}
         {!! Form::text('company', $testimonial->company, [
-            'placeholder' => __("admin/{$folder}.form.company_placeholder"),
+            'placeholder' => __("admin/{$folder}.form_company_placeholder"),
         ]) !!}
     </div>
     <div class="form-group">
-        {!! Form::label('position', __("admin/{$folder}.form.position")) !!}
+        {!! Form::label('position', __("admin/{$folder}.form_position")) !!}
         {!! Form::text('position', $testimonial->position, [
-            'placeholder' => __("admin/{$folder}.form.position_placeholder"),
+            'placeholder' => __("admin/{$folder}.form_position_placeholder"),
         ]) !!}
     </div>
     <div class="form-group">
-        {!! Form::label('message', __("admin/{$folder}.form.message")) !!}
+        {!! Form::label('message', __("admin/{$folder}.form_message")) !!}
         {!! Form::textarea('message', $testimonial->message, [
-            'placeholder' => __("admin/{$folder}.form.message_placeholder"),
+            'placeholder' => __("admin/{$folder}.form_message_placeholder"),
         ]) !!}
     </div>
     <div class="row">

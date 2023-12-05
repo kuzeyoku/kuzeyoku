@@ -5,7 +5,7 @@
         <div class="col-lg-8 col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    {{ __("admin/{$folder}.form.content") }}
+                    {{ __("admin/{$folder}.form_content") }}
                 </div>
                 <div class="card-body">
                     {!! $product->content[app()->getLocale()] !!}
@@ -13,7 +13,7 @@
             </div>
             <div class="card">
                 <div class="card-header">
-                    {{ __("admin/{$folder}.form.features") }}
+                    {{ __("admin/{$folder}.form_features") }}
                 </div>
                 <div class="card-body">
                     <div class="productdetails">

@@ -12,15 +12,15 @@
         @foreach (languageList() as $key => $lang)
             <div id="{{ $lang->code }}" class="tab-pane fade @if ($loop->first) active show @endif">
                 <div class="form-group">
-                    {!! Form::label('title', __("admin/{$folder}.form.title")) !!}
+                    {!! Form::label('title', __("admin/{$folder}.form_title")) !!}
                     {!! Form::text("title[$lang->code]", $slider->title[$lang->code] ?? null, [
-                        'placeholder' => __("admin/{$folder}.form.title_description"),
+                        'placeholder' => __("admin/{$folder}.form_title_description"),
                     ]) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('description', __("admin/{$folder}.form.description")) !!}
+                    {!! Form::label('description', __("admin/{$folder}.form_description")) !!}
                     {!! Form::textarea("description[$lang->code]", $slider->description[$lang->code] ?? null, [
-                        'placeholder' => __("admin/{$folder}.form.description_placeholder"),
+                        'placeholder' => __("admin/{$folder}.form_description_placeholder"),
                     ]) !!}
                 </div>
             </div>
@@ -29,17 +29,17 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('button', __("admin/{$folder}.form.button")) !!}
+                {!! Form::label('button', __("admin/{$folder}.form_button")) !!}
                 {!! Form::text('button', $slider->button, [
-                    'placeholder' => __("admin/{$folder}.form.button_placeholder"),
+                    'placeholder' => __("admin/{$folder}.form_button_placeholder"),
                 ]) !!}
             </div>
         </div>
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('video', __("admin/{$folder}.form.video")) !!}
+                {!! Form::label('video', __("admin/{$folder}.form_video")) !!}
                 {!! Form::text('video', $slider->video, [
-                    'placeholder' => __("admin/{$folder}.form.video_placeholder"),
+                    'placeholder' => __("admin/{$folder}.form_video_placeholder"),
                 ]) !!}
             </div>
         </div>

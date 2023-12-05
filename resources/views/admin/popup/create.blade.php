@@ -5,7 +5,7 @@
 <p>{{ __("admin/{$folder}.info") }}</p>
 {!! Form::open(['route' => "admin.{$route}.store", 'method' => 'post', 'files' => true]) !!}
 <div class="form-group">
-    {!! Form::label('type', __("admin/{$folder}.form.type")) !!}
+    {!! Form::label('type', __("admin/{$folder}.form_type")) !!}
     {!! Form::select('type', [
     'image' => __("admin/{$folder}.type.image"),
     'text' => __("admin/{$folder}.type.text"),
@@ -13,19 +13,19 @@
     ]) !!}
 </div>
 <div class="form-group">
-    {!! Form::label('image', __("admin/{$folder}.form.image")) !!}
+    {!! Form::label('image', __("admin/{$folder}.form_image")) !!}
     {!! Form::file('image', ['class' => 'dropify']) !!}
 </div>
 <div class="tab-content">
     @foreach (languageList() as $key => $lang)
     <div id="{{ $lang->code }}" class="tab-pane fade @if ($loop->first) active show @endif">
         <div class="form-group">
-            {!! Form::label('title', __("admin/{$folder}.form.title")) !!}
-            {!! Form::text("title[$lang->code]", null, ['placeholder' => __("admin/{$folder}.form.title_placeholder")])
+            {!! Form::label('title', __("admin/{$folder}.form_title")) !!}
+            {!! Form::text("title[$lang->code]", null, ['placeholder' => __("admin/{$folder}.form_title_placeholder")])
             !!}
         </div>
         <div class="form-group">
-            {!! Form::label('description', __("admin/{$folder}.form.description")) !!}
+            {!! Form::label('description', __("admin/{$folder}.form_description")) !!}
             {!! Form::textarea("description[$lang->code]", null, ["class"=>"editor"]) !!}
         </div>
     </div>
@@ -34,62 +34,62 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="form-group">
-            {!! Form::label('time', __("admin/{$folder}.form.time")) !!}
-            {!! Form::number('time', null, ['placeholder' => __("admin/{$folder}.form.time_placeholder")]) !!}
+            {!! Form::label('time', __("admin/{$folder}.form_time")) !!}
+            {!! Form::number('time', null, ['placeholder' => __("admin/{$folder}.form_time_placeholder")]) !!}
         </div>
     </div>
     <div class="col-lg-6">
         <div class="form-group">
-            {!! Form::label('width', __("admin/{$folder}.form.width")) !!}
-            {!! Form::number('width', null, ['placeholder' => __("admin/{$folder}.form.width_placeholder")]) !!}
+            {!! Form::label('width', __("admin/{$folder}.form_width")) !!}
+            {!! Form::number('width', null, ['placeholder' => __("admin/{$folder}.form_width_placeholder")]) !!}
         </div>
     </div>
     <div class="col-lg-6">
         <div class="form-group">
-            {!! Form::label('url', __("admin/{$folder}.form.url")) !!}
-            {!! Form::url('url', null, ['placeholder' => __("admin/{$folder}.form.url_placeholder")]) !!}
+            {!! Form::label('url', __("admin/{$folder}.form_url")) !!}
+            {!! Form::url('url', null, ['placeholder' => __("admin/{$folder}.form_url_placeholder")]) !!}
         </div>
     </div>
     <div class="col-lg-6">
         <div class="form-group">
-            {!! Form::label('video', __("admin/{$folder}.form.video")) !!}
-            {!! Form::url('video', null, ['placeholder' => __("admin/{$folder}.form.video_placeholder")]) !!}
+            {!! Form::label('video', __("admin/{$folder}.form_video")) !!}
+            {!! Form::url('video', null, ['placeholder' => __("admin/{$folder}.form_video_placeholder")]) !!}
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            {!! Form::label('closeButton', __("admin/{$folder}.form.closeButton")) !!}
+            {!! Form::label('closeButton', __("admin/{$folder}.form_closeButton")) !!}
             {!! Form::select('closeButton', App\Enums\StatusEnum::getTrueFalseSelectArray()) !!}
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            {!! Form::label('closeOnEscape', __("admin/{$folder}.form.closeOnEscape")) !!}
+            {!! Form::label('closeOnEscape', __("admin/{$folder}.form_closeOnEscape")) !!}
             {!! Form::select('closeOnEscape', App\Enums\StatusEnum::getTrueFalseSelectArray()) !!}
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            {!! Form::label('overlayClose', __("admin/{$folder}.form.overlayClose")) !!}
+            {!! Form::label('overlayClose', __("admin/{$folder}.form_overlayClose")) !!}
             {!! Form::select('overlayClose', App\Enums\StatusEnum::getTrueFalseSelectArray()) !!}
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            {!! Form::label('pauseOnHover', __("admin/{$folder}.form.pauseOnHover")) !!}
+            {!! Form::label('pauseOnHover', __("admin/{$folder}.form_pauseOnHover")) !!}
             {!! Form::select('pauseOnHover', App\Enums\StatusEnum::getTrueFalseSelectArray()) !!}
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            {!! Form::label('fullScreenButton', __("admin/{$folder}.form.fullScreenButton")) !!}
+            {!! Form::label('fullScreenButton', __("admin/{$folder}.form_fullScreenButton")) !!}
             {!! Form::select('fullScreenButton', App\Enums\StatusEnum::getTrueFalseSelectArray()) !!}
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
-            {!! Form::label('color', __("admin/{$folder}.form.color")) !!}
-            {!! Form::text('color', null, ['placeholder' => __("admin/{$folder}.form.color_placeholder")]) !!}
+            {!! Form::label('color', __("admin/{$folder}.form_color")) !!}
+            {!! Form::text('color', null, ['placeholder' => __("admin/{$folder}.form_color_placeholder")]) !!}
         </div>
     </div>
 </div>

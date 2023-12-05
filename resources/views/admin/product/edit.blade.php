@@ -12,21 +12,21 @@
         @foreach (languageList() as $key => $lang)
             <div id="{{ $lang->code }}" class="tab-pane fade @if ($loop->first) active show @endif">
                 <div class="form-group">
-                    {!! Form::label('title', __("admin/{$folder}.form.title")) !!} <span class="manitory">*</span>
+                    {!! Form::label('title', __("admin/{$folder}.form_title")) !!} <span class="manitory">*</span>
                     {!! Form::text("title[$lang->code]", $product->title[$lang->code] ?? null, [
-                        'placeholder' => __("admin/{$folder}.form.title_placeholder"),
+                        'placeholder' => __("admin/{$folder}.form_title_placeholder"),
                     ]) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('description', __("admin/{$folder}.form.description")) !!}
+                    {!! Form::label('description', __("admin/{$folder}.form_description")) !!}
                     {!! Form::textarea("description[$lang->code]", $product->description[$lang->code] ?? null, [
                         'class' => 'editor',
                     ]) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('features', __("admin/{$folder}.form.features")) !!}
+                    {!! Form::label('features', __("admin/{$folder}.form_features")) !!}
                     {!! Form::textarea("features[$lang->code]", $product->features[$lang->code] ?? null, [
-                        'placeholder' => __("admin/{$folder}.form.features_placeholder"),
+                        'placeholder' => __("admin/{$folder}.form_features_placeholder"),
                     ]) !!}
                 </div>
             </div>
@@ -35,28 +35,28 @@
     <div class="row">
         {{-- <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('price', __("admin/{$folder}.form.price")) !!}
-                {!! Form::number('price', $product->price, ['placeholder' => __("admin/{$folder}.form.price_placeholder")]) !!}
+                {!! Form::label('price', __("admin/{$folder}.form_price")) !!}
+                {!! Form::number('price', $product->price, ['placeholder' => __("admin/{$folder}.form_price_placeholder")]) !!}
             </div>
         </div>
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('currency', __("admin/{$folder}.form.currency")) !!}
+                {!! Form::label('currency', __("admin/{$folder}.form_currency")) !!}
                 {!! Form::text('currency', $product->currency, [
-                    'placeholder' => __("admin/{$folder}.form.currency_placeholder"),
+                    'placeholder' => __("admin/{$folder}.form_currency_placeholder"),
                 ]) !!}
             </div>
         </div> --}}
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('category', __("admin/{$folder}.form.category")) !!}
+                {!! Form::label('category', __("admin/{$folder}.form_category")) !!}
                 {!! Form::select('category_id', $categories, $product->category_id) !!}
             </div>
         </div>
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('video', __("admin/{$folder}.form.video")) !!}
-                {!! Form::text('video', $product->video, ['placeholder' => __("admin/{$folder}.form.video_placeholder")]) !!}
+                {!! Form::label('video', __("admin/{$folder}.form_video")) !!}
+                {!! Form::text('video', $product->video, ['placeholder' => __("admin/{$folder}.form_video_placeholder")]) !!}
             </div>
         </div>
     </div>

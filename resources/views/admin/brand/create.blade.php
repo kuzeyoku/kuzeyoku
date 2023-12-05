@@ -6,14 +6,14 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('title', __("admin/{$folder}.form.title")) !!}
-                {!! Form::text('title', null, ['placeholder' => __("admin/{$folder}.form.title_placeholder")]) !!}
+                {!! Form::label('title', __("admin/{$folder}.form_title")) !!}
+                {!! Form::text('title', null, ['placeholder' => __("admin/{$folder}.form_title_placeholder")]) !!}
             </div>
         </div>
         <div class="col-lg-6">
             <div class="form-group">
-                {!! Form::label('url', __("admin/{$folder}.form.url")) !!}
-                {!! Form::text('url', null, ['placeholder' => __("admin/{$folder}.form.url_placeholder")]) !!}
+                {!! Form::label('url', __("admin/{$folder}.form_url")) !!}
+                {!! Form::text('url', null, ['placeholder' => __("admin/{$folder}.form_url_placeholder")]) !!}
             </div>
         </div>
     </div>
