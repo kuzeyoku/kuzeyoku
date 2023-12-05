@@ -34,7 +34,11 @@ class ImageService
             ->fitToWidth($width)
             ->crop(0, 0, $width, $height)
             ->toFile($file->getPathname());
-        return Storage::putFileAs($path, $file, $fileName) ? $fileName : null;
+        if (Storage::putFileAs($path, $file, $fileName)) {
+            chmod(storage_path($path), 0755);
+            return $fileName;
+        }
+        return null;
     }
 
     public function delete(string|array $file): bool
