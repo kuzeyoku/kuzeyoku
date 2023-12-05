@@ -6,13 +6,13 @@
             <thead>
                 <tr>
                     <th>#ID</th>
-                    {{-- <th>{{ __("admin/{$folder}.table.image") }}</th> --}}
-                    <th>{{ __("admin/{$folder}.table.name") }}</th>
-                    <th>{{ __("admin/{$folder}.table.company") }}</th>
-                    <th>{{ __('admin/general.table.created_at') }}</th>
-                    <th>{{ __('admin/general.table.updated_at') }}</th>
-                    <th>{{ __('admin/general.table.status') }}</th>
-                    <th>{{ __('admin/general.table.action') }}</th>
+                    {{-- <th>{{ __("admin/{$folder}.table_image") }}</th> --}}
+                    <th>{{ __("admin/{$folder}.table_name") }}</th>
+                    <th>{{ __("admin/{$folder}.table_company") }}</th>
+                    <th>{{ __('admin/general.table_created_at') }}</th>
+                    <th>{{ __('admin/general.table_updated_at') }}</th>
+                    <th>{{ __('admin/general.table_status') }}</th>
+                    <th>{{ __('admin/general.table_action') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,7 +29,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6" class="text-center">{{ __('admin/general.table.no_data') }}</td>
+                        <td colspan="6" class="text-center">{{ __('admin/general.table_no_data') }}</td>
                     </tr>
                 @endforelse
             </tbody>
