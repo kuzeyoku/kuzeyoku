@@ -5,7 +5,7 @@
         {!! Form::label(__("admin/{$folder}.sitemap_{$module}")) !!}
         <div class="row">
             <div class="col-lg-10">
-                {!! Form::range($module . '_priority', config('setting.sitemap_' . $module . '_priority'), [
+                {!! Form::range($module . '_priority', config('setting.sitemap.' . $module . '_priority'), [
                     'class' => 'form-control',
                     'min' => 0,
                     'max' => 1,
@@ -16,7 +16,7 @@
                 {!! Form::select(
                     $module . '_changefreq',
                     $service->getChangeFreqList(),
-                    config('setting.sitemap_' . $module . '_changefreq'),
+                    config('setting.sitemap.' . $module . '_changefreq'),
                     ['class' => 'sitemap-changefreq'],
                 ) !!}
             </div>
