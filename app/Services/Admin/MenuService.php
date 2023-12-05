@@ -86,6 +86,7 @@ class MenuService extends BaseService
     public function getUrlList(): array
     {
         return [
+            route("home") => __("front/home.page_title"),
             route(ModuleEnum::Blog->Route() . ".index") => ModuleEnum::Blog->singleTitle(),
             route(ModuleEnum::Service->Route() . ".index") => ModuleEnum::Service->singleTitle(),
             route(ModuleEnum::Product->Route() . ".index") => ModuleEnum::Product->singleTitle(),

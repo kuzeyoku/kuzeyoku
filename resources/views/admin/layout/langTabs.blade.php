@@ -1,5 +1,5 @@
 <ul class="nav mb-3">
-    @foreach (languageList() as $key => $lang)
+    @foreach (languageList() as $lang)
         <li class="nav-item">
             <a class="nav-link rounded {{ $lang->code == config('app.fallback_locale') ? 'active' : '' }}"
                 data-bs-toggle="tab" href="#{{ $lang->code }}" aria-selected="false" tabindex="-1">

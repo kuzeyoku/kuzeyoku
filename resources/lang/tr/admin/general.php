@@ -39,4 +39,5 @@ return [
     "no_category" => "Kategorisiz",
     "log_clean_success" => "Loglar başarıyla temizlendi.",
     "log_clean_error" => "Loglar temizlenirken bir hata oluştu.",
+    "empty_table" => "Henüz herhangi bir veri eklenmedi.",
 ];

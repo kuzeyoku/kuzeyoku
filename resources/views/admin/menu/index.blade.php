@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <div class="menu">
                         <ul>
-                            @foreach ($menus as $menu)
+                            @forelse ($menus as $menu)
                                 @if ($menu->parent_id == 0)
                                     <li class="parent d-flex flex-row justify-content-between align-center">
                                         <div>
@@ -51,7 +51,9 @@
                                         @include("admin.{$folder}.subMenus")
                                     @endif
                                 @endif
-                            @endforeach
+                            @empty
+                                <div class="alert alert-info">{{ __("admin/general.empty_table") }}</div>
+                            @endforelse
                         </ul>
                     </div>
                 </div>
