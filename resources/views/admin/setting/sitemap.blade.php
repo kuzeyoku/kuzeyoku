@@ -1,11 +1,11 @@
-{{ __('admin/setting.sitemap.view') }}<a href="{{ url(route('sitemap.index')) }}">{{ url(route('sitemap.index')) }}</a>
+{{ __('admin/setting.sitemap_view') }}<a href="{{ url(route('sitemap.index')) }}">{{ url(route('sitemap.index')) }}</a>
 <hr>
 @foreach ($service->getSitemapModuleList() as $module)
     <div class="form-group">
-        {!! Form::label(__("admin/{$folder}.sitemap.{$module}")) !!}
+        {!! Form::label(__("admin/{$folder}.sitemap_{$module}")) !!}
         <div class="row">
             <div class="col-lg-10">
-                {!! Form::range($module . '_priority', config('setting.sitemap.' . $module . '_priority'), [
+                {!! Form::range($module . '_priority', config('setting.sitemap_' . $module . '_priority'), [
                     'class' => 'form-control',
                     'min' => 0,
                     'max' => 1,
@@ -16,7 +16,7 @@
                 {!! Form::select(
                     $module . '_changefreq',
                     $service->getChangeFreqList(),
-                    config('setting.sitemap.' . $module . '_changefreq'),
+                    config('setting.sitemap_' . $module . '_changefreq'),
                     ['class' => 'sitemap-changefreq'],
                 ) !!}
             </div>

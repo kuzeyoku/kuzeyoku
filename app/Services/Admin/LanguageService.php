@@ -49,7 +49,7 @@ class LanguageService extends BaseService
     public function delete(Model $language)
     {
         $code = $language->code;
-        if ($code == app()->getLocale())
+        if ($code == config("app.fallback_locale"))
             throw new Exception(__("admin/language.default_delete_error"));
         $from = resource_path("lang/{$code}");
         if (File::exists($from))

@@ -90,13 +90,13 @@ class SettingService
     public static function getChangeFreqList(): array
     {
         return [
-            "always" => __("admin/setting.sitemap.changefreq.always"),
-            "hourly" => __("admin/setting.sitemap.changefreq.hourly"),
-            "daily" => __("admin/setting.sitemap.changefreq.daily"),
-            "weekly" => __("admin/setting.sitemap.changefreq.weekly"),
-            "monthly" => __("admin/setting.sitemap.changefreq.monthly"),
-            "yearly" => __("admin/setting.sitemap.changefreq.yearly"),
-            "never" => __("admin/setting.sitemap.changefreq.never"),
+            "always" => __("admin/setting.sitemap_changefreq.always"),
+            "hourly" => __("admin/setting.sitemap_changefreq.hourly"),
+            "daily" => __("admin/setting.sitemap_changefreq.daily"),
+            "weekly" => __("admin/setting.sitemap_changefreq.weekly"),
+            "monthly" => __("admin/setting.sitemap_changefreq.monthly"),
+            "yearly" => __("admin/setting.sitemap_changefreq.yearly"),
+            "never" => __("admin/setting.sitemap_changefreq.never"),
         ];
     }
 }

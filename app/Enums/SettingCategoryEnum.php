@@ -19,7 +19,7 @@ enum SettingCategoryEnum: string
 
     public function title(): string
     {
-        return __("admin/setting.category." . $this->value);
+        return __("admin/setting.category_" . $this->value);
     }
 
     public function icon(): string
