@@ -50,9 +50,11 @@
                             </li>
                         @endif
                         <li>
-                            {{ Form::open(['url' => route('locale.set'), 'method' => 'post']) }}
-                            {{ Form::select('locale', $languageList, app()->getLocale(), ['class' => 'form-control', 'onchange' => 'this.form.submit()']) }}
-                            {{ Form::close() }}
+                            @if ($languageList->count() > 1)
+                                {{ Form::open(['url' => route('locale.set'), 'method' => 'post']) }}
+                                {{ Form::select('locale', $languageList, app()->getLocale(), ['class' => 'form-control', 'onchange' => 'this.form.submit()']) }}
+                                {{ Form::close() }}
+                            @endif
                         </li>
                     </ul>
                 </div>

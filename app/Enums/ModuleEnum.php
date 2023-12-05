@@ -38,8 +38,8 @@ enum ModuleEnum: string
             self::Product => true,
             self::Project => true,
             self::Slider => true,
-            self::Testimonial => true,
-            self::Popup => true,
+            self::Testimonial => false,
+            self::Popup => false,
         };
     }
 
