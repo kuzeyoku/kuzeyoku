@@ -24,6 +24,6 @@ return [
     "form_category" => "Kategori",
     "form_status" => "Durum",
     //table
-    "table.title" => "Hizmet Başlığı",
-    "table.category" => "Kategori",
+    "table_title" => "Hizmet Başlığı",
+    "table_category" => "Kategori",
 ];

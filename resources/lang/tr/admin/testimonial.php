@@ -28,8 +28,8 @@ return [
     "form_message_placeholder" => "Müşteri Mesajı Giriniz",
     "form_status" => "Durum",
     //table
-    "table.image" => "Resim",
-    "table.name" => "Ad Soyad",
-    "table.company" => "Şirket",
-    "table.position" => "Pozisyon"
+    "table_image" => "Resim",
+    "table_name" => "Ad Soyad",
+    "table_company" => "Şirket",
+    "table_position" => "Pozisyon"
 ];

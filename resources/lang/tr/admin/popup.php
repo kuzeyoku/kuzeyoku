@@ -42,7 +42,7 @@ return [
     "type.video" => "Video",
     "type.text" => "Metin",
     //table
-    "table.type" => "Popup Tipi",
-    "table.title" => "Popup Başlığı",
+    "table_type" => "Popup Tipi",
+    "table_title" => "Popup Başlığı",
     "info" => "Seçili popup tipine uygun alanlara girilen veriler kullanılacaktır."
 ];

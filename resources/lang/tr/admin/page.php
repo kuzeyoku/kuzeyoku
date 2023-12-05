@@ -21,5 +21,5 @@ return [
     "form_title_placeholder" => "Sayfa Başlığı Giriniz",
     "form_description" => "Sayfa İçeriği",
     //Table
-    "table.title" => "Sayfa Başlığı",
+    "table_title" => "Sayfa Başlığı",
 ];

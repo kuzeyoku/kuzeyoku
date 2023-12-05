@@ -28,6 +28,6 @@ return [
     "form_video_placeholder" => "Video Linki Giriniz",
     "form_status" => "Durum",
     //table
-    "table.image" => "Slider Resmi",
-    "table.title" => "Slider Başlığı"
+    "table_image" => "Slider Resmi",
+    "table_title" => "Slider Başlığı"
 ];

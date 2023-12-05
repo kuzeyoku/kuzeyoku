@@ -21,6 +21,6 @@ return [
     "form_tags_placeholder" => "Etiketleri virgül ile ayırarak giriniz. Örnek: etiket1, etiket2, etiket3",
     'form_category' => 'Kategori',
     'form_status' => 'Durum',
-    'table.title' => 'İçerik Başlığı',
-    'table.category' => 'Kategori',
+    'table_title' => 'İçerik Başlığı',
+    'table_category' => 'Kategori',
 ];

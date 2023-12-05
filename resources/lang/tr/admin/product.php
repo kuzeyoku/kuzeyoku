@@ -40,7 +40,7 @@ return [
     "image.delete_all_success" => "Tüm Resimler Başarıyla Silindi",
     "image.delete_error" => "Resim Silinirken Bir Hata Oluştu",
     //table
-    "table.title" => "Ürün Başlığı",
-    "table.category" => "Kategori",
-    "table.price" => "Ürün Fiyatı"
+    "table_title" => "Ürün Başlığı",
+    "table_category" => "Kategori",
+    "table_price" => "Ürün Fiyatı"
 ];

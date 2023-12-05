@@ -18,6 +18,6 @@ return [
     "form_customer" => "Alıcı",
     "form_subject" => "Konu",
     "form_content" => "Mesajınız",
-    "table.name" => "Adı Soyadı",
-    "table.subject" => "Konu",
+    "table_name" => "Adı Soyadı",
+    "table_subject" => "Konu",
 ];

@@ -41,6 +41,6 @@ return [
     "image.delete_success" => "Resim Başarıyla Silindi",
     "image.delete_error" => "Resim Silinirken Bir Hata Oluştu",
     //table
-    "table.title" => "Proje Başlığı",
-    "table.category" => "Kategori",
+    "table_title" => "Proje Başlığı",
+    "table_category" => "Kategori",
 ];

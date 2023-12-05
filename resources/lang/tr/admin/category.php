@@ -23,6 +23,6 @@ return [
     "form_status" => "Kategori Durumu",
     "form_module" => "Kategori Modülü",
     //table
-    "table.title" => "Kategori Başlığı",
-    "table.module" => "Kategori Modülü",
+    "table_title" => "Kategori Başlığı",
+    "table_module" => "Kategori Modülü",
 ];

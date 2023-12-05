@@ -29,8 +29,8 @@ return [
     "form_code_placeholder" => "Dil Kodu Giriniz",
     "form_status" => "Durum",
     //table
-    "table.title" => "Başlık",
-    "table.code" => "Kod",
+    "table_title" => "Başlık",
+    "table_code" => "Kod",
     "files.title" => "Dil Dosyası İçeriği",
     "files.table_empty" => "Henüz dosya seçmediniz. Lütfen düzenlemek istediğiniz dil dosyasını seçiniz."
 ];

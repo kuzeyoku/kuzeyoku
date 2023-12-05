@@ -22,5 +22,5 @@ return [
     "form_url_placeholder" => "Referans Bağlantısı Giriniz",
     "form_image" => "Referans Görseli",
     //table
-    "table.image" => "Resim",
+    "table_image" => "Resim",
 ];

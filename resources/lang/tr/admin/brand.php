@@ -23,5 +23,5 @@ return [
     "form_url_placeholder" => "Marka Bağlantısı Giriniz",
     "form_image" => "Marka Görseli",
     //table
-    "table.image" => "Resim",
+    "table_image" => "Resim",
 ];
