@@ -16,12 +16,12 @@ return [
     "update_log" => "Bir Kategori Güncellendi - :title",
     "delete_log" => "Bir Kategori Silindi - :title",
     //form
-    "form.title" => "Kategori Başlığı",
-    "form.title_placeholder" => "Kategori Başlığı Giriniz",
-    "form.description" => "Kategori Açıklaması",
-    "form.parent" => "Üst Kategori",
-    "form.status" => "Kategori Durumu",
-    "form.module" => "Kategori Modülü",
+    "form_title" => "Kategori Başlığı",
+    "form_title_placeholder" => "Kategori Başlığı Giriniz",
+    "form_description" => "Kategori Açıklaması",
+    "form_parent" => "Üst Kategori",
+    "form_status" => "Kategori Durumu",
+    "form_module" => "Kategori Modülü",
     //table
     "table.title" => "Kategori Başlığı",
     "table.module" => "Kategori Modülü",

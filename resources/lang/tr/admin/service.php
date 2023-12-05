@@ -18,11 +18,11 @@ return [
     "update_log" => "Bir Hizmet Güncellendi - :title",
     "delete_log" => "Bir Hizmet Silindi - :title",
     //form
-    "form.title" => "Hizmet Başlığı",
-    "form.title_placeholder" => "Hizmet Başlığı Giriniz",
-    "form.description" => "Açıklama",
-    "form.category" => "Kategori",
-    "form.status" => "Durum",
+    "form_title" => "Hizmet Başlığı",
+    "form_title_placeholder" => "Hizmet Başlığı Giriniz",
+    "form_description" => "Açıklama",
+    "form_category" => "Kategori",
+    "form_status" => "Durum",
     //table
     "table.title" => "Hizmet Başlığı",
     "table.category" => "Kategori",
