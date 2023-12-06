@@ -102,7 +102,7 @@ class LanguageService extends BaseService
         $request = request()->except("_token", "_method", "filename", "folder");
         $content = "<?php\nreturn [\n" . implode(",\n", array_map(function ($key, $value) {
             if (!is_null($key) && !is_null($value)) {
-                return "'{$key}' => '{$value}'";
+                return "'{$key}' => '" . addslashes($value) . "'";
             }
         }, array_keys($request), $request)) . "\n];";
         return Storage::disk("lang")->put($language->code . "/" . $folder . "/" . $filename . ".php", $content);
