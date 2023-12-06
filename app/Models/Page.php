@@ -38,12 +38,12 @@ class Page extends Model
 
     public function getTitleAttribute()
     {
-        return $this->translate()->pluck("title", "lang")->toArray();
+        return $this->translate->pluck("title", "lang")->toArray();
     }
 
     public function getDescriptionAttribute()
     {
-        return $this->translate()->pluck("description", "lang")->toArray();
+        return $this->translate->pluck("description", "lang")->toArray();
     }
 
     public function getTitle()
