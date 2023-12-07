@@ -16,8 +16,6 @@ class Project extends Model
         "image",
         "video",
         "model3D",
-        "start_date",
-        "end_date",
         "order",
         "status"
     ];
@@ -67,11 +65,6 @@ class Project extends Model
         return $this->translate->pluck("description", "lang")->toArray();
     }
 
-    public function getShortDescriptionAttribute()
-    {
-        return $this->translate->pluck("shortdescription", "lang")->toArray();
-    }
-
     public function getFeaturesAttribute()
     {
         return $this->translate->pluck("features", "lang")->toArray();
@@ -89,14 +82,6 @@ class Project extends Model
     {
         if (array_key_exists($this->locale, $this->description)) {
             return $this->description[$this->locale];
-        }
-        return null;
-    }
-
-    public function getShortDescription()
-    {
-        if (array_key_exists($this->locale, $this->shortdescription)) {
-            return $this->shortdescription[$this->locale];
         }
         return null;
     }
@@ -128,17 +113,4 @@ class Project extends Model
         return asset("assets/img/noimage.png");
     }
 
-    public function getThumbnailUrl()
-    {
-        if ($this->thumbnail)
-            return asset("storage/" . config("setting.image.folder", "image") . "/" . ModuleEnum::Project->folder() . "/" . $this->thumbnail);
-        return asset("assets/img/noimage.png");
-    }
-
-    public function getBrochureUrl()
-    {
-        if ($this->brochure)
-            return asset("storage/" . config("setting.file.folder", "file") . "/" . ModuleEnum::Project->folder() . "/" . $this->brochure);
-        return null;
-    }
 }

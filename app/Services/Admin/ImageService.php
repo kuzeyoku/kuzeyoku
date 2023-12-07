@@ -35,7 +35,7 @@ class ImageService
             ->crop(0, 0, $width, $height)
             ->toFile($file->getPathname());
         if (Storage::putFileAs($path, $file, $fileName)) {
-            chmod(storage_path($path), 0755);
+            // chmod(storage_path($path), 0755);
             return $fileName;
         }
         return null;

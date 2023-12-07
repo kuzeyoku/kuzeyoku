@@ -12,13 +12,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class BaseService
 {
+    protected $defaultLocale;
     protected $model;
     protected $module;
+    protected $cacheStatus;
+    protected $cacheTime;
 
     public function __construct(Model $model, ModuleEnum $module = null)
     {
+        $this->defaultLocale = app()->getFallbackLocale();
         $this->model = $model;
         $this->module = $module;
+        $this->cacheStatus = config("setting.caching.status", false);
+        $this->cacheTime = config("setting.caching.time", 3600);
     }
 
     public function folder()
@@ -34,7 +40,9 @@ class BaseService
     public function all()
     {
         $currentpage = Paginator::resolveCurrentPage() ?: 1;
-        return Cache::remember($this->model->getTable() . '_' . $currentpage, config("setting.cache.time", 3600), function () {
+        return Cache::remember($this->model->getTable() . '_' . $currentpage, $this->cacheTime, function () {
+            return $this->model->orderByDesc("id")->paginate(config("setting.dashboard.pagination", 15));
+        })->unless($this->cacheStatus, function () {
             return $this->model->orderByDesc("id")->paginate(config("setting.dashboard.pagination", 15));
         });
     }
@@ -87,16 +95,28 @@ class BaseService
 
     public function getCategories()
     {
-        return Cache::remember(($this->module ? $this->module->value . "_" : "all_") . "categories", config("setting.cache.time", 3600), function () {
+        if ($this->cacheStatus) {
+            $cacheKey = ($this->module ? $this->module->value . "_" : "all_") . "categories";
+            return Cache::remember($cacheKey, config("setting.cache.time", 3600), function () {
+                $categories = Category::whereStatus(StatusEnum::Active->value)
+                    ->when($this->module !== null, function ($query) {
+                        return $query->where("module", $this->module);
+                    })
+                    ->get();
+                $response = [__("admin/general.select")];
+                $titles = $categories->pluck("title." . $this->defaultLocale, "id");
+                return $response + $titles->toArray();
+            });
+        } else {
             $categories = Category::whereStatus(StatusEnum::Active->value)
                 ->when($this->module !== null, function ($query) {
                     return $query->where("module", $this->module);
                 })
                 ->get();
             $response = [__("admin/general.select")];
-            $titles = $categories->pluck("title." . app()->getLocale(), "id");
+            $titles = $categories->pluck("title." . $this->defaultLocale, "id");
             return $response + $titles->toArray();
-        });
+        }
     }
 
     public function cacheClear()

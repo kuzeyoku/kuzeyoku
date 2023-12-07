@@ -24,13 +24,11 @@ class ProjectService extends BaseService
     public function create(Object $request)
     {
         $data = new Request([
-            "slug" => Str::slug($request->title[app()->getFallbackLocale()]),
+            "slug" => Str::slug($request->title[$this->defaultLocale]),
             "status" => $request->status,
             "category_id" => $request->category_id,
             "video" => $request->video,
             "model3D" => $request->model3D,
-            // "start_date" => $request->start_date,
-            // "end_date" => $request->end_date,
             "order" => $request->order
         ]);
 
@@ -49,13 +47,11 @@ class ProjectService extends BaseService
     public function update(Object $request, Model $project)
     {
         $data = new Request([
-            "slug" => Str::slug($request->title[app()->getFallbackLocale()]),
+            "slug" => Str::slug($request->title[$this->defaultLocale]),
             "status" => $request->status,
             "category_id" => $request->category_id,
             "video" => $request->video,
             "model3D" => $request->model3D,
-            // "start_date" => $request->start_date,
-            // "end_date" => $request->end_date,
             "order" => $request->order
         ]);
 
@@ -100,6 +96,7 @@ class ProjectService extends BaseService
 
     public function imageUpload(Object $request)
     {
+        dd($request->all());
         $data = new Request([
             "project_id" => $request->project_id,
             "image" => $this->imageService->upload($request->file),

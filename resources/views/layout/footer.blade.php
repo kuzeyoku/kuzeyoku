@@ -94,7 +94,7 @@
                         <ul>
                             @foreach ($services as $service)
                                 <li>
-                                    <a href="{{ $service->getTitle() }}">{{ $service->getTitle() }}</a>
+                                    <a href="{{ $service->getUrl() }}">{{ $service->getTitle() }}</a>
                                 </li>
                             @endforeach
                         </ul>

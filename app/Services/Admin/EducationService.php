@@ -24,7 +24,7 @@ class EducationService extends BaseService
     public function create(Object $request)
     {
         $data = new Request([
-            "slug" => Str::slug($request->title[app()->getFallbackLocale()]),
+            "slug" => Str::slug($request->title[$this->defaultLocale]),
             "status" => $request->status,
             "order" => $request->order,
             "video" => $request->video,
@@ -47,7 +47,7 @@ class EducationService extends BaseService
     public function update(Object $request, Model $education)
     {
         $data = new Request([
-            "slug" => Str::slug($request->title[app()->getFallbackLocale()]),
+            "slug" => Str::slug($request->title[$this->defaultLocale]),
             "status" => $request->status,
             "order" => $request->order,
             "video" => $request->video,

@@ -23,7 +23,7 @@ class LanguageService extends BaseService
     public function create(Object $request)
     {
         $code = strtolower($request->code);
-        $from = resource_path("lang/tr");
+        $from = resource_path("lang/" . $this->defaultLocale);
         $to = resource_path("lang/{$code}");
         if (!File::exists($to))
             File::copyDirectory($from, $to);
@@ -49,7 +49,7 @@ class LanguageService extends BaseService
     public function delete(Model $language)
     {
         $code = $language->code;
-        if ($code == config("app.fallback_locale"))
+        if ($code == $this->defaultLocale)
             throw new Exception(__("admin/language.default_delete_error"));
         $from = resource_path("lang/{$code}");
         if (File::exists($from))

@@ -16,9 +16,8 @@ return new class extends Migration
             $table->id();
             $table->string("slug", 255);
             $table->string("image", 30)->nullable();
-            $table->integer("category_id");
-            $table->integer("price")->nullable();
-            $table->string("currency")->nullable();
+            $table->string("brochure", 30)->nullable();
+            $table->integer("category_id")->default(0);
             $table->string("video", 255)->nullable();
             $table->integer("order")->default(0);
             $table->enum("status", StatusEnum::getValues())->default(StatusEnum::Active->value);

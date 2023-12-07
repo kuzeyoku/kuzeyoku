@@ -16,9 +16,8 @@ class Product extends Model
         "slug",
         "category_id",
         "image",
+        "brochure",
         "video",
-        "price",
-        "currency",
         "order"
     ];
 
@@ -115,8 +114,10 @@ class Product extends Model
         return asset("assets/img/noimage.png");
     }
 
-    public function getAllPriceAttribute()
+    public function getBrochureUrl()
     {
-        return $this->price . " " . $this->currency;
+        if ($this->brochure)
+            return asset("storage/" . config("setting.file.folder", "file") . "/" . ModuleEnum::Product->folder() . "/" . $this->brochure);
+        return null;
     }
 }

@@ -32,13 +32,11 @@ class HomeController extends Controller
 
         foreach ($modules as $module => $model) {
             $cacheKey = $module . "_home";
-            if (config("setting.caching.status", false)) { // Cache aktif ise cache'den verileri çekiyoruz.
-                $data[$module] = Cache::remember($cacheKey, config("setting.caching.time", 3600), function () use ($model) {
-                    return $model::active()->order()->get();
-                });
-            } else { // Cache aktif değilse veritabanından çekiyoruz.
-                $data[$module] = $model::active()->order()->get();
-            }
+            $data[$module] = Cache::remember($cacheKey, config("setting.caching.time", 3600), function () use ($model) {
+                return $model::active()->order()->get();
+            })->unless(config("setting.caching.status", false), function () use ($model) {
+                return $model::active()->order()->get();
+            });
         }
 
         return view("index", $data);
