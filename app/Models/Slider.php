@@ -26,7 +26,7 @@ class Slider extends Model
     public function __construct()
     {
         parent::__construct();
-        $this->locale = app()->getLocale();
+        $this->locale = session()->get("locale");
     }
 
     public function translate()

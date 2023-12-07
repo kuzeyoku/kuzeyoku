@@ -23,7 +23,7 @@ class ServiceService extends BaseService
     public function create(Object $request)
     {
         $data = new Request([
-            "slug" => Str::slug($request->title[app()->getLocale()]),
+            "slug" => Str::slug($request->title[app()->getFallbackLocale()]),
             "status" => $request->status,
             "order" => $request->order,
             "category_id" => $request->category_id,
@@ -45,7 +45,7 @@ class ServiceService extends BaseService
     public function update(Object $request, Model $service)
     {
         $data = new Request([
-            "slug" => Str::slug($request->title[app()->getLocale()]),
+            "slug" => Str::slug($request->title[app()->getFallbackLocale()]),
             "status" => $request->status,
             "order" => $request->order,
             "category_id" => $request->category_id,

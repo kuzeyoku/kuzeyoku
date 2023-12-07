@@ -22,7 +22,7 @@ class PageService extends BaseService
     public function create(Object $request)
     {
         $data = new Request([
-            "slug" => Str::slug($request->title[app()->getLocale()]),
+            "slug" => Str::slug($request->title[app()->getFallbackLocale()]),
             "status" => $request->status,
         ]);
 
@@ -38,7 +38,7 @@ class PageService extends BaseService
     public function update(Object $request, Model $page)
     {
         $data = new Request([
-            "slug" => Str::slug($request->title[app()->getLocale()]),
+            "slug" => Str::slug($request->title[app()->getFallbackLocale()]),
             "status" => $request->status,
         ]);
 

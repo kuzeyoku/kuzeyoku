@@ -21,7 +21,7 @@ class CategoryService extends BaseService
     public function create(Object $request)
     {
         $data = new Request([
-            "slug" => Str::slug($request->title[app()->getLocale()]),
+            "slug" => Str::slug($request->title[app()->getFallbackLocale()]),
             "order" => $request->order,
             "status" => $request->status,
             "parent_id" => $request->parent,
@@ -50,7 +50,7 @@ class CategoryService extends BaseService
     public function update(Object $request, $category)
     {
         $data = new Request([
-            "slug" => Str::slug($request->title[app()->getLocale()]),
+            "slug" => Str::slug($request->title[app()->getFallbackLocale()]),
             "order" => $request->order,
             "status" => $request->status,
             "parent_id" => $request->parent,

@@ -23,7 +23,7 @@ class BlogService extends BaseService
     public function create(Object $request)
     {
         $data = new Request([
-            "slug" => Str::slug($request->title[app()->getLocale()]),
+            "slug" => Str::slug($request->title[app()->getFallbackLocale()]),
             "order" => $request->order,
             "status" => $request->status,
             "category_id" => $request->category_id,
@@ -46,7 +46,7 @@ class BlogService extends BaseService
     public function update(Object $request, Model $post)
     {
         $data = new Request([
-            "slug" => Str::slug($request->title[app()->getLocale()]),
+            "slug" => Str::slug($request->title[app()->getFallbackLocale()]),
             "order" => $request->order,
             "status" => $request->status,
             "category_id" => $request->category_id,
