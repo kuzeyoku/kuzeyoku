@@ -22,7 +22,7 @@ class UpdateMenuRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title." . app()->getLocale() => "required",
+            "title." . app()->getFallbackLocale() => "required",
             "title.*" => "",
             "url" => "nullable",
             "type" => "required|in:header,footer",
@@ -35,7 +35,7 @@ class UpdateMenuRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            "title." . app()->getLocale() => __("admin/{$this->folder}.form.title"),
+            "title." . app()->getFallbackLocale() => __("admin/{$this->folder}.form.title"),
             "title.*" => __("admin/{$this->folder}.form.title"),
             "url" => __("admin/{$this->folder}.form.url"),
             "type" => __("admin/{$this->folder}.form.type"),

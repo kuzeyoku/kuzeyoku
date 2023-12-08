@@ -23,7 +23,7 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title." . app()->getLocale() => "required",
+            "title." . app()->getFallbackLocale() => "required",
             "title.*" => "",
             "description.*" => "",
             "module" => [new Enum(ModuleEnum::class)],
@@ -36,7 +36,7 @@ class StoreCategoryRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            "title." . app()->getLocale() => __("admin/{$this->folder}.form.title"),
+            "title." . app()->getFallbackLocale() => __("admin/{$this->folder}.form.title"),
             "description.*" => __("admin/{$this->folder}.form.description"),
             "module" => __("admin/{$this->folder}.form.module"),
             "parent" => __("admin/{$this->folder}.form.parent"),

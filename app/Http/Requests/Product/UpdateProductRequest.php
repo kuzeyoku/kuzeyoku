@@ -22,7 +22,7 @@ class UpdateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title." . app()->getLocale() => "required",
+            "title." . app()->getFallbackLocale() => "required",
             "title.*" => "nullable",
             "description.*" => "nullable",
             "features.*" => "nullable",
@@ -40,7 +40,7 @@ class UpdateProductRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            "title." . app()->getLocale() => __("admin/{$this->folder}.form.title"),
+            "title." . app()->getFallbackLocale() => __("admin/{$this->folder}.form.title"),
             "title.*" => __("admin/{$this->folder}.form.title"),
             "description.*" => __("admin/{$this->folder}.form.description"),
             "features.*" => __("admin/{$this->folder}.form.features"),

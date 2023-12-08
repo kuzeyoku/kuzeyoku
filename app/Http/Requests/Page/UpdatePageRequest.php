@@ -22,7 +22,7 @@ class UpdatePageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title." . app()->getLocale() => "required",
+            "title." . app()->getFallbackLocale() => "required",
             "title.*" => "",
             "description.*" => "",
             "status" => "required"
@@ -32,7 +32,7 @@ class UpdatePageRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            "title." . app()->getLocale() => __("admin/{$this->folder}.form.title"),
+            "title." . app()->getFallbackLocale() => __("admin/{$this->folder}.form.title"),
             "description.*" => __("admin/{$this->folder}.form.description"),
             "status" => __("admin/general.status")
         ];

@@ -22,7 +22,7 @@ class StoreProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title." . app()->getLocale() => "required",
+            "title." . app()->getFallbackLocale() => "required",
             "title.*" => "nullable",
             "description.*" => "nullable",
             "shortdescription.*" => "nullable",
@@ -42,7 +42,7 @@ class StoreProjectRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            "title." . app()->getLocale() => __("admin/{$this->folder}.form.title"),
+            "title." . app()->getFallbackLocale() => __("admin/{$this->folder}.form.title"),
             "title.*" => __("admin/{$this->folder}.form.title"),
             "description.*" => __("admin/{$this->folder}.form.description"),
             "shortdescription.*" => __("admin/{$this->folder}.form.shortdescription"),
