@@ -39,12 +39,15 @@ class BaseService
 
     public function all()
     {
-        $currentpage = Paginator::resolveCurrentPage() ?: 1;
-        return Cache::remember($this->model->getTable() . '_' . $currentpage, $this->cacheTime, function () {
+
+        if ($this->cacheStatus) {
+            $currentpage = Paginator::resolveCurrentPage() ?: 1;
+            return Cache::remember($this->module->value . '_' . $currentpage, $this->cacheTime, function () {
+                return $this->model->orderByDesc("id")->paginate(config("setting.dashboard.pagination", 15));
+            });
+        } else {
             return $this->model->orderByDesc("id")->paginate(config("setting.dashboard.pagination", 15));
-        })->unless($this->cacheStatus, function () {
-            return $this->model->orderByDesc("id")->paginate(config("setting.dashboard.pagination", 15));
-        });
+        }
     }
 
     public function create(Request $request)
