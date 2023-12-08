@@ -8,8 +8,8 @@
             <div class="row">
                 <div class="col-lg-4 services-sidebar order-last order-lg-first">
                     @if($otherServices->count() > 0)
-                    <div class="single-widget services-list sticky-top">
-                        <h4 class="widget-title">{{ __("front/service.show.other_services") }}</h4>
+                    <div class="single-widget services-list">
+                        <h4 class="widget-title">{{ __("front/service.show_other_services") }}</h4>
                         <div class="content">
                             <ul>
                                 @foreach ($otherServices as $item)
