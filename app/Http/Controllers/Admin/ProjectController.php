@@ -40,11 +40,11 @@ class ProjectController extends Controller
     {
         if ($this->service->imageUpload((object)$request->validated())) {
             return (object) [
-                "message" => __("admin/{$this->service->folder()}.image.success")
+                "message" => __("admin/{$this->service->folder()}.image_success")
             ];
         } else {
             return (object) [
-                "message" => __("admin/{$this->service->folder()}.image.error")
+                "message" => __("admin/{$this->service->folder()}.image_error")
             ];
         }
     }
@@ -54,11 +54,11 @@ class ProjectController extends Controller
         try {
             $this->service->imageDelete($image, true);
             return back()
-                ->withSuccess(__("admin/{$this->service->folder()}.image.delete_success"));
+                ->withSuccess(__("admin/{$this->service->folder()}.image_delete_success"));
         } catch (Throwable $e) {
             LogController::logger("error", $e->getMessage());
             return back()
-                ->withError(__("admin/{$this->service->folder()}.image.delete_error"));
+                ->withError(__("admin/{$this->service->folder()}.image_delete_error"));
         }
     }
 
@@ -67,11 +67,11 @@ class ProjectController extends Controller
         try {
             $this->service->imageAllDelete($project);
             return back()
-                ->withSuccess(__("admin/{$this->service->folder()}.image.delete_all_success"));
+                ->withSuccess(__("admin/{$this->service->folder()}.image_delete_all_success"));
         } catch (Throwable $e) {
             LogController::logger("error", $e->getMessage());
             return back()
-                ->withError(__("admin/{$this->service->folder()}.image.delete_error"));
+                ->withError(__("admin/{$this->service->folder()}.image_delete_error"));
         }
     }
 

@@ -15,11 +15,29 @@ enum SettingCategoryEnum: string
     case Image = "image";
     case Sitemap = "sitemap";
     case Recaptcha = "recaptcha";
-    //case Logo = "logo";
+    case Logo = "logo";
 
     public function title(): string
     {
         return __("admin/setting.category_" . $this->value);
+    }
+
+    public function status(): Bool
+    {
+        return match ($this) {
+            self::General => true,
+            self::Pagination => true,
+            self::Information => true,
+            self::Social => true,
+            self::Caching => true,
+            self::Contact => true,
+            self::Smtp => true,
+            self::Maintenance => false,
+            self::Image => true,
+            self::Sitemap => true,
+            self::Recaptcha => true,
+            self::Logo => false,
+        };
     }
 
     public function icon(): string
@@ -36,7 +54,7 @@ enum SettingCategoryEnum: string
             self::Image => "fas-image",
             self::Sitemap => "fas-sitemap",
             self::Recaptcha => "fas-shield-alt",
-            //self::Logo => "fas-image",
+            self::Logo => "fas-image",
         };
     }
 
