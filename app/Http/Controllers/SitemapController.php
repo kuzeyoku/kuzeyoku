@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\StatusEnum;
-use App\Models\Page;
 use App\Models\Blog;
-use App\Models\Service;
-use App\Models\Project;
-use App\Models\Category;
+use App\Models\Page;
 use App\Models\Product;
+use App\Models\Project;
+use App\Models\Service;
+use App\Models\Category;
+use App\Enums\StatusEnum;
+use App\Models\Education;
 
 class SitemapController extends Controller
 {
@@ -20,7 +21,8 @@ class SitemapController extends Controller
         $services = Service::whereStatus(StatusEnum::Active->value)->get();
         $projects = Project::whereStatus(StatusEnum::Active->value)->get();
         $products = Product::whereStatus(StatusEnum::Active->value)->get();
-        $view = view("sitemap", compact("pages", "posts", "categories", "services", "projects", "products"));
+        $educations = Education::whereStatus(StatusEnum::Active->value)->get();
+        $view = view("sitemap", compact("pages", "posts", "categories", "services", "projects", "products", "educations"));
         return response($view)->header("Content-Type", "text/xml");
     }
 }
