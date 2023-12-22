@@ -14,7 +14,7 @@
             @endif
             <div class="row">
                 <div class="col-lg-7">
-                    {{ Form::open(['url' => route('education.application'), 'method' => 'POST', 'id' => 'education-form']) }}
+                    {{ Form::open(['url' => route('education.application.send'), 'method' => 'POST', 'id' => 'education-form']) }}
                     <div class="form-group">
                         {{ Form::label(__('front/education.name')) }}
                         {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => __('front/education.name'), 'required' => '']) }}
