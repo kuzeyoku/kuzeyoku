@@ -38,7 +38,7 @@ class EducationRequest extends FormRequest
             "surname" => __("front/education.surname"),
             "phone" => __("front/education.phone"),
             "email" => __("front/education.email"),
-            "type" => __("front/education.type"),
+            "type" => __("front/education.education_type"),
         ];
     }
 }
