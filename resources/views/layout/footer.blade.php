@@ -8,9 +8,9 @@
                 <div class="row align-center">
                     <div class="col-lg-6">
                         <ul>
-                            <li><a href="{{ route('service.index') }}">{{ __('front/service.page_title') }}</a></li>
-                            <li><a href="{{ route('project.index') }}">{{ __('front/project.page_title') }}</a></li>
-                            <li><a href="{{ route('blog.index') }}">{{ __('front/blog.page_title') }}</a></li>
+                            <li><a href="{{ route('service.index') }}">{{ __('front/service.home_title') }}</a></li>
+                            <li><a href="{{ route('project.index') }}">{{ __('front/project.home_title') }}</a></li>
+                            <li><a href="{{ route('blog.index') }}">{{ __('front/blog.home_title') }}</a></li>
                             <li><a href="{{ route('contact.index') }}"> {{ __('front/contact.page_title') }}</a></li>
                         </ul>
                     </div>
