@@ -12338,11 +12338,11 @@ body.wrap-nav-sidebar {
     }
 
     .carousel-caption h1 {
-        font-size: 1.3rem;
+        font-size: 1rem;
         top: 70%;
     }
 
     .carousel-caption img {
-        width: 60px;
+        width: 40px;
     }
 }
